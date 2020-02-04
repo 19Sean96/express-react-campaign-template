@@ -1,0 +1,1 @@
+export { default as SportexLogo } from './SportexLogo'

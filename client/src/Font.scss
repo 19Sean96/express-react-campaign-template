@@ -1,0 +1,221 @@
+/***************************************************************************
+            FONT DEFINITIONS FOR UNIVERS FONT
+***************************************************************************/
+
+
+
+// ============= UNIVERS NORMAL ===================
+ 
+// LIGHT FONT - 200
+@font-face {
+    font-family: "UniversNormal";
+    src: url('./fonts/univers-standard-light.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+ }
+ @font-face {
+    font-family: "UniversNormal";
+    src: url('./fonts/univers-standard-light_italic.otf') format('opentype');
+    font-weight: 200;
+    font-style: italic;
+ }
+
+
+ // NORMAL FONT - 400
+@font-face {
+    font-family: "UniversNormal";
+    src: url('./fonts/univers-standard-normal.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+ }
+ @font-face {
+    font-family: "UniversNormal";
+    src: url('./fonts/univers-standard-normal_italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+ }
+
+
+ // BOLD FONT - 700
+ @font-face {
+    font-family: "UniversNormal";
+    src: url('./fonts/univers-standard-bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+ }
+ @font-face {
+    font-family: "UniversNormal";
+    src: url('./fonts/univers-standard-bold_italic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+ }
+
+
+// BLACK FONT - 800
+ @font-face {
+    font-family: "UniversNormal";
+    src: url('./fonts/univers-standard-black.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+ }
+ @font-face {
+    font-family: "UniversNormal";
+    src: url('./fonts/univers-standard-black_italic.otf') format('opentype');
+    font-weight: 800;
+    font-style: italic;
+ }
+
+
+ // X-BLACK FONT - 900
+ @font-face {
+    font-family: "UniversNormal";
+    src: url('./fonts/univers-standard-xblack.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+ }
+
+ @font-face {
+    font-family: "UniversNormal";
+    src: url('./fonts/univers-standard-xblack_italic.otf') format('opentype');
+    font-weight: 900;
+    font-style: italic;
+ }
+
+
+
+// ============= UNIVERS EXTENDED ===================
+
+ // NORMAL FONT - 400
+@font-face {
+    font-family: "UniversExtended";
+    src: url('./fonts/univers-extend-normal.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+ }
+ @font-face {
+    font-family: "UniversExtended";
+    src: url('./fonts/univers-extend-normal_italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+ }
+
+
+  // BOLD FONT - 700
+  @font-face {
+    font-family: "UniversExtended";
+    src: url('./fonts/univers-extend-bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+ }
+ @font-face {
+    font-family: "UniversExtended";
+    src: url('./fonts/univers-extend-bold_italic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+ }
+
+
+// BLACK FONT - 800
+ @font-face {
+    font-family: "UniversExtended";
+    src: url('./fonts/univers-extend-black.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+ }
+ @font-face {
+    font-family: "UniversExtended";
+    src: url('./fonts/univers-extend-black_italic.otf') format('opentype');
+    font-weight: 800;
+    font-style: italic;
+ }
+
+
+ // X-BLACK FONT - 900
+ @font-face {
+    font-family: "UniversExtended";
+    src: url('./fonts/univers-extend-xblack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+ }
+
+ @font-face {
+    font-family: "UniversExtended";
+    src: url('./fonts/univers-extend-xblack_italic.otf') format('opentype');
+    font-weight: 900;
+    font-style: italic;
+ }
+
+
+
+// ============= UNIVERS CONDENSED ===================
+ 
+// LIGHT FONT - 200
+@font-face {
+    font-family: "UniversCondensed";
+    src: url('./fonts/univers-condensed-light.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+ }
+ @font-face {
+    font-family: "UniversCondensed";
+    src: url('./fonts/univers-condensed-light_italic.otf') format('opentype');
+    font-weight: 200;
+    font-style: italic;
+ }
+
+
+ // NORMAL FONT - 400
+@font-face {
+    font-family: "UniversCondensed";
+    src: url('./fonts/univers-condensed-normal.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+ }
+ @font-face {
+    font-family: "UniversCondensed";
+    src: url('./fonts/univers-condensed-normal_italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+ }
+
+
+ // BOLD FONT - 700
+ @font-face {
+    font-family: "UniversCondensed";
+    src: url('./fonts/univers-condensed-bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+ }
+ @font-face {
+    font-family: "UniversCondensed";
+    src: url('./fonts/univers-condensed-bold_italic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+ }
+
+
+
+
+// ============= UNIVERS ULTRA CONDENSED ===================
+
+// THIN - 100
+@font-face {
+    font-family: "UniversUltraCondensed";
+    src: url('./fonts/UniversLTStd-ThinUltraCn.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+ }
+ // LIGHT - 200
+ @font-face {
+    font-family: "UniversUltraCondensed";
+    src: url('./fonts/UniversLTStd-LightUltraCn.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+ }
+//  NORMAL - 400
+ @font-face {
+    font-family: "UniversUltraCondensed";
+    src: url('./fonts/UniversLTStd-UltraCn.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+ }
