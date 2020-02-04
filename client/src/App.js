@@ -9,7 +9,11 @@ import WishlistHowTo from "./components/WishlistHowTo";
 import data from "./source";
 import axios from "axios";
 import { Route, useParams } from "react-router-dom";
-axios.defaults.baseUrl = "http://localhost:5000";
+
+if (process.env.NODE_ENV === 'development') {
+
+  axios.defaults.baseUrl = "http://localhost:5000";
+}
 
 const NavCategories = ["all", "banner", "sign", "decal", "apparel"];
 

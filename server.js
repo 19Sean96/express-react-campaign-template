@@ -2,10 +2,19 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const axios = require("axios");
+const bodyParser = require("body-parser");
 require("dotenv").config();
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, "client/build")));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+if (process.env.NODE_ENV === 'development') {
+  const cors = require('cors');
+  app.use(cors());
+}
 
 const PORT = process.env.PORT || 5000;
 
@@ -18,7 +27,7 @@ let CAMPAIGN_DATA = {};
 
 app.get("/:campaign", async (req, res, next) => {
 
-    // GRABS THE CAMPAIGN THE USER NAVIGATES TO
+    // GRABS THE CAMPAIGN THE USER NAVIGATSE TO
   const campaignName = req.params.campaign;
 
 //   SECRETS
@@ -62,6 +71,14 @@ app.get("/:campaign", async (req, res, next) => {
   CAMPAIGN_DATA.categories = categories.data.data;
 
   res.json(CAMPAIGN_DATA)
+});
+
+app.get("/", (req,res) => {
+  res.send("<p>THIS IS THE MAIN PAGE</p>")
+});
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 console.log(CAMPAIGN_DATA)
