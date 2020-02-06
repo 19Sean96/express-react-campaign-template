@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 
 // Serve the static files from the React app
+//app.use(express.static('client/build');
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,9 +19,13 @@ if (process.env.NODE_ENV === 'development') {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT} `));
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 // ROUTES
+
+
+
+
 
 // STORAGE BUCKET TO BE RETURNED
 let CAMPAIGN_DATA = {};
@@ -29,14 +34,14 @@ app.get("/:campaign", async (req, res, next) => {
 
     // GRABS THE CAMPAIGN THE USER NAVIGATSE TO
   const campaignName = req.params.campaign;
-
+    console.log(campaignName);
 //   SECRETS
   const KEY = process.env.CMS_API_KEY;
   const URL = process.env.CMS_URL_DEV;
 
 //   ==============================================================================
 // FIRST API CALL
-  const URL_1 = `${URL}items/campaign?filter[campaign_name][eq]=${campaignName}&access_token=${KEY}`;
+  const URL_1 = `${URL}items/campaigns?filter[title][eq]=${campaignName}&access_token=${KEY}`;
   const campaign = await axios.get(URL_1);
   CAMPAIGN_DATA.details = campaign.data.data[0];
 
@@ -54,7 +59,7 @@ app.get("/:campaign", async (req, res, next) => {
   //   ==============================================================================
 
   const URL_2 = `${URL}files?filter[tags][eq]=${CAMPAIGN_DATA.details.tag}&fields=data,id&access_token=${KEY}`;
-  const URL_3 = `${URL}items/product?filter[campaign][eq]=${CAMPAIGN_DATA.details.id}&access_token=${KEY}`;
+  const URL_3 = `${URL}items/products?filter[campaign][eq]=${CAMPAIGN_DATA.details.id}&access_token=${KEY}`;
   const URL_4 = `${URL}items/tiles?filter[campaign][eq]=${CAMPAIGN_DATA.details.id}&access_token=${KEY}`;
   const URL_5 = `${URL}items/categories?access_token=${KEY}`
 
@@ -69,16 +74,13 @@ app.get("/:campaign", async (req, res, next) => {
   CAMPAIGN_DATA.tiles = tiles.data.data;
   CAMPAIGN_DATA.products = products.data.data;
   CAMPAIGN_DATA.categories = categories.data.data;
-
-  res.json(CAMPAIGN_DATA)
+  console.log(CAMPAIGN_DATA);
+  res.send(CAMPAIGN_DATA);
 });
 
 app.get("/", (req,res) => {
-  res.send("<p>THIS IS THE MAIN PAGE</p>")
-});
 
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.render("<p>THIS IS THE MAIN PAGE</p>")
 });
 
 console.log(CAMPAIGN_DATA)

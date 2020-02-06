@@ -35,7 +35,6 @@ function App() {
 
 function Campaign() {
   let { campaign } = useParams();
-  console.log(campaign);
   const [loading, setLoading] = useState(true);
   const [wishlist, updateWishlist] = useState([]);
   const [activeCategory, updateActiveCategory] = useState("all");
@@ -79,7 +78,7 @@ function Campaign() {
       : triggerModal(false);
   });
   useEffect(() => {
-    axios.get(`/${campaign}`).then(res => {
+    axios.get(`http://campaign.sportexsafety.com/${campaign}`).then(res => {
       const campaignData = assembleData(
         res.data.details,
         res.data.photos,
@@ -87,7 +86,6 @@ function Campaign() {
         res.data.tiles,
         res.data.categories
       );
-      console.log(campaignData);
       loadData(campaignData);
     });
   }, []);
