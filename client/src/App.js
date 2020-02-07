@@ -6,7 +6,6 @@ import Showcase from "./components/Showcase";
 import Wishlist from "./components/Wishlist";
 import Footer from "./components/Footer";
 import WishlistHowTo from "./components/WishlistHowTo";
-import data from "./source";
 import axios from "axios";
 import { Route, useParams } from "react-router-dom";
 
