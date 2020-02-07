@@ -69,6 +69,7 @@ function Campaign() {
           <Header className="campaign-header" clientInfo={data.client} bg={data.client.background}></Header>
           <Nav
             categories={data.categories}
+            accentColor={data.client.color}
             updateActiveCategory={updateActiveCategory}
             wishlistCount={wishlist.length}
             activeCategory={activeCategory}
@@ -91,6 +92,7 @@ function Campaign() {
               updateWishlist(newWishlist);
             }}
             wishlist={wishlist}
+            accentColor={data.client.color}
           />
           <Footer />
         </>
@@ -122,7 +124,10 @@ function assembleData(details, photos, products, tiles, categories) {
       background:
         photos[
           photos.findIndex(img => img.id === details.background_image)
-        ].data.full_url
+        ].data.full_url,
+      color: details.color,
+      color_dark: details.darker_color,
+      color_light: details.color_light
     },
 
     items: []
@@ -149,7 +154,7 @@ function assembleData(details, photos, products, tiles, categories) {
 
     data.items.push({
       id: tile.id,
-      name: tile.titile,
+      name: tile.title,
       singleItem: determineTileType(products, tile.id),
       background:
         photos[photos.findIndex(img => img.id === tile.display_image)].data

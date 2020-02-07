@@ -1,4 +1,11 @@
 import React from "react";
+import styled from "styled-components"
+
+const StyledUnderline = styled.div`
+  &::after {
+    background-color: ${props => props.accentColor}
+  }
+`;
 
 function Nav(props) {
   let navItems = props.categories;
@@ -7,7 +14,8 @@ function Nav(props) {
     <nav className="Nav">
       <ul className="Nav_list">
         {navItems.map((item, index) => (
-          <li
+          <StyledUnderline
+            accentColor={props.accentColor}
             onClick={() => {
               props.updateActiveCategory(item)
 
@@ -19,7 +27,7 @@ function Nav(props) {
             data-filter={item}
           >
             {item}
-          </li>
+          </StyledUnderline>
         ))}
       </ul>
       <a href="#Wishlist" className="Nav_Wishlist-check">
@@ -29,7 +37,7 @@ function Nav(props) {
               d="M494.522,4317.545H467V4260h42.534v42.534A15.013,15.013,0,0,1,494.522,4317.545Z"
               transform="translate(0)"
               fill="none"
-              stroke="#eae45b"
+              stroke={props.accentColor}
               strokeMiterlimit="10"
               strokeWidth="4"
             />
@@ -38,7 +46,7 @@ function Nav(props) {
                 x2="20"
                 transform="translate(-0.259 0.486)"
                 fill="none"
-                stroke="#eae45b"
+                stroke={props.accentColor}
                 strokeMiterlimit="10"
                 strokeWidth="4"
               />
@@ -46,7 +54,7 @@ function Nav(props) {
                 x2="20"
                 transform="translate(-0.259 10.486)"
                 fill="none"
-                stroke="#eae45b"
+                stroke={props.accentColor}
                 strokeMiterlimit="10"
                 strokeWidth="4"
               />
@@ -54,7 +62,7 @@ function Nav(props) {
                 x2="15"
                 transform="translate(-0.259 20.486)"
                 fill="none"
-                stroke="#eae45b"
+                stroke={props.accentColor}
                 strokeMiterlimit="10"
                 strokeWidth="4"
               />

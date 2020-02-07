@@ -36,15 +36,10 @@ class Showcase extends Component {
     });
   }
 
-  // expandMultiItem() {}
-
-  // closeModal() {}
-
   render() {
     return (
       <main id="Showcase" className="showcase_grid" ref={this.myRef}>
         {this.props.products.map((product, index) => {
-          // console.log(product)
           return (
             <div
               key={index}
@@ -76,7 +71,7 @@ class Showcase extends Component {
                         type="button"
                         onClick={e =>
                           this.expandSingleItem(
-                            product.displayImg,
+                            product.background,
                             product.name,
                             index
                           )

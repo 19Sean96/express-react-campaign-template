@@ -1,9 +1,17 @@
 import React from "react";
+import styled from 'styled-components'
+
+const StyledInput = styled.div`
+  &::before {
+    background-color: ${props => props.accentColor}
+  }
+`;
 
 function SendWishlistInput(props) {
   const { FormClass, handleKeyPress, input, status } = props;
   return (
-    <div
+    <StyledInput
+      accentColor={props.accentColor}
       key={input.name}
       className={`${FormClass}_input--container ${FormClass}_input--container--${
         input.width
@@ -38,7 +46,7 @@ function SendWishlistInput(props) {
           </label>
         </>
       )}
-    </div>
+    </StyledInput>
   );
 }
 

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import SendWishlistInput from "./SendWishlistInput";
+
 class SendWishlist extends Component {
   constructor(props) {
     super(props);
     const { name, email, company, phone } = this.props;
     this.handleKeyPress = this.props.handleKeyPress.bind(this);
-
 
     this.state = {};
   }
@@ -69,17 +69,17 @@ class SendWishlist extends Component {
                   d="M232,1622.412v42.955l23.706-20.776"
                   transform="translate(19.444 41.634)"
                   fill="none"
-                  stroke="#D0D43E"
+                  stroke={this.props.accentColor}
                   strokeMiterlimit="10"
                   strokeWidth="10"
-                />
+                /> 
                 <path
                   id="Path_768"
                   data-name="Path 768"
                   d="M297.083,1707l54.472-106L222,1636.333Z"
                   transform="translate(0)"
                   fill="none"
-                  stroke="#D0D43E"
+                  stroke={this.props.accentColor}
                   strokeMiterlimit="10"
                   strokeWidth="10"
                 />
@@ -90,7 +90,7 @@ class SendWishlist extends Component {
                   y2="63.046"
                   transform="translate(251.444 1601)"
                   fill="none"
-                  stroke="#D0D43E"
+                  stroke={this.props.accentColor}
                   strokeMiterlimit="10"
                   strokeWidth="10"
                 />
@@ -103,6 +103,7 @@ class SendWishlist extends Component {
           {this.FormInputs.map((input, index) => {
             return (
               <SendWishlistInput
+                accentColor={this.props.accentColor}
                 key={index}
                 input={input}
                 FormClass={this.FormClass}
@@ -135,14 +136,14 @@ class SendWishlist extends Component {
                     x2="39"
                     transform="translate(344 8171)"
                     fill="none"
-                    stroke="#fefefe"
+                    stroke={this.props.accentColor}
                     strokeMiterlimit="10"
                     strokeWidth="3"
                   />
                   <path
                     d="M363.5,8190.5,383,8171l-19.5-19.5"
                     fill="none"
-                    stroke="#fefefe"
+                    stroke={this.props.accentColor}
                     strokeMiterlimit="10"
                     strokeWidth="3"
                   />

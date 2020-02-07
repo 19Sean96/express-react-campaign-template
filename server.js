@@ -47,7 +47,7 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
     const URL_1 = `${URL}items/campaigns?filter[title][eq]=${campaignName}&access_token=${KEY}`;
     const campaign = await axios.get(URL_1);
     CAMPAIGN_DATA.details = campaign.data.data[0];
-    
+    console.log(CAMPAIGN_DATA.details)
     /* example return: 
     "details": {
       "campaign_name": "LSA",
@@ -77,7 +77,6 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
     CAMPAIGN_DATA.tiles = tiles.data.data;
     CAMPAIGN_DATA.products = products.data.data;
     CAMPAIGN_DATA.categories = categories.data.data;
-    console.log(CAMPAIGN_DATA.categories);
     res.send(CAMPAIGN_DATA);
   });
   

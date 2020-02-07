@@ -394,6 +394,7 @@ class Wishlist extends Component {
           </article>
         </section>
         <SendWishlist
+          accentColor={this.props.accentColor}
           name={this.state.name}
           email={this.state.email}
           phone={this.state.phone}
