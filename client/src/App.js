@@ -10,22 +10,15 @@ import data from "./source";
 import axios from "axios";
 import { Route, useParams } from "react-router-dom";
 
-//if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development') {
 
   axios.defaults.baseUrl = "http://localhost:5000";
-//s}
+}
 
-const NavCategories = ["all", "banner", "sign", "decal", "apparel"];
-
-// 1. INITIATE LOADING SCREEN ON LOAD
-// 2. DO API CALLS IN MEANTIME
-// 3. ASSEMBLE DATA FOR APP TO RENDER
-// 4. SWITCH LOADING TO 'false'
 
 function App() {
   return (
     <div className="App">
-	<h1>Looks like you need to enter a route!</h1>
       <Route path="/:campaign">
         <Campaign />
       </Route>
@@ -35,40 +28,11 @@ function App() {
 
 function Campaign() {
   let { campaign } = useParams();
-  console.log(campaign);
   const [loading, setLoading] = useState(true);
   const [wishlist, updateWishlist] = useState([]);
   const [activeCategory, updateActiveCategory] = useState("all");
   const [modalIsOpen, triggerModal] = useState(false);
   const [modalWasClosed, modalClose] = useState(false);
-
-  let categories = [
-    {
-      type: "banner",
-      id: 2
-    },
-    {
-      type: "sign",
-      id: 3
-    },
-    {
-      type: "decal",
-      id: 4
-    },
-    {
-      type: "apparel",
-      id: 5
-    },
-    {
-      type: "safety",
-      id: 6
-    },
-    {
-      type: "utility",
-      id: 7
-    }
-  ];
-
   const [data, loadData] = useState(false);
 
   useEffect(() => {
@@ -79,7 +43,8 @@ function Campaign() {
       : triggerModal(false);
   });
   useEffect(() => {
-    axios.get(`/${campaign}`).then(res => {
+    axios.get(`/api/${campaign}`).then(res => {
+      console.log("Here are the categories...", res.data.categories)
       const campaignData = assembleData(
         res.data.details,
         res.data.photos,
@@ -87,13 +52,12 @@ function Campaign() {
         res.data.tiles,
         res.data.categories
       );
-      console.log(campaignData);
+      console.log("This is the FULL campaign data", campaignData);
       loadData(campaignData);
     });
   }, []);
   return (
     <>
-	<h1>Hello World!</h1>
       {data ? (
         <>
           <WishlistHowTo
@@ -103,7 +67,7 @@ function Campaign() {
             }}
             isOpen={modalIsOpen}
           />
-          <Header className="campaign-header" clientInfo={data.client}></Header>
+          <Header className="campaign-header" clientInfo={data.client} bg={data.client.background}></Header>
           <Nav
             categories={data.categories}
             updateActiveCategory={updateActiveCategory}
@@ -147,18 +111,18 @@ const determineTileType = (products, id) => {
   if (count > 1) return false;
   else return true;
 };
-function assembleData(campaign, images, products, tiles, categories) {
-  console.log(categories);
+function assembleData(details, photos, products, tiles, categories) {
+  console.log(categories)
   const data = {
     categories: ["all"],
     client: {
-      name: `${campaign.client_name} - ${campaign.campaign_name}`,
+      name: `${details.client_name} - ${details.title}`,
       logo:
-        images[images.findIndex(img => img.id === campaign.client_logo)].data
+        photos[photos.findIndex(img => img.id === details.logo)].data
           .full_url,
       background:
-        images[
-          images.findIndex(img => img.id === campaign.campaign_background_image)
+        photos[
+          photos.findIndex(img => img.id === details.background_image)
         ].data.full_url
     },
 
@@ -167,10 +131,10 @@ function assembleData(campaign, images, products, tiles, categories) {
 
   products = products.map(prod => {
     return {
-      tile_parent: prod.tile_parent,
+      tile_parent: prod.tile,
       key: prod.design_number,
       img:
-        images[images.findIndex(image => image.id === prod.product_image)].data
+        photos[photos.findIndex(image => image.id === prod.image)].data
           .full_url,
       alt: prod.product_name,
       select: false
@@ -178,22 +142,23 @@ function assembleData(campaign, images, products, tiles, categories) {
   });
 
   tiles.map(tile => {
+    console.log(categories[categories.findIndex(cat => cat.id === tile.category)].category_name);
     data.categories.push(
-      categories[categories.findIndex(cat => cat.id === tile.category)].category
+      categories[categories.findIndex(cat => cat.id === tile.category)].category_name
     );
     data.categories.splice(0, data.categories.length, ...(new Set(data.categories)))
 
     data.items.push({
       id: tile.id,
-      name: tile.tile_name,
+      name: tile.titile,
       singleItem: determineTileType(products, tile.id),
       background:
-        images[images.findIndex(img => img.id === tile.display_image)].data
+        photos[photos.findIndex(img => img.id === tile.display_image)].data
           .full_url,
       category:
         categories[
           categories.findIndex(category => category.id === tile.category)
-        ].category,
+        ].category_name,
       designParent: tile.design_parent,
       columns: tile.column_width,
       products: products.filter(prod => prod.tile_parent === tile.id)

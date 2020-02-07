@@ -3,7 +3,9 @@ import SportexLogo from "../Icons/SportexLogo";
 
 function Header(props) {
   return (
-    <header className="header">
+    <header className="header" style={{
+      backgroundImage: `url("${props.bg}")`
+      }}>
       <div className="brand-indicator">
         <p>campaign items for order</p>
         <h1 className="brand-indicator_name">{props.clientInfo.name}</h1>
