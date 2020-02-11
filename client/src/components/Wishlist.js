@@ -49,7 +49,8 @@ class Wishlist extends Component {
         value: "",
         valid: null
       },
-      cartDetails: []
+      cartDetails: [],
+      removing: false
     };
 
     this.props.wishlist.map(item => {
@@ -84,8 +85,21 @@ class Wishlist extends Component {
         },
         products: newItem.products
       });
-    } else if (prevProps.wishlist.length > this.props.wishlist.length) {
+    } else if ((prevProps.wishlist.length > this.props.wishlist.length) && this.state.removing) {
       console.log("YOU REMOVED ONE");
+
+      if (this.props.wishlist.length <= 0) {
+        this.state.cartDetails.splice(0,this.state.cartDetails.length - 1)
+      } else {
+        const itemRemoved = (prevProps.wishlist.filter(e => !this.props.wishlist.includes(e)))
+
+        this.state.cartDetails.splice(this.state.cartDetails.findIndex(cartItem => cartItem.id == itemRemoved.id), 1)
+
+        this.setState({removing: false})
+      }
+
+      // const index = this.state.cartDetails.findIndex(cartItem => cartItem.id === removedItem.id)
+      // this.state.cartDetails.splice(index,1);
     }
   }
 
@@ -368,7 +382,7 @@ class Wishlist extends Component {
                         <div
                           onClick={() => {
                             this.props.removeItem(item);
-                            this.reduceCart(item)
+                            this.setState({removing: true})
                           }}
                           className="Wishlist_cart_item--editor-remove"
                         >
