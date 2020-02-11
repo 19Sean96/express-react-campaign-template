@@ -28,6 +28,8 @@ function SendWishlistInput(props) {
             id={input.inputID}
             placeholder={input.label}
             className={`${FormClass}_input ${FormClass}_input--textarea`}
+            onKeyUp={e => props.handleKeyPress(e)}
+
           ></textarea>
         </>
       ) : (

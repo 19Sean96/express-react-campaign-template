@@ -3,7 +3,6 @@ class Showcase extends Component {
   constructor(props) {
     super(props);
     this.myRef = React.createRef();
-
     this.state = {
       itemType: null,
       open: false,
@@ -36,7 +35,9 @@ class Showcase extends Component {
     });
   }
 
+
   render() {
+    const [color,colorLight,colorDark] = this.props.colors
     return (
       <main id="Showcase" className="showcase_grid" ref={this.myRef}>
         {this.props.products.map((product, index) => {
@@ -53,7 +54,9 @@ class Showcase extends Component {
               }`}
               category={product.category}
             >
-              <p className="showcase_grid_item-name">{product.name}</p>
+              <p
+              // style={{color: colorLight}}
+              className="showcase_grid_item-name">{product.name}</p>
               <img
                 src={product.background}
                 alt={product.name}
@@ -68,6 +71,7 @@ class Showcase extends Component {
                     <>
                       <button
                         className="cta-zoomIn showcase_grid_item-cta_btn"
+                        style={{borderColor: color}}
                         type="button"
                         onClick={e =>
                           this.expandSingleItem(
@@ -83,13 +87,17 @@ class Showcase extends Component {
                         onClick={() => this.props.addItem(product, index)}
                         className="cta-addToList showcase_grid_item-cta_btn"
                         type="button"
+                        style={{backgroundColor: color}}
                       >
                         add to list
                       </button>
                     </>
                   ) : (
                     <>
-                      <button className="cta-viewAll showcase_grid_item-cta_btn">
+                      <button 
+                        className="cta-viewAll showcase_grid_item-cta_btn"
+                        style={{borderColor: color}}
+                      >
                         see all
                       </button>
                     </>

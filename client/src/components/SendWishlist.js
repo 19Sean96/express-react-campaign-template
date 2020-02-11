@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import SendWishlistInput from "./SendWishlistInput";
+import axios from 'axios';
 
 class SendWishlist extends Component {
   constructor(props) {
     super(props);
     const { name, email, company, phone } = this.props;
     this.handleKeyPress = this.props.handleKeyPress.bind(this);
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {};
   }
 
@@ -47,11 +48,25 @@ class SendWishlist extends Component {
       label: "Comments, concerns, custom requests, etc..."
     }
   ];
-
   FormClass = "Wishlist_Send-form";
-  //   inputClass = `${this.FormClass}_input`;
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log("Form is being submitted...")
+    axios.post("/sendemail", {
+      name: this.props.name.value,
+      email: this.props.email.value,
+      phone: this.props.phone.value,
+      company: this.props.company.value,
+      comments: this.props.comments.value
+    }).then(res => {
+      console.log(res.data)
+    })
+
+  }
 
   render() {
+    const [color,colorLight,colorDark] = this.props.colors
     return (
       <section className="Wishlist_Send" id="ContactForm">
         <h1 className="Wishlist_Send_title">
@@ -69,7 +84,7 @@ class SendWishlist extends Component {
                   d="M232,1622.412v42.955l23.706-20.776"
                   transform="translate(19.444 41.634)"
                   fill="none"
-                  stroke={this.props.accentColor}
+                  stroke={color}
                   strokeMiterlimit="10"
                   strokeWidth="10"
                 /> 
@@ -79,7 +94,7 @@ class SendWishlist extends Component {
                   d="M297.083,1707l54.472-106L222,1636.333Z"
                   transform="translate(0)"
                   fill="none"
-                  stroke={this.props.accentColor}
+                  stroke={color}
                   strokeMiterlimit="10"
                   strokeWidth="10"
                 />
@@ -90,7 +105,7 @@ class SendWishlist extends Component {
                   y2="63.046"
                   transform="translate(251.444 1601)"
                   fill="none"
-                  stroke={this.props.accentColor}
+                  stroke={color}
                   strokeMiterlimit="10"
                   strokeWidth="10"
                 />
@@ -98,12 +113,14 @@ class SendWishlist extends Component {
             </svg>
           </span>
         </h1>
-
-        <form className={this.FormClass} action="" method="post">
+        <h3 className="Wishlist_Send_subtitle">
+          email us your list to get your items moving!
+        </h3>
+        <form className={this.FormClass} onSubmit={this.handleSubmit}>
           {this.FormInputs.map((input, index) => {
             return (
               <SendWishlistInput
-                accentColor={this.props.accentColor}
+                accentColor={color}
                 key={index}
                 input={input}
                 FormClass={this.FormClass}
@@ -120,7 +137,7 @@ class SendWishlist extends Component {
               />
             );
           })}
-          <button type="button" className="Wishlist_Send-form_submit">
+          <button type="submit" className="Wishlist_Send-form_submit">
             <p>submit list</p>
             <span
               className="Wishlist_Send-form_submit--icon--container"
@@ -136,14 +153,14 @@ class SendWishlist extends Component {
                     x2="39"
                     transform="translate(344 8171)"
                     fill="none"
-                    stroke={this.props.accentColor}
+                    stroke={colorLight}
                     strokeMiterlimit="10"
                     strokeWidth="3"
                   />
                   <path
                     d="M363.5,8190.5,383,8171l-19.5-19.5"
                     fill="none"
-                    stroke={this.props.accentColor}
+                    stroke={colorLight}
                     strokeMiterlimit="10"
                     strokeWidth="3"
                   />

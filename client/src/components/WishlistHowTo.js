@@ -17,12 +17,10 @@ function WishlistHowTo(props) {
                 viewBox="0 0 114.228 90.152"
               >
                 <g
-                  id="step_1"
                   dataname="step 1"
                   transform="translate(-485.923 -426.207)"
                 >
                   <path
-                    id="Path_1"
                     dataname="Path 1"
                     d="M558.9,514.618H487.664V467.455a10.618,10.618,0,0,1,10.618-10.617H569.52V504A10.617,10.617,0,0,1,558.9,514.618Z"
                     fill="none"
@@ -84,12 +82,11 @@ function WishlistHowTo(props) {
               viewBox="0 0 15.529 25.402"
             >
               <path
-                id="Path_8"
                 dataname="Path 8"
                 d="M663.9,465.227l11.287,11.287L663.9,487.8"
                 transform="translate(-662.49 -463.813)"
                 fill="none"
-                stroke="#d9e021"
+                stroke={props.color}
                 strokeMiterlimit="10"
                 strokeWidth="4"
               />
@@ -157,7 +154,7 @@ function WishlistHowTo(props) {
                       x2="9.687"
                       transform="translate(831.106 488.999)"
                       fill="none"
-                      stroke="#d7de3b"
+                      stroke={props.color}
                       strokeMiterlimit="10"
                       strokeWidth="1.937"
                     />
@@ -167,7 +164,7 @@ function WishlistHowTo(props) {
                       y1="9.687"
                       transform="translate(835.949 484.155)"
                       fill="none"
-                      stroke="#d7de3b"
+                      stroke={props.color}
                       strokeMiterlimit="10"
                       strokeWidth="1.937"
                     />
@@ -180,7 +177,7 @@ function WishlistHowTo(props) {
                         r="11.624"
                         transform="translate(824.325 477.375)"
                         fill="none"
-                        stroke="#d7de3b"
+                        stroke={props.color}
                         strokeMiterlimit="10"
                         strokeWidth="1.937"
                       />
@@ -204,7 +201,7 @@ function WishlistHowTo(props) {
                 d="M663.9,465.227l11.287,11.287L663.9,487.8"
                 transform="translate(-662.49 -463.813)"
                 fill="none"
-                stroke="#d9e021"
+                stroke={props.color}
                 strokeMiterlimit="10"
                 strokeWidth="4"
               />
@@ -285,7 +282,7 @@ function WishlistHowTo(props) {
                       dataname="Path 77"
                       d="M1046.223,518.465H1043.7l-2.882,2.883-2.883-2.883h-2.524a2.883,2.883,0,0,1-2.882-2.883h0V504.77h16.578v10.812a2.883,2.883,0,0,1-2.882,2.883Z"
                       fill="none"
-                      stroke="#d7de3b"
+                      stroke={props.color}
                       strokeMiterlimit="10"
                       strokeWidth="1.539"
                     />
@@ -296,7 +293,7 @@ function WishlistHowTo(props) {
                         x2="9.849"
                         transform="translate(1035.955 508.134)"
                         fill="none"
-                        stroke="#d7de3b"
+                        stroke={props.color}
                         strokeMiterlimit="10"
                         strokeWidth="1.539"
                       />
@@ -306,7 +303,7 @@ function WishlistHowTo(props) {
                         x2="9.849"
                         transform="translate(1035.955 511.212)"
                         fill="none"
-                        stroke="#d7de3b"
+                        stroke={props.color}
                         strokeMiterlimit="10"
                         strokeWidth="1.539"
                       />
@@ -316,7 +313,7 @@ function WishlistHowTo(props) {
                         x2="7.387"
                         transform="translate(1035.955 514.29)"
                         fill="none"
-                        stroke="#d7de3b"
+                        stroke={props.color}
                         strokeMiterlimit="10"
                         strokeWidth="1.539"
                       />
@@ -508,7 +505,7 @@ function WishlistHowTo(props) {
                 d="M663.9,465.227l11.287,11.287L663.9,487.8"
                 transform="translate(-662.49 -463.813)"
                 fill="none"
-                stroke="#d9e021"
+                stroke={props.color}
                 strokeMiterlimit="10"
                 strokeWidth="4"
               />
@@ -538,8 +535,8 @@ function WishlistHowTo(props) {
                     id="Reply_-_Alt"
                     dataname="Reply - Alt"
                     d="M1322.636,454.48l19.791,15.942-19.791,17.043V476.47c-9.346,0-17.592,3.68-21.99,10.995v-.519c0-11.855,9.9-21.471,21.99-21.471Z"
-                    fill="#d7de3b"
-                  />
+                    fill={props.color}
+                    />
                   <circle
                     id="Ellipse_7"
                     dataname="Ellipse 7"
@@ -548,7 +545,7 @@ function WishlistHowTo(props) {
                     r="63.298"
                     transform="translate(1257.549 411.285)"
                     fill="none"
-                    stroke="#d9e021"
+                    stroke={props.color}
                     strokeMiterlimit="10"
                     strokeWidth="4"
                   />
@@ -580,7 +577,7 @@ function WishlistHowTo(props) {
                   x2="39"
                   transform="translate(344 8171)"
                   fill="none"
-                  stroke="#ccbb26"
+                  stroke={props.colorLight}
                   strokeMiterlimit="10"
                   strokeWidth="3"
                 />
@@ -589,8 +586,8 @@ function WishlistHowTo(props) {
                   fill="none"
                   strokeMiterlimit="10"
                   strokeWidth="3"
-                  stroke="#ccbb26"
-                />
+                  stroke={props.colorLight}
+                  />
               </g>
             </svg>
           </span>

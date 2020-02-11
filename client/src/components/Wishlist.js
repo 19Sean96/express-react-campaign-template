@@ -1,6 +1,21 @@
 import React, { Component } from "react";
 import OffClick from "react-offclick";
 import SendWishlist from "./SendWishlist";
+import styled from "styled-components";
+
+const StyledNoteIcon = styled.div`
+  svg {
+    g > * {
+      stroke: ${props => props.color};
+    }
+  }
+`;
+
+const StyledWishlistCTA = styled.a`
+  &::before {
+    background-color: ${props => props.color};
+  }
+`;
 
 class Wishlist extends Component {
   constructor(props) {
@@ -29,16 +44,49 @@ class Wishlist extends Component {
         active: false,
         value: "",
         valid: null
-      }
+      },
+      comments: {
+        value: "",
+        valid: null
+      },
+      cartDetails: []
     };
 
-    this.props.wishlist.map(() => {
+    this.props.wishlist.map(item => {
+      console.log(item);
       this.props.wishlist.length > 0 &&
         this.state.notePositionActive.push(false);
       this.props.wishlist.length > 0 &&
         this.state.noteInputHasValue.push(false);
+
       return null;
     });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("PREVIOUS", prevProps.wishlist);
+    console.log("CURRENT", this.props.wishlist);
+    if (prevProps.wishlist.length < this.props.wishlist.length) {
+      console.log("YOU ADDED ONE");
+
+      const newItem = this.props.wishlist[this.props.wishlist.length - 1];
+
+      this.state.cartDetails.push({
+        note: {
+          value: "",
+          active: false
+        },
+        tile: {
+          photo: newItem.background,
+          designParent: newItem.designParent,
+          id: newItem.id,
+          name: newItem.name
+        },
+        products: newItem.products
+      });
+    } else if (prevProps.wishlist.length > this.props.wishlist.length) {
+      console.log("YOU REMOVED ONE");
+    }
   }
 
   FormClass = "Wishlist_Send-form";
@@ -46,6 +94,7 @@ class Wishlist extends Component {
 
   handleKeyPress(e) {
     let target = e.target;
+    let id = parseInt(e.target.id)
     let hasValue = target.value.length > 0 ? true : false;
     // const isValid = e.target.validity.valid;
     if (target.name === "name") {
@@ -116,10 +165,18 @@ class Wishlist extends Component {
               valid
             }
           });
+    } else if (target.name === "comments") {
+      const { valid } = this.state.comments;
+      this.setState({
+        comments: {
+          value: e.target.value,
+          valid
+        }
+      });
     } else if (target.name === "wishListNote") {
-
       let { noteInputHasValue } = this.state;
 
+      this.state.cartDetails[this.state.cartDetails.findIndex(item => item.tile.id == target.id)].note.value = target.value;
       hasValue
         ? (noteInputHasValue[target.id] = true)
         : (noteInputHasValue[target.id] = false);
@@ -128,6 +185,11 @@ class Wishlist extends Component {
         noteInputHasValue
       });
     }
+  }
+
+  reduceCart(removedItem) {
+    const index = this.state.cartDetails.findIndex(cartItem => cartItem.id === removedItem.id)
+    this.state.cartDetails.splice(index,1);
   }
 
   closeNote = i => e => {
@@ -149,6 +211,7 @@ class Wishlist extends Component {
   };
 
   render() {
+    const [color, colorLight, colorDark] = this.props.colors;
     return (
       <>
         <section className="Wishlist" id="Wishlist">
@@ -164,7 +227,7 @@ class Wishlist extends Component {
                     d="M494.522,4317.545H467V4260h42.534v42.534A15.013,15.013,0,0,1,494.522,4317.545Z"
                     transform="translate(0)"
                     fill="none"
-                    stroke="#eae45b"
+                    stroke={color}
                     strokeMiterlimit="10"
                     strokeWidth="4"
                   />
@@ -173,7 +236,7 @@ class Wishlist extends Component {
                       x2="20"
                       transform="translate(-0.259 0.486)"
                       fill="none"
-                      stroke="#eae45b"
+                      stroke={color}
                       strokeMiterlimit="10"
                       strokeWidth="4"
                     />
@@ -181,7 +244,7 @@ class Wishlist extends Component {
                       x2="20"
                       transform="translate(-0.259 10.486)"
                       fill="none"
-                      stroke="#eae45b"
+                      stroke={color}
                       strokeMiterlimit="10"
                       strokeWidth="4"
                     />
@@ -191,7 +254,7 @@ class Wishlist extends Component {
                       x2="15"
                       transform="translate(-0.259 20.486)"
                       fill="none"
-                      stroke="#eae45b"
+                      stroke={color}
                       strokeMiterlimit="10"
                       strokeWidth="4"
                     />
@@ -200,6 +263,9 @@ class Wishlist extends Component {
               </svg>
             </span>
           </h1>
+          <h3 className="Wishlist_subtitle">
+            Here are the items that you are interested in.
+          </h3>
           <article className="Wishlist_cart content_wrapper">
             {this.props.wishlist.length > 0 ? (
               this.props.wishlist.map((item, index) => {
@@ -212,21 +278,27 @@ class Wishlist extends Component {
                     >
                       <div className="Wishlist_cart_item-image--container">
                         <img
-                          src={item.displayImg}
+                          src={item.background}
                           alt={item.name}
                           className="Wishlist_cart_item-image"
                         />
                       </div>
                       <h3 className="Wishlist_cart_item-name">{item.name}</h3>
                       <div className="Wishlist_cart_item--editor">
-                        <div
-                          className={`Wishlist_cart_item--editor-note ${
-                            this.state.noteInputHasValue[index]
-                              ? "Wishlist_cart_item--editor-note--green"
+                        <StyledNoteIcon
+                          color={
+                            // this.state.cartDetails[
+                            //   this.state.cartDetails.findIndex(
+                            //     cartItem => cartItem.tile.id === item.id
+                            //   )
+                            // ].note.active
+                            this.state.noteInputHasValue[item.id]
+                              ? "#1dad13"
                               : this.state.notePositionActive[index]
-                              ? "Wishlist_cart_item--editor-note--yellow"
-                              : ""
-                          }`}
+                              ? color
+                              : "rgba(#fff, 0.4)"
+                          }
+                          className={`Wishlist_cart_item--editor-note`}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -276,7 +348,7 @@ class Wishlist extends Component {
                                 ? "addNote--active"
                                 : "addNote--inactive"
                             } ${
-                              this.state.noteInputHasValue[index]
+                              this.state.noteInputHasValue[item.id]
                                 ? "activeInput"
                                 : ""
                             }`}
@@ -284,16 +356,20 @@ class Wishlist extends Component {
                             <input
                               type="text"
                               name="wishListNote"
-                              id={`${index}`}
+                              product={item.designParent}
+                              id={item.id}
                               onKeyUp={e => this.handleKeyPress(e)}
                             />
                             <label htmlFor="note" className={`addNote_label`}>
                               add a note
                             </label>
                           </div>
-                        </div>
+                        </StyledNoteIcon>
                         <div
-                          onClick={() => this.props.removeItem(item)}
+                          onClick={() => {
+                            this.props.removeItem(item);
+                            this.reduceCart(item)
+                          }}
                           className="Wishlist_cart_item--editor-remove"
                         >
                           <svg
@@ -337,7 +413,7 @@ class Wishlist extends Component {
                     <g transform="translate(1000.093 -2611.782)">
                       <text
                         transform="translate(-976 2656)"
-                        fill="#d7de3b"
+                        fill={color}
                         fontSize="35"
                         fontFamily="UniversLTStd-BoldCn, Univers LT Std"
                         fontWeight="700"
@@ -350,7 +426,7 @@ class Wishlist extends Component {
                         d="M30.619,62.931H1V1H46.775V46.775A16.152,16.152,0,0,1,30.619,62.931Z"
                         transform="translate(-1000.093 2611.782)"
                         fill="none"
-                        stroke="#d7de3b"
+                        stroke={color}
                         strokeMiterlimit="10"
                         strokeWidth="2"
                       />
@@ -360,10 +436,14 @@ class Wishlist extends Component {
                 <h2 className="Wishlist_cart--empty_message">
                   your list is empty
                 </h2>
-                <div className="Wishlist_cart--empty_cta">
-                  <a href="#Showcase" className="Wishlist_cart--empty_cta-link">
+                <div color={color} className="Wishlist_cart--empty_cta">
+                  <StyledWishlistCTA
+                    href="#Showcase"
+                    className="Wishlist_cart--empty_cta-link"
+                    color={color}
+                  >
                     add some items.
-                  </a>
+                  </StyledWishlistCTA>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40.414"
@@ -375,14 +455,14 @@ class Wishlist extends Component {
                         x2="39"
                         transform="translate(344 8171)"
                         fill="none"
-                        stroke="#000"
+                        stroke={color}
                         strokeMiterlimit="10"
                         strokeWidth="2"
                       />
                       <path
                         d="M363.5,8190.5,383,8171l-19.5-19.5"
                         fill="none"
-                        stroke="#000"
+                        stroke={color}
                         strokeMiterlimit="10"
                         strokeWidth="2"
                       />
@@ -394,11 +474,12 @@ class Wishlist extends Component {
           </article>
         </section>
         <SendWishlist
-          accentColor={this.props.accentColor}
+          colors={this.props.colors}
           name={this.state.name}
           email={this.state.email}
           phone={this.state.phone}
           company={this.state.company}
+          comments={this.state.comments}
           handleKeyPress={this.handleKeyPress}
         />
       </>

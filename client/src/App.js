@@ -43,7 +43,6 @@ function Campaign() {
   });
   useEffect(() => {
     axios.get(`/api/${campaign}`).then(res => {
-      console.log("Here are the categories...", res.data.categories)
       const campaignData = assembleData(
         res.data.details,
         res.data.photos,
@@ -51,7 +50,6 @@ function Campaign() {
         res.data.tiles,
         res.data.categories
       );
-      console.log("This is the FULL campaign data", campaignData);
       loadData(campaignData);
     });
   }, []);
@@ -65,6 +63,8 @@ function Campaign() {
               modalClose(true);
             }}
             isOpen={modalIsOpen}
+            color={data.client.color}
+            colorLight={data.client.color_light}
           />
           <Header className="campaign-header" clientInfo={data.client} bg={data.client.background}></Header>
           <Nav
@@ -82,6 +82,7 @@ function Campaign() {
             }}
             products={data.items}
             activeCategory={activeCategory}
+            colors={[data.client.color, data.client.color_light, data.client.color_dark]}
           />
           <Wishlist
             removeItem={item => {
@@ -92,9 +93,11 @@ function Campaign() {
               updateWishlist(newWishlist);
             }}
             wishlist={wishlist}
-            accentColor={data.client.color}
+            colors={[data.client.color, data.client.color_light, data.client.color_dark]}
           />
-          <Footer />
+          <Footer 
+            colors={[data.client.color, data.client.color_light, data.client.color_dark]}
+          />
         </>
       ) : null}
     </>
@@ -113,7 +116,6 @@ const determineTileType = (products, id) => {
   else return true;
 };
 function assembleData(details, photos, products, tiles, categories) {
-  console.log(categories)
   const data = {
     categories: ["all"],
     client: {
@@ -127,7 +129,7 @@ function assembleData(details, photos, products, tiles, categories) {
         ].data.full_url,
       color: details.color,
       color_dark: details.darker_color,
-      color_light: details.color_light
+      color_light: details.lighter_color
     },
 
     items: []
@@ -146,7 +148,6 @@ function assembleData(details, photos, products, tiles, categories) {
   });
 
   tiles.map(tile => {
-    console.log(categories[categories.findIndex(cat => cat.id === tile.category)].category_name);
     data.categories.push(
       categories[categories.findIndex(cat => cat.id === tile.category)].category_name
     );
