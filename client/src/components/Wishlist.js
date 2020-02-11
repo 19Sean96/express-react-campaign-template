@@ -67,6 +67,8 @@ class Wishlist extends Component {
   componentDidUpdate(prevProps, prevState) {
     console.log("PREVIOUS", prevProps.wishlist);
     console.log("CURRENT", this.props.wishlist);
+
+    if (prevProps.wishlist == this.props.wishlist) return null;
     if (prevProps.wishlist.length < this.props.wishlist.length) {
       console.log("YOU ADDED ONE");
 
@@ -89,17 +91,15 @@ class Wishlist extends Component {
       console.log("YOU REMOVED ONE");
 
       if (this.props.wishlist.length <= 0) {
-        this.state.cartDetails.splice(0,this.state.cartDetails.length - 1)
+        this.state.cartDetails = []
       } else {
         const itemRemoved = (prevProps.wishlist.filter(e => !this.props.wishlist.includes(e)))
-
-        this.state.cartDetails.splice(this.state.cartDetails.findIndex(cartItem => cartItem.id == itemRemoved.id), 1)
+        const itemRemovedID = itemRemoved[0].id; 
+        console.log(itemRemovedID)
+        this.state.cartDetails.splice(this.state.cartDetails.findIndex(cartItem => cartItem.tile.id == itemRemovedID), 1)
 
         this.setState({removing: false})
       }
-
-      // const index = this.state.cartDetails.findIndex(cartItem => cartItem.id === removedItem.id)
-      // this.state.cartDetails.splice(index,1);
     }
   }
 
@@ -381,8 +381,8 @@ class Wishlist extends Component {
                         </StyledNoteIcon>
                         <div
                           onClick={() => {
-                            this.props.removeItem(item);
                             this.setState({removing: true})
+                            this.props.removeItem(item);
                           }}
                           className="Wishlist_cart_item--editor-remove"
                         >
