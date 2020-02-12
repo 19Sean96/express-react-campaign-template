@@ -7,11 +7,11 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const transport = nodemailer.createTransport({
-  host: "smtp.mailtrap.io",
-  port: 2525,
+  host: "smtp-mail.outlook.com",
+  port: 25,
   auth: {
-    user: "0f622c576029bb",
-    pass: "08197414a5882c"
+    user: process.env.MS_EMAIL,
+    pass: process.env.MS_PW
   }
 });
 
@@ -86,19 +86,152 @@ app.get("/api/:campaign", async (req, res, next) => {
 });
 
 app.post("/sendemail", (req, res) => {
-  console.log(req.body);
+
+
+  const productsHtml = req.body.products.map((product,index) => {
+
+    return `
+      <div>
+        <tr>
+          <th colspan=3 class="prod-title">
+            <h3>Product ${index}:</h3>
+          </th>
+        </tr>
+        <tr class="product-row">
+          <td>Product Name: </td>
+          <td colspan=2>${product.tile.name}</td>
+        </tr>
+        <tr class="product-row">
+          <td>Design Number/Parent: </td>
+          <td colspan=2>${product.tile.designParent}</td>
+        </tr>
+        <tr class="product-row">
+          <td>Comment: </td>
+          <td colspan=2>${product.note.value}</td>
+        </tr>
+      </div>
+    `
+  }).join('');
+
+  const html = `
+  <head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+  <style>
+  body {
+    background-color: #e1e1e1;
+
+  }
+
+  h1,
+  table {
+    font-family: 'Open Sans',Helvetica, sans-serif;
+  }
+
+  h2 {
+    color: #fffcfb;
+  }
+
+  h3 {
+    color: #efefef;
+  }
+
+  .prod-title {
+    background-color: #FF7023;
+  }
+
+  .product-row td {
+    height: 30px;    
+    background-color: #FFB488;
+  }
+
+  table {
+    table-layout: fixed;
+    width: 80%;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #0C0D0C;
+    height: 50px;
+  }
+  
+  .client-row td {
+    background-color: #35AAD4;
+    height: 30px;
+  }
+
+  .client-row-message-title td{
+    text-align: center;
+    height: 30px;    
+    background-color: #35AAD4;
+  }
+
+  .client-row-message-text td{
+    height: 30px;    
+    background-color: #35AAD4;
+    padding: 20px 30px;
+  }
+  
+  </style>
+  </head>
+  <body>
+
+  <h1>New Campaign Product Request</h1>
+  <table role=”presentation” cellspacing=0 cellpadding=5 border=0>
+    <caption></caption>
+    <tbody>
+    <tr>
+      <th colspan="3">
+        <h2>Client Details</h2>
+      </th>
+    </tr>
+
+    <tr class="client-row">
+      <td style="font-weight: bold">Name: </td>
+      <td colspan=2>${req.body.name}</td>
+    </tr>
+    <tr class="client-row">
+      <td style="font-weight: bold">Email: </td>
+      <td colspan=2>${req.body.email}</td>
+    </tr>
+    <tr class="client-row">
+      <td style="font-weight: bold">Phone: </td>
+      <td colspan=2>${req.body.phone}</td>
+    </tr>
+    <tr class="client-row">
+      <td style="font-weight: bold">Company: </td>
+      <td colspan=2>${req.body.company}</td>
+    </tr>
+    <tr class="client-row-message-title">
+      <td colspan=3 style="font-weight: bold">Message</td>
+    </tr>
+    <tr class="client-row-message-text">
+      <td colspan=3>${req.body.comments}</td>
+    </tr>
+  </tbody>
+  </table>
+  <br>
+  <table role=”presentation” cellspacing=0 cellpadding=5 border=0>
+    <tbody>
+      <tr>
+        <th colspan="3">
+          <h2>Product Details</h2>
+        </th>
+      </tr>
+      ${productsHtml}
+    </tbody>
+  </table>
+</body>`;
 
   const message = {
-    from: req.body.email,
-    to: "me@email.com",
-    subject: `Campaign Product Request - ${req.body.name}`,
-    text: req.body.comments
+    from: process.env.MS_EMAIL,
+    to: "Vendors@sportexsafety.com",
+    subject: `(TESTING - Sean) Campaign Product Request - ${req.body.name}`,
+    html: html
   };
 
-  transport.sendMail(message, (err,info) => {
+  transport.sendMail(message, (err, info) => {
     if (err) console.log(err);
-    else console.log(info)
-  })
+    else console.log(info);
+  });
 });
 
 app.get("*", (req, res) => {

@@ -494,6 +494,7 @@ class Wishlist extends Component {
           phone={this.state.phone}
           company={this.state.company}
           comments={this.state.comments}
+          cartDetails={this.state.cartDetails}
           handleKeyPress={this.handleKeyPress}
         />
       </>
