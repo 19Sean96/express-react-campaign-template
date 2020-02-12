@@ -85,7 +85,7 @@ app.get("/api/:campaign", async (req, res, next) => {
   res.send(CAMPAIGN_DATA);
 });
 
-app.post("/sendemail", (req, res) => {
+app.post("/api/sendemail", (req, res) => {
 
 
   const productsHtml = req.body.products.map((product,index) => {
@@ -223,7 +223,7 @@ app.post("/sendemail", (req, res) => {
 
   const message = {
     from: process.env.MS_EMAIL,
-    to: "Vendors@sportexsafety.com",
+    to: "seanalexander@sportexsafety.com",
     subject: `(TESTING - Sean) Campaign Product Request - ${req.body.name}`,
     html: html
   };
