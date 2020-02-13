@@ -62,6 +62,8 @@ class SendWishlist extends Component {
       products: this.props.cartDetails
     }).then(res => {
       console.log(res.data)
+    }).catch(err => {
+      console.log(err)
     })
 
   }
