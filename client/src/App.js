@@ -86,9 +86,9 @@ function Campaign() {
           />
           <Wishlist
             removeItem={item => {
-              const removedItemName = item.name;
+              const removedItemName = item.alt;
               const newWishlist = wishlist.filter(
-                wishlistItem => wishlistItem.name !== removedItemName
+                wishlistItem => wishlistItem.alt !== removedItemName
               );
               updateWishlist(newWishlist);
             }}

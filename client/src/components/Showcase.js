@@ -84,7 +84,7 @@ class Showcase extends Component {
                         zoom in
                       </button>
                       <button
-                        onClick={() => this.props.addItem(product, index)}
+                        onClick={() => this.props.addItem(product.products[0], index)}
                         className="cta-addToList showcase_grid_item-cta_btn"
                         type="button"
                         style={{backgroundColor: color}}

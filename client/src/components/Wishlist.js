@@ -80,25 +80,38 @@ class Wishlist extends Component {
           active: false
         },
         tile: {
-          photo: newItem.background,
-          designParent: newItem.designParent,
-          id: newItem.id,
-          name: newItem.name
-        },
-        products: newItem.products
+          photo: newItem.img,
+          designParent: newItem.key,
+          id: newItem.tile_parent,
+          name: newItem.alt
+        }
       });
-    } else if ((prevProps.wishlist.length > this.props.wishlist.length) && this.state.removing) {
+    } else if (
+      prevProps.wishlist.length > this.props.wishlist.length &&
+      this.state.removing
+    ) {
       console.log("YOU REMOVED ONE");
 
       if (this.props.wishlist.length <= 0) {
-        this.state.cartDetails = []
-      } else {
-        const itemRemoved = (prevProps.wishlist.filter(e => !this.props.wishlist.includes(e)))
-        const itemRemovedID = itemRemoved[0].id; 
-        console.log(itemRemovedID)
-        this.state.cartDetails.splice(this.state.cartDetails.findIndex(cartItem => cartItem.tile.id == itemRemovedID), 1)
+        // this.state.cartDetails = [];
 
-        this.setState({removing: false})
+        this.setState({
+          cartDetails: []
+        })
+      } else {
+        const itemRemoved = prevProps.wishlist.filter(
+          e => !this.props.wishlist.includes(e)
+        );
+        const itemRemovedID = itemRemoved[0].tile_parent;
+        console.log(itemRemovedID);
+        this.state.cartDetails.splice(
+          this.state.cartDetails.findIndex(
+            cartItem => cartItem.tile.id == itemRemovedID
+          ),
+          1
+        );
+
+        this.setState({ removing: false });
       }
     }
   }
@@ -108,7 +121,7 @@ class Wishlist extends Component {
 
   handleKeyPress(e) {
     let target = e.target;
-    let id = parseInt(e.target.id)
+    let id = parseInt(e.target.id);
     let hasValue = target.value.length > 0 ? true : false;
     // const isValid = e.target.validity.valid;
     if (target.name === "name") {
@@ -129,7 +142,10 @@ class Wishlist extends Component {
             }
           });
     } else if (target.name === "email") {
-      const { valid } = this.state.email;
+      let { valid } = this.state.email;
+
+      valid = e.target.value.includes("@") ? true : false;
+
       hasValue
         ? this.setState({
             email: {
@@ -190,7 +206,9 @@ class Wishlist extends Component {
     } else if (target.name === "wishListNote") {
       let { noteInputHasValue } = this.state;
 
-      this.state.cartDetails[this.state.cartDetails.findIndex(item => item.tile.id == target.id)].note.value = target.value;
+      this.state.cartDetails[
+        this.state.cartDetails.findIndex(item => item.tile.id == target.id)
+      ].note.value = target.value;
       hasValue
         ? (noteInputHasValue[target.id] = true)
         : (noteInputHasValue[target.id] = false);
@@ -202,8 +220,10 @@ class Wishlist extends Component {
   }
 
   reduceCart(removedItem) {
-    const index = this.state.cartDetails.findIndex(cartItem => cartItem.id === removedItem.id)
-    this.state.cartDetails.splice(index,1);
+    const index = this.state.cartDetails.findIndex(
+      cartItem => cartItem.id === removedItem.tile_parent
+    );
+    this.state.cartDetails.splice(index, 1);
   }
 
   closeNote = i => e => {
@@ -287,17 +307,17 @@ class Wishlist extends Component {
                   <OffClick key={index} handler={this.closeNote(index)}>
                     <div
                       className={`Wishlist_cart_item`}
-                      dataparentkey={item.parentkey}
-                      datachildren={item.children_selected}
+                      // dataparentkey={item.parentkey}
+                      // datachildren={item.children_selected}
                     >
                       <div className="Wishlist_cart_item-image--container">
                         <img
-                          src={item.background}
-                          alt={item.name}
+                          src={item.img}
+                          alt={item.alt}
                           className="Wishlist_cart_item-image"
                         />
                       </div>
-                      <h3 className="Wishlist_cart_item-name">{item.name}</h3>
+                      <h3 className="Wishlist_cart_item-name">{item.alt}</h3>
                       <div className="Wishlist_cart_item--editor">
                         <StyledNoteIcon
                           color={
@@ -306,7 +326,7 @@ class Wishlist extends Component {
                             //     cartItem => cartItem.tile.id === item.id
                             //   )
                             // ].note.active
-                            this.state.noteInputHasValue[item.id]
+                            this.state.noteInputHasValue[item.tile_parent]
                               ? "#1dad13"
                               : this.state.notePositionActive[index]
                               ? color
@@ -370,8 +390,8 @@ class Wishlist extends Component {
                             <input
                               type="text"
                               name="wishListNote"
-                              product={item.designParent}
-                              id={item.id}
+                              product={item.key}
+                              id={item.tile_parent}
                               onKeyUp={e => this.handleKeyPress(e)}
                             />
                             <label htmlFor="note" className={`addNote_label`}>
@@ -381,7 +401,7 @@ class Wishlist extends Component {
                         </StyledNoteIcon>
                         <div
                           onClick={() => {
-                            this.setState({removing: true})
+                            this.setState({ removing: true });
                             this.props.removeItem(item);
                           }}
                           className="Wishlist_cart_item--editor-remove"
