@@ -52,7 +52,6 @@ class SendWishlist extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("Form is being submitted...")
     axios.post("/api/sendemail", {
       name: this.props.name.value,
       email: this.props.email.value,

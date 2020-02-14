@@ -10,10 +10,8 @@ import axios from "axios";
 import { Route, useParams } from "react-router-dom";
 
 if (process.env.NODE_ENV === 'development') {
-
   axios.defaults.baseUrl = "http://localhost:5000";
 }
-
 
 function App() {
   return (
@@ -25,6 +23,7 @@ function App() {
   );
 }
 
+
 function Campaign() {
   let { campaign } = useParams();
   const [loading, setLoading] = useState(true);
@@ -35,13 +34,18 @@ function Campaign() {
   const [data, loadData] = useState(false);
 
   useEffect(() => {
+
+    // THIS HANDLES THE "HOW-TO" MODAL WHICH POPULATES ON INITIAL LOAD
     !modalWasClosed
       ? setTimeout(() => {
           triggerModal(true);
         }, 1000)
       : triggerModal(false);
   });
+
   useEffect(() => {
+
+    // COMMUNICATES WITH BACKEND TO GET THE URL PARAM PASSED IN BY USER TO BRAB THE CORRECT CAMPAIGN
     axios.get(`/api/${campaign}`).then(res => {
       const campaignData = assembleData(
         res.data.details,
@@ -53,8 +57,10 @@ function Campaign() {
       loadData(campaignData);
     });
   }, []);
+
   return (
     <>
+      {/* IF THE DATA HAS BEEN LOADED */}
       {data ? (
         <>
           <WishlistHowTo
@@ -99,7 +105,7 @@ function Campaign() {
             colors={[data.client.color, data.client.color_light, data.client.color_dark]}
           />
         </>
-      ) : null}
+      ) : <p>loading...</p>}
     </>
   );
 }

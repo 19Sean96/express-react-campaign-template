@@ -392,6 +392,10 @@ html {
   gap: 0.25rem;
   background-color: #e4e4e4;
   align-content: flex-start;
+
+  @media screen and (min-width: 2500px) {
+    max-width: 2250px;
+  }
   &_item {
     background-color: #fff;
     height: 30vmax;
@@ -444,7 +448,7 @@ html {
           margin-top: 1vmax;
 
           display: flex;
-          width: 75%;
+          width: 80%;
           justify-content: space-evenly;
           max-width: 600px;
         }
@@ -452,6 +456,11 @@ html {
         &:active,
         &:focus {
           outline: none;
+        }
+
+        @media screen and (min-width: 2000px) {
+          font-size: 28px;
+          padding: 16px 35px;
         }
       }
     }
@@ -482,6 +491,9 @@ html {
       font-size: 1.25vmax;
       text-transform: uppercase;
       color: #999999;
+      @media screen and (min-width: 1800px) {
+        font-size: 24px;
+      }
     }
   }
 
@@ -548,7 +560,6 @@ html {
 
       > svg * {
         stroke-width: 4px;
-        // stroke: #ccbb26;
       }
     }
   }
@@ -563,39 +574,17 @@ html {
   align-items: center;
 
   &_subtitle {
-    color: #FFF;
+    @include heading(1.25vmax, #fff, "subtitle");
     opacity: .7;
-    text-transform: uppercase;
-    font-size: 1.25vmax;
-    font-family: 'UniversCondensed';
     padding-bottom: 1.5rem;
     margin-top: -1rem;
   }
 
   &_title {
-    position: relative;
-    // background-color: darkseagreen;
-    display: inline-blocks;
-    color: #fff;
-    font-family: "UniversCondensed";
-    text-transform: uppercase;
-    font-size: 4.35vmax;
+    @include heading(4.35vmax, #fff, "title");
     padding: 1rem 2rem 0;
     margin-top: 8rem;
-
-    &--icon {
-      width: 100%;
-      height: auto;
-      &--container {
-        position: absolute;
-        display: block;
-        right: 0;
-        top: 0;
-        width: 10%;
-
-        transform: translate(1.35vmax, -1.3vmax);
-      }
-    }
+    &--icon--container {transform: translate(1.35vmax, -1.3vmax)}
   }
 
   &_cart {
@@ -617,6 +606,10 @@ html {
       }
     }
 
+    @media screen and (min-width: 2100px) {
+      width: 50%;
+    }
+
     &_item {
       width: 100%;
       display: flex;
@@ -633,6 +626,10 @@ html {
         font-weight: 800;
         font-size: 1.6vmax;
         margin-left: 1.2vmax;
+
+        @media screen and (min-width: 2100px) {
+          font-size: 36px;
+        }
       }
 
       &-image {
@@ -880,39 +877,17 @@ html {
     align-items: center;
 
     &_subtitle {
-      color: $color-black;
+      @include heading(1.25vmax, $color-black, "subtitle");
       opacity: .7;
-      text-transform: uppercase;
-      font-size: 1.25vmax;
-      font-family: 'UniversCondensed';
       padding-bottom: 1.5rem;
       margin-top: -1rem;
     }
 
     &_title {
-      position: relative;
-
-      display: inline-block;
-      color: $color-black;
-      font-family: "UniversCondensed";
-      text-transform: uppercase;
-      font-size: 4.35vmax;
+      @include heading(4.35vmax, $color-black, "title");
       padding: 1rem 2rem 0;
       margin-top: 8rem;
-
-      &--icon {
-        width: 100%;
-        height: auto;
-        &--container {
-          position: absolute;
-          display: block;
-          right: 0;
-          top: 0;
-          width: 10%;
-          transform: translate(2.95vmax, -1.3vmax);
-        }
-
-      }
+      &--icon--container {transform: translate(2.95vmax, -1.3vmax)}
     }
 
     &-form {

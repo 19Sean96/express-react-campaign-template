@@ -94,7 +94,6 @@ class Showcase extends Component {
   }
 
   expandSingleItem(img, name, index, product) {
-    console.log(img, name, index);
     this.setState({
       itemType: "single",
       open: true,
@@ -190,7 +189,6 @@ class Showcase extends Component {
             </div>
           );
         })}
-        {/* {this.state.zoomedInProduct.index !== null ? ( */}
         <ShowcaseModal
           colors={this.props.colors}
           itemType={this.state.itemType}
@@ -219,7 +217,6 @@ class Showcase extends Component {
             });
           }}
         />
-        {/* ) : null} */}
       </main>
     );
   }
@@ -239,7 +236,6 @@ function ShowcaseModal(props) {
     >
       <h2 className="zoomModal_name">{productInfo.name}</h2>
       <div
-        // onClick={() => this.props.removeItem(item)}
         className="zoomModal-close"
         onClick={props.closeModal}
       >

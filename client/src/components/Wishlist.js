@@ -65,12 +65,10 @@ class Wishlist extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("PREVIOUS", prevProps.wishlist);
-    console.log("CURRENT", this.props.wishlist);
+
 
     if (prevProps.wishlist == this.props.wishlist) return null;
     if (prevProps.wishlist.length < this.props.wishlist.length) {
-      console.log("YOU ADDED ONE");
 
       const newItem = this.props.wishlist[this.props.wishlist.length - 1];
 
@@ -90,10 +88,8 @@ class Wishlist extends Component {
       prevProps.wishlist.length > this.props.wishlist.length &&
       this.state.removing
     ) {
-      console.log("YOU REMOVED ONE");
 
       if (this.props.wishlist.length <= 0) {
-        // this.state.cartDetails = [];
 
         this.setState({
           cartDetails: []
@@ -103,7 +99,6 @@ class Wishlist extends Component {
           e => !this.props.wishlist.includes(e)
         );
         const itemRemovedID = itemRemoved[0].tile_parent;
-        console.log(itemRemovedID);
         this.state.cartDetails.splice(
           this.state.cartDetails.findIndex(
             cartItem => cartItem.tile.id == itemRemovedID
@@ -307,8 +302,6 @@ class Wishlist extends Component {
                   <OffClick key={index} handler={this.closeNote(index)}>
                     <div
                       className={`Wishlist_cart_item`}
-                      // dataparentkey={item.parentkey}
-                      // datachildren={item.children_selected}
                     >
                       <div className="Wishlist_cart_item-image--container">
                         <img
@@ -321,11 +314,6 @@ class Wishlist extends Component {
                       <div className="Wishlist_cart_item--editor">
                         <StyledNoteIcon
                           color={
-                            // this.state.cartDetails[
-                            //   this.state.cartDetails.findIndex(
-                            //     cartItem => cartItem.tile.id === item.id
-                            //   )
-                            // ].note.active
                             this.state.noteInputHasValue[item.tile_parent]
                               ? "#1dad13"
                               : this.state.notePositionActive[index]
@@ -521,10 +509,5 @@ class Wishlist extends Component {
     );
   }
 }
-
-// function checkInputValue(e) {
-//   console.log(e.target.value);
-//   console.log(e.target.className);
-// }
 
 export default Wishlist;

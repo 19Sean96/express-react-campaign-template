@@ -1,0 +1,33 @@
+@mixin heading($font-size, $font-color, $heading-type) {
+    font-family: "UniversCondensed";
+    position: relative;
+    display: inline-block;
+    color: $font-color;
+    text-transform: uppercase;
+    font-size: $font-size;
+
+    @if ($heading-type == "title") {
+        &--icon {
+            width: 100%;
+            height: auto;
+        }
+
+        &--icon--container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10%;
+        }
+
+        @media screen and (min-width: 2500px) {
+            font-size: 10rem;
+        }
+    }
+
+    @if ($heading-type == "subtitle") {
+        @media screen and (min-width: 2500px) {
+            font-size: 3rem;
+        }
+    }
+
+}
