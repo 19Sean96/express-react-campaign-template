@@ -7,9 +7,16 @@ const StyledUnderline = styled.div`
   }
 `;
 
+const StyledCloseBtn = styled.div`
+
+    svg g line { 
+      stroke: ${props => props.accentColor}
+    }
+`;
+
 function Nav(props) {
   let navItems = props.categories;
-  const [navIsOpen, updateNav] = useState(true);
+  const [navIsOpen, updateNav] = useState(false);
 
   return (
     <nav className="Nav">
@@ -29,7 +36,8 @@ function Nav(props) {
           </g>
         </svg>
       </div>
-      <div
+      <StyledCloseBtn
+        accentColor={props.accentColor}
         id="closeIcon"
         className={`Nav_list-close Nav_list-close--${!navIsOpen && "hidden"}`}
         onClick={e => {
@@ -56,7 +64,7 @@ function Nav(props) {
             />
           </g>
         </svg>
-      </div>
+      </StyledCloseBtn>
       <ul className={`Nav_list ${!navIsOpen && "Nav_list--hidden"}`}>
         {navItems.map((item, index) => (
           <StyledUnderline
