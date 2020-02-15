@@ -11,7 +11,6 @@ html {
 
 .App {
   background-color: #e4e4e4;
-
 }
 
 .WishlistHowTo {
@@ -195,10 +194,10 @@ html {
     &_name {
       color: #fff;
       text-transform: uppercase;
-      font-size:  3vmin;
+      font-size: 3vmin;
       font-family: "UniversCondensed";
       font-weight: 800;
-      margin-top: .15vmin;
+      margin-top: 0.15vmin;
     }
   }
 
@@ -256,22 +255,31 @@ html {
   height: 8.3vmax;
   max-height: 11.5rem;
 
+
   @media screen and (max-width: 1500px) {
-    height: 6vmax
+    height: 6vmax;
   }
 
-  @media screen and (min-width: 1500px){
+  @media screen and (max-width: 750px) {
+    min-height: 50px;
+  }
+
+  @media screen and (max-width: 560px) {
+    min-height: 75px;
+  }
+
+  @media screen and (min-width: 1500px) {
     max-height: 12rem;
   }
 
-  @media screen and (min-width: 2250px){
+  @media screen and (min-width: 2250px) {
     max-height: 13rem;
   }
 
   @media screen and (min-width: 3000px) {
     max-height: 20rem;
   }
-  
+
   &_list {
     max-width: 80%;
     width: 60%;
@@ -283,6 +291,83 @@ html {
     align-items: center;
     justify-content: center;
 
+    @media screen and (max-width: 560px) {
+      max-width: 100%;
+      position: fixed;
+      z-index: 200;
+      flex-direction: column;
+      background-color: $color-black;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      left: 0;
+      font-size: 24px;
+      opacity: 1;
+      pointer-events: painted;
+      transition: .2s opacity .1s ease-in-out;
+      &-close {
+        background-color: #111111;
+        position: fixed;
+        right: 0;
+        top: 100vh;
+        transform: translate(0,-100%);
+        z-index: 1000;
+        width: 65px;
+        height: 65px;
+        cursor: pointer;
+        transition: .25s transform .15s ease-out;
+        svg {
+          margin: 20px;
+          g line {
+            stroke: #fff;
+            transition: .3s all;
+          }
+        }
+
+        &--hidden {
+          transform: translate(100%,-100%);
+        }
+      }
+
+      &-menu {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(50%,-50%);
+        height: 100%;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .25s transform .15s ease-out;
+        svg {
+          width: 100%;
+          g line {
+
+            &:nth-child(1) {
+              transform: translate(0, 25%);
+            }
+
+            &:nth-child(2) {
+              transform: translate(0, 50%);
+            }
+
+            &:nth-child(3) {
+              transform: translate(0, 75%);
+            }
+          }
+        }
+
+        &--hidden {
+          transform: translate(-100%,-50%);
+        }
+      }
+      &--hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
     &_item {
       position: relative;
       color: #fff;
@@ -290,61 +375,52 @@ html {
       cursor: pointer;
       padding: 1.35vmax 1.15vmax;
       transform: translateY(0);
-      transition: .1s transform;
+      transition: 0.1s transform;
       margin: 0 1vw;
 
-      
       &::before {
-        content: '';
+        content: "";
         position: absolute;
-        bottom: .5vmax;
+        bottom: 0.5vmax;
         left: 0;
         width: 0%;
-        height: .15vmax;
+        height: 0.15vmax;
         background-color: #ffffff;
         transform: translateY(0rem);
-        transition: .23s width ease-in,
-                    .1s transform;
-
+        transition: 0.23s width ease-in, 0.1s transform;
       }
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
-        bottom: .5vmax;
+        bottom: 0.5vmax;
         right: 0;
         width: 0%;
-        height: .25vmax;
+        height: 0.25vmax;
         transform: translateY(0rem);
-        transition: .23s width ease-in,
-                    .1s transform;
+        transition: 0.23s width ease-in, 0.1s transform;
       }
 
       &:hover {
-        transform: translateY(-.25rem);
+        transform: translateY(-0.25rem);
         &::before {
           width: 100%;
-          transform: translateY(.25rem);
-
+          transform: translateY(0.25rem);
         }
         &::after {
-          transform: translateY(.25rem);
-
+          transform: translateY(0.25rem);
         }
       }
 
       &--active {
         &::before {
           width: 0%;
-
         }
 
         &::after {
           width: 100%;
-
         }
       }
-
     }
 
     @media screen and (min-width: 2250px) {
@@ -359,7 +435,7 @@ html {
     transform: translateY(-50%);
     width: 2.3vmax;
     cursor: pointer;
-    font-family: 'Univers';
+    font-family: "Univers";
     font-weight: 800;
 
     &_count {
@@ -387,24 +463,38 @@ html {
   margin: 0 auto;
   min-height: 10vh;
   grid-auto-rows: auto;
-  grid-auto-flow: row dense;
+  grid-auto-flow: dense;
   grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr) minmax(0%, 1fr);
   gap: 0.25rem;
   background-color: #e4e4e4;
-  align-content: flex-start;
+  // align-content: flex-start;
 
   @media screen and (min-width: 2500px) {
     max-width: 2250px;
   }
+
+  @media screen and (max-width: 770px) {
+    grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr);
+  }
+
+  @media screen and (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+
   &_item {
     background-color: #fff;
     height: 30vmax;
     max-height: 600px;
-    padding: 3rem;
+    padding: 3vmin;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 560px) {
+      max-height: 900px;
+      height: 300px;
+    }
 
     &:hover {
       > div {
@@ -464,18 +554,28 @@ html {
         }
       }
     }
-
     &--colspread_1 {
       // background-color: darkseagreen;
       grid-column-end: span 1;
+
+      @media screen and (max-width: 560px) {
+        grid-column-end: 1;
+      }
     }
 
     &--colspread_2 {
       grid-column-end: span 2;
+      @media screen and (max-width: 560px) {
+        grid-column-end: 1;
+      }
     }
 
     &--colspread_3 {
       grid-column-end: span 3;
+
+      @media screen and (max-width: 560px) {
+        grid-column-end: 1;
+      }
     }
 
     &_image {
@@ -484,8 +584,8 @@ html {
 
     &-name {
       position: absolute;
-      top: 3rem;
-      left: 3rem;
+      top: 1.5vmin;
+      left: 1.5vmin;
       font-family: "UniversCondensed";
       font-weight: 900;
       font-size: 1.25vmax;
@@ -493,6 +593,9 @@ html {
       color: #999999;
       @media screen and (min-width: 1800px) {
         font-size: 24px;
+      }
+      @media screen and (max-width: 800px) {
+        font-size: 16px;
       }
     }
   }
@@ -504,7 +607,7 @@ html {
     pointer-events: none;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 50%);
     width: 90vw;
     height: 87.5vh;
     // max-height: 30vmax;
@@ -512,10 +615,19 @@ html {
     padding: 1.4vmax 1.6vmax;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 2rem 140rem rgba(0, 0, 0, 0);
+
+    transition: 0.3s transform cubic-bezier(0.5, 0.39, 0.05, 1),
+      0.4s opacity ease-out, 0.275s box-shadow linear;
 
     &--active {
       opacity: 1;
       pointer-events: painted;
+      box-shadow: 0 0 2rem 14rem rgba(0, 0, 0, 0.8);
+      transform: translate(-50%, -50%);
+
+      transition: 0.5s transform cubic-bezier(0.5, 0.39, 0.05, 1),
+        0.3s 0.3s opacity ease-out, 0.4s 0.2s box-shadow linear;
     }
 
     &_name {
@@ -544,7 +656,7 @@ html {
       min-height: 4vmax;
       max-height: 6vmax;
       width: 32%;
-      margin: .5vmin auto 0;
+      margin: 0.5vmin auto 0;
       position: absolute;
       bottom: 0;
       right: 0;
@@ -575,7 +687,7 @@ html {
 
   &_subtitle {
     @include heading(1.25vmax, #fff, "subtitle");
-    opacity: .7;
+    opacity: 0.7;
     padding-bottom: 1.5rem;
     margin-top: -1rem;
   }
@@ -584,7 +696,9 @@ html {
     @include heading(4.35vmax, #fff, "title");
     padding: 1rem 2rem 0;
     margin-top: 8rem;
-    &--icon--container {transform: translate(1.35vmax, -1.3vmax)}
+    &--icon--container {
+      transform: translate(1.35vmax, -1.3vmax);
+    }
   }
 
   &_cart {
@@ -779,7 +893,7 @@ html {
       flex-direction: column;
       align-items: center;
       margin-top: 2.5vmax;
-      font-family: 'UniversCondensed';
+      font-family: "UniversCondensed";
       font-weight: 800;
       color: #fff;
       text-transform: uppercase;
@@ -790,7 +904,7 @@ html {
       &_message {
         text-align: center;
         font-size: 1.8vmax;
-        margin-top: .5vmax;
+        margin-top: 0.5vmax;
       }
       &_cta {
         display: flex;
@@ -806,20 +920,20 @@ html {
           display: inline-block;
           position: relative;
           z-index: 25;
-          padding: 0 .15vmax .05vmax;
-          transition: .15s color ease-in;
+          padding: 0 0.15vmax 0.05vmax;
+          transition: 0.15s color ease-in;
 
           &::before {
-            content: '';
+            content: "";
             position: absolute;
             z-index: -1;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: .15vmax;
+            height: 0.15vmax;
             // background-color: #e6d53e;
             transform: translateY(0) scaleX(1);
-            transition: .25s all ease-out;
+            transition: 0.25s all ease-out;
             box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2);
           }
 
@@ -827,11 +941,11 @@ html {
             color: $color-black;
             &::before {
               height: 3vmax;
-              transform: translateY(.5vmax) scaleX(1.5);
+              transform: translateY(0.5vmax) scaleX(1.5);
               box-shadow: inset 0 0 1vmax rgba(0, 0, 0, 0.6);
             }
             + svg {
-              animation: repeatingYBounce .25s ease-in both alternate infinite;
+              animation: repeatingYBounce 0.25s ease-in both alternate infinite;
               g line,
               g path {
                 stroke: $color-black;
@@ -845,12 +959,12 @@ html {
           height: 1.2vmax;
           position: relative;
           z-index: 30;
-          
+
           g line,
           g path {
             // stroke: #d0d43e;
-            stroke-width: .2vmax;
-            transition: .15s stroke .25s;
+            stroke-width: 0.2vmax;
+            transition: 0.15s stroke 0.25s;
           }
         }
       }
@@ -861,7 +975,7 @@ html {
         }
 
         100% {
-          transform: rotate(-90deg) translateX(.25vmax);
+          transform: rotate(-90deg) translateX(0.25vmax);
         }
       }
     }
@@ -878,7 +992,7 @@ html {
 
     &_subtitle {
       @include heading(1.25vmax, $color-black, "subtitle");
-      opacity: .7;
+      opacity: 0.7;
       padding-bottom: 1.5rem;
       margin-top: -1rem;
     }
@@ -887,7 +1001,9 @@ html {
       @include heading(4.35vmax, $color-black, "title");
       padding: 1rem 2rem 0;
       margin-top: 8rem;
-      &--icon--container {transform: translate(2.95vmax, -1.3vmax)}
+      &--icon--container {
+        transform: translate(2.95vmax, -1.3vmax);
+      }
     }
 
     &-form {
@@ -948,7 +1064,7 @@ html {
           margin: 0.5rem 0.5rem;
           position: relative;
           overflow: hidden;
-          box-shadow: 0 .2vmax .75rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.2vmax 0.75rem rgba(0, 0, 0, 0.2);
 
           &::before {
             content: "";

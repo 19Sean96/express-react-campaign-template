@@ -1,28 +1,72 @@
-import React from "react";
-import styled from "styled-components"
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 const StyledUnderline = styled.div`
   &::after {
-    background-color: ${props => props.accentColor}
+    background-color: ${props => props.accentColor};
   }
 `;
 
 function Nav(props) {
   let navItems = props.categories;
+  const [navIsOpen, updateNav] = useState(true);
 
   return (
     <nav className="Nav">
-      <ul className="Nav_list">
+      <div 
+        id="menuIcon" 
+        className={`Nav_list-menu Nav_list-menu--${navIsOpen && "hidden"}`}
+        onClick={e => {
+          updateNav(true);
+        }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.414 29.414">
+          <g
+          >
+            <line x2="30" fill="none" stroke="#fff" strokeWidth="2" />
+            <line x2="20" fill="none" stroke="#fff" strokeWidth="2" />
+            <line x2="10" fill="none" stroke="#fff" strokeWidth="2" />
+          </g>
+        </svg>
+      </div>
+      <div
+        id="closeIcon"
+        className={`Nav_list-close Nav_list-close--${!navIsOpen && "hidden"}`}
+        onClick={e => {
+          updateNav(false);
+        }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.414 29.414">
+          <g id="Cross">
+            <line
+              x2="28"
+              y2="28"
+              fill="none"
+              stroke="#000"
+              strokeMiterlimit="10"
+              strokeWidth="2"
+            />
+            <line
+              y1="28"
+              x2="28"
+              fill="none"
+              stroke="#000"
+              strokeMiterlimit="10"
+              strokeWidth="2"
+            />
+          </g>
+        </svg>
+      </div>
+      <ul className={`Nav_list ${!navIsOpen && "Nav_list--hidden"}`}>
         {navItems.map((item, index) => (
           <StyledUnderline
             accentColor={props.accentColor}
             onClick={() => {
-              props.updateActiveCategory(item)
-
+              props.updateActiveCategory(item);
+              updateNav(false)
             }}
-            className={`Nav_list_item ${
-              props.activeCategory === item && "Nav_list_item--active"
-            }`}
+            className={`Nav_list_item ${props.activeCategory === item &&
+              "Nav_list_item--active"}`}
             key={index}
             data-filter={item}
           >

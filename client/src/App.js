@@ -26,7 +26,6 @@ function App() {
 
 function Campaign() {
   let { campaign } = useParams();
-  const [loading, setLoading] = useState(true);
   const [wishlist, updateWishlist] = useState([]);
   const [activeCategory, updateActiveCategory] = useState("all");
   const [modalIsOpen, triggerModal] = useState(false);
@@ -41,7 +40,7 @@ function Campaign() {
           triggerModal(true);
         }, 1000)
       : triggerModal(false);
-  });
+  }, modalIsOpen);
 
   useEffect(() => {
 

@@ -22,11 +22,18 @@
         @media screen and (min-width: 2500px) {
             font-size: 10rem;
         }
+        @media screen and (max-width: 1080px) {
+            margin-top: 5rem;
+        }
     }
 
     @if ($heading-type == "subtitle") {
         @media screen and (min-width: 2500px) {
             font-size: 3rem;
+        }
+        @media screen and (max-width: 1080px) {
+            margin-top: -.8rem;
+            font-weight: 400;
         }
     }
 
