@@ -56,7 +56,7 @@ function Footer(props) {
               </g>
             </svg>
           </span>
-          <p className="footer_link-site_par">visit us</p>
+          <p className="footer_link-site_par">email us</p>
         </a>
       </aside>
       <aside className="footer_cta">

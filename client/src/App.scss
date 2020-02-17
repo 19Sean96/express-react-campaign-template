@@ -1288,11 +1288,12 @@ body {
     color: #efefef;
   }
 
+  
   &_link {
     display: flex;
     width: 70%;
     justify-content: space-around;
-
+    
     a {
       display: flex;
       align-items: center;
@@ -1303,13 +1304,14 @@ body {
       text-transform: uppercase;
       font-weight: 900;
       font-size: 1.3vmax;
-
+      
       span {
         margin-right: 0.7vmax;
         svg {
           width: 100%;
         }
       }
+      
     }
 
     &-email {
@@ -1323,32 +1325,45 @@ body {
         transform: translateY(-0.3vmax);
       }
     }
+    
+    @media screen and (max-width: 1080px) {
+      width: 82.5%;
+      
+      a {
+        font-size: 1.5vmax;
+      }
+      
+      a span {
+        margin-right: 1.1vmax;
+      }
+    }
   }
-
+  
+  
   &_cta {
     // background-color: #c3343e;
     text-align: center;
     font-family: "UniversCondensed";
     text-transform: uppercase;
     font-weight: 900;
-
+    
     &_title {
       font-size: 2.4vmax;
       line-height: 0.83;
     }
-
+    
     &_subtitle {
       font-size: 1.4vmax;
       font-weight: 400;
       font-style: italic;
     }
-
+    
     &_link {
       // color: #d0d43e;
       text-decoration: none;
     }
   }
-
+  
   &_sportex-indicator {
     justify-self: right;
     display: flex;
@@ -1362,7 +1377,7 @@ body {
       height: auto;
       width: 57.5%;
     }
-
+    
     &_text {
       display: inline-block;
       position: relative;
@@ -1374,17 +1389,102 @@ body {
       padding-bottom: 0.42vw;
       margin-top: -0.89vw;
       font-size: 0.95vw;
-
+      
       @media only screen and (max-width: 1200px) {
         padding-bottom: calc(0.42vw * 1.5);
         margin-top: calc(-0.89vw * 1.5);
         font-size: calc(0.95vw * 1.5);
       }
     }
-
+    
     @media only screen and (max-width: 1200px) {
       height: calc(6.4vw * 1.5);
       width: calc(16.3vw * 1.5);
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repear(3,1fr);
+
+    &_link {
+      margin: 0 auto;
+      padding: 3rem;
+      width: 60%;
+
+      a {
+        font-size: 1.9vmax;
+      }
+
+      &-email {
+        &_icon {
+          width: 3.2vmax;
+        }
+      }
+      &-site {
+        &_icon {
+          width: 2.1vmax;
+          transform: translateY(-0.3vmax);
+        }
+      }
+    }
+
+    &_cta {
+      order: -1;
+      padding: 6rem 3rem 0rem;
+
+      &_title {
+        font-size: 3.2vmax;
+      }
+
+      &_subtitle {
+        font-size: 2.2vmax;
+      }
+    }
+
+    &_sportex-indicator {
+      justify-self: center;
+      width: 50vw;
+      margin: 4rem 0 6rem;
+
+      &_text {
+        font-size: 2.3vw;
+      }
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+
+    &_link {
+      margin: 0 auto;
+      padding: 3rem;
+      width: 90%;
+
+      a {
+        font-size: 1.9vmax;
+      }
+
+      &-email {
+        &_icon {
+          width: 3.2vmax;
+        }
+      }
+      &-site {
+        &_icon {
+          width: 2.1vmax;
+          transform: translateY(-0.3vmax);
+        }
+      }
+    }
+
+    &_sportex-indicator {
+      justify-self: center;
+      width: 85vw;
+      margin: 4rem 0 6rem;
+
+      &_text {
+        font-size: 3.3vw;
+      }
     }
   }
 }
