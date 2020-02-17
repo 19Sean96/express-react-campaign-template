@@ -134,7 +134,7 @@ body {
         transition: 0.1s transform, 0.1s box-shadow;
 
         span[data-type="arrow"] {
-          transform: translate(1.5rem, -50%);
+          transform: translate(.5rem, -50%);
         }
       }
 
@@ -143,7 +143,7 @@ body {
         box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.3);
 
         span[data-type="arrow"] {
-          transform: translate(1rem, -50%);
+          transform: translate(.5rem, -50%);
         }
       }
 
@@ -157,8 +157,10 @@ body {
           right: 2vmax;
           transform: translate(0, -50%);
           transition: 0.2s transform ease-out;
+          width: 1rem;
         }
       }
+
     }
   }
 }
@@ -316,6 +318,13 @@ body {
 
   @media screen and (max-width: 560px) {
     min-height: 75px;
+  }
+
+  @media screen and (min-width: 560px) {
+    #menuIcon,
+    #closeIcon {
+      display: none;
+    }
   }
 
   @media screen and (min-width: 1500px) {
@@ -1223,9 +1232,10 @@ body {
             position: absolute;
             height: 40%;
             top: 50%;
-            right: 2vmax;
+            right: 5vmax;
             transform: translate(0, -50%);
             transition: 0.2s transform ease-out;
+            width: 1rem;
           }
         }
 
