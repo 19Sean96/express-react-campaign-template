@@ -25,6 +25,15 @@
         @media screen and (max-width: 1080px) {
             margin-top: 5rem;
         }
+
+        @media screen and (max-width: 650px) {
+            font-size: 45px;
+        }
+
+        @media screen and (max-width: 500px) {
+            margin-top: 3rem;
+            font-size: 36px;
+        }
     }
 
     @if ($heading-type == "subtitle") {
@@ -34,6 +43,14 @@
         @media screen and (max-width: 1080px) {
             margin-top: -.8rem;
             font-weight: 400;
+        }
+        @media screen and (max-width: 650px) {
+            font-size: 14px;
+        }
+
+        @media screen and (max-width: 500px) {
+            margin-top: 0;
+            font-size: 12px;
         }
     }
 

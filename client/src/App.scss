@@ -9,6 +9,11 @@ html {
   font-size: 10px;
 }
 
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 .App {
   background-color: #e4e4e4;
 }
@@ -165,6 +170,10 @@ html {
   background-size: cover;
   background-position: bottom center;
 
+  @media screen and (max-width: 560px) {
+    height: 50vh;
+  }
+
   .brand-logo {
     position: absolute;
     top: 50%;
@@ -176,6 +185,11 @@ html {
     max-width: 400px;
     @media only screen and (max-width: 1080px) {
       width: 24.5vw;
+    }
+
+    @media only screen and (max-width: 650px) {
+      width: 42.5vw;
+      top: 55%;
     }
   }
 
@@ -199,6 +213,28 @@ html {
       font-weight: 800;
       margin-top: 0.15vmin;
     }
+
+    @media only screen and (max-width: 650px) {
+      p {
+        font-size: 2.625vmin;
+      }
+
+      &_name {
+        font-size: 4.5vmin;
+      }
+    }
+
+    @media only screen and (max-width: 560px) {
+      top: 1.15rem;
+      left: 1.15rem;
+      p {
+        font-size: 2.625vmin;
+      }
+
+      &_name {
+        font-size: 5.5vmin;
+      }
+    }
   }
 
   .sportex-indicator {
@@ -220,6 +256,21 @@ html {
     @media only screen and (max-width: 1200px) {
       height: calc(6.4vw * 1.5);
       width: calc(14.3vw * 1.5);
+    }
+
+    @media only screen and (max-width: 850px) {
+      height: calc(6.4vw * 1.8);
+      width: calc(14.3vw * 1.8);
+    }
+
+    @media only screen and (max-width: 650px) {
+      height: calc(6.4vw * 2.25);
+      width: calc(14.4vw * 2.25);
+    }
+
+    @media only screen and (max-width: 650px) {
+      height: calc(6.4vw * 2.5);
+      width: calc(14.4vw * 2.5);
     }
 
     &_text {
@@ -254,7 +305,6 @@ html {
   justify-content: center;
   height: 8.3vmax;
   max-height: 11.5rem;
-
 
   @media screen and (max-width: 1500px) {
     height: 6vmax;
@@ -304,28 +354,28 @@ html {
       font-size: 24px;
       opacity: 1;
       pointer-events: painted;
-      transition: .2s opacity .15s ease-in-out;
+      transition: 0.2s opacity 0.15s ease-in-out;
       &-close {
         background-color: #111111;
         position: fixed;
         right: 0;
-        top: 100vh;
-        transform: translate(0,-100%);
+        top: 0vh;
+        transform: translate(0, 0%);
         z-index: 1000;
-        width: 65px;
-        height: 65px;
+        width: 7rem;
+        height: 7rem;
         cursor: pointer;
-        transition: .25s transform .15s ease-out;
+        transition: 0.25s transform 0.15s ease-out;
         svg {
           margin: 20px;
           g line {
             stroke: #fff;
-            transition: .3s all;
+            transition: 0.3s all;
           }
         }
 
         &--hidden {
-          transform: translate(100%,-100%);
+          transform: translate(100%, 0%);
         }
       }
 
@@ -333,17 +383,16 @@ html {
         position: absolute;
         left: 0;
         top: 50%;
-        transform: translate(50%,-50%);
+        transform: translate(50%, -50%);
         height: 100%;
         width: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: .25s transform .15s ease-out;
+        transition: 0.25s transform 0.15s ease-out;
         svg {
           width: 100%;
           g line {
-
             &:nth-child(1) {
               transform: translate(0, 25%);
             }
@@ -359,7 +408,7 @@ html {
         }
 
         &--hidden {
-          transform: translate(-100%,-50%);
+          transform: translate(-100%, -50%);
         }
       }
       &--hidden {
@@ -454,6 +503,10 @@ html {
       line-height: 2vmax;
       transform: translate(40%, -45%);
     }
+
+    @media screen and (max-width: 560px) {
+      width: 2.83vmax;
+    }
   }
 }
 
@@ -541,6 +594,17 @@ html {
           width: 80%;
           justify-content: space-evenly;
           max-width: 600px;
+
+          @media screen and (max-width: 560px) {
+            width: 55%;
+            .cta-zoomIn {
+              display: none;
+            }
+          }
+        }
+        @media screen and (max-width: 560px) {
+          padding: 1.4vmax 1.5vmax;
+          font-size: 17px;
         }
 
         &:active,
@@ -617,8 +681,7 @@ html {
     flex-direction: column;
     box-shadow: 0 0 2rem 140rem rgba(0, 0, 0, 0);
 
-    transition: 0.3s transform cubic-bezier(0.5, 0.39, 0.05, 1),
-      0.4s opacity ease-out, 0.275s box-shadow linear;
+    transition: 0.3s transform cubic-bezier(0.5, 0.39, 0.05, 1), 0.4s opacity ease-out, 0.275s box-shadow linear;
 
     &--active {
       opacity: 1;
@@ -626,8 +689,8 @@ html {
       box-shadow: 0 0 2rem 14rem rgba(0, 0, 0, 0.8);
       transform: translate(-50%, -50%);
 
-      transition: 0.5s transform cubic-bezier(0.5, 0.39, 0.05, 1),
-        0.3s 0.3s opacity ease-out, 0.4s 0.2s box-shadow linear;
+      transition: 0.5s transform cubic-bezier(0.5, 0.39, 0.05, 1), 0.3s 0.3s opacity ease-out,
+        0.4s 0.2s box-shadow linear;
     }
 
     &_name {
@@ -1004,6 +1067,12 @@ html {
       &--icon--container {
         transform: translate(2.95vmax, -1.3vmax);
       }
+
+      @media screen and (max-width: 650px) {
+        &--icon--container {
+          transform: translate(1.1vmax, -.8vmax);
+        }
+      }
     }
 
     &-form {
@@ -1084,6 +1153,10 @@ html {
 
           &--halfwidth {
             width: calc(50% - 1rem);
+
+            @media screen and (max-width: 725px) {
+              width: 100%;
+            }
           }
 
           &--textarea {
@@ -1135,7 +1208,7 @@ html {
         border: none;
         width: 50%;
         margin: 5vmax 0 10vmax;
-        padding: 2vmax 4vmax;
+        padding: 2vmax 4vmax 2vmax 2vmax;
         cursor: pointer;
         position: relative;
         box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
@@ -1184,6 +1257,17 @@ html {
           font-size: 1.3vmax;
           width: 44.5%;
           padding: 1.5vmax 3vmax;
+        }
+
+        @media screen and (max-width: 775px) {
+          width: 70%;
+        }
+
+        @media screen and (max-width: 650px) {
+          width: 85%;
+        }
+        @media screen and (max-width: 550px) {
+          width: 95%;
         }
       }
 

@@ -32,7 +32,6 @@ const StyledBtn1 = styled.button`
     background-color: ${props => props.color};
     transition: 0.32s all ease-out;
   }
-
   &:hover {
     color: #eaeaea;
     &::before {
@@ -41,6 +40,16 @@ const StyledBtn1 = styled.button`
 
     &::after {
       width: 75%;
+    }
+  }
+
+  @media screen and (max-width: 560px) {
+
+    &::after {
+      top: 80%;
+    }
+    &:hover::after {
+      width: 50%;
     }
   }
 `;
