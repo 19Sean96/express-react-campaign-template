@@ -40,7 +40,7 @@ function Campaign() {
           triggerModal(true);
         }, 1000)
       : triggerModal(false);
-  }, modalIsOpen);
+  }, [modalIsOpen]);
 
   useEffect(() => {
 

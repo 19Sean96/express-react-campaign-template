@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Scrollbars } from "react-custom-scrollbars";
 
 const StyledBtn1 = styled.button`
   border: 0.2vmax solid ${props => props.color};
@@ -44,7 +45,6 @@ const StyledBtn1 = styled.button`
   }
 
   @media screen and (max-width: 560px) {
-
     &::after {
       top: 80%;
     }
@@ -96,7 +96,8 @@ class Showcase extends Component {
         },
         multiItem: {
           name: "",
-          imgCollection: []
+          products: [],
+          index: null
         }
       }
     };
@@ -112,6 +113,32 @@ class Showcase extends Component {
           name,
           index,
           product
+        },
+        multiItem: {
+          name: "",
+          products: []
+        }
+      }
+    });
+  }
+
+  expandMultiItem(name, index, products) {
+    console.log("Name: " + name);
+    console.log("Index:" + index);
+    console.log("Products: ", products);
+    this.setState({
+      itemType: "multi",
+      open: true,
+      modal: {
+        singleItem: {
+          img: "",
+          name: "",
+          index: null
+        },
+        multiItem: {
+          name,
+          products,
+          index
         }
       }
     });
@@ -188,6 +215,13 @@ class Showcase extends Component {
                         color={color}
                         colorLight={colorLight}
                         colorDark={colorDark}
+                        onClick={e =>
+                          this.expandMultiItem(
+                            product.name,
+                            index,
+                            product.products
+                          )
+                        }
                       >
                         see all
                       </StyledBtn1>
@@ -220,7 +254,8 @@ class Showcase extends Component {
                 },
                 multiItem: {
                   name: "",
-                  imgCollection: ""
+                  products: [],
+                  index: null
                 }
               }
             });
@@ -236,18 +271,15 @@ function ShowcaseModal(props) {
 
   return (
     <article
-      style={{
-        borderBottom: `solid .3vmin ${props.colors[0]}`,
-        borderRight: `solid .3vmin ${props.colors[0]}`,
+      // style={{
+      //   borderBottom: `solid .3vmin ${props.colors[0]}`,
+      //   borderRight: `solid .3vmin ${props.colors[0]}`,
 
-      }}
+      // }}
       className={`zoomModal ${props.open && "zoomModal--active"}`}
     >
       <h2 className="zoomModal_name">{productInfo.name}</h2>
-      <div
-        className="zoomModal-close"
-        onClick={props.closeModal}
-      >
+      <div className="zoomModal-close" onClick={props.closeModal}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.414 29.414">
           <g id="Cross" transform="translate(0.397 0.707)">
             <line
@@ -273,9 +305,7 @@ function ShowcaseModal(props) {
       </div>
       {props.itemType === "single" ? (
         <>
-          <div 
-            className="zoomModal_img--container"
-            >
+          <div className="zoomModal_img--container">
             <img
               src={productInfo.img}
               alt={productInfo.name}
@@ -284,7 +314,9 @@ function ShowcaseModal(props) {
             />
           </div>
           <StyledBtn2
-            onClick={() => props.addItem(productInfo.product, productInfo.index)}
+            onClick={() =>
+              props.addItem(productInfo.product, productInfo.index)
+            }
             className="zoomModal-addToList cta-addToList showcase_grid_item-cta_btn"
             type="button"
             color={props.colors[0]}
@@ -295,7 +327,110 @@ function ShowcaseModal(props) {
           </StyledBtn2>
         </>
       ) : (
-        <></>
+        <Scrollbars style={{ width: "90%", height: "100%" }}>
+          <div className="zoomModal-multi-grid">
+            {productInfo.products.map(prod => {
+              return (
+                <div className="zoomModal-multi-grid-item">
+                  <h4 className="zoomModal-multi-grid-item_title">
+                    {prod.alt}
+                  </h4>
+                  <div className="img-container">
+                    <img src={prod.img} alt={prod.alt} />
+                  </div>
+                  <div
+                    onClick={() => props.addItem(prod, productInfo.index)}
+                    className="multi--addItem"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 25.926 25.926"
+                    >
+                      <g transform="translate(0.792 0.792)">
+                        <line
+                          x2="10"
+                          transform="translate(7.171 12.171)"
+                          fill="none"
+                          stroke={props.colors[0]}
+                          strokeMiterlimit="10"
+                          strokeWidth="2"
+                        />
+                        <line
+                          y1="10"
+                          transform="translate(12.171 7.171)"
+                          fill="none"
+                          stroke={props.colors[0]}
+                          strokeMiterlimit="10"
+                          strokeWidth="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="12"
+                          transform="translate(0.171 0.171)"
+                          fill="none"
+                          stroke={props.colors[0]}
+                          strokeMiterlimit="10"
+                          strokeWidth="1.926"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              );
+            })}
+            {productInfo.products.map(prod => {
+              return (
+                <div className="zoomModal-multi-grid-item">
+                  <h4 className="zoomModal-multi-grid-item_title">
+                    {prod.alt}
+                  </h4>
+                  <div className="img-container">
+                    <img src={prod.img} alt={prod.alt} />
+                  </div>
+                  <div
+                    onClick={() => props.addItem(prod, productInfo.index)}
+                    className="multi--addItem"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 25.926 25.926"
+                    >
+                      <g transform="translate(0.792 0.792)">
+                        <line
+                          x2="10"
+                          transform="translate(7.171 12.171)"
+                          fill="none"
+                          stroke={props.colors[0]}
+                          strokeMiterlimit="10"
+                          strokeWidth="2"
+                        />
+                        <line
+                          y1="10"
+                          transform="translate(12.171 7.171)"
+                          fill="none"
+                          stroke={props.colors[0]}
+                          strokeMiterlimit="10"
+                          strokeWidth="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="12"
+                          transform="translate(0.171 0.171)"
+                          fill="none"
+                          stroke={props.colors[0]}
+                          strokeMiterlimit="10"
+                          strokeWidth="1.926"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Scrollbars>
       )}
     </article>
   );

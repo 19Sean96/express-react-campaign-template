@@ -245,7 +245,7 @@ class Wishlist extends Component {
       <>
         <section className="Wishlist" id="Wishlist">
           <h1 className="Wishlist_title">
-            wishlist
+            quote list
             <span className="Wishlist_title--icon--container">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
