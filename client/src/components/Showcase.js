@@ -193,7 +193,35 @@ class Showcase extends Component {
                           )
                         }
                       >
-                        zoom in
+                        <span>zoom in</span>
+                        <div className="cta-zoomIn--icon">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 47.67 47.67"
+                          >
+                            <g transform="translate(-340.037 -491.037)">
+                              <circle
+                                cx="16"
+                                cy="16"
+                                r="16"
+                                transform="translate(341 492)"
+                                fill="none"
+                                stroke="#fff"
+                                strokeMiterlismit="10"
+                                strokeWidth="1.926"
+                              />
+                              <line
+                                x2="18.686"
+                                y2="18.686"
+                                transform="translate(368.314 519.314)"
+                                fill="none"
+                                stroke="#fff"
+                                strokeMiterlimit="10"
+                                strokeWidth="2"
+                              />
+                            </g>
+                          </svg>
+                        </div>
                       </StyledBtn1>
                       <StyledBtn2
                         onClick={() =>
@@ -205,7 +233,42 @@ class Showcase extends Component {
                         colorLight={colorLight}
                         colorDark={colorDark}
                       >
-                        add to list
+                        <span>add to list</span>
+                        <div className="cta-addToList--icon">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 25.926 25.926"
+                          >
+                            <g transform="translate(0.792 0.792)">
+                              <line
+                                x2="10"
+                                transform="translate(7.171 12.171)"
+                                fill="none"
+                                stroke="#fff"
+                                strokeMiterlimit="10"
+                                strokeWidth="2"
+                              />
+                              <line
+                                y1="10"
+                                transform="translate(12.171 7.171)"
+                                fill="none"
+                                stroke="#fff"
+                                strokeMiterlimit="10"
+                                strokeWidth="2"
+                              />
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="12"
+                                transform="translate(0.171 0.171)"
+                                fill="none"
+                                stroke="#fff"
+                                strokeMiterlimit="10"
+                                strokeWidth="1.926"
+                              />
+                            </g>
+                          </svg>
+                        </div>
                       </StyledBtn2>
                     </>
                   ) : (
@@ -323,7 +386,32 @@ function ShowcaseModal(props) {
             colorLight={props.colors[1]}
             colorDark={props.colors[2]}
           >
-            add to list
+            <span>add to list</span>
+            <div className="cta-addToList--icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.67 47.67">
+                <g transform="translate(-340.037 -491.037)">
+                  <circle
+                    cx="16"
+                    cy="16"
+                    r="16"
+                    transform="translate(341 492)"
+                    fill="none"
+                    stroke="#000"
+                    strokeMiterlimit="10"
+                    strokeWidth="1.926"
+                  />
+                  <line
+                    x2="18.686"
+                    y2="18.686"
+                    transform="translate(368.314 519.314)"
+                    fill="none"
+                    stroke="#000"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
+                  />
+                </g>
+              </svg>
+            </div>
           </StyledBtn2>
         </>
       ) : (

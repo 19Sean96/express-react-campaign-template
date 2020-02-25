@@ -80,6 +80,7 @@ function Campaign() {
             activeCategory={activeCategory}
           />
           <Showcase
+            wishlist={wishlist}
             addItem={(item, index) => {
               return wishlist.includes(item)
                 ? ""

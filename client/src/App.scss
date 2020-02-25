@@ -172,7 +172,7 @@ body {
 .header {
   position: relative;
   width: 100%;
-  height: 60vh;
+  height: 64vh;
   background-size: cover;
   background-position: bottom center;
 
@@ -201,14 +201,14 @@ body {
 
   .brand-indicator {
     position: absolute;
-    top: 2rem;
-    left: 2rem;
+    top: 3rem;
+    left: 3rem;
     p {
       color: #fff;
       text-transform: uppercase;
-      font-size: 1.75vmin;
+      font-size: 1.35vmin;
       font-family: "UniversNormal";
-      font-weight: 200;
+      font-weight: 400;
     }
 
     &_name {
@@ -217,7 +217,7 @@ body {
       font-size: 3vmin;
       font-family: "UniversCondensed";
       font-weight: 800;
-      margin-top: 0.15vmin;
+      margin-top: 1vmin;
     }
 
     @media only screen and (max-width: 650px) {
@@ -256,8 +256,8 @@ body {
     justify-content: center;
     backdrop-filter: blur(5px);
     padding: 2rem 2rem 1.11rem;
-    height: 6.4vw;
-    width: 14.3vw;
+    height: 4.7vw;
+    width: 10vw;
 
     @media only screen and (max-width: 1200px) {
       height: calc(6.4vw * 1.5);
@@ -282,13 +282,12 @@ body {
     &_text {
       position: relative;
       font-family: "UniversCondensed";
-      font-weight: 300;
-      font-style: italic;
+      font-weight: 700;
       text-transform: uppercase;
 
-      padding-bottom: 0.42vw;
+      padding-bottom: 0.22vw;
       margin-top: -0.89vw;
-      font-size: 0.75vw;
+      font-size: 0.4vw;
 
       @media only screen and (max-width: 1200px) {
         padding-bottom: calc(0.42vw * 1.5);
@@ -299,7 +298,7 @@ body {
 
     &-logo {
       height: auto;
-      width: 57.5%;
+      width: 65%;
     }
   }
 }
@@ -336,11 +335,12 @@ body {
   }
 
   @media screen and (min-width: 2250px) {
+    height: 5vmax;
     max-height: 13rem;
   }
 
-  @media screen and (min-width: 3000px) {
-    max-height: 20rem;
+  @media screen and (min-width: 3150px) {
+    max-height: 15rem;
   }
 
   &_list {
@@ -435,7 +435,7 @@ body {
       color: #fff;
       list-style: none;
       cursor: pointer;
-      padding: 1.35vmax 1.15vmax;
+      padding: 1.35vmax 1.15vmax 1vmax;
       transform: translateY(0);
       transition: 0.1s transform;
       margin: 0 1vw;
@@ -486,7 +486,7 @@ body {
     }
 
     @media screen and (min-width: 2250px) {
-      font-size: 38px;
+      font-size: 28px;
     }
   }
 
@@ -495,26 +495,25 @@ body {
     top: 50%;
     right: 5vmax;
     transform: translateY(-50%);
-    width: 2.3vmax;
+    width: 3.5rem;
     cursor: pointer;
-    font-family: "Univers";
+    font-family: "UniversNormal";
     font-weight: 800;
-
     &_count {
       position: absolute;
       top: 0;
       right: 0;
       color: $color-black;
-      font-size: 1.15vmax;
+      font-size: 1.7rem;
       z-index: 20;
+      color: whitesmoke;
       background-color: #8e8e8e;
-      background-color: whitesmoke;
-      height: 2vmax;
-      width: 2vmax;
+      height: 3.3rem;
+      width: 3.3rem;
       border-radius: 50%;
       text-align: center;
-      line-height: 2vmax;
-      transform: translate(40%, -45%);
+      line-height: 3.3rem;
+      transform: translate(60%, -45%);
     }
 
     @media screen and (max-width: 560px) {
@@ -550,8 +549,8 @@ body {
   &_item {
     background-color: #fff;
     height: 30vmax;
-    max-height: 450px;
-    padding: 3vmin;
+    max-height: 500px;
+    padding: 3vmin 3vmin;
     position: relative;
     display: flex;
     justify-content: center;
@@ -642,6 +641,9 @@ body {
 
     &--colspread_2 {
       grid-column-end: span 2;
+      img {
+        width: 80%;
+      }
       @media screen and (max-width: 560px) {
         grid-column-end: 1;
       }
@@ -656,18 +658,18 @@ body {
     }
 
     &_image {
-      max-width: 80%;
+      max-width: 100%;
     }
 
     &-name {
       position: absolute;
-      top: 1.5vmin;
-      left: 1.5vmin;
+      top: 3.5vmin;
+      left: 3vmin;
       font-family: "UniversCondensed";
       font-weight: 900;
       font-size: 1.25vmax;
       text-transform: uppercase;
-      color: #999999;
+      color: #aaaaaa;
       @media screen and (min-width: 1800px) {
         font-size: 24px;
       }
@@ -854,8 +856,7 @@ body {
       width: 100%;
       display: flex;
       background-color: rgba(#fff, 0.2);
-      max-height: 5vmax;
-      margin: 0.5vmax;
+      height: 100px;
       align-items: center;
       position: relative;
 
@@ -878,6 +879,7 @@ body {
 
         &--container {
           width: 8.8%;
+          min-width: 12.5rem;
           height: 100%;
           display: flex;
           justify-content: center;
@@ -1602,4 +1604,49 @@ body {
   // &--yellow {
 
   // }
+}
+
+.cta {
+
+  &-addToList {
+    position: relative;
+    &--icon {
+      width: 12.5%;
+      height: auto;
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      opacity: .1;
+      transform: translate(0%,-200%);
+      transition: .3s transform ease-out,
+                  .18s opacity ease;
+
+      svg {
+        max-width: 100%;
+      }
+    }
+    &:hover {
+      div {
+        opacity: 1;
+        transform: translate(0%,-45%);
+      }
+    }
+  }
+
+  &-zoomIn {
+    position: relative;
+
+    &--icon {
+      width: 10%;
+      height: auto;
+      position: absolute;
+      right: 7.5%;
+      top: 50%;
+      transform: translate(0%,-45%);
+
+      svg {
+        max-width: 100%;
+      }
+    }
+  }
 }
