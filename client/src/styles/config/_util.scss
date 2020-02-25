@@ -1,0 +1,87 @@
+html {
+    scroll-behavior: smooth;
+    font-size: 10px;
+  }
+  
+  *{
+    -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .App {
+    background-color: #e4e4e4;
+  }
+
+  .activeInput {
+    label {
+      transform: translate(0, -500%) !important;
+    }
+  
+    &::before {
+      width: 100%;
+    }
+  }
+  
+  .notActive {
+    display: none;
+  }
+  
+  .icon {
+    &-note {
+      stroke: green !important;
+  
+      > * {
+        stroke: green !important;
+      }
+    }
+  }
+  
+  .cta {
+  
+    &-addToList {
+      position: relative;
+      &--icon {
+        width: 12.5%;
+        height: auto;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        opacity: .1;
+        transform: translate(0%,-200%);
+        transition: .3s transform ease-out,
+                    .18s opacity ease;
+  
+        svg {
+          max-width: 100%;
+        }
+      }
+      &:hover {
+        div {
+          opacity: 1;
+          transform: translate(0%,-45%);
+        }
+      }
+    }
+  
+    &-zoomIn {
+      position: relative;
+  
+      &--icon {
+        width: 15%;
+        height: auto;
+        position: absolute;
+        right: 7.5%;
+        top: 50%;
+        transform: translate(0%,-45%);
+  
+        svg {
+          max-width: 100%;
+        }
+      }
+    }
+  }

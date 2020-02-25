@@ -1,0 +1,219 @@
+.Nav {
+  position: relative;
+  background-color: $color-black;
+  display: flex;
+  justify-content: center;
+  height: 8.3vmax;
+  max-height: 11.5rem;
+
+  @media screen and (max-width: 1500px) {
+    height: 6vmax;
+  }
+
+  @media screen and (max-width: 750px) {
+    min-height: 50px;
+  }
+
+  @media screen and (max-width: 560px) {
+    min-height: 75px;
+  }
+
+  @media screen and (min-width: 560px) {
+    #menuIcon,
+    #closeIcon {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 1500px) {
+    height: 5.25vmax;
+
+    max-height: 12rem;
+  }
+
+  @media screen and (min-width: 2250px) {
+    max-height: 13rem;
+  }
+
+  @media screen and (min-width: 3150px) {
+    max-height: 15rem;
+  }
+
+  &_list {
+    max-width: 80%;
+    width: 60%;
+    font-family: "UniversCondensed";
+    font-weight: 800;
+    font-size: 1.4vmax;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 560px) {
+      max-width: 100%;
+      position: fixed;
+      z-index: 200;
+      flex-direction: column;
+      background-color: $color-black;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      left: 0;
+      font-size: 24px;
+      opacity: 1;
+      pointer-events: painted;
+      transition: 0.2s opacity 0.15s ease-in-out;
+      &-close {
+        background-color: #111111;
+        position: fixed;
+        right: 0;
+        top: 0vh;
+        transform: translate(0, 0%);
+        z-index: 1000;
+        width: 7rem;
+        height: 7rem;
+        cursor: pointer;
+        transition: 0.25s transform 0.15s ease-out;
+        svg {
+          margin: 20px;
+          g line {
+            stroke: #fff;
+            transition: 0.3s all;
+          }
+        }
+
+        &--hidden {
+          transform: translate(100%, 0%);
+        }
+      }
+
+      &-menu {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(50%, -50%);
+        height: 100%;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.25s transform 0.15s ease-out;
+        svg {
+          width: 100%;
+          g line {
+            &:nth-child(1) {
+              transform: translate(0, 25%);
+            }
+
+            &:nth-child(2) {
+              transform: translate(0, 50%);
+            }
+
+            &:nth-child(3) {
+              transform: translate(0, 75%);
+            }
+          }
+        }
+
+        &--hidden {
+          transform: translate(-100%, -50%);
+        }
+      }
+      &--hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &_item {
+      position: relative;
+      color: #fff;
+      list-style: none;
+      cursor: pointer;
+      padding: 1.35vmax 1.15vmax 1vmax;
+      transform: translateY(0);
+      transition: 0.1s transform;
+      margin: 0 1vw;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0.5vmax;
+        left: 0;
+        width: 0%;
+        height: 0.15vmax;
+        background-color: #ffffff;
+        transform: translateY(0rem);
+        transition: 0.23s width ease-in, 0.1s transform;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0.5vmax;
+        right: 0;
+        width: 0%;
+        height: 0.25vmax;
+        transform: translateY(0rem);
+        transition: 0.23s width ease-in, 0.1s transform;
+      }
+
+      &:hover {
+        transform: translateY(-0.25rem);
+        &::before {
+          width: 100%;
+          transform: translateY(0.25rem);
+        }
+        &::after {
+          transform: translateY(0.25rem);
+        }
+      }
+
+      &--active {
+        &::before {
+          width: 0%;
+        }
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    @media screen and (min-width: 2250px) {
+      font-size: 28px;
+    }
+  }
+
+  &_Wishlist-check {
+    position: absolute;
+    top: 50%;
+    right: 5vmax;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    cursor: pointer;
+    font-family: "UniversNormal";
+    font-weight: 800;
+    &_count {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: $color-black;
+      font-size: 1.7rem;
+      z-index: 20;
+      color: whitesmoke;
+      background-color: #8e8e8e;
+      height: 3.3rem;
+      width: 3.3rem;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 3.3rem;
+      transform: translate(60%, -45%);
+    }
+
+    @media screen and (max-width: 560px) {
+      width: 2.83vmax;
+    }
+  }
+}

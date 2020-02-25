@@ -10,6 +10,12 @@ const StyledBtn1 = styled.button`
   position: relative;
   z-index: 20;
   overflow: hidden;
+
+  span {
+    position: relative;
+    hei
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -22,10 +28,10 @@ const StyledBtn1 = styled.button`
     transition: 0.2s all ease-in-out;
   }
 
-  &::after {
+  span::after {
     content: "";
     position: absolute;
-    top: 75%;
+    top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 0.2rem;
@@ -39,16 +45,16 @@ const StyledBtn1 = styled.button`
       height: 100%;
     }
 
-    &::after {
-      width: 75%;
+    span::after {
+      width: 100%;
     }
   }
 
   @media screen and (max-width: 560px) {
-    &::after {
+    span::after {
       top: 80%;
     }
-    &:hover::after {
+    &:hover span::after {
       width: 50%;
     }
   }
@@ -60,6 +66,13 @@ const StyledBtn2 = styled.button`
   position: relative;
   z-index: 20;
   overflow: hidden;
+  padding-right: 2.5vmax;
+
+  span {
+    display: block;
+    transform: translateX(0.25vmax);
+    transition: 0.2s all ease;
+  }
   &::before {
     content: "";
     position: absolute;
@@ -74,9 +87,12 @@ const StyledBtn2 = styled.button`
 
   &:hover {
     color: #eaeaea;
-    padding-right: 2.5vmax;
+
+    span {
+      transform: translateX(-0.25vmax);
+    }
     &::before {
-      width: 78.2%;
+      width: 100%;
     }
   }
 `;
@@ -388,26 +404,36 @@ function ShowcaseModal(props) {
           >
             <span>add to list</span>
             <div className="cta-addToList--icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.67 47.67">
-                <g transform="translate(-340.037 -491.037)">
-                  <circle
-                    cx="16"
-                    cy="16"
-                    r="16"
-                    transform="translate(341 492)"
-                    fill="none"
-                    stroke="#000"
-                    strokeMiterlimit="10"
-                    strokeWidth="1.926"
-                  />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 25.926 25.926"
+              >
+                <g transform="translate(0.792 0.792)">
                   <line
-                    x2="18.686"
-                    y2="18.686"
-                    transform="translate(368.314 519.314)"
+                    x2="10"
+                    transform="translate(7.171 12.171)"
                     fill="none"
-                    stroke="#000"
+                    stroke="#fff"
                     strokeMiterlimit="10"
                     strokeWidth="2"
+                  />
+                  <line
+                    y1="10"
+                    transform="translate(12.171 7.171)"
+                    fill="none"
+                    stroke="#fff"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                    transform="translate(0.171 0.171)"
+                    fill="none"
+                    stroke="#fff"
+                    strokeMiterlimit="10"
+                    strokeWidth="1.926"
                   />
                 </g>
               </svg>
