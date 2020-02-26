@@ -16,10 +16,7 @@ function WishlistHowTo(props) {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 114.228 90.152"
               >
-                <g
-                  dataname="step 1"
-                  transform="translate(-485.923 -426.207)"
-                >
+                <g dataname="step 1" transform="translate(-485.923 -426.207)">
                   <path
                     dataname="Path 1"
                     d="M558.9,514.618H487.664V467.455a10.618,10.618,0,0,1,10.618-10.617H569.52V504A10.617,10.617,0,0,1,558.9,514.618Z"
@@ -77,10 +74,7 @@ function WishlistHowTo(props) {
             </p>
           </div>
           <div className="WishlistHowTo_popup-guide--arrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 15.529 25.402"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.529 25.402">
               <path
                 dataname="Path 8"
                 d="M663.9,465.227l11.287,11.287L663.9,487.8"
@@ -191,10 +185,7 @@ function WishlistHowTo(props) {
             </p>
           </div>
           <div className="WishlistHowTo_popup-guide--arrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 15.529 25.402"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.529 25.402">
               <path
                 id="Path_8"
                 dataname="Path 8"
@@ -495,10 +486,7 @@ function WishlistHowTo(props) {
             </p>
           </div>
           <div className="WishlistHowTo_popup-guide--arrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 15.529 25.402"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.529 25.402">
               <path
                 id="Path_8"
                 dataname="Path 8"
@@ -536,7 +524,7 @@ function WishlistHowTo(props) {
                     dataname="Reply - Alt"
                     d="M1322.636,454.48l19.791,15.942-19.791,17.043V476.47c-9.346,0-17.592,3.68-21.99,10.995v-.519c0-11.855,9.9-21.471,21.99-21.471Z"
                     fill={props.color}
-                    />
+                  />
                   <circle
                     id="Ellipse_7"
                     dataname="Ellipse 7"
@@ -556,7 +544,6 @@ function WishlistHowTo(props) {
               send us your list!
             </p>
           </div>
-
         </div>
         <button
           className="WishlistHowTo_popup-button"
@@ -574,6 +561,7 @@ function WishlistHowTo(props) {
             >
               <g transform="translate(-344 -8150.793)">
                 <line
+                  id="arrowLine"
                   x2="39"
                   transform="translate(344 8171)"
                   fill="none"
@@ -582,12 +570,13 @@ function WishlistHowTo(props) {
                   strokeWidth="3"
                 />
                 <path
+                  id="arrowPath"
                   d="M363.5,8190.5,383,8171l-19.5-19.5"
                   fill="none"
                   strokeMiterlimit="10"
                   strokeWidth="3"
                   stroke={props.colorLight}
-                  />
+                />
               </g>
             </svg>
           </span>

@@ -50,13 +50,16 @@ html {
         position: absolute;
         right: 5%;
         top: 50%;
-        opacity: .1;
-        transform: translate(0%,-200%);
-        transition: .3s transform ease-out,
+        transform: translate(0%,-45%);
+        transition: .225s transform ease-out,
                     .18s opacity ease;
   
         svg {
           max-width: 100%;
+        }
+
+        &-2 {
+          transform: translate(0%, 200%)
         }
       }
       &:hover {
@@ -81,6 +84,40 @@ html {
   
         svg {
           max-width: 100%;
+
+          g > * {
+            stroke: #fff;
+            transition: .15s stroke ease-in-out;
+
+          }
+        }
+
+        &-2 {
+          position: absolute;
+          z-index: 100;
+
+          svg {
+            g > * {
+              stroke: orange;
+            }
+          }
+        }
+      }
+
+      span {
+        color: #fff;
+        transition: .15s color ease-in-out;
+      }
+
+      &:hover {
+        span {
+          color: #000;
+        }
+        .cta-zoomIn--icon {
+
+          svg g > * {
+            stroke: #000;
+          }
         }
       }
     }

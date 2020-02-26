@@ -1,76 +1,76 @@
 .WishlistHowTo {
-    position: fixed;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.8);
-    height: 100vh;
-    width: 100vw;
+  position: fixed;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: 0.5s opacity;
+
+  &--inactive {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  &_popup {
+    background-color: #fff;
+    width: 60vw;
+    max-width: 1200px;
+    height: 33vw;
+    max-height: 67.5rem;
+    padding: 5rem 10rem 8rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    opacity: 1;
-    transition: 0.5s opacity;
-  
-    &--inactive {
-      pointer-events: none;
-      opacity: 0;
+    justify-content: space-around;
+
+    &-title {
+      font-size: 4.2rem;
+      font-family: "UniversCondensed";
     }
-  
-    &_popup {
-      background-color: #fff;
-      width: 60vw;
-      max-width: 1200px;
-      height: 33vw;
-      max-height: 67.5rem;
-      padding: 5rem 10rem 8rem;
+
+    &-guide {
+      max-height: 60%;
+      width: 100%;
+      // background-color: palevioletred;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: space-around;
-  
-      &-title {
-        font-size: 4.2rem;
-        font-family: "UniversCondensed";
-      }
-  
-      &-guide {
-        max-height: 60%;
-        width: 100%;
-        // background-color: palevioletred;
+
+      &--step {
+        width: 9vmax;
+        max-width: 15rem;
+        height: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-around;
-  
-        &--step {
-          width: 9vmax;
-          max-width: 15rem;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: space-between;
-          // background-color: darkolivegreen;
-  
-          &_icon {
-            &--container {
-              width: auto;
-              height: 10.2rem;
-              margin: .4rem 0 4.3rem;
-  
-              svg {
-                height: 100%;
-                max-width: 100%;
-              }
+        justify-content: space-between;
+        // background-color: darkolivegreen;
+
+        &_icon {
+          &--container {
+            width: auto;
+            height: 10.2rem;
+            margin: 0.4rem 0 4.3rem;
+
+            svg {
+              height: 100%;
+              max-width: 100%;
             }
           }
-  
-          &_text {
-            text-align: center;
-            font-size: 2.1rem;
-            font-family: "UniversCondensed";
-            font-weight: 800;
-            text-transform: capitalize;
-          }
-  
+        }
+
+        &_text {
+          text-align: center;
+          font-size: 2.1rem;
+          font-family: "UniversCondensed";
+          font-weight: 800;
+          text-transform: capitalize;
+        }
+
         //   &_1 {
         //     p {
         //       padding: 0 1vmax;
@@ -86,66 +86,90 @@
         //       padding: 0 1.75vmax;
         //     }
         //   }
-        }
-        &--arrow {
-          width: 1.5rem;
-  
-          svg {
-            transform: translateY(-100%);
-          }
-        }
       }
-  
-      &-button {
-        border: none;
-        font-size: 2.1rem;
-        font-family: "UniversCondensed";
-        font-weight: 700;
-        text-transform: uppercase;
-        color: #fefefe;
-        background-color: #000000;
-        border: none;
-        height: 7.2rem;
-        width: 28.5rem;
-        cursor: pointer;
-        position: relative;
-        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
-        transform: translateY(0);
-        transition: 0.3s box-shadow ease-in, 0.25s transform ease-in;
-  
-        &:hover {
-          box-shadow: 0 1rem 1.7rem rgba(0, 0, 0, 0.3);
-          transform: translateY(-1rem);
-          transition: 0.1s transform, 0.1s box-shadow;
-  
-          span[data-type="arrow"] {
-            transform: translate(0.5rem, -50%);
-          }
-        }
-  
-        &:active {
-          transform: translateY(-0.5rem);
-          box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.3);
-  
-          span[data-type="arrow"] {
-            transform: translate(0.5rem, -50%);
-          }
-        }
-  
-        &-icon {
-          height: 100%;
-          width: auto;
-          &--container {
-            position: absolute;
-            height: 40%;
-            top: 50%;
-            right: 5rem;
-            transform: translate(0, -50%);
-            transition: 0.2s transform ease-out;
-            width: 1rem;
-          }
+      &--arrow {
+        width: 1.5rem;
+
+        svg {
+          transform: translateY(-100%);
         }
       }
     }
+
+    &-button {
+      border: none;
+      font-size: 2.4rem;
+      font-family: "UniversCondensed";
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #fefefe;
+      border: solid #000 0.4rem;
+      height: 7.2rem;
+      width: 28.5rem;
+      cursor: pointer;
+      position: relative;
+
+      box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+      transition: 0.15s box-shadow ease-out, 0.05s color ease-in-out;
+      z-index: 20;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        height: 100%;
+        z-index: -1;
+        background-color: #000;
+        transition: 0.1s all ease-in-out;
+      }
+
+      &-icon {
+        height: 100%;
+        width: auto;
+        &--container {
+          position: absolute;
+          height: 40%;
+          top: 50%;
+          right: 5rem;
+          transform: translate(0, -50%);
+          transition: 0.2s transform ease-out;
+          width: 1rem;
+
+          #arrowLine,
+          #arrowPath {
+            transition: 0.1s all ease-in-out;
+          }
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 1rem 1.7rem rgba(0, 0, 0, 0.3);
+        color: #000;
+        transition: 0.125s box-shadow ease-in, 0.04s color 0.04s ease-in-out;
+        &::before {
+          height: 0%;
+        }
+        span[data-type="arrow"] {
+          transform: translate(0.5rem, -50%);
+        }
+
+        #arrowLine,
+        #arrowPath {
+          stroke: #000 !important;
+        }
+      }
+
+      &:active {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.3);
+
+        span[data-type="arrow"] {
+          transform: translate(0.5rem, -50%);
+        }
+      }
+
+    }
   }
-  
+}

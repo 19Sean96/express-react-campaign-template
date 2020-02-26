@@ -23,44 +23,20 @@ const StyledBtn1 = styled.button`
     left: 0;
     width: 100%;
     height: 0px;
-    background-color: #000;
+    background-color: ${props => props.color};
     transition: 0.2s all ease-in-out;
   }
 
-  span::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 0.2rem;
-    width: 0rem;
-    background-color: ${props => props.color};
-    transition: 0.32s all ease-out;
-  }
+
   &:hover {
-    color: #eaeaea;
+    color: #000;
     &::before {
       height: 100%;
     }
-
-    span::after {
-      width: 100%;
-    }
-  }
-
-  @media screen and (max-width: 560px) {
-    span::after {
-      top: 80%;
-    }
-    &:hover span::after {
-      width: 50%;
-    }
-  }
 `;
 
 const StyledBtn2 = styled.button`
-  background-color: ${props => props.color};
+  background-color: ${props => (props.isModalBtn ? "#000" : props.color)};
   transition: 0.15s all ease-in;
   position: relative;
   z-index: 20;
@@ -69,29 +45,40 @@ const StyledBtn2 = styled.button`
 
   span {
     display: block;
-    transform: translateX(2.4rem);
+    transform: translateX(1.25rem);
+    color: ${props => (props.isModalBtn ? "#fff" : "#000")};
     transition: 0.2s all ease;
   }
+
+  .cta-addToList--icon-1 {
+    opacity: 1;
+    transition: 0.2s opacity ease-out;
+    svg g > * {
+      stroke: ${props => (props.isModalBtn ? props.color : "#fff")};
+    }
+  }
+
   &::before {
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
     z-index: -1;
-    height: 100%;
-    width: 0%;
-    background-color: ${props => props.colorDark};
+    height: 0%;
+    width: 100%;
+    background-color: ${props => (props.isModalBtn ? props.color : "#fff")};
     transition: 0.2s all ease;
   }
 
   &:hover {
-    color: #eaeaea;
-
     span {
-      transform: translateX(1.75rem);
+      color: #000;
     }
     &::before {
-      width: 100%;
+      height: 100%;
+    }
+    .cta-addToList--icon-1 {
+      opacity: 0;
     }
   }
 `;
@@ -223,7 +210,7 @@ class Showcase extends Component {
                                 fill="none"
                                 stroke="#fff"
                                 strokeMiterlimit="10"
-                                strokeWidth="1.926"
+                                strokeWidth="4.5"
                               />
                               <line
                                 x2="18.686"
@@ -232,7 +219,7 @@ class Showcase extends Component {
                                 fill="none"
                                 stroke="#fff"
                                 strokeMiterlimit="10"
-                                strokeWidth="2"
+                                strokeWidth="4.5"
                               />
                             </g>
                           </svg>
@@ -245,8 +232,7 @@ class Showcase extends Component {
                         className="cta-addToList showcase_grid_item-cta_btn"
                         type="button"
                         color={color}
-                        colorLight={colorLight}
-                        colorDark={colorDark}
+                        isModalBtn={false}
                       >
                         <span>add to list</span>
                         <div className="cta-addToList--icon">
@@ -280,6 +266,42 @@ class Showcase extends Component {
                                 stroke="#fff"
                                 strokeMiterlimit="10"
                                 strokeWidth="1.926"
+                              />
+                            </g>
+                          </svg>
+                        </div>
+
+                        <div className="cta-addToList--icon cta-addToList--icon-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 25.926 25.926"
+                          >
+                            <g transform="translate(-0.281 -0.281)">
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="12"
+                                transform="translate(1.244 1.244)"
+                                fill={color}
+                                stroke={color}
+                                strokeMiterlimit="10"
+                                strokeWidth="1.926"
+                              />
+                              <line
+                                x2="13"
+                                transform="translate(6.744 13.244)"
+                                fill="none"
+                                stroke="#fff"
+                                strokeMiterlimit="10"
+                                strokeWidth="2"
+                              />
+                              <line
+                                y1="13"
+                                transform="translate(13.244 6.744)"
+                                fill="none"
+                                stroke="#fff"
+                                strokeMiterlimit="10"
+                                strokeWidth="2"
                               />
                             </g>
                           </svg>
@@ -394,11 +416,10 @@ function ShowcaseModal(props) {
             className="zoomModal-addToList cta-addToList showcase_grid_item-cta_btn"
             type="button"
             color={props.colors[0]}
-            colorLight={props.colors[1]}
-            colorDark={props.colors[2]}
+            isModalBtn={true}
           >
             <span>add to list</span>
-            <div className="cta-addToList--icon">
+            <div className="cta-addToList--icon cta-addToList--icon-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 25.926 25.926"
@@ -408,7 +429,6 @@ function ShowcaseModal(props) {
                     x2="10"
                     transform="translate(7.171 12.171)"
                     fill="none"
-                    stroke="#fff"
                     strokeMiterlimit="10"
                     strokeWidth="2"
                   />
@@ -416,7 +436,6 @@ function ShowcaseModal(props) {
                     y1="10"
                     transform="translate(12.171 7.171)"
                     fill="none"
-                    stroke="#fff"
                     strokeMiterlimit="10"
                     strokeWidth="2"
                   />
@@ -426,9 +445,43 @@ function ShowcaseModal(props) {
                     r="12"
                     transform="translate(0.171 0.171)"
                     fill="none"
+                    strokeMiterlimit="10"
+                    strokeWidth="1.926"
+                  />
+                </g>
+              </svg>
+            </div>
+            <div className="cta-addToList--icon cta-addToList--icon-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 25.926 25.926"
+              >
+                <g transform="translate(-0.281 -0.281)">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                    transform="translate(1.244 1.244)"
+                    fill="#fff"
                     stroke="#fff"
                     strokeMiterlimit="10"
                     strokeWidth="1.926"
+                  />
+                  <line
+                    x2="13"
+                    transform="translate(6.744 13.244)"
+                    fill="none"
+                    stroke={props.colors[0]}
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
+                  />
+                  <line
+                    y1="13"
+                    transform="translate(13.244 6.744)"
+                    fill="none"
+                    stroke={props.colors[0]}
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                 </g>
               </svg>
@@ -488,7 +541,6 @@ function ShowcaseModal(props) {
                 </div>
               );
             })}
-            
           </div>
         </Scrollbars>
       )}
