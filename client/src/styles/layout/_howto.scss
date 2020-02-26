@@ -1,0 +1,146 @@
+.WishlistHowTo {
+    position: fixed;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: 0.5s opacity;
+  
+    &--inactive {
+      pointer-events: none;
+      opacity: 0;
+    }
+  
+    &_popup {
+      background-color: #fff;
+      width: 60vw;
+      height: 33vw;
+      padding: 1.5vmax 3vmax;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+  
+      &-title {
+        font-size: 2vmax;
+        font-family: "UniversCondensed";
+      }
+  
+      &-guide {
+        height: 60%;
+        width: 100%;
+        // background-color: palevioletred;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+  
+        &--step {
+          width: 9vmax;
+          height: 12vmax;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          // background-color: darkolivegreen;
+  
+          &_icon {
+            &--container {
+              width: auto;
+              height: 60%;
+  
+              svg {
+                height: 100%;
+                max-width: 100%;
+              }
+            }
+          }
+  
+          &_text {
+            text-align: center;
+            font-size: 1.23vmax;
+            font-family: "UniversCondensed";
+            font-weight: 800;
+            text-transform: capitalize;
+          }
+  
+          &_1 {
+            p {
+              padding: 0 1vmax;
+            }
+          }
+          &_2 {
+            p {
+              padding: 0 1.5vmax;
+            }
+          }
+          &_4 {
+            p {
+              padding: 0 1.75vmax;
+            }
+          }
+        }
+        &--arrow {
+          width: 1vmax;
+  
+          svg {
+            transform: translateY(-150%);
+          }
+        }
+      }
+  
+      &-button {
+        border: none;
+        font-size: 1.6vmax;
+        font-family: "UniversCondensed";
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fefefe;
+        background-color: #000000;
+        border: none;
+        padding: 1vmax 4.75vmax;
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+        transform: translateY(0);
+        transition: 0.3s box-shadow ease-in, 0.25s transform ease-in;
+  
+        &:hover {
+          box-shadow: 0 1rem 1.7rem rgba(0, 0, 0, 0.3);
+          transform: translateY(-1rem);
+          transition: 0.1s transform, 0.1s box-shadow;
+  
+          span[data-type="arrow"] {
+            transform: translate(0.5rem, -50%);
+          }
+        }
+  
+        &:active {
+          transform: translateY(-0.5rem);
+          box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.3);
+  
+          span[data-type="arrow"] {
+            transform: translate(0.5rem, -50%);
+          }
+        }
+  
+        &-icon {
+          height: 100%;
+          width: auto;
+          &--container {
+            position: absolute;
+            height: 40%;
+            top: 50%;
+            right: 2vmax;
+            transform: translate(0, -50%);
+            transition: 0.2s transform ease-out;
+            width: 1rem;
+          }
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,280 @@
+.showcase_grid {
+  display: grid;
+  max-width: 1800px;
+  margin: 0 auto;
+  min-height: 10vh;
+  grid-auto-rows: auto;
+  grid-auto-flow: dense;
+  grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr) minmax(0%, 1fr);
+  gap: 0.25rem;
+  background-color: #e4e4e4;
+
+  @media screen and (max-width: 770px) {
+    grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr);
+  }
+
+  @media screen and (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+
+  &_item {
+    background-color: #fff;
+    height: 30vmax;
+    max-height: 475px;
+    padding: 3rem 4rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 560px) {
+      max-height: 900px;
+      height: 300px;
+    }
+
+    &:hover {
+      > div {
+        opacity: 1;
+      }
+    }
+
+    &-cta {
+      background-color: rgba(0, 0, 0, 0.85);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      opacity: 0;
+      transition: 0.2s all linear;
+
+      &_title {
+        color: #fff;
+        font-family: "UniversCondensed";
+        font-weight: 800;
+        font-size: 1.7vmax;
+        text-transform: uppercase;
+        margin-bottom: 1vmax;
+      }
+
+      &_btn {
+        font-size: 1.4vmax;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: "UniversCondensed";
+        padding: 0.7vmax 1.5vmax;
+        margin: 0 0.5vmax;
+        border: none;
+        cursor: pointer;
+        flex-grow: 1;
+        &--container {
+          margin-top: 1vmax;
+          display: flex;
+          width: 80%;
+          justify-content: space-evenly;
+          max-width: 600px;
+
+          .cta-zoomIn {
+            padding-right: 2.5vmax;
+            padding-left: 1vmax;
+          }
+
+          @media screen and (max-width: 560px) {
+            width: 55%;
+            .cta-zoomIn {
+              display: none;
+            }
+          }
+        }
+        @media screen and (max-width: 560px) {
+          padding: 1.4vmax 1.5vmax;
+          font-size: 17px;
+        }
+
+        &:active,
+        &:focus {
+          outline: none;
+        }
+
+        @media screen and (min-width: 2000px) {
+          font-size: 28px;
+          padding: 16px 35px;
+        }
+      }
+    }
+    &--colspread_1 {
+      // background-color: darkseagreen;
+      grid-column-end: span 1;
+
+      @media screen and (max-width: 560px) {
+        grid-column-end: 1;
+      }
+    }
+
+    &--colspread_2 {
+      grid-column-end: span 2;
+      img {
+        width: 80%;
+      }
+      @media screen and (max-width: 560px) {
+        grid-column-end: 1;
+      }
+    }
+
+    &--colspread_3 {
+      grid-column-end: span 3;
+
+      @media screen and (max-width: 560px) {
+        grid-column-end: 1;
+      }
+    }
+
+    &_image {
+      max-width: 100%;
+    }
+
+    &-name {
+      position: absolute;
+      top: 4rem;
+      left: 4rem;
+      font-family: "UniversCondensed";
+      font-weight: 900;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      color: #aaaaaa;
+      @media screen and (min-width: 1800px) {
+        font-size: 22px;
+      }
+      @media screen and (max-width: 800px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .zoomModal {
+    position: fixed;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 90vw;
+    height: 87.5vh;
+    // max-height: 30vmax;
+    background-color: #e4e4de;
+    padding: 1.4vmax 1.6vmax;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 2rem 140rem rgba(0, 0, 0, 0);
+
+    transition: 0.3s transform cubic-bezier(0.5, 0.39, 0.05, 1),
+      0.4s opacity ease-out, 0.275s box-shadow linear;
+
+    &--active {
+      opacity: 1;
+      pointer-events: painted;
+      box-shadow: 0 0 2rem 14rem rgba(0, 0, 0, 0.8);
+      transform: translate(-50%, -50%);
+
+      transition: 0.5s transform cubic-bezier(0.5, 0.39, 0.05, 1),
+        0.3s 0.3s opacity ease-out, 0.4s 0.2s box-shadow linear;
+    }
+
+    &_name {
+      font-family: "UniversCondensed";
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.8vmax;
+    }
+
+    &_img {
+      width: 120vmin;
+      height: auto;
+      &--container {
+        margin: 3rem auto;
+        width: 100%;
+        height: 100%;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // max-height: 60%;
+      }
+    }
+
+    &-addToList {
+      min-height: 4vmax;
+      max-height: 6vmax;
+      width: 32%;
+      margin: 0.5vmin auto 0;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    &-close {
+      position: absolute;
+      width: 3rem;
+      height: 3rem;
+      right: 1.2vmax;
+      top: 1.4vmax;
+      cursor: pointer;
+
+      > svg * {
+        stroke-width: 4px;
+      }
+    }
+
+    &-multi-grid {
+      width: 90%;
+      margin: 0.9vmax auto 0;
+      display: grid;
+      min-height: 20%;
+      grid-auto-rows: auto;
+      grid-auto-flow: dense;
+      grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr) minmax(0%, 1fr);
+      &-item {
+        position: relative;
+        background-color: #e4e4e4;
+        height: 17.5vmax;
+        padding: 1.1vw;
+        font-family: "UniversCondensed", sans-serif;
+        font-size: 0.9vmax;
+        text-transform: uppercase;
+        border: 0.125vmin solid #959595;
+
+        &_title {
+          opacity: 0.5;
+        }
+
+        .img-container {
+          width: 50%;
+          margin: 2vmax auto;
+          img {
+            max-width: 100%;
+          }
+        }
+        .multi--addItem {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          background-color: $color-black;
+          width: 2.8vmax;
+          height: 2.8vmax;
+          transform: translateY(0.125rem);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          svg {
+            width: 47.5%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}

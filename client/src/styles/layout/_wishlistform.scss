@@ -1,0 +1,260 @@
+.Wishlist_Send {
+    min-height: 40vmax;
+    width: 100%;
+    background: linear-gradient(to bottom left, #e6e6e6, #e0e0e0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_subtitle {
+      @include heading(1.8rem, $color-black, "subtitle");
+      opacity: 0.7;
+      padding-bottom: 1.5rem;
+      margin-top: -1rem;
+    }
+
+    &_title {
+      @include heading(5.2rem, $color-black, "title");
+      padding: 1rem 2rem 0;
+      margin-top: 8rem;
+      &--icon--container {
+        width: 3.2rem;
+        transform: translate(1.75rem, -2.2rem);
+
+        svg g > * {
+          stroke: $color-black;
+        }
+      }
+
+      @media screen and (max-width: 650px) {
+        &--icon--container {
+          transform: translate(1.1vmax, -0.8vmax);
+        }
+      }
+    }
+
+    &-form {
+      margin-top: 5.5rem;
+      width: 60%;
+      max-width: 700px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      &_input {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 2.5%;
+        font-size: 1.8rem;
+        border: none;
+        font-family: "UniversNormal";
+        font-weight: 400;
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: 0.3s background-color ease-out;
+
+        &:focus {
+          outline: none;
+          background-color: rgba(255, 255, 255, 1);
+
+          + label {
+            transform: translate(0, -500%);
+          }
+        }
+
+        &--textarea {
+          line-height: 2.2rem;
+          resize: vertical;
+          max-height: 50rem;
+          min-height: 17.5rem;
+          padding-top: 2rem;
+
+          &::placeholder {
+            color: rgba(0, 0, 0, 0.35);
+            font-family: "UniversCondensed";
+            font-weight: 700;
+            transition: color 0.15s linear;
+          }
+
+          &:focus,
+          &:active {
+            &::placeholder {
+              color: rgba(0, 0, 0, 0.4);
+            }
+          }
+        }
+        &--container {
+          height: 7rem;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 0.2vmax 0.75rem rgba(0, 0, 0, 0.2);
+
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0.35vmax;
+            pointer-events: none;
+            transition: 0.25s width linear;
+          }
+
+          &--fullwidth {
+            width: 100%;
+            margin: 0.5rem 0;
+          }
+          &--halfwidth {
+            width: calc(50% - 0.5rem);
+
+            label {
+              left: 10%;
+            }
+            @media screen and (max-width: 725px) {
+              width: 100%;
+            }
+          }
+
+          &--textarea {
+            height: 100%;
+            max-height: 30rem;
+            label {
+              top: 25%;
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 0vmax;
+              pointer-events: none;
+              background-color: transparent !important;
+              border: none;
+            }
+          }
+        }
+
+        &--label {
+          position: absolute;
+          top: 50%;
+          left: 5%;
+          font-size: 1.8rem;
+          transform: translate(0, -50%);
+          font-family: "UniversCondensed";
+          font-weight: 700;
+          pointer-events: none;
+          color: rgba(0, 0, 0, 0.35);
+          transition: 0.45s transform ease-out;
+        }
+      }
+
+      &_submit {
+        font-size: 2.7rem;
+        position: relative;
+        font-family: "UniversCondensed";
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #fefefe;
+        border: solid #000 0.4rem;
+        width: 90%;
+        height: 7.2rem;
+        max-width: 40rem;
+        margin: 4rem 0 11rem;
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+        transition: 0.15s box-shadow ease-out, 0.05s color 0.05s ease-in-out;
+        z-index: 20;
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          left: 0;
+          height: 100%;
+          z-index: -1;
+          background-color: #000;
+          transition: 0.1s all ease-in-out;
+        }
+        &--icon {
+          height: 100%;
+          width: auto;
+          &--container {
+            position: absolute;
+            height: 40%;
+            top: 50%;
+            right: 6rem;
+            transform: translate(0, -50%);
+            transition: 0.2s transform ease-out;
+            width: 1rem;
+
+            #arrowLine,
+            #arrowPath {
+              transition: 0.1s all ease-in-out;
+            }
+          }
+        }
+
+        &:hover {
+          box-shadow: 0 1rem 1.7rem rgba(0, 0, 0, 0.3);
+          color: #000;
+          transition: 0.125s box-shadow ease-in, 0.04s color 0.04s ease-in-out;
+          &::before {
+            height: 0%;
+          }
+
+          span[data-type="arrow"] {
+            transform: translate(1.5rem, -50%);
+          }
+
+          #arrowLine,
+          #arrowPath {
+            stroke: #000 !important;
+          }
+        }
+
+        &:active {
+          transform: translateY(-0.5rem);
+          box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.3);
+
+          span[data-type="arrow"] {
+            transform: translate(1rem, -50%);
+          }
+        }
+
+        &:active,
+        &:focus {
+          outline: none;
+        }
+
+        @media screen and (max-width: 775px) {
+          width: 70%;
+        }
+
+        @media screen and (max-width: 650px) {
+          width: 85%;
+        }
+        @media screen and (max-width: 550px) {
+          width: 95%;
+        }
+      }
+
+      @media screen and (max-width: 1150px) {
+        &_input--container:not(.Wishlist_Send-form_input--container--textarea) {
+          min-height: 4.5rem;
+          height: 6vw;
+        }
+        &_input--textarea {
+          min-height: 10rem;
+          height: 12.5vw;
+        }
+      }
+      @media screen and (max-width: 660px) {
+        width: 80%;
+      }
+    }
+  }

@@ -63,10 +63,11 @@ function Footer(props) {
         <h3 className="footer_cta_title">questions?</h3>
         <h4 className="footer_cta_subtitle">
           call us at{" "}
-          <a 
-            style={{color: props.colors[0]}}
-            href="tel:+1800-486-8677" 
-            className="footer_cta_link">
+          <a
+            style={{ color: props.colors[0] }}
+            href="tel:+1800-486-8677"
+            className="footer_cta_link"
+          >
             1.800.486.8677
           </a>
         </h4>
@@ -76,6 +77,9 @@ function Footer(props) {
 
         <SportexLogo prefix="footer_"> </SportexLogo>
       </aside>
+      <p className="footer_disclosure">
+        © Sportex Safety // Sportex Apparel of Arizona All Rights Reserved
+      </p>
     </footer>
   );
 }

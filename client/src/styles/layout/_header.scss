@@ -1,133 +1,134 @@
 .header {
-    position: relative;
-    width: 100%;
-    height: 61vh;
-    background-size: cover;
-    background-position: bottom center;
-  
-    @media screen and (max-width: 560px) {
-      height: 50vh;
+  position: relative;
+  width: 100%;
+  height: 61vh;
+  max-height: 70rem;
+  background-size: cover;
+  background-position: bottom center;
+
+  @media screen and (max-width: 560px) {
+    height: 50vh;
+  }
+
+  .brand-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+
+    width: 19.7vw;
+    max-width: 300px;
+    @media only screen and (max-width: 1080px) {
+      width: 24.5vw;
     }
-  
-    .brand-logo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: auto;
-  
-      width: 19.7vw;
-      max-width: 300px;
-      @media only screen and (max-width: 1080px) {
-        width: 24.5vw;
-      }
-  
-      @media only screen and (max-width: 650px) {
-        width: 42.5vw;
-        top: 55%;
-      }
+
+    @media only screen and (max-width: 650px) {
+      width: 42.5vw;
+      top: 55%;
     }
-  
-    .brand-indicator {
-      position: absolute;
-      top: 3rem;
-      left: 3rem;
-      p {
-        color: #fff;
-        text-transform: uppercase;
-        font-size: 1.35vmin;
-        font-family: "UniversNormal";
-        font-weight: 400;
-      }
-  
-      &_name {
-        color: #fff;
-        text-transform: uppercase;
-        font-size: 3vmin;
-        font-family: "UniversCondensed";
-        font-weight: 800;
-        margin-top: 1vmin;
-      }
-  
-      @media only screen and (max-width: 650px) {
-        p {
-          font-size: 2.625vmin;
-        }
-  
-        &_name {
-          font-size: 4.5vmin;
-        }
-      }
-  
-      @media only screen and (max-width: 560px) {
-        top: 1.15rem;
-        left: 1.15rem;
-        p {
-          font-size: 2.625vmin;
-        }
-  
-        &_name {
-          font-size: 5.5vmin;
-        }
-      }
-    }
-  
-    .sportex-indicator {
-      fill: #fff;
+  }
+
+  .brand-indicator {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    p {
       color: #fff;
-      background-color: rgba(0, 0, 0, 0.7);
-      position: absolute;
-      top: 0;
-      right: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(5px);
-      padding: 2rem 2rem 1.11rem;
-      height: 4.7vw;
-      width: 10vw;
-  
-      @media only screen and (max-width: 1200px) {
-        height: calc(4.7vw * 1.5);
-        width: calc(10vw * 1.5);
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      font-family: "UniversNormal";
+      font-weight: 400;
+    }
+
+    &_name {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 3rem;
+      font-family: "UniversCondensed";
+      font-weight: 800;
+      margin-top: 1vmin;
+    }
+
+    @media only screen and (max-width: 650px) {
+      p {
+        font-size: 2.625vmin;
       }
-  
-      @media only screen and (max-width: 850px) {
-        height: calc(4.7vw * 1.8);
-        width: calc(10vw * 1.8);
+
+      &_name {
+        font-size: 4.5vmin;
       }
-  
-      @media only screen and (max-width: 650px) {
-        height: calc(4.7vw * 2.25);
-        width: calc(10vw * 2.25);
+    }
+
+    @media only screen and (max-width: 560px) {
+      top: 1.15rem;
+      left: 1.15rem;
+      p {
+        font-size: 2.625vmin;
       }
-  
-      @media only screen and (max-width: 650px) {
-        height: calc(4.7vw * 2.5);
-        width: calc(10vw * 2.5);
-      }
-  
-      &_text {
-        position: relative;
-        font-family: "UniversCondensed";
-        font-weight: 700;
-        text-transform: uppercase;
-  
-        padding-bottom: 0.22vw;
-        margin-top: -0.89vw;
-        font-size: 0.4vw;
-  
-        @media only screen and (max-width: 1200px) {
-          padding-bottom: calc(0.42vw * 1.5);
-          margin-top: calc(-0.89vw * 1.5);
-          font-size: calc(0.75vw * 1.5);
-        }
-      }
-  
-      &-logo {
-        height: auto;
-        width: 65%;
+
+      &_name {
+        font-size: 5.5vmin;
       }
     }
   }
+
+  .sportex-indicator {
+    fill: #fff;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    padding: 2rem 2rem 1.11rem;
+    height: 11rem;
+    width: 23rem;
+
+    @media only screen and (max-width: 1200px) {
+      height: calc(4.7vw * 1.5);
+      width: calc(10vw * 1.5);
+    }
+
+    @media only screen and (max-width: 850px) {
+      height: calc(4.7vw * 1.8);
+      width: calc(10vw * 1.8);
+    }
+
+    @media only screen and (max-width: 650px) {
+      height: calc(4.7vw * 2.25);
+      width: calc(10vw * 2.25);
+    }
+
+    @media only screen and (max-width: 650px) {
+      height: calc(4.7vw * 2.5);
+      width: calc(10vw * 2.5);
+    }
+
+    &_text {
+      position: relative;
+      font-family: "UniversCondensed";
+      font-weight: 700;
+      text-transform: uppercase;
+
+      padding-bottom: 0.22vw;
+      margin-top: -0.89vw;
+      font-size: 0.4vw;
+
+      @media only screen and (max-width: 1200px) {
+        padding-bottom: calc(0.42vw * 1.5);
+        margin-top: calc(-0.89vw * 1.5);
+        font-size: calc(0.75vw * 1.5);
+      }
+    }
+
+    &-logo {
+      height: auto;
+      width: 65%;
+    }
+  }
+}

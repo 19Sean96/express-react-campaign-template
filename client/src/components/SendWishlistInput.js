@@ -15,7 +15,7 @@ function SendWishlistInput(props) {
       key={input.name}
       className={`${FormClass}_input--container ${FormClass}_input--container--${
         input.width
-      } ${
+      } ${input.name}-input ${
         input.type === "textarea"
           ? `${FormClass}_input--container--textarea`
           : ""

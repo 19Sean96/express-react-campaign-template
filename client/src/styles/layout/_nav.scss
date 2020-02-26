@@ -3,7 +3,7 @@
   background-color: $color-black;
   display: flex;
   justify-content: center;
-  height: 8.3vmax;
+  height: 11rem;
   max-height: 11.5rem;
 
   @media screen and (max-width: 1500px) {
@@ -25,26 +25,12 @@
     }
   }
 
-  @media screen and (min-width: 1500px) {
-    height: 5.25vmax;
-
-    max-height: 12rem;
-  }
-
-  @media screen and (min-width: 2250px) {
-    max-height: 13rem;
-  }
-
-  @media screen and (min-width: 3150px) {
-    max-height: 15rem;
-  }
-
   &_list {
     max-width: 80%;
     width: 60%;
     font-family: "UniversCondensed";
     font-weight: 800;
-    font-size: 1.4vmax;
+    font-size: 2.2rem;
     text-transform: uppercase;
     display: flex;
     align-items: center;
@@ -131,7 +117,7 @@
       color: #fff;
       list-style: none;
       cursor: pointer;
-      padding: 1.35vmax 1.15vmax 1vmax;
+      padding: 1.35vmax 1.3rem 1vmax;
       transform: translateY(0);
       transition: 0.1s transform;
       margin: 0 1vw;
@@ -181,9 +167,6 @@
       }
     }
 
-    @media screen and (min-width: 2250px) {
-      font-size: 28px;
-    }
   }
 
   &_Wishlist-check {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SendWishlistInput from "./SendWishlistInput";
-import axios from 'axios';
+import axios from "axios";
 
 class SendWishlist extends Component {
   constructor(props) {
@@ -52,27 +52,29 @@ class SendWishlist extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    axios.post("/api/sendemail", {
-      name: this.props.name.value,
-      email: this.props.email.value,
-      phone: this.props.phone.value,
-      company: this.props.company.value,
-      comments: this.props.comments.value,
-      products: this.props.cartDetails
-    }).then(res => {
-      console.log(res.data)
-    }).catch(err => {
-      console.log(err)
-    })
-
+    axios
+      .post("/api/sendemail", {
+        name: this.props.name.value,
+        email: this.props.email.value,
+        phone: this.props.phone.value,
+        company: this.props.company.value,
+        comments: this.props.comments.value,
+        products: this.props.cartDetails
+      })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
-    const [color,colorLight,colorDark] = this.props.colors
+    const [color, colorLight, colorDark] = this.props.colors;
     return (
       <section className="Wishlist_Send" id="ContactForm">
         <h1 className="Wishlist_Send_title">
-          send us your list.
+          <span> send us your list.</span>
           <span className="Wishlist_Send_title--icon--container">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +91,7 @@ class SendWishlist extends Component {
                   stroke={color}
                   strokeMiterlimit="10"
                   strokeWidth="10"
-                /> 
+                />
                 <path
                   id="Path_768"
                   data-name="Path 768"
@@ -152,6 +154,7 @@ class SendWishlist extends Component {
               >
                 <g transform="translate(-344 -8150.793)">
                   <line
+                    id="arrowLine"
                     x2="39"
                     transform="translate(344 8171)"
                     fill="none"
@@ -160,6 +163,7 @@ class SendWishlist extends Component {
                     strokeWidth="3"
                   />
                   <path
+                    id="arrowPath"
                     d="M363.5,8190.5,383,8171l-19.5-19.5"
                     fill="none"
                     stroke={colorLight}
