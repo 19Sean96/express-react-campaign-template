@@ -27,9 +27,7 @@ html {
     }
   }
   
-  .notActive {
-    display: none;
-  }
+
   
   .icon {
     &-note {
@@ -47,6 +45,7 @@ html {
       position: relative;
       &--icon {
         width: 12.5%;
+        max-width: 2.4rem;
         height: auto;
         position: absolute;
         right: 5%;
@@ -73,6 +72,7 @@ html {
   
       &--icon {
         width: 15%;
+        max-width: 2.1rem;
         height: auto;
         position: absolute;
         right: 7.5%;

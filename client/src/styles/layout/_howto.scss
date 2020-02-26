@@ -18,20 +18,22 @@
     &_popup {
       background-color: #fff;
       width: 60vw;
+      max-width: 1200px;
       height: 33vw;
-      padding: 1.5vmax 3vmax;
+      max-height: 67.5rem;
+      padding: 5rem 10rem 8rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
   
       &-title {
-        font-size: 2vmax;
+        font-size: 4.2rem;
         font-family: "UniversCondensed";
       }
   
       &-guide {
-        height: 60%;
+        max-height: 60%;
         width: 100%;
         // background-color: palevioletred;
         display: flex;
@@ -40,7 +42,8 @@
   
         &--step {
           width: 9vmax;
-          height: 12vmax;
+          max-width: 15rem;
+          height: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -50,7 +53,8 @@
           &_icon {
             &--container {
               width: auto;
-              height: 60%;
+              height: 10.2rem;
+              margin: .4rem 0 4.3rem;
   
               svg {
                 height: 100%;
@@ -61,47 +65,48 @@
   
           &_text {
             text-align: center;
-            font-size: 1.23vmax;
+            font-size: 2.1rem;
             font-family: "UniversCondensed";
             font-weight: 800;
             text-transform: capitalize;
           }
   
-          &_1 {
-            p {
-              padding: 0 1vmax;
-            }
-          }
-          &_2 {
-            p {
-              padding: 0 1.5vmax;
-            }
-          }
-          &_4 {
-            p {
-              padding: 0 1.75vmax;
-            }
-          }
+        //   &_1 {
+        //     p {
+        //       padding: 0 1vmax;
+        //     }
+        //   }
+        //   &_2 {
+        //     p {
+        //       padding: 0 1.5vmax;
+        //     }
+        //   }
+        //   &_4 {
+        //     p {
+        //       padding: 0 1.75vmax;
+        //     }
+        //   }
         }
         &--arrow {
-          width: 1vmax;
+          width: 1.5rem;
   
           svg {
-            transform: translateY(-150%);
+            transform: translateY(-100%);
           }
         }
       }
   
       &-button {
         border: none;
-        font-size: 1.6vmax;
+        font-size: 2.1rem;
         font-family: "UniversCondensed";
         font-weight: 700;
         text-transform: uppercase;
         color: #fefefe;
         background-color: #000000;
         border: none;
-        padding: 1vmax 4.75vmax;
+        height: 7.2rem;
+        width: 28.5rem;
         cursor: pointer;
         position: relative;
         box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
@@ -134,7 +139,7 @@
             position: absolute;
             height: 40%;
             top: 50%;
-            right: 2vmax;
+            right: 5rem;
             transform: translate(0, -50%);
             transition: 0.2s transform ease-out;
             width: 1rem;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Scrollbars } from "react-custom-scrollbars";
 
 const StyledBtn1 = styled.button`
-  border: 0.2vmax solid ${props => props.color};
+  border: 3px solid ${props => props.color};
   color: #cbcaca;
   background-color: transparent;
   transition: 0.25s all ease-in;
@@ -13,7 +13,6 @@ const StyledBtn1 = styled.button`
 
   span {
     position: relative;
-    hei
   }
 
   &::before {
@@ -70,7 +69,7 @@ const StyledBtn2 = styled.button`
 
   span {
     display: block;
-    transform: translateX(0.25vmax);
+    transform: translateX(2.4rem);
     transition: 0.2s all ease;
   }
   &::before {
@@ -89,7 +88,7 @@ const StyledBtn2 = styled.button`
     color: #eaeaea;
 
     span {
-      transform: translateX(-0.25vmax);
+      transform: translateX(1.75rem);
     }
     &::before {
       width: 100%;
@@ -223,7 +222,7 @@ class Showcase extends Component {
                                 transform="translate(341 492)"
                                 fill="none"
                                 stroke="#fff"
-                                strokeMiterlismit="10"
+                                strokeMiterlimit="10"
                                 strokeWidth="1.926"
                               />
                               <line
@@ -350,11 +349,7 @@ function ShowcaseModal(props) {
 
   return (
     <article
-      // style={{
-      //   borderBottom: `solid .3vmin ${props.colors[0]}`,
-      //   borderRight: `solid .3vmin ${props.colors[0]}`,
-
-      // }}
+      id={`${props.itemType}Modal`}
       className={`zoomModal ${props.open && "zoomModal--active"}`}
     >
       <h2 className="zoomModal_name">{productInfo.name}</h2>
@@ -441,7 +436,7 @@ function ShowcaseModal(props) {
           </StyledBtn2>
         </>
       ) : (
-        <Scrollbars style={{ width: "90%", height: "100%" }}>
+        <Scrollbars style={{ width: "100%", height: "100%" }}>
           <div className="zoomModal-multi-grid">
             {productInfo.products.map(prod => {
               return (
@@ -493,56 +488,7 @@ function ShowcaseModal(props) {
                 </div>
               );
             })}
-            {productInfo.products.map(prod => {
-              return (
-                <div className="zoomModal-multi-grid-item">
-                  <h4 className="zoomModal-multi-grid-item_title">
-                    {prod.alt}
-                  </h4>
-                  <div className="img-container">
-                    <img src={prod.img} alt={prod.alt} />
-                  </div>
-                  <div
-                    onClick={() => props.addItem(prod, productInfo.index)}
-                    className="multi--addItem"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 25.926 25.926"
-                    >
-                      <g transform="translate(0.792 0.792)">
-                        <line
-                          x2="10"
-                          transform="translate(7.171 12.171)"
-                          fill="none"
-                          stroke={props.colors[0]}
-                          strokeMiterlimit="10"
-                          strokeWidth="2"
-                        />
-                        <line
-                          y1="10"
-                          transform="translate(12.171 7.171)"
-                          fill="none"
-                          stroke={props.colors[0]}
-                          strokeMiterlimit="10"
-                          strokeWidth="2"
-                        />
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="12"
-                          transform="translate(0.171 0.171)"
-                          fill="none"
-                          stroke={props.colors[0]}
-                          strokeMiterlimit="10"
-                          strokeWidth="1.926"
-                        />
-                      </g>
-                    </svg>
-                  </div>
-                </div>
-              );
-            })}
+            
           </div>
         </Scrollbars>
       )}

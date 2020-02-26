@@ -2,7 +2,6 @@
   display: grid;
   max-width: 1800px;
   margin: 0 auto;
-  min-height: 10vh;
   grid-auto-rows: auto;
   grid-auto-flow: dense;
   grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr) minmax(0%, 1fr);
@@ -27,8 +26,8 @@
     justify-content: center;
     align-items: center;
 
+    // MOBILE TILE ITEM HEIGHT
     @media screen and (max-width: 560px) {
-      max-height: 900px;
       height: 300px;
     }
 
@@ -54,31 +53,31 @@
         color: #fff;
         font-family: "UniversCondensed";
         font-weight: 800;
-        font-size: 1.7vmax;
+        font-size: 36px;
         text-transform: uppercase;
-        margin-bottom: 1vmax;
       }
 
       &_btn {
-        font-size: 1.4vmax;
+        font-size: 2.4rem;
         text-transform: uppercase;
+        max-width: 25rem;
+        height: 6rem;
         font-weight: 700;
         font-family: "UniversCondensed";
-        padding: 0.7vmax 1.5vmax;
-        margin: 0 0.5vmax;
+        margin: 0 0.75rem;
         border: none;
         cursor: pointer;
         flex-grow: 1;
         &--container {
-          margin-top: 1vmax;
+          margin-top: 2rem;
           display: flex;
           width: 80%;
           justify-content: space-evenly;
           max-width: 600px;
 
           .cta-zoomIn {
-            padding-right: 2.5vmax;
-            padding-left: 1vmax;
+            padding-right: 3.5rem;
+            padding-left: 2.5rem;
           }
 
           @media screen and (max-width: 560px) {
@@ -96,11 +95,6 @@
         &:active,
         &:focus {
           outline: none;
-        }
-
-        @media screen and (min-width: 2000px) {
-          font-size: 28px;
-          padding: 16px 35px;
         }
       }
     }
@@ -144,9 +138,7 @@
       font-size: 1.8rem;
       text-transform: uppercase;
       color: #aaaaaa;
-      @media screen and (min-width: 1800px) {
-        font-size: 22px;
-      }
+
       @media screen and (max-width: 800px) {
         font-size: 16px;
       }
@@ -161,14 +153,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, 50%);
-    width: 90vw;
+
+    width: 79vw;
+    max-width: 1580px;
     height: 87.5vh;
-    // max-height: 30vmax;
-    background-color: #e4e4de;
+    max-height: 960px;
+
+    background-color: #fafafa;
     padding: 1.4vmax 1.6vmax;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 2rem 140rem rgba(0, 0, 0, 0);
+    box-shadow: 0 0 2rem 40vw rgba(0, 0, 0, 0);
 
     transition: 0.3s transform cubic-bezier(0.5, 0.39, 0.05, 1),
       0.4s opacity ease-out, 0.275s box-shadow linear;
@@ -176,7 +171,7 @@
     &--active {
       opacity: 1;
       pointer-events: painted;
-      box-shadow: 0 0 2rem 14rem rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 2rem 40vw rgba(0, 0, 0, 0.8);
       transform: translate(-50%, -50%);
 
       transition: 0.5s transform cubic-bezier(0.5, 0.39, 0.05, 1),
@@ -187,32 +182,29 @@
       font-family: "UniversCondensed";
       text-transform: uppercase;
       font-weight: 700;
-      font-size: 1.8vmax;
+      font-size: 3.6rem;
     }
 
     &_img {
-      width: 120vmin;
+      max-width: 133rem;
       height: auto;
       &--container {
         margin: 3rem auto;
         width: 100%;
-        height: 100%;
+        max-height: 100%;
         flex-grow: 1;
         display: flex;
         align-items: center;
         justify-content: center;
-        // max-height: 60%;
       }
     }
 
     &-addToList {
-      min-height: 4vmax;
-      max-height: 6vmax;
+      height: 4vmax;
+      max-height: 5.8rem;
       width: 32%;
-      margin: 0.5vmin auto 0;
-      position: absolute;
-      bottom: 0;
-      right: 0;
+      max-width: 23rem;
+      margin: -5rem auto 4rem;
     }
 
     &-close {
@@ -229,7 +221,8 @@
     }
 
     &-multi-grid {
-      width: 90%;
+      overflow-x: hidden;
+      width: 100%;
       margin: 0.9vmax auto 0;
       display: grid;
       min-height: 20%;
@@ -238,13 +231,33 @@
       grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr) minmax(0%, 1fr);
       &-item {
         position: relative;
-        background-color: #e4e4e4;
+        background-color: #fafafa;
         height: 17.5vmax;
         padding: 1.1vw;
         font-family: "UniversCondensed", sans-serif;
         font-size: 0.9vmax;
         text-transform: uppercase;
-        border: 0.125vmin solid #959595;
+        border: 1px solid #e3e3e3;
+
+        &:nth-child(3n + 1) {
+            border-right-width: 1px;
+            border-bottom-width: 1px;
+        }
+
+        &:nth-child(3n + 2) {
+            border-right-width: 1px;
+            border-left-width: 0;
+            border-bottom-width: 1px;
+        }
+
+        &:nth-child(3n + 0) {
+            border-right-width: 1px;
+            border-left-width: 0;
+        }
+
+        &:nth-child(n + 4) {
+            border-top-width: 0;
+        }
 
         &_title {
           opacity: 0.5;
@@ -277,4 +290,10 @@
       }
     }
   }
+
+  //   #multiModal {
+  //     position: absolute;
+  //     max-height: none;
+  //     height: 100%;
+  //   }
 }
