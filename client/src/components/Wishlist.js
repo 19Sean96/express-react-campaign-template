@@ -102,19 +102,6 @@ class Wishlist extends Component {
     }
   }
 
-  componentWillUpdate() {
-    console.log(this.props.wishlist)
-
-    const cartDetails = this.props.wishlist.map(item => {
-      return {
-        note: {
-          value: "",
-          active: false
-        }
-      }
-    })
-  }
-
   FormClass = "Wishlist_Send-form";
   inputClass = `${this.FormClass}_input`;
 
