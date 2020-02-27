@@ -4,10 +4,9 @@
   display: flex;
   justify-content: center;
   height: 11rem;
-  max-height: 11.5rem;
 
   @media screen and (max-width: 1500px) {
-    height: 6vmax;
+    height: 8rem;
   }
 
   @media screen and (max-width: 750px) {
@@ -35,6 +34,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 1500px) {
+      font-size: 1.6rem;
+    }
 
     @media screen and (max-width: 560px) {
       max-width: 100%;
@@ -166,7 +169,6 @@
         }
       }
     }
-
   }
 
   &_Wishlist-check {
@@ -193,6 +195,16 @@
       text-align: center;
       line-height: 3.3rem;
       transform: translate(60%, -45%);
+      @media screen and (max-width: 1500px) {
+        font-size: 1.2rem;
+        width: 2.35rem;
+        height: 2.35rem;
+        line-height: 2.35rem;
+      }
+    }
+
+    @media screen and (max-width: 1500px) {
+      width: 2.5rem;
     }
 
     @media screen and (max-width: 560px) {
