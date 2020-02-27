@@ -41,7 +41,7 @@ const StyledBtn2 = styled.button`
   position: relative;
   z-index: 20;
   overflow: hidden;
-  padding-right: 2.5vmax;
+  padding-right: 4.5rem;
 
   span {
     display: block;
@@ -105,7 +105,7 @@ class Showcase extends Component {
     };
   }
 
-  expandSingleItem(img, name, index, product) {
+  expandSingleItem(img, name, index, product, id) {
     this.setState({
       itemType: "single",
       open: true,
@@ -114,7 +114,8 @@ class Showcase extends Component {
           img,
           name,
           index,
-          product
+          product,
+          id
         },
         multiItem: {
           name: "",
@@ -125,9 +126,7 @@ class Showcase extends Component {
   }
 
   expandMultiItem(name, index, products) {
-    console.log("Name: " + name);
-    console.log("Index:" + index);
-    console.log("Products: ", products);
+
     this.setState({
       itemType: "multi",
       open: true,
@@ -191,7 +190,8 @@ class Showcase extends Component {
                             product.background,
                             product.name,
                             index,
-                            product.products[0]
+                            product.products[0],
+                            product.id
                           )
                         }
                       >
@@ -234,78 +234,141 @@ class Showcase extends Component {
                         color={color}
                         isModalBtn={false}
                       >
-                        <span>add to list</span>
-                        <div className="cta-addToList--icon">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 25.926 25.926"
-                          >
-                            <g transform="translate(0.792 0.792)">
-                              <line
-                                x2="10"
-                                transform="translate(7.171 12.171)"
-                                fill="none"
-                                stroke="#fff"
-                                strokeMiterlimit="10"
-                                strokeWidth="2"
-                              />
-                              <line
-                                y1="10"
-                                transform="translate(12.171 7.171)"
-                                fill="none"
-                                stroke="#fff"
-                                strokeMiterlimit="10"
-                                strokeWidth="2"
-                              />
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="12"
-                                transform="translate(0.171 0.171)"
-                                fill="none"
-                                stroke="#fff"
-                                strokeMiterlimit="10"
-                                strokeWidth="1.926"
-                              />
-                            </g>
-                          </svg>
-                        </div>
+                        <span>
+                          {this.props.wishlist.some(
+                            wishlistProd =>
+                              wishlistProd.tile_parent === product.id
+                          )
+                            ? "added!"
+                            : "add to list"}
+                        </span>
+                        {this.props.wishlist.some(
+                          wishlistProd =>
+                            wishlistProd.tile_parent === product.id
+                        ) ? (
+                          <>
+                            <div className="cta-addToList--icon">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 25.926 25.926"
+                              >
+                                <g
+                                  id="check"
+                                  transform="translate(-0.281 -0.281)"
+                                >
+                                  <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="12"
+                                    transform="translate(1.244 1.244)"
+                                    stroke="#000"
+                                    strokeMiterlimit="10"
+                                    strokeWidth="1.926"
+                                  />
+                                  <line
+                                    x2="13"
+                                    transform="translate(6.744 13.244)"
+                                    fill="none"
+                                    stroke="#000"
+                                    strokeMiterlimit="10"
+                                    strokeWidth="2"
+                                    opacity="0"
+                                  />
+                                  <line
+                                    y1="13"
+                                    transform="translate(13.244 6.744)"
+                                    fill="none"
+                                    stroke="#000"
+                                    strokeMiterlimit="10"
+                                    strokeWidth="2"
+                                    opacity="0"
+                                  />
+                                  <path
+                                    d="M3015.288,2664.107l4.435,4.435,10.522-10.522"
+                                    transform="translate(-3009.52 -2650.321)"
+                                    fill="none"
+                                    stroke="#fff"
+                                    strokeWidth="3"
+                                  />
+                                </g>
+                              </svg>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="cta-addToList--icon">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 25.926 25.926"
+                              >
+                                <g transform="translate(0.792 0.792)">
+                                  <line
+                                    x2="10"
+                                    transform="translate(7.171 12.171)"
+                                    fill="none"
+                                    stroke="#fff"
+                                    strokeMiterlimit="10"
+                                    strokeWidth="2"
+                                  />
+                                  <line
+                                    y1="10"
+                                    transform="translate(12.171 7.171)"
+                                    fill="none"
+                                    stroke="#fff"
+                                    strokeMiterlimit="10"
+                                    strokeWidth="2"
+                                  />
+                                  <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="12"
+                                    transform="translate(0.171 0.171)"
+                                    fill="none"
+                                    stroke="#fff"
+                                    strokeMiterlimit="10"
+                                    strokeWidth="1.926"
+                                  />
+                                </g>
+                              </svg>
+                            </div>
 
-                        <div className="cta-addToList--icon cta-addToList--icon-2">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 25.926 25.926"
-                          >
-                            <g transform="translate(-0.281 -0.281)">
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="12"
-                                transform="translate(1.244 1.244)"
-                                fill={color}
-                                stroke={color}
-                                strokeMiterlimit="10"
-                                strokeWidth="1.926"
-                              />
-                              <line
-                                x2="13"
-                                transform="translate(6.744 13.244)"
-                                fill="none"
-                                stroke="#fff"
-                                strokeMiterlimit="10"
-                                strokeWidth="2"
-                              />
-                              <line
-                                y1="13"
-                                transform="translate(13.244 6.744)"
-                                fill="none"
-                                stroke="#fff"
-                                strokeMiterlimit="10"
-                                strokeWidth="2"
-                              />
-                            </g>
-                          </svg>
-                        </div>
+                            <div className="cta-addToList--icon cta-addToList--icon-2">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 25.926 25.926"
+                              >
+                                <g transform="translate(-0.281 -0.281)">
+                                  <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="12"
+                                    transform="translate(1.244 1.244)"
+                                    fill={color}
+                                    stroke={color}
+                                    strokeMiterlimit="10"
+                                    strokeWidth="1.926"
+                                  />
+                                  <line
+                                    x2="13"
+                                    transform="translate(6.744 13.244)"
+                                    fill="none"
+                                    stroke="#fff"
+                                    strokeMiterlimit="10"
+                                    strokeWidth="2"
+                                  />
+                                  <line
+                                    y1="13"
+                                    transform="translate(13.244 6.744)"
+                                    fill="none"
+                                    stroke="#fff"
+                                    strokeMiterlimit="10"
+                                    strokeWidth="2"
+                                  />
+                                </g>
+                              </svg>
+                            </div>
+                          </>
+                        )}
                       </StyledBtn2>
                     </>
                   ) : (
@@ -333,6 +396,7 @@ class Showcase extends Component {
           );
         })}
         <ShowcaseModal
+          wishlist={this.props.wishlist}
           colors={this.props.colors}
           itemType={this.state.itemType}
           open={this.state.open}
@@ -418,74 +482,132 @@ function ShowcaseModal(props) {
             color={props.colors[0]}
             isModalBtn={true}
           >
-            <span>add to list</span>
-            <div className="cta-addToList--icon cta-addToList--icon-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 25.926 25.926"
-              >
-                <g transform="translate(0.792 0.792)">
-                  <line
-                    x2="10"
-                    transform="translate(7.171 12.171)"
-                    fill="none"
-                    strokeMiterlimit="10"
-                    strokeWidth="2"
-                  />
-                  <line
-                    y1="10"
-                    transform="translate(12.171 7.171)"
-                    fill="none"
-                    strokeMiterlimit="10"
-                    strokeWidth="2"
-                  />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="12"
-                    transform="translate(0.171 0.171)"
-                    fill="none"
-                    strokeMiterlimit="10"
-                    strokeWidth="1.926"
-                  />
-                </g>
-              </svg>
-            </div>
-            <div className="cta-addToList--icon cta-addToList--icon-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 25.926 25.926"
-              >
-                <g transform="translate(-0.281 -0.281)">
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="12"
-                    transform="translate(1.244 1.244)"
-                    fill="#fff"
-                    stroke="#fff"
-                    strokeMiterlimit="10"
-                    strokeWidth="1.926"
-                  />
-                  <line
-                    x2="13"
-                    transform="translate(6.744 13.244)"
-                    fill="none"
-                    stroke={props.colors[0]}
-                    strokeMiterlimit="10"
-                    strokeWidth="2"
-                  />
-                  <line
-                    y1="13"
-                    transform="translate(13.244 6.744)"
-                    fill="none"
-                    stroke={props.colors[0]}
-                    strokeMiterlimit="10"
-                    strokeWidth="2"
-                  />
-                </g>
-              </svg>
-            </div>
+            <span>
+              {props.wishlist.some(
+                wishlistProd => wishlistProd.tile_parent === productInfo.id
+              )
+                ? "added!"
+                : "add to list"}
+            </span>
+            {props.wishlist.some(
+              wishlistProd => wishlistProd.tile_parent === productInfo.id
+            ) ? (
+              <>
+                <div className="cta-addToList--icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 25.926 25.926"
+                  >
+                    <g id="check" transform="translate(-0.281 -0.281)">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                        transform="translate(1.244 1.244)"
+                        stroke="#000"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.926"
+                      />
+                      <line
+                        x2="13"
+                        transform="translate(6.744 13.244)"
+                        fill="none"
+                        stroke="#000"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                        opacity="0"
+                      />
+                      <line
+                        y1="13"
+                        transform="translate(13.244 6.744)"
+                        fill="none"
+                        stroke="#000"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                        opacity="0"
+                      />
+                      <path
+                        d="M3015.288,2664.107l4.435,4.435,10.522-10.522"
+                        transform="translate(-3009.52 -2650.321)"
+                        fill="none"
+                        stroke="#fff"
+                        strokeWidth="3"
+                      />
+                    </g>
+                  </svg>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="cta-addToList--icon cta-addToList--icon-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 25.926 25.926"
+                  >
+                    <g transform="translate(0.792 0.792)">
+                      <line
+                        x2="10"
+                        transform="translate(7.171 12.171)"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <line
+                        y1="10"
+                        transform="translate(12.171 7.171)"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                        transform="translate(0.171 0.171)"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.926"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div className="cta-addToList--icon cta-addToList--icon-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 25.926 25.926"
+                  >
+                    <g transform="translate(-0.281 -0.281)">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                        transform="translate(1.244 1.244)"
+                        fill="#fff"
+                        stroke="#fff"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.926"
+                      />
+                      <line
+                        x2="13"
+                        transform="translate(6.744 13.244)"
+                        fill="none"
+                        stroke={props.colors[0]}
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <line
+                        y1="13"
+                        transform="translate(13.244 6.744)"
+                        fill="none"
+                        stroke={props.colors[0]}
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                    </g>
+                  </svg>
+                </div>
+              </>
+            )}
           </StyledBtn2>
         </>
       ) : (
