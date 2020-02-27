@@ -28,7 +28,13 @@
 
       @media screen and (max-width: 650px) {
         &--icon--container {
-          transform: translate(1.1vmax, -0.8vmax);
+          width: 2.4rem;
+          transform: translate(.25rem, -1.7rem);
+        }
+      }
+      @media screen and (max-width: 400px) {
+        &--icon--container {
+          transform: translate(0rem, -1.7rem);
         }
       }
     }
@@ -113,6 +119,10 @@
             }
             @media screen and (max-width: 725px) {
               width: 100%;
+
+              label {
+                left: 5%;
+              }
             }
           }
 
@@ -246,15 +256,16 @@
       @media screen and (max-width: 1150px) {
         &_input--container:not(.Wishlist_Send-form_input--container--textarea) {
           min-height: 4.5rem;
-          height: 6vw;
+          height: 6rem;
         }
         &_input--textarea {
-          min-height: 10rem;
+          min-height: 15rem;
           height: 12.5vw;
         }
       }
       @media screen and (max-width: 660px) {
-        width: 80%;
+        width: calc(100% - 2rem);
+        padding-left: 1rem; padding-right: 1rem;
       }
     }
   }

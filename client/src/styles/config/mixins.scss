@@ -5,6 +5,7 @@
     color: $font-color;
     text-transform: uppercase;
     font-size: $font-size;
+    text-align: center;
 
     @if ($heading-type == "title") {
         &--icon {
@@ -24,27 +25,35 @@
         }
 
         @media screen and (max-width: 650px) {
-            font-size: 45px;
+            font-size: 4.2rem;
+            margin-bottom: 1rem;
         }
 
         @media screen and (max-width: 500px) {
-            margin-top: 3rem;
-            font-size: 36px;
+            margin-top: 5rem; margin-bottom: .5rem;
+            font-size: 3.2rem;
+        }
+
+        @media screen and (max-width: 400px) {
+            margin-top: 4rem; margin-bottom: .25rem;
+            font-size: 2.95rem;
         }
     }
 
     @if ($heading-type == "subtitle") {
         @media screen and (max-width: 1080px) {
             margin-top: -.8rem;
-            font-weight: 400;
         }
         @media screen and (max-width: 650px) {
-            font-size: 14px;
+            font-size: 1.8rem;
         }
 
         @media screen and (max-width: 500px) {
+            margin-left: auto; margin-right: auto;
+            text-align: center;
             margin-top: 0;
-            font-size: 12px;
+            font-size: 1.4rem;
+            width: 75%;
         }
     }
 }

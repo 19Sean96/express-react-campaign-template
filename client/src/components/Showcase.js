@@ -83,6 +83,18 @@ const StyledBtn2 = styled.button`
   }
 `;
 
+const StyledMultiBtn = styled.div`
+  svg g > * {
+    stroke: ${props => props.color}
+  }
+
+  &:hover {
+    svg g > * {
+      stroke: 
+    }
+  }
+`;
+
 class Showcase extends Component {
   constructor(props) {
     super(props);
@@ -622,9 +634,10 @@ function ShowcaseModal(props) {
                   <div className="img-container">
                     <img src={prod.img} alt={prod.alt} />
                   </div>
-                  <div
+                  <StyledMultiBtn
                     onClick={() => props.addItem(prod, productInfo.index)}
                     className="multi--addItem"
+                    color={props.colors[0]}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -635,7 +648,6 @@ function ShowcaseModal(props) {
                           x2="10"
                           transform="translate(7.171 12.171)"
                           fill="none"
-                          stroke={props.colors[0]}
                           strokeMiterlimit="10"
                           strokeWidth="2"
                         />
@@ -643,7 +655,6 @@ function ShowcaseModal(props) {
                           y1="10"
                           transform="translate(12.171 7.171)"
                           fill="none"
-                          stroke={props.colors[0]}
                           strokeMiterlimit="10"
                           strokeWidth="2"
                         />
@@ -653,13 +664,12 @@ function ShowcaseModal(props) {
                           r="12"
                           transform="translate(0.171 0.171)"
                           fill="none"
-                          stroke={props.colors[0]}
                           strokeMiterlimit="10"
                           strokeWidth="1.926"
                         />
                       </g>
                     </svg>
-                  </div>
+                  </StyledMultiBtn>
                 </div>
               );
             })}

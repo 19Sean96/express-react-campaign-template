@@ -20,6 +20,13 @@
       width: 2.2rem;
       transform: translate(2rem, -1.5rem);
     }
+
+    @media screen and (max-width: 650px) {
+      &--icon--container {
+        width: 1.8rem;
+        transform: translate(0.5rem, -1.5rem);
+      }
+    }
   }
 
   &_cart {
@@ -48,7 +55,6 @@
         font-weight: 800;
         font-size: 2rem;
         margin-left: 2.5rem;
-
       }
 
       &-image {
@@ -94,7 +100,7 @@
           height: 100%;
           display: flex;
           justify-content: center;
-          margin-left: -.8rem;
+          margin-left: -0.8rem;
           svg {
             align-self: center;
             height: 30%;
@@ -192,8 +198,8 @@
     &--empty {
       width: 100%;
       height: 15vmax;
-      min-height: 7.2rem;
-      max-height: 30rem; 
+      min-height: 20rem;
+      max-height: 30rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -206,6 +212,7 @@
       &_icon {
         width: 3vmax;
         max-width: 5rem;
+        min-width: 4rem;
       }
       &_message {
         text-align: center;
@@ -217,7 +224,7 @@
         align-items: center;
         justify-content: space-between;
         margin-top: auto;
-        transform: translateX(1vmax);
+        transform: translateX(1.5rem);
         &-link {
           text-decoration: none;
           color: #fff;
@@ -267,6 +274,36 @@
           g path {
             stroke-width: 0.4rem;
             transition: 0.15s stroke 0.25s;
+          }
+        }
+      }
+      @media screen and (max-width: 650px) {
+        &_icon {
+          min-width: 0;
+          width: 3.25rem;
+        }
+
+        &_message {
+          font-size: 2.35rem;
+          margin-top: 1.25rem;
+        } 
+
+        &_cta {
+          transform: translateX(2rem);
+
+          &-link {
+            font-size: 2.25rem;
+
+            &:hover {
+
+              &::before {
+                transform: translateY(.75rem) scaleX(1.5);
+              }
+            }
+          }
+
+          svg {
+            height: 1.65rem;
           }
         }
       }
