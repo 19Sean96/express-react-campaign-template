@@ -56,21 +56,6 @@ class Wishlist extends Component {
       }
     };
 
-    this.props.wishlist.map(item => {
-
-      this.props.wishlist.length > 0 &&
-        this.state.notePositionActive.push({
-          key: item.key,
-          isActive: false
-        });
-      this.props.wishlist.length > 0 &&
-        this.state.noteInputHasValue.push({
-          key: item.key,
-          hasValue: false
-        });
-
-      return null;
-    });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -91,16 +76,6 @@ class Wishlist extends Component {
         },
         productKey: newItem.key
       });
-
-      this.state.notePositionActive.push({
-        key: newItem.key,
-        isActive: false
-      });
-
-      this.state.noteInputHasValue.push({
-        key: newItem.key,
-        hasValue: false
-      });
     } else if (
       prevProps.wishlist.length > this.props.wishlist.length &&
       this.state.removing
@@ -113,6 +88,7 @@ class Wishlist extends Component {
         const itemRemoved = prevProps.wishlist.filter(
           e => !this.props.wishlist.includes(e)
         );
+        console.log(itemRemoved)
         const itemRemovedID = itemRemoved[0].tile_parent;
         this.state.cartDetails.splice(
           this.state.cartDetails.findIndex(
@@ -126,6 +102,18 @@ class Wishlist extends Component {
     }
   }
 
+  componentWillUpdate() {
+    console.log(this.props.wishlist)
+
+    const cartDetails = this.props.wishlist.map(item => {
+      return {
+        note: {
+          value: "",
+          active: false
+        }
+      }
+    })
+  }
 
   FormClass = "Wishlist_Send-form";
   inputClass = `${this.FormClass}_input`;
@@ -218,16 +206,11 @@ class Wishlist extends Component {
       let { noteInputHasValue } = this.state;
 
       this.state.cartDetails[
-        this.state.cartDetails.findIndex(item => item.productKey == target.id)
+        this.state.cartDetails.findIndex(item => item.tile.id == target.id)
       ].note.value = target.value;
-
       hasValue
-        ? (noteInputHasValue[
-            noteInputHasValue.findIndex(input => input.key === target.id)
-          ].hasValue = true)
-        : (noteInputHasValue[
-            noteInputHasValue.findIndex(input => input.key === target.id)
-          ].hasValue = false);
+        ? (noteInputHasValue[target.id] = true)
+        : (noteInputHasValue[target.id] = false);
 
       this.setState({
         noteInputHasValue
@@ -236,31 +219,30 @@ class Wishlist extends Component {
   }
 
   reduceCart(removedItem) {
-    const index = this.state.cartDetails.findIndex(
-      cartItem => cartItem.id === removedItem.tile_parent
-    );
-    this.state.cartDetails.splice(index, 1);
+    console.log(removedItem)
+    const removedItemKey = removedItem.key;
+
+    const newCart = this.state.cartDetails.filter(
+      cartItem => cartItem.productKey !== removedItemKey
+    )
+
+    this.setState({
+      cartDetails: newCart
+    })
   }
 
-  closeNote = key => e => {
-    console.log(key);
+  closeNote = i => e => {
     const { notePositionActive } = this.state;
-
-    notePositionActive[
-      notePositionActive.findIndex(input => input.key == key)
-    ].isActive = false;
+    notePositionActive[i] = false;
 
     this.setState({
       notePositionActive
     });
   };
 
-  openNote = key => e => {
+  openNote = i => e => {
     const { notePositionActive } = this.state;
-
-    notePositionActive[
-      notePositionActive.findIndex(input => input.key == key)
-    ].isActive = true;
+    notePositionActive[i] = true;
 
     this.setState({
       notePositionActive
@@ -269,7 +251,6 @@ class Wishlist extends Component {
 
   render() {
     const [color, colorLight, colorDark] = this.props.colors;
-    console.log(this.state.notePositionActive);
     return (
       <>
         <section className="Wishlist" id="Wishlist">
@@ -327,16 +308,10 @@ class Wishlist extends Component {
           <article className="Wishlist_cart content_wrapper">
             {this.props.wishlist.length > 0 ? (
               this.props.wishlist.map((item, index) => {
-                const {noteInputHasValue, notePositionActive} = this.state; 
-        
-                const noteValue = noteInputHasValue
-                const noteActive = notePositionActive
-                console.log(noteValue, noteActive);
                 return (
-                  <OffClick key={item.key} handler={this.closeNote(item.key)}>
+                  <OffClick key={index} handler={this.closeNote(index)}>
                     <div className={`Wishlist_cart_item`}>
-                      {this.state.beingRemoved.giveWarning &&
-                      this.state.beingRemoved.index === index ? (
+                      {(this.state.beingRemoved.giveWarning && this.state.beingRemoved.index === index) ? (
                         <>
                           <p>this is a warning</p>
                         </>
@@ -355,17 +330,9 @@ class Wishlist extends Component {
                           <div className="Wishlist_cart_item--editor">
                             <StyledNoteIcon
                               color={
-                                this.state.noteInputHasValue[
-                                  this.state.noteInputHasValue.findIndex(
-                                    note => note.key === item.key
-                                  )
-                                ]
+                                this.state.noteInputHasValue[item.tile_parent]
                                   ? "#1dad13"
-                                  : this.state.notePositionActive[
-                                      this.state.notePositionActive.findIndex(
-                                        note => note.key === item.key
-                                      )
-                                    ]
+                                  : this.state.notePositionActive[index]
                                   ? color
                                   : "rgba(#fff, 0.4)"
                               }
@@ -376,13 +343,9 @@ class Wishlist extends Component {
                                 viewBox="0 0 48 48.414"
                                 dataposition={index}
                                 onClick={
-                                  this.state.notePositionActive[
-                                    this.state.notePositionActive.findIndex(
-                                      note => note.key === item.key
-                                    )
-                                  ]
-                                    ? this.closeNote(item.key)
-                                    : this.openNote(item.key)
+                                  this.state.notePositionActive[index]
+                                    ? this.closeNote(index)
+                                    : this.openNote(index)
                                 }
                               >
                                 <g transform="translate(-1180 -1355)">
@@ -432,7 +395,7 @@ class Wishlist extends Component {
                                   type="text"
                                   name="wishListNote"
                                   product={item.key}
-                                  id={item.key}
+                                  id={item.tile_parent}
                                   onKeyUp={e => this.handleKeyPress(e)}
                                 />
                                 <label
@@ -445,14 +408,15 @@ class Wishlist extends Component {
                             </StyledNoteIcon>
                             <div
                               onClick={() => {
-                                // this.props.removeItem(item);
-                                console.log(index + "is being clicked");
-                                this.setState({
-                                  beingRemoved: {
-                                    giveWarning: true,
-                                    index: index
-                                  }
-                                });
+                                this.props.removeItem(item);
+                                this.reduceCart(item);
+                                console.log(index + "is being clicked")
+                                // this.setState({
+                                //   beingRemoved: {
+                                //     giveWarning: true,
+                                //     index: index
+                                //   }
+                                // })
                               }}
                               className="Wishlist_cart_item--editor-remove"
                             >
