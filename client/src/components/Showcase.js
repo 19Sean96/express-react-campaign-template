@@ -84,14 +84,19 @@ const StyledBtn2 = styled.button`
 `;
 
 const StyledMultiBtn = styled.div`
-  svg g > * {
-    stroke: ${props => props.color}
+  transition: 0.13s background-color ease-out;
+  background-color: ${props => (props.isClicked ? props.color : "#0e0d0d")};
+  width: 2.8vmax;
+  height: 2.8vmax;
+  min-width: 6rem;
+  min-height: 6rem;
+
+  svg:first-child g > * {
+    stroke: ${props => props.color};
   }
 
   &:hover {
-    svg g > * {
-      stroke: 
-    }
+    background-color: ${props => props.color} !important;
   }
 `;
 
@@ -138,7 +143,6 @@ class Showcase extends Component {
   }
 
   expandMultiItem(name, index, products) {
-
     this.setState({
       itemType: "multi",
       open: true,
@@ -448,7 +452,9 @@ function ShowcaseModal(props) {
   return (
     <article
       id={`${props.itemType}Modal`}
-      className={`zoomModal ${props.open && "zoomModal--active"}`}
+      className={`zoomModal ${props.open && "zoomModal--active"} ${
+        props.itemType === "single" ? "" : "zoomModal--multi"
+      }`}
     >
       <h2 className="zoomModal_name">{productInfo.name}</h2>
       <div className="zoomModal-close" onClick={props.closeModal}>
@@ -623,58 +629,192 @@ function ShowcaseModal(props) {
           </StyledBtn2>
         </>
       ) : (
-        <Scrollbars style={{ width: "100%", height: "100%" }}>
-          <div className="zoomModal-multi-grid">
-            {productInfo.products.map(prod => {
-              return (
-                <div className="zoomModal-multi-grid-item">
-                  <h4 className="zoomModal-multi-grid-item_title">
-                    {prod.alt}
-                  </h4>
-                  <div className="img-container">
-                    <img src={prod.img} alt={prod.alt} />
-                  </div>
-                  <StyledMultiBtn
-                    onClick={() => props.addItem(prod, productInfo.index)}
-                    className="multi--addItem"
-                    color={props.colors[0]}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 25.926 25.926"
-                    >
-                      <g transform="translate(0.792 0.792)">
-                        <line
-                          x2="10"
-                          transform="translate(7.171 12.171)"
-                          fill="none"
-                          strokeMiterlimit="10"
-                          strokeWidth="2"
-                        />
-                        <line
-                          y1="10"
-                          transform="translate(12.171 7.171)"
-                          fill="none"
-                          strokeMiterlimit="10"
-                          strokeWidth="2"
-                        />
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="12"
-                          transform="translate(0.171 0.171)"
-                          fill="none"
-                          strokeMiterlimit="10"
-                          strokeWidth="1.926"
-                        />
-                      </g>
-                    </svg>
-                  </StyledMultiBtn>
+        <Scrollbars style={{ width: "100%", minHeight: "80rem"}}>
+        <div className="zoomModal-multi-grid">
+          {productInfo.products.map(prod => {
+            return (
+              <div className="zoomModal-multi-grid-item">
+                <h4 className="zoomModal-multi-grid-item_title">{prod.alt}</h4>
+                <div className="img-container">
+                  <img src={prod.img} alt={prod.alt} />
                 </div>
-              );
-            })}
-          </div>
-        </Scrollbars>
+                <StyledMultiBtn
+                  onClick={() => props.addItem(prod, productInfo.index)}
+                  className="multi--addItem"
+                  color={props.colors[0]}
+                  isClicked={props.wishlist.some(
+                    wishlistProd => wishlistProd.key === prod.key
+                  )}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 25.926 25.926"
+                    className="multi--addItem__1"
+                  >
+                    <g transform="translate(0.792 0.792)">
+                      <line
+                        x2="10"
+                        transform="translate(7.171 12.171)"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <line
+                        y1="10"
+                        transform="translate(12.171 7.171)"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                        transform="translate(0.171 0.171)"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.926"
+                      />
+                    </g>
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 25.926 25.926"
+                    className="multi--addItem__2"
+                  >
+                    <g transform="translate(-0.281 -0.281)">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                        transform="translate(1.244 1.244)"
+                        fill="#fff"
+                        stroke="#fff"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.926"
+                      />
+                      <line
+                        x2="13"
+                        transform="translate(6.744 13.244)"
+                        fill="none"
+                        stroke={props.colors[0]}
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <line
+                        y1="13"
+                        transform="translate(13.244 6.744)"
+                        fill="none"
+                        stroke={props.colors[0]}
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                    </g>
+                  </svg>
+                  <span>
+                    {props.wishlist.some(
+                      wishlistProd => wishlistProd.key === prod.key
+                    )
+                      ? "added!"
+                      : ""}
+                  </span>
+                </StyledMultiBtn>
+              </div>
+            );
+          })}
+          {productInfo.products.map(prod => {
+            return (
+              <div className="zoomModal-multi-grid-item">
+                <h4 className="zoomModal-multi-grid-item_title">{prod.alt}</h4>
+                <div className="img-container">
+                  <img src={prod.img} alt={prod.alt} />
+                </div>
+                <StyledMultiBtn
+                  onClick={() => props.addItem(prod, productInfo.index)}
+                  className="multi--addItem"
+                  color={props.colors[0]}
+                  isClicked={props.wishlist.some(
+                    wishlistProd => wishlistProd.key === prod.key
+                  )}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 25.926 25.926"
+                    className="multi--addItem__1"
+                  >
+                    <g transform="translate(0.792 0.792)">
+                      <line
+                        x2="10"
+                        transform="translate(7.171 12.171)"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <line
+                        y1="10"
+                        transform="translate(12.171 7.171)"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                        transform="translate(0.171 0.171)"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.926"
+                      />
+                    </g>
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 25.926 25.926"
+                    className="multi--addItem__2"
+                  >
+                    <g transform="translate(-0.281 -0.281)">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                        transform="translate(1.244 1.244)"
+                        fill="#fff"
+                        stroke="#fff"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.926"
+                      />
+                      <line
+                        x2="13"
+                        transform="translate(6.744 13.244)"
+                        fill="none"
+                        stroke={props.colors[0]}
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <line
+                        y1="13"
+                        transform="translate(13.244 6.744)"
+                        fill="none"
+                        stroke={props.colors[0]}
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                      />
+                    </g>
+                  </svg>
+                  <span>
+                    {props.wishlist.some(
+                      wishlistProd => wishlistProd.key === prod.key
+                    )
+                      ? "added!"
+                      : ""}
+                  </span>
+                </StyledMultiBtn>
+              </div>
+            );
+          })}
+        </div>
+      </Scrollbars>
       )}
     </article>
   );

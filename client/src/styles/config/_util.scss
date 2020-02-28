@@ -1,132 +1,163 @@
 html {
-    scroll-behavior: smooth;
-    font-size: 10px;
-    overflow-x: hidden;
-  }
-  
-  *{
-    -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  font-size: 10px;
+  overflow-x: hidden;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  }
-  
-  body {
-    max-width: 100vw;
-    overflow-x: hidden;
+}
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.App {
+  background-color: #e4e4e4;
+}
+
+.activeInput {
+  label {
+    transform: translate(0, -500%) !important;
   }
 
-  .App {
-    background-color: #e4e4e4;
+  &::before {
+    width: 100%;
   }
+}
 
-  .activeInput {
-    label {
-      transform: translate(0, -500%) !important;
-    }
-  
-    &::before {
-      width: 100%;
-    }
-  }
-  
+.icon {
+  &-note {
+    stroke: green !important;
 
-  
-  .icon {
-    &-note {
+    > * {
       stroke: green !important;
-  
-      > * {
-        stroke: green !important;
+    }
+  }
+}
+
+.cta {
+  &-addToList {
+    position: relative;
+    &--icon {
+      width: 12.5%;
+      max-width: 2.4rem;
+      height: auto;
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translate(0%, -45%);
+      transition: 0.225s transform ease-out, 0.18s opacity ease;
+
+      svg {
+        max-width: 100%;
+      }
+
+      &-2 {
+        transform: translate(0%, 200%);
+      }
+    }
+    &:hover {
+      div {
+        opacity: 1;
+        transform: translate(0%, -45%);
       }
     }
   }
-  
-  .cta {
-  
-    &-addToList {
-      position: relative;
-      &--icon {
-        width: 12.5%;
-        max-width: 2.4rem;
-        height: auto;
-        position: absolute;
-        right: 5%;
-        top: 50%;
-        transform: translate(0%,-45%);
-        transition: .225s transform ease-out,
-                    .18s opacity ease;
-  
-        svg {
-          max-width: 100%;
-        }
 
-        &-2 {
-          transform: translate(0%, 200%)
+  &-zoomIn {
+    position: relative;
+
+    &--icon {
+      width: 15%;
+      max-width: 2.1rem;
+      height: auto;
+      position: absolute;
+      right: 7.5%;
+      top: 50%;
+      transform: translate(0%, -45%);
+
+      svg {
+        max-width: 100%;
+
+        g > * {
+          stroke: #fff;
+          transition: 0.15s stroke ease-in-out;
         }
       }
-      &:hover {
-        div {
-          opacity: 1;
-          transform: translate(0%,-45%);
-        }
-      }
-    }
-  
-    &-zoomIn {
-      position: relative;
-  
-      &--icon {
-        width: 15%;
-        max-width: 2.1rem;
-        height: auto;
-        position: absolute;
-        right: 7.5%;
-        top: 50%;
-        transform: translate(0%,-45%);
-  
-        svg {
-          max-width: 100%;
 
+      &-2 {
+        position: absolute;
+        z-index: 100;
+
+        svg {
           g > * {
-            stroke: #fff;
-            transition: .15s stroke ease-in-out;
-
-          }
-        }
-
-        &-2 {
-          position: absolute;
-          z-index: 100;
-
-          svg {
-            g > * {
-              stroke: orange;
-            }
-          }
-        }
-      }
-
-      span {
-        color: #fff;
-        transition: .15s color ease-in-out;
-      }
-
-      &:hover {
-        span {
-          color: #000;
-        }
-        .cta-zoomIn--icon {
-
-          svg g > * {
-            stroke: #000;
+            stroke: orange;
           }
         }
       }
     }
+
+    span {
+      color: #fff;
+      transition: 0.15s color ease-in-out;
+    }
+
+    &:hover {
+      span {
+        color: #000;
+      }
+      .cta-zoomIn--icon {
+        svg g > * {
+          stroke: #000;
+        }
+      }
+    }
+  }
+}
+
+.multi--addItem {
+  background-color: $color-black;
+  position: relative;
+  overflow: hidden;
+  
+  svg {
+    position: absolute;
+    transition: 0.23s transform ease-out;
+    z-index: 500;
   }
 
-  .company-input { margin: .5rem .5rem .5rem 0}
-  .phone-input { margin: .5rem 0 .5rem .5rem}
-
-  @media screen and (max-width: 725px) {
-    .company-input,.phone-input { margin: .5rem 0}
+  &__1 {
+    transform: translate(0, 0);
   }
+
+  &__2 {
+    transform: translate(0, 200%);
+  }
+
+  &:hover {
+    .multi--addItem__1 {
+      transform: translate(0, -200%);
+    }
+
+    .multi--addItem__2 {
+      transform: translate(0, 0);
+    }
+  }
+}
+
+.company-input {
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+.phone-input {
+  margin: 0.5rem 0 0.5rem 0.5rem;
+}
+
+@media screen and (max-width: 725px) {
+  .company-input,
+  .phone-input {
+    margin: 0.5rem 0;
+  }
+}
