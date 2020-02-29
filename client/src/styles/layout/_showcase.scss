@@ -157,7 +157,7 @@
 
     width: 79vw; 
     max-width: 1580px;
-    height: 87.5vh;
+    height: 87.5vmin;
 
     background-color: #fafafa;
     padding: 3.25rem 3.75rem;
@@ -181,9 +181,16 @@
     &--multi {
       // min-height: 87.5vh;
       height: auto;
-      overflow: auto;
-      transform: translate(-50%, -45vh);
-      max-height: calc(100vh);
+      transform: translate(-50%, -50vh);
+      height: calc(100vh);
+      padding: 0;
+      width: 1400px;
+
+      h2 {
+        padding-left: 3rem;
+        padding-top: 3rem;
+      }
+
     }
 
     &_name {
@@ -212,24 +219,29 @@
       max-height: 5.8rem;
       width: 32%;
       max-width: 23rem;
+      // position: absolute;
+      // left: 50%;
+      // bottom: 10%;
+      // transform: translate(-50%,-50%);
+
       margin: -5rem auto 4rem;
+
     }
 
     &-close {
-      position: absolute;
+      position: fixed;
       width: 3rem;
       height: 3rem;
       right: 3.25rem;
       top: 3.75rem;
       cursor: pointer;
-
+      z-index: 100;
       > svg * {
         stroke-width: 4px;
       }
     }
 
     &-multi-grid {
-      overflow-x: hidden;
       width: 100%;
       margin: 1.5rem auto 0;
       display: grid;
@@ -291,7 +303,7 @@
           align-items: center;
           cursor: pointer;
           svg {
-            width: 47.5%;
+            width: 2.85rem;
             height: auto;
           }
 

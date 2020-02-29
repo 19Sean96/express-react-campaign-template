@@ -125,13 +125,14 @@ body {
   
   svg {
     position: absolute;
-    transition: 0.23s transform ease-out;
+    transition: 0.13s transform ease-out;
     z-index: 500;
+    right: 1.5rem;
   }
 
   &__1 {
     transform: translate(0, 0);
-  }
+   }
 
   &__2 {
     transform: translate(0, 200%);
@@ -160,4 +161,10 @@ body {
   .phone-input {
     margin: 0.5rem 0;
   }
+}
+
+.added-btn {
+  padding-right: 5rem;
+  padding-left: 1.5rem;
+  font-size: 1.8rem;
 }
