@@ -186,6 +186,10 @@
       padding: 0;
       width: 1400px;
 
+      @media screen and (max-width: 1800px) {
+        width: 80%;
+      }
+
       h2 {
         padding-left: 3rem;
         padding-top: 3rem;
@@ -203,6 +207,8 @@
     &_img {
       max-width: 133rem;
       height: auto;
+
+      @media screen and (max-width: 1500px) { width: 90% }
       &--container {
         margin: 3rem auto;
         width: 100%;
@@ -219,10 +225,6 @@
       max-height: 5.8rem;
       width: 32%;
       max-width: 23rem;
-      // position: absolute;
-      // left: 50%;
-      // bottom: 10%;
-      // transform: translate(-50%,-50%);
 
       margin: -5rem auto 4rem;
 
