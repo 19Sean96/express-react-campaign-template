@@ -179,15 +179,18 @@
     }
 
     &--multi {
-      // min-height: 87.5vh;
+      min-height: 100%;
       height: auto;
       transform: translate(-50%, -50vh);
       height: calc(100vh);
       padding: 0;
       width: 1400px;
-
       @media screen and (max-width: 1800px) {
-        width: 80%;
+        width: 900px;
+
+        .zoomModal-multi-grid {
+          grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr);
+        }
       }
 
       h2 {
@@ -252,13 +255,14 @@
       grid-auto-flow: dense;
       grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr) minmax(0%, 1fr);
       align-items: stretch;
+      padding: 0 3rem 0 1.5rem;
 
       &-item {
         position: relative;
         background-color: #fafafa;
-        padding: 1.1vw;
+        padding: 2.25rem;
         font-family: "UniversCondensed", sans-serif;
-        font-size: 0.9vmax;
+        font-size: 1.8rem;
         text-transform: uppercase;
         border: 1px solid #e3e3e3;
         align-self: stretch;

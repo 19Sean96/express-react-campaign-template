@@ -365,7 +365,6 @@
     &::before {
       content: "";
       position: absolute;
-      bottom: 0; 
       left: 0;
       width: 100%;
       background-color: #eaeaea;
@@ -387,6 +386,8 @@
         &::before {
           height: 0%;
           z-index: -1;
+          bottom: 0; 
+
         }
 
         &:hover {
@@ -405,6 +406,7 @@
         &::before {
           height: 100%;
           z-index: -1;
+          top: 0; 
         }
 
         &:hover {

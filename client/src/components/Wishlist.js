@@ -342,6 +342,12 @@ class Wishlist extends Component {
                               onClick={() => {
                                 this.props.removeItem(item);
                                 this.reduceCart(item);
+                                this.setState({
+                                  beingRemoved: {
+                                    giveWarning: false,
+                                    index: null
+                                  }
+                                })
                               }}  
                             >
                               yes delete

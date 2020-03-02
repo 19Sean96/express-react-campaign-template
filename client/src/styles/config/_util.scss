@@ -138,6 +138,10 @@ body {
     transform: translate(0, 200%);
   }
 
+  // &-check {
+  //   transform: translate(0,0);
+  // }
+
   &:hover {
     .multi--addItem__1 {
       transform: translate(0, -200%);
