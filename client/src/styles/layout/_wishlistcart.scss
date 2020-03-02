@@ -68,6 +68,7 @@
           justify-content: center;
           align-items: center;
           background-color: #fff;
+          min-width: 7rem;
         }
       }
 
@@ -286,7 +287,7 @@
         &_message {
           font-size: 2.35rem;
           margin-top: 1.25rem;
-        } 
+        }
 
         &_cta {
           transform: translateX(2rem);
@@ -295,9 +296,8 @@
             font-size: 2.25rem;
 
             &:hover {
-
               &::before {
-                transform: translateY(.75rem) scaleX(1.5);
+                transform: translateY(0.75rem) scaleX(1.5);
               }
             }
           }
@@ -315,6 +315,104 @@
 
         100% {
           transform: rotate(-90deg) translateX(0.2rem);
+        }
+      }
+    }
+  }
+}
+
+.item_remove {
+  &-warning {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    #trashSVG {
+      width: 2.8rem;
+      margin-left: 2.5rem;
+      svg {
+        left: 0;
+      }
+    }
+  }
+
+  &-text {
+    color: rgba(#fff, 0.95);
+    text-transform: uppercase;
+    font-family: "UniversCondensed";
+    font-weight: 800;
+    font-size: 2.3rem;
+    margin-left: 2.5rem;
+    margin-right: 1.25rem;
+  }
+
+  &-btn {
+    background-color: transparent;
+    height: 100%;
+    padding: 0rem 3.25rem;
+    text-transform: uppercase;
+    margin-right: 1.5rem;
+    border: none;
+    font-family: "UniversCondensed";
+    font-weight: 800;
+    position: relative;
+    overflow: hidden;
+    z-index: 15;
+    cursor: pointer;
+    transition: .225s all ease-in;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0; 
+      left: 0;
+      width: 100%;
+      background-color: #eaeaea;
+      transition: .125s all ease-out;
+
+    }
+
+    &--container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 1.5rem 0 1.5rem 0;
+      margin-left: auto;
+
+      #cancelRemove {
+        border: 0.2rem solid #eaeaea;
+        color: #eaeaea;
+
+        &::before {
+          height: 0%;
+          z-index: -1;
+        }
+
+        &:hover {
+          color: $color-black;
+
+          &::before {
+            height: 100%;
+          }
+        }
+      }
+
+      #remove {
+        color: $color-black;
+        border: 0.2rem solid #eaeaea;
+
+        &::before {
+          height: 100%;
+          z-index: -1;
+        }
+
+        &:hover {
+          color: #eaeaea;
+
+          &::before {
+            height: 0%;
+          }
         }
       }
     }

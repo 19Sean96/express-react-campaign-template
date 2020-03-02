@@ -114,19 +114,19 @@ class Wishlist extends Component {
       const { valid } = this.state.name;
       hasValue
         ? this.setState({
-            name: {
-              active: true,
-              value: e.target.value,
-              valid
-            }
-          })
+          name: {
+            active: true,
+            value: e.target.value,
+            valid
+          }
+        })
         : this.setState({
-            name: {
-              active: false,
-              value: e.target.value,
-              valid
-            }
-          });
+          name: {
+            active: false,
+            value: e.target.value,
+            valid
+          }
+        });
     } else if (target.name === "email") {
       let { valid } = this.state.email;
 
@@ -134,53 +134,53 @@ class Wishlist extends Component {
 
       hasValue
         ? this.setState({
-            email: {
-              active: true,
-              value: e.target.value,
-              valid
-            }
-          })
+          email: {
+            active: true,
+            value: e.target.value,
+            valid
+          }
+        })
         : this.setState({
-            email: {
-              active: false,
-              value: e.target.value,
-              valid
-            }
-          });
+          email: {
+            active: false,
+            value: e.target.value,
+            valid
+          }
+        });
     } else if (target.name === "company") {
       const { valid } = this.state.company;
       hasValue
         ? this.setState({
-            company: {
-              active: true,
-              value: e.target.value,
-              valid
-            }
-          })
+          company: {
+            active: true,
+            value: e.target.value,
+            valid
+          }
+        })
         : this.setState({
-            company: {
-              active: false,
-              value: e.target.value,
-              valid
-            }
-          });
+          company: {
+            active: false,
+            value: e.target.value,
+            valid
+          }
+        });
     } else if (target.name === "phone") {
       const { valid } = this.state.phone;
       hasValue
         ? this.setState({
-            phone: {
-              active: true,
-              value: e.target.value,
-              valid
-            }
-          })
+          phone: {
+            active: true,
+            value: e.target.value,
+            valid
+          }
+        })
         : this.setState({
-            phone: {
-              active: false,
-              value: e.target.value,
-              valid
-            }
-          });
+          phone: {
+            active: false,
+            value: e.target.value,
+            valid
+          }
+        });
     } else if (target.name === "comments") {
       const { valid } = this.state.comments;
       this.setState({
@@ -298,219 +298,257 @@ class Wishlist extends Component {
                 return (
                   <OffClick key={index} handler={this.closeNote(index)}>
                     <div className={`Wishlist_cart_item`}>
+                      <div className="Wishlist_cart_item-image--container">
+                        <img
+                          src={item.img}
+                          alt={item.alt}
+                          className="Wishlist_cart_item-image"
+                        />
+                      </div>
                       {(this.state.beingRemoved.giveWarning && this.state.beingRemoved.index === index) ? (
-                        <>
-                          <p>this is a warning</p>
-                        </>
-                      ) : (
-                        <>
-                          <div className="Wishlist_cart_item-image--container">
-                            <img
-                              src={item.img}
-                              alt={item.alt}
-                              className="Wishlist_cart_item-image"
-                            />
+                        <div className="item_remove-warning">
+                          <div id="trashSVG">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 26">
+                              <g id="Trash" transform="translate(0.037 1)">
+                                <path d="M603.2,738l-.77,16.9a3.978,3.978,0,0,1-3.8,3.965h-6.071a3.978,3.978,0,0,1-3.8-3.965L588,738" transform="translate(-585.663 -734.87)" fill="none" stroke="#d7de3b" stroke-miterlimit="10" stroke-width="2" />
+                                <line x2="20" transform="translate(-0.037 3)" fill="none" stroke="#d7de3b" stroke-miterlimit="10" stroke-width="2" />
+                                <line x2="0.475" y2="11.478" transform="translate(7.325 7.304)" fill="none" stroke="#d7de3b" stroke-miterlimit="10" stroke-width="2" />
+                                <line x1="0.475" y2="11.478" transform="translate(12.076 7.304)" fill="none" stroke="#d7de3b" stroke-miterlimit="10" stroke-width="2" />
+                                <path d="M596,735.13l.517-1.7a1.925,1.925,0,0,1,1.8-1.427h2.962a1.925,1.925,0,0,1,1.8,1.427l.517,1.7" transform="translate(-589.863 -732)" fill="none" stroke="#d7de3b" stroke-miterlimit="10" stroke-width="2" />
+                              </g>
+                            </svg>
                           </div>
-                          <h3 className="Wishlist_cart_item-name">
-                            {item.alt}
-                          </h3>
-                          <div className="Wishlist_cart_item--editor">
-                            <StyledNoteIcon
-                              color={
-                                this.state.noteInputHasValue[item.tile_parent]
-                                  ? "#1dad13"
-                                  : this.state.notePositionActive[index]
-                                  ? color
-                                  : "rgba(#fff, 0.4)"
-                              }
-                              className={`Wishlist_cart_item--editor-note`}
+                          <p className="item_remove-text">
+                            delete this item?
+                          </p>
+                          <div className="item_remove-btn--container">
+                            <button
+                              className="item_remove-btn" 
+                              id="cancelRemove"
+                              onClick={() => {
+                                this.setState({
+                                  beingRemoved: {
+                                    giveWarning: false,
+                                    index: null
+                                  }
+                                })
+                              }}  
                             >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 48 48.414"
-                                dataposition={index}
-                                onClick={
-                                  this.state.notePositionActive[index]
-                                    ? this.closeNote(index)
-                                    : this.openNote(index)
+                              cancel
+                            </button>
+                            <button 
+                              className="item_remove-btn" 
+                              id="remove"
+                              onClick={() => {
+                                this.props.removeItem(item);
+                                this.reduceCart(item);
+                              }}  
+                            >
+                              yes delete
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+
+                          <>
+                            <h3 className="Wishlist_cart_item-name">
+                              {item.alt}
+                            </h3>
+                            <div className="Wishlist_cart_item--editor">
+                              <StyledNoteIcon
+                                color={
+                                  this.state.noteInputHasValue[item.tile_parent]
+                                    ? "#1dad13"
+                                    : this.state.notePositionActive[index]
+                                      ? color
+                                      : "rgba(#fff, 0.4)"
                                 }
+                                className={`Wishlist_cart_item--editor-note`}
                               >
-                                <g transform="translate(-1180 -1355)">
-                                  <path
-                                    d="M1219,1394h-7l-8,8-8-8h-7a8,8,0,0,1-8-8v-30h46v30A8,8,0,0,1,1219,1394Z"
-                                    fill="none"
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 48 48.414"
+                                  dataposition={index}
+                                  onClick={
+                                    this.state.notePositionActive[index]
+                                      ? this.closeNote(index)
+                                      : this.openNote(index)
+                                  }
+                                >
+                                  <g transform="translate(-1180 -1355)">
+                                    <path
+                                      d="M1219,1394h-7l-8,8-8-8h-7a8,8,0,0,1-8-8v-30h46v30A8,8,0,0,1,1219,1394Z"
+                                      fill="none"
+                                      strokeMiterlimit="10"
+                                      strokeWidth="2"
+                                    />
+                                    <g data-name="Group 107">
+                                      <line
+                                        x2="26"
+                                        transform="translate(1191 1366)"
+                                        fill="none"
+                                        strokeMiterlimit="10"
+                                        strokeWidth="2"
+                                      />
+                                      <line
+                                        x2="26"
+                                        transform="translate(1191 1374)"
+                                        fill="none"
+                                        strokeMiterlimit="10"
+                                        strokeWidth="2"
+                                      />
+                                      <line
+                                        x2="20"
+                                        transform="translate(1191 1382)"
+                                        fill="none"
+                                        strokeMiterlimit="10"
+                                        strokeWidth="2"
+                                      />
+                                    </g>
+                                  </g>
+                                </svg>
+                                <div
+                                  className={`addNote ${
+                                    this.state.notePositionActive[index]
+                                      ? "addNote--active"
+                                      : "addNote--inactive"
+                                    } ${
+                                    this.state.noteInputHasValue[item.id]
+                                      ? "activeInput"
+                                      : ""
+                                    }`}
+                                >
+                                  <input
+                                    type="text"
+                                    name="wishListNote"
+                                    product={item.key}
+                                    id={item.tile_parent}
+                                    onKeyUp={e => this.handleKeyPress(e)}
                                   />
-                                  <g data-name="Group 107">
+                                  <label
+                                    htmlFor="note"
+                                    className={`addNote_label`}
+                                  >
+                                    add a note
+                                </label>
+                                </div>
+                              </StyledNoteIcon>
+                              <div
+                                onClick={() => {
+                                  console.log(index + "is being clicked")
+                                  this.setState({
+                                    beingRemoved: {
+                                      giveWarning: true,
+                                      index: index
+                                    }
+                                  })
+                                }}
+                                className="Wishlist_cart_item--editor-remove"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 29.414 29.414"
+                                >
+                                  <g
+                                    id="Cross"
+                                    transform="translate(0.397 0.707)"
+                                  >
                                     <line
-                                      x2="26"
-                                      transform="translate(1191 1366)"
+                                      x2="28"
+                                      y2="28"
+                                      transform="translate(0.31)"
                                       fill="none"
+                                      stroke="#000"
                                       strokeMiterlimit="10"
                                       strokeWidth="2"
                                     />
                                     <line
-                                      x2="26"
-                                      transform="translate(1191 1374)"
+                                      y1="28"
+                                      x2="28"
+                                      transform="translate(0.31)"
                                       fill="none"
-                                      strokeMiterlimit="10"
-                                      strokeWidth="2"
-                                    />
-                                    <line
-                                      x2="20"
-                                      transform="translate(1191 1382)"
-                                      fill="none"
+                                      stroke="#000"
                                       strokeMiterlimit="10"
                                       strokeWidth="2"
                                     />
                                   </g>
-                                </g>
-                              </svg>
-                              <div
-                                className={`addNote ${
-                                  this.state.notePositionActive[index]
-                                    ? "addNote--active"
-                                    : "addNote--inactive"
-                                } ${
-                                  this.state.noteInputHasValue[item.id]
-                                    ? "activeInput"
-                                    : ""
-                                }`}
-                              >
-                                <input
-                                  type="text"
-                                  name="wishListNote"
-                                  product={item.key}
-                                  id={item.tile_parent}
-                                  onKeyUp={e => this.handleKeyPress(e)}
-                                />
-                                <label
-                                  htmlFor="note"
-                                  className={`addNote_label`}
-                                >
-                                  add a note
-                                </label>
+                                </svg>
                               </div>
-                            </StyledNoteIcon>
-                            <div
-                              onClick={() => {
-                                this.props.removeItem(item);
-                                this.reduceCart(item);
-                                console.log(index + "is being clicked")
-                                // this.setState({
-                                //   beingRemoved: {
-                                //     giveWarning: true,
-                                //     index: index
-                                //   }
-                                // })
-                              }}
-                              className="Wishlist_cart_item--editor-remove"
-                            >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 29.414 29.414"
-                              >
-                                <g
-                                  id="Cross"
-                                  transform="translate(0.397 0.707)"
-                                >
-                                  <line
-                                    x2="28"
-                                    y2="28"
-                                    transform="translate(0.31)"
-                                    fill="none"
-                                    stroke="#000"
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
-                                  />
-                                  <line
-                                    y1="28"
-                                    x2="28"
-                                    transform="translate(0.31)"
-                                    fill="none"
-                                    stroke="#000"
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
-                                  />
-                                </g>
-                              </svg>
                             </div>
-                          </div>
-                        </>
-                      )}
+                          </>
+                        )}
                     </div>
                   </OffClick>
                 );
               })
             ) : (
-              <div className="Wishlist_cart--empty">
-                <div className="Wishlist_cart--empty_icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 47.775 63.931"
-                  >
-                    <g transform="translate(1000.093 -2611.782)">
-                      <text
-                        transform="translate(-976 2656)"
-                        fill={color}
-                        fontSize="35"
-                        fontFamily="UniversLTStd-BoldCn, Univers LT Std"
-                        fontWeight="700"
-                      >
-                        <tspan x="-5.827" y="0">
-                          !
+                <div className="Wishlist_cart--empty">
+                  <div className="Wishlist_cart--empty_icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 47.775 63.931"
+                    >
+                      <g transform="translate(1000.093 -2611.782)">
+                        <text
+                          transform="translate(-976 2656)"
+                          fill={color}
+                          fontSize="35"
+                          fontFamily="UniversLTStd-BoldCn, Univers LT Std"
+                          fontWeight="700"
+                        >
+                          <tspan x="-5.827" y="0">
+                            !
                         </tspan>
-                      </text>
-                      <path
-                        d="M30.619,62.931H1V1H46.775V46.775A16.152,16.152,0,0,1,30.619,62.931Z"
-                        transform="translate(-1000.093 2611.782)"
-                        fill="none"
-                        stroke={color}
-                        strokeMiterlimit="10"
-                        strokeWidth="2"
-                      />
-                    </g>
-                  </svg>
-                </div>
-                <h2 className="Wishlist_cart--empty_message">
-                  your list is empty
+                        </text>
+                        <path
+                          d="M30.619,62.931H1V1H46.775V46.775A16.152,16.152,0,0,1,30.619,62.931Z"
+                          transform="translate(-1000.093 2611.782)"
+                          fill="none"
+                          stroke={color}
+                          strokeMiterlimit="10"
+                          strokeWidth="2"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <h2 className="Wishlist_cart--empty_message">
+                    your list is empty
                 </h2>
-                <div color={color} className="Wishlist_cart--empty_cta">
-                  <StyledWishlistCTA
-                    href="#Showcase"
-                    className="Wishlist_cart--empty_cta-link"
-                    color={color}
-                  >
-                    add some items.
+                  <div color={color} className="Wishlist_cart--empty_cta">
+                    <StyledWishlistCTA
+                      href="#Showcase"
+                      className="Wishlist_cart--empty_cta-link"
+                      color={color}
+                    >
+                      add some items.
                   </StyledWishlistCTA>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40.414"
-                    height="40.414"
-                    viewBox="0 0 40.414 40.414"
-                  >
-                    <g transform="translate(-344 -8150.793)">
-                      <line
-                        x2="39"
-                        transform="translate(344 8171)"
-                        fill="none"
-                        stroke={color}
-                        strokeMiterlimit="10"
-                        strokeWidth="2"
-                      />
-                      <path
-                        d="M363.5,8190.5,383,8171l-19.5-19.5"
-                        fill="none"
-                        stroke={color}
-                        strokeMiterlimit="10"
-                        strokeWidth="2"
-                      />
-                    </g>
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="40.414"
+                      height="40.414"
+                      viewBox="0 0 40.414 40.414"
+                    >
+                      <g transform="translate(-344 -8150.793)">
+                        <line
+                          x2="39"
+                          transform="translate(344 8171)"
+                          fill="none"
+                          stroke={color}
+                          strokeMiterlimit="10"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M363.5,8190.5,383,8171l-19.5-19.5"
+                          fill="none"
+                          stroke={color}
+                          strokeMiterlimit="10"
+                          strokeWidth="2"
+                        />
+                      </g>
+                    </svg>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </article>
         </section>
         <SendWishlist

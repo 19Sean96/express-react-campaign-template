@@ -178,7 +178,6 @@ class Showcase extends Component {
               category={product.category}
             >
               <p
-                // style={{color: colorLight}}
                 className="showcase_grid_item-name"
               >
                 {product.name}
