@@ -228,10 +228,10 @@
           position: absolute;
           height: 40%;
           top: 50%;
-          right: 5rem;
+          right: 3.5rem;
           transform: translate(0, -50%);
           transition: 0.2s transform ease-out;
-          width: 1rem;
+          min-width: 1rem;
 
           #arrowLine,
           #arrowPath {

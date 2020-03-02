@@ -1,10 +1,20 @@
 import React from "react";
 
 function WishlistHowTo(props) {
+  const noScroll = `
+  *:not(.WishlistHowTo):not(.Nav_Wishlist-check) {
+    overflow-y: hidden;
+  }
+`;
   return (
     <div
       className={`WishlistHowTo  ${!props.isOpen && "WishlistHowTo--inactive"}`}
     >
+      {props.isOpen && (
+        <style>
+          {noScroll}
+        </style>
+      )}
       <section className={`WishlistHowTo_popup`}>
         <h1 className="WishlistHowTo_popup-title">
           How to make your wishlist:
