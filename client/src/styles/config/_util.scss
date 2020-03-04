@@ -51,6 +51,10 @@ body {
       transform: translate(0%, -45%);
       transition: 0.225s transform ease-out, 0.18s opacity ease;
 
+      @media screen and (max-width: 1650px) {
+        max-width: 2.1rem;
+      }
+
       svg {
         max-width: 100%;
       }

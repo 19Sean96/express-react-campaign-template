@@ -643,7 +643,7 @@ function ShowcaseModal(props) {
           </>
         ) : (
           <>
-            <Scrollbars style={{ width: "100%", minHeight: "80rem" }}>
+            <Scrollbars style={{ width: "100%", height: "100vh" }}>
               <h2 className="zoomModal_name">{productInfo.name}</h2>
               <div className="zoomModal-close" onClick={props.closeModal}>
                 <svg
