@@ -99,6 +99,9 @@ function Campaign() {
               updateWishlist(newWishlist);
             }}
             wishlist={wishlist}
+            updateValue={(value,index) => {
+              wishlist[index].value = value
+            }}
             colors={[data.client.color, data.client.color_light, data.client.color_dark]}
           />
           <Footer 
@@ -149,7 +152,8 @@ function assembleData(details, photos, products, tiles, categories) {
         photos[photos.findIndex(image => image.id === prod.image)].data
           .full_url,
       alt: prod.product_name,
-      select: false
+      select: false,
+      value: ''
     };
   });
 

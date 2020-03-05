@@ -189,7 +189,7 @@
 
   .zoomModal {
     position: fixed;
-    z-index: 100;
+    z-index: 150;
     opacity: 0;
     pointer-events: none;
     top: 50%;
@@ -422,7 +422,7 @@
 
 #singleModal {
   overflow-y: scroll;
-  max-height: 85rem;
+  max-height: 87.5rem;
 
   @media screen and (max-width: 1650px) {
     width: 85%;
