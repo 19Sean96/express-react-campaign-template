@@ -244,7 +244,7 @@
         width: 700px;
         .zoomModal-multi-grid {
           grid-auto-rows: 30rem;
-          padding: 0 2rem 0 1rem;
+          padding: 0 9.25rem 0 1rem;
 
           &-item {
             &_title {
@@ -261,6 +261,7 @@
           grid-auto-rows: 35rem;
           grid-template-columns: minmax(0%, 1fr);
           padding: 0 1rem 0 0.75rem;
+          margin-top: 9rem;
 
           &-item {
             &:nth-child(even) {
@@ -281,6 +282,10 @@
         .zoomModal-multi-grid {
           grid-auto-rows: 31rem;
         }
+        .zoomModal-close {
+          width: 2.3rem; height: 2.3rem; 
+          top: 3.45rem;
+        }
       }
 
       h2 {
@@ -295,6 +300,15 @@
       font-weight: 700;
       font-size: 3.6rem;
       padding-bottom: 1rem;
+
+      @media screen and (max-width: 750px) {
+        background-color: #fafafa;
+        position: fixed;
+        z-index: 99;
+        width: 100%;
+        padding-top: 2rem; padding-bottom: 2rem;
+        box-shadow: 0 -.5rem 1.25rem rgba(0, 0, 0, 0.3);
+      }
 
       @media screen and (max-width: 560px) {
         font-size: 2.6rem;
@@ -345,7 +359,7 @@
     }
 
     &-multi-grid {
-      width: 100%;
+
       margin: 1.5rem auto 5vmax;
       display: grid;
       min-height: 50rem;
@@ -353,7 +367,7 @@
       grid-auto-flow: dense;
       grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr) minmax(0%, 1fr);
       align-items: stretch;
-      padding: 0 3rem 0 1.5rem;
+      padding: 0 10rem 0 1.5rem;
 
       &-item {
         position: relative;
