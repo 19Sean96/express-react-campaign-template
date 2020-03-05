@@ -33,6 +33,11 @@ const StyledBtn1 = styled.button`
     &::before {
       height: 100%;
     }
+  }
+
+  @media screen and (max-width: 1550px) {
+    border-width: 2px;
+  }
 `;
 
 const StyledBtn2 = styled.button`

@@ -42,7 +42,7 @@
     &_item {
       width: 100%;
       display: flex;
-      background-color: rgba(#fff, 0.2);
+      background-color: #262626;
       height: 8rem;
       align-items: center;
       position: relative;
@@ -360,7 +360,7 @@
     overflow: hidden;
     z-index: 15;
     cursor: pointer;
-    transition: .225s all ease-in;
+    transition: 0.225s all ease-in;
 
     &::before {
       content: "";
@@ -368,8 +368,7 @@
       left: 0;
       width: 100%;
       background-color: #eaeaea;
-      transition: .125s all ease-out;
-
+      transition: 0.125s all ease-out;
     }
 
     &--container {
@@ -386,8 +385,7 @@
         &::before {
           height: 0%;
           z-index: -1;
-          bottom: 0; 
-
+          bottom: 0;
         }
 
         &:hover {
@@ -406,7 +404,7 @@
         &::before {
           height: 100%;
           z-index: -1;
-          top: 0; 
+          top: 0;
         }
 
         &:hover {
@@ -416,6 +414,128 @@
             height: 0%;
           }
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Wishlist_cart {
+    &_item {
+      position: relative;
+
+      &--editor {
+        margin-right: 0rem;
+        min-width: none;
+        width: 25rem;
+        max-width: 30rem;
+        &-note,
+        &-remove {
+          min-width: 25%;
+          svg {
+            height: 2.04rem;
+          }
+        }
+        &-note {
+          &--active {
+            position: absolute;
+            z-index: 500;
+            background-color: #262626;
+            width: 70vw;
+            padding: 1.5rem 1.75rem 1.6rem 4rem;
+            top: 100%;
+            justify-content: space-between;
+            height: 10rem;
+            .addNote {
+              width: 87.5%;
+
+              &_label,
+              input[name="wishListNote"] {
+                font-size: 1.75rem !important;
+              }
+
+              &_label {
+                margin-left: 0.6rem !important;
+              }
+            }
+
+            svg {
+              height: 2.5rem;
+            }
+          }
+        }
+      }
+
+      .item_remove {
+
+        &-text {
+          font-size: 1.7rem;
+          margin-left: 1.75rem;
+        }
+
+        &-btn {
+          padding: 0rem 2.6rem;
+          height: 90%;
+          font-size: 1.2rem;
+        }
+        &-warning {
+          #trashSVG {
+            width: 2.4rem;
+            margin-left: 1.75rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .item_remove {
+    &-text {
+      display: none;
+    }
+    &-btn {
+      width: 50%;
+      &--container {
+        width: 80%;
+
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .Wishlist_cart {
+    width: 95%;
+    padding-bottom: 12.5rem;
+    &_item {
+      position: relative;
+      &-name {
+        margin-left: 1rem;
+        font-size: 1.8rem;
+        max-width: 45%;
+      }
+      &--editor-note {
+        &--active {
+          width: 95vw;
+          height: 10rem;
+        }
+      }
+    }
+  }
+
+  .item_remove {
+    &-btn {
+      width: 50%;
+      &--container {
+        width: calc(100% - 2rem);
+
+      }
+    }
+
+    &-warning {
+      #trashSVG {
+        display: none;
       }
     }
   }

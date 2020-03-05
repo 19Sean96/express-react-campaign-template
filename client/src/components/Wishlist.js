@@ -350,7 +350,7 @@ class Wishlist extends Component {
                                 })
                               }}  
                             >
-                              yes delete
+                              <span class="underline">yes</span> delete
                             </button>
                           </div>
                         </div>
@@ -369,7 +369,10 @@ class Wishlist extends Component {
                                       ? color
                                       : "rgba(#fff, 0.4)"
                                 }
-                                className={`Wishlist_cart_item--editor-note`}
+                                className={`Wishlist_cart_item--editor-note ${
+                                  this.state.notePositionActive[index]
+                                    && `Wishlist_cart_item--editor-note--active`
+                                }`}
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
