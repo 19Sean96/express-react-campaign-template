@@ -29,7 +29,6 @@ function SendWishlistInput(props) {
             placeholder={input.label}
             className={`${FormClass}_input ${FormClass}_input--textarea`}
             onKeyUp={e => props.handleKeyPress(e)}
-
           ></textarea>
         </>
       ) : (
@@ -42,6 +41,22 @@ function SendWishlistInput(props) {
             //   onClick={checkInputValue}
             onKeyUp={e => props.handleKeyPress(e)}
             // onInvalid={console.log("THE INPUT IS INVALID")}
+            // pattern={
+            //   (input.name === "name") ? "[A-Za-z ]{2,}"
+            //     : input.name === "email" ? "^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+            //     : input.name === "phone" ? "/(?:\d{1}\s)?\(?(\d{3})\)?-?\s?(\d{3})-?\s?(\d{4})$/" : "[A-Za-z0-9 ]{2,}" 
+            // }
+            maxLength={
+              input.name === "phone" ? 13 : 300
+            }
+            style={props.status.value.length === 0 ? {
+              borderBottom: "none"
+            } : props.status.valid ? {
+              borderBottom: "3px solid green"
+            } : {
+              borderBottom: "3px solid red"
+            }}
+            required
           />
           <label htmlFor={input.name} className={`${FormClass}_input--label`}>
             {input.label}

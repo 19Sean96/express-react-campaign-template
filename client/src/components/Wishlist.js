@@ -105,19 +105,23 @@ class Wishlist extends Component {
   inputClass = `${this.FormClass}_input`;
 
   handleKeyPress(e, product = "form input") {
-    console.log(product)
+    console.log(product);
     let target = e.target;
     let id = parseInt(e.target.id);
     let hasValue = target.value.length > 0 ? true : false;
     // const isValid = e.target.validity.valid;
     if (target.name === "name") {
       const { valid } = this.state.name;
+      const regexName =/([ \u00c0-\u01ffa-zA-Z'\-]{1,30})\w+/g
+
+      console.log(target.value)
+      const isValid = (regexName.test(target.value))
       hasValue
         ? this.setState({
             name: {
               active: true,
               value: e.target.value,
-              valid
+              valid: isValid
             }
           })
         : this.setState({
@@ -129,15 +133,16 @@ class Wishlist extends Component {
           });
     } else if (target.name === "email") {
       let { valid } = this.state.email;
-
-      valid = e.target.value.includes("@") ? true : false;
+      const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+      console.log(target.value, regexEmail.test(target.value))
+      const isValid = regexEmail.test(target.value)
 
       hasValue
         ? this.setState({
             email: {
               active: true,
               value: e.target.value,
-              valid
+              valid: isValid
             }
           })
         : this.setState({
@@ -149,12 +154,15 @@ class Wishlist extends Component {
           });
     } else if (target.name === "company") {
       const { valid } = this.state.company;
+      const regexCompany = /[a-zA-Z<>:,.!@& ]{2,}/
+      const isValid = regexCompany.test(target.value)
+
       hasValue
         ? this.setState({
             company: {
               active: true,
               value: e.target.value,
-              valid
+              valid: isValid
             }
           })
         : this.setState({
@@ -165,13 +173,24 @@ class Wishlist extends Component {
             }
           });
     } else if (target.name === "phone") {
+
       const { valid } = this.state.phone;
+      const regexPhone = /(?:\d{1}\s)?\(?(\d{3})\)?-?\s?(\d{3})-?\s?(\d{4})/;
+
+      if (!target.value.match(/^[- +()]*[0-9][-+()0-9]*$/)) {
+        target.value = target.value.substring(0, target.value.length - 1);
+      }
+      if (target.value.length === 1 && target.value !== "(") {
+        target.value = `(${target.value}`;
+      } else if (target.value.length === 4 && target.value !== ")") {
+        target.value = `${target.value})`;
+      } 
       hasValue
         ? this.setState({
             phone: {
               active: true,
               value: e.target.value,
-              valid
+              valid: regexPhone.test(target.value)
             }
           })
         : this.setState({
@@ -470,10 +489,10 @@ class Wishlist extends Component {
                                   product={item.key}
                                   id={item.tile_parent}
                                   onKeyUp={e => {
-                                    const { value } = e.target
-                                    console.log(value,index)
-                                    this.props.updateValue(value,index)
-                                    this.handleKeyPress(e, item.key)
+                                    const { value } = e.target;
+                                    console.log(value, index);
+                                    this.props.updateValue(value, index);
+                                    this.handleKeyPress(e, item.key);
                                   }}
                                 />
                                 <label
