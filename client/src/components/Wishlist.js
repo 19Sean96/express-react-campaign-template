@@ -445,7 +445,7 @@ class Wishlist extends Component {
                             <div className="Wishlist_cart_item--editor">
                               <StyledNoteIcon
                                 color={
-                                  item.value > 0
+                                  item.value.length > 0
                                     ? "#1dad13"
                                     : this.state.notePositionActive[index]
                                       ? color
@@ -550,6 +550,7 @@ class Wishlist extends Component {
                                           }
                                         )
                                       }
+                                      onClick={this.closeNote(index)}
                                     >
                                       <g id="check" transform="translate(-0.281 -0.281)">
                                         <circle
