@@ -26,32 +26,40 @@
     justify-content: center;
     align-items: center;
 
-    svg
-      :not(#addToListIcon1)
-      :not(#addToListIcon2)
-      :not(#addToListCheck)
-      :not(#zoomIcon) {
+    #multiIcon {
       position: absolute;
       right: 2rem; bottom: 2rem;
       width: 2.7rem;
     }
 
     // MOBILE TILE ITEM HEIGHT
-    @media screen and (max-width: 560px) {
-      height: 32.5rem;
-      max-width: 100%;
-    }
-
+    
     @media screen and (max-width: 361px) {
       padding: 1.25rem 1.5rem;
     }
-
-    &:hover {
-      > div {
-        opacity: 1;
+    
+    @media screen and (min-width: 560px) {
+      &:hover {
+        > div {
+          opacity: 1;
+        }
       }
     }
+    @media screen and (max-width: 560px) {
+      height: 32.5rem;
+      max-width: 100%;
 
+      > div:not(.showcase_grid_item-cta-multi) {
+        display: none;
+      }
+
+      &:hover {
+        .showcase_grid_item-cta-multi {
+          opacity: 1 !important;
+        }
+      }
+    }
+    
     &-cta {
       background-color: rgba(0, 0, 0, 0.85);
       position: absolute;
@@ -64,6 +72,10 @@
       flex-direction: column;
       opacity: 0;
       transition: 0.2s all linear;
+
+      &-multi {
+        opacity: 0;
+      }
 
       &_title {
         color: #fff;
@@ -515,3 +527,51 @@
 
 // @media screen and (max-width: 1650px) {
 // }
+
+.mobileAddItem {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 2.8vmax;
+  transform: translateY(0.125rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  svg {
+    width: 2.85rem;
+    height: auto;
+    position: absolute;
+    transition: 0.13s transform ease-out;
+    z-index: 500;
+    right: 1.5rem;
+  }
+
+  .added-btn {
+    font-family: 'UniversCondensed';
+    text-transform: uppercase;
+  }
+
+  &__1 {
+    transform: translate(0, 0);
+   }
+
+  &__2 {
+    transform: translate(0, 200%);
+  }
+
+  &:hover {
+    .mobileAddItem__1 {
+      transform: translate(0, -200%);
+    }
+
+    .mobileAddItem__2 {
+      transform: translate(0, 0);
+    }
+  }
+
+  @media screen and (min-width: 560px) {
+    display: none;
+  }
+}

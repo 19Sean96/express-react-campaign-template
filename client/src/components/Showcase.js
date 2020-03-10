@@ -200,7 +200,9 @@ class Showcase extends Component {
                 alt={product.name}
                 className="showcase_grid_item_image"
               />
-              <div className="showcase_grid_item-cta">
+              <div className={`showcase_grid_item-cta showcase_grid_item-cta-${
+                product.products.length > 1 && "multi"
+              }`}>
                 <p className="showcase_grid_item-cta_title">{product.name}</p>
                 <div className="showcase_grid_item-cta_btn--container">
                   {product.products.length == 1 ? (
@@ -423,35 +425,166 @@ class Showcase extends Component {
                     )}
                 </div>
               </div>
-              <>
+              <span className="mobileAddItem--container">
                 {
-                  !product.singleItem && (
-
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.13 21.412">
-                      <g
-                        id="multi_item" opacity="0.167">
-                        <path
-                          d="M-34.44,300.4H-51.774V288.78a2.939,2.939,0,0,1,2.935-2.935h17.333V297.46a2.916,2.916,0,0,1-.86,2.075A2.916,2.916,0,0,1-34.44,300.4Zm-16.507-.827H-34.44a2.093,2.093,0,0,0,1.49-.617,2.093,2.093,0,0,0,.618-1.491V286.672H-48.839a2.111,2.111,0,0,0-2.108,2.108Z" transform="translate(51.774 -278.984)"
-                          fill="#030504" />
-                        <path
-                          d="M-19.761,285.951H-20.9v-.827h1.144a1.876,1.876,0,0,0,1.874-1.874V272.227H-34.628A1.876,1.876,0,0,0-36.5,274.1v1.144h-.827V274.1a2.7,2.7,0,0,1,2.7-2.7H-17.06v11.85A2.7,2.7,0,0,1-19.761,285.951Z" transform="translate(40.76 -267.969)"
-                          fill="#030504" />
-                        <path
-                          d="M-5.316,271.507H-6.46v-.827h1.144a1.876,1.876,0,0,0,1.874-1.873V257.783H-20.183a1.876,1.876,0,0,0-1.874,1.874V260.8h-.827v-1.144a2.7,2.7,0,0,1,2.7-2.7H-2.615v11.85A2.7,2.7,0,0,1-5.316,271.507Z" transform="translate(29.746 -256.956)"
-                          fill="#030504" />
-                        <path
-                          d="M-27.349,317.651a2.98,2.98,0,0,1-2.977-2.977,2.98,2.98,0,0,1,2.977-2.977,2.98,2.98,0,0,1,2.977,2.977A2.98,2.98,0,0,1-27.349,317.651Zm0-5.126a2.152,2.152,0,0,0-2.15,2.149,2.152,2.152,0,0,0,2.15,2.15,2.152,2.152,0,0,0,2.15-2.15A2.152,2.152,0,0,0-27.349,312.524Z" transform="translate(35.42 -298.696)"
-                          fill="#030504" />
-                        <path
-                          d="M-3.306,306.153H-8.741v-5.435h5.435Zm-4.608-.827h3.781v-3.78H-7.914Z" transform="translate(18.962 -290.324)" fill="#030504" />
-                      </g>
-                    </svg>
-                  )
+                  product.singleItem ? (
+                    <StyledMultiBtn
+                      isModalBtn={false}
+                      onClick={() => this.props.addItem(product.products[0], index)
+                      }
+                      className="mobileAddItem"
+                      color={color}
+                      isClicked={this.props.wishlist.some(
+                        wishlistProd => wishlistProd.tile_parent === product.id
+                      )}
+                    >
+                      {this.props.wishlist.some(
+                        wishlistProd => wishlistProd.tile_parent === product.id
+                      ) ? (
+                          <>
+                            <svg
+                              className="mobileAddItem-check"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 25.926 25.926"
+                            >
+                              <g
+                                id="check"
+                                transform="translate(-0.281 -0.281)"
+                              >
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="12"
+                                  transform="translate(1.244 1.244)"
+                                  stroke="#000"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="1.926"
+                                />
+                                <path
+                                  d="M3015.288,2664.107l4.435,4.435,10.522-10.522"
+                                  transform="translate(-3009.52 -2650.321)"
+                                  fill="none"
+                                  stroke="#fff"
+                                  strokeWidth="3"
+                                />
+                              </g>
+                            </svg>
+                          </>
+                        ) : (
+                          <>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 25.926 25.926"
+                              className="mobileAddItem__1"
+                            >
+                              <g transform="translate(0.792 0.792)">
+                                <line
+                                  x2="10"
+                                  transform="translate(7.171 12.171)"
+                                  fill="none"
+                                  stroke="#000"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="2"
+                                />
+                                <line
+                                  y1="10"
+                                  transform="translate(12.171 7.171)"
+                                  fill="none"
+                                  stroke="#000"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="2"
+                                />
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="12"
+                                  transform="translate(0.171 0.171)"
+                                  fill="none"
+                                  stroke="#000"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="1.926"
+                                />
+                              </g>
+                            </svg>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 25.926 25.926"
+                              className="mobileAddItem__2"
+                            >
+                              <g transform="translate(-0.281 -0.281)">
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="12"
+                                  transform="translate(1.244 1.244)"
+                                  fill="#fff"
+                                  stroke="#fff"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="1.926"
+                                />
+                                <line
+                                  x2="13"
+                                  transform="translate(6.744 13.244)"
+                                  fill="none"
+                                  stroke={color}
+                                  strokeMiterlimit="10"
+                                  strokeWidth="2"
+                                />
+                                <line
+                                  y1="13"
+                                  transform="translate(13.244 6.744)"
+                                  fill="none"
+                                  stroke={color}
+                                  strokeMiterlimit="10"
+                                  strokeWidth="2"
+                                />
+                              </g>
+                            </svg>
+                          </>
+                        )}
+                      <span
+                        className={
+                          this.props.wishlist.some(
+                            wishlistProd => wishlistProd.tile_parent === product.id
+                          )
+                            ? "added-btn"
+                            : ""
+                        }
+                      >
+                        {this.props.wishlist.some(
+                            wishlistProd => wishlistProd.tile_parent === product.id
+                          )
+                          ? "added!"
+                          : ""}
+                      </span>
+                    </StyledMultiBtn>
+                  ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.13 21.412" id="multiIcon">
+                        <g
+                          id="multi_item" opacity="0.167">
+                          <path
+                            d="M-34.44,300.4H-51.774V288.78a2.939,2.939,0,0,1,2.935-2.935h17.333V297.46a2.916,2.916,0,0,1-.86,2.075A2.916,2.916,0,0,1-34.44,300.4Zm-16.507-.827H-34.44a2.093,2.093,0,0,0,1.49-.617,2.093,2.093,0,0,0,.618-1.491V286.672H-48.839a2.111,2.111,0,0,0-2.108,2.108Z" transform="translate(51.774 -278.984)"
+                            fill="#030504" />
+                          <path
+                            d="M-19.761,285.951H-20.9v-.827h1.144a1.876,1.876,0,0,0,1.874-1.874V272.227H-34.628A1.876,1.876,0,0,0-36.5,274.1v1.144h-.827V274.1a2.7,2.7,0,0,1,2.7-2.7H-17.06v11.85A2.7,2.7,0,0,1-19.761,285.951Z" transform="translate(40.76 -267.969)"
+                            fill="#030504" />
+                          <path
+                            d="M-5.316,271.507H-6.46v-.827h1.144a1.876,1.876,0,0,0,1.874-1.873V257.783H-20.183a1.876,1.876,0,0,0-1.874,1.874V260.8h-.827v-1.144a2.7,2.7,0,0,1,2.7-2.7H-2.615v11.85A2.7,2.7,0,0,1-5.316,271.507Z" transform="translate(29.746 -256.956)"
+                            fill="#030504" />
+                          <path
+                            d="M-27.349,317.651a2.98,2.98,0,0,1-2.977-2.977,2.98,2.98,0,0,1,2.977-2.977,2.98,2.98,0,0,1,2.977,2.977A2.98,2.98,0,0,1-27.349,317.651Zm0-5.126a2.152,2.152,0,0,0-2.15,2.149,2.152,2.152,0,0,0,2.15,2.15,2.152,2.152,0,0,0,2.15-2.15A2.152,2.152,0,0,0-27.349,312.524Z" transform="translate(35.42 -298.696)"
+                            fill="#030504" />
+                          <path
+                            d="M-3.306,306.153H-8.741v-5.435h5.435Zm-4.608-.827h3.781v-3.78H-7.914Z" transform="translate(18.962 -290.324)" fill="#030504" />
+                        </g>
+                      </svg>
+                    )
                 }
-              </>
+              </span>
             </div>
           );
-        })}
+        })
+        }
         <ShowcaseModal
           wishlist={this.props.wishlist}
           colors={this.props.colors}
@@ -482,7 +615,7 @@ class Showcase extends Component {
             });
           }}
         />
-      </main>
+      </main >
     );
   }
 }
