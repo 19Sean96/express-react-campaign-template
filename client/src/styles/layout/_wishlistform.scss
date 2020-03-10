@@ -96,6 +96,15 @@
           overflow: hidden;
           box-shadow: 0 0.2vmax 0.75rem rgba(0, 0, 0, .2);
 
+          svg {
+            position: absolute;
+            height: 100%;
+            padding: 2.2rem;
+            width: auto;
+            right: 0;
+            transition: .22s transform ease-out;
+          }
+
           &::before {
             content: "";
             position: absolute;
