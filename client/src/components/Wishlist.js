@@ -529,11 +529,51 @@ class Wishlist extends Component {
                                         opacity: 0
                                       } : {
 
-                                      }
+                                        }
                                     }
                                   >
                                     add a note
-                                </label>
+                                  </label>
+                                  <>
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 25.926 25.926"
+                                      style={
+                                        (
+                                          this.state.notePositionActive[index] &&
+                                          item.value.length > 0 ? {
+                                            transform: "translateY(0)",
+                                            opacity: 1
+                                          } : {
+                                            transform: "translateY(-500%)",
+                                            opacity: 0
+                                          }
+                                        )
+                                      }
+                                    >
+                                      <g id="check" transform="translate(-0.281 -0.281)">
+                                        <circle
+
+                                          cx="12"
+                                          cy="12"
+                                          r="12"
+                                          transform="translate(1.244 1.244)"
+                                          stroke="#4BB543"
+                                          fill="none"
+                                          strokeMiterlimit="10"
+                                          strokeWidth="1.926"
+                                        />
+                                        <path
+
+                                          d="M3015.288,2664.107l4.435,4.435,10.522-10.522"
+                                          transform="translate(-3009.52 -2650.321)"
+                                          fill="none"
+                                          stroke="#4BB543"
+                                          strokeWidth="3"
+                                        />
+                                      </g>
+                                    </svg>
+                                  </>
                                 </div>
                               </StyledNoteIcon>
                               <div

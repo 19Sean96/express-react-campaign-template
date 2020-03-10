@@ -188,9 +188,11 @@
               pointer-events: none;
             }
 
-            // &:hover {
-            //   width: 0%;
-            // }
+            svg {
+              transition: .14s all ease-out;
+              position: absolute;
+              right: 0;
+            }
           }
         }
       }
@@ -423,6 +425,7 @@
   .Wishlist_cart {
     &_item {
       position: relative;
+      width: 70vw;
 
       &--editor {
         margin-right: 0rem;
@@ -510,6 +513,7 @@
     padding-bottom: 12.5rem;
     &_item {
       position: relative;
+      width: 95vw;
       &-name {
         margin-left: 1rem;
         font-size: 1.8rem;
