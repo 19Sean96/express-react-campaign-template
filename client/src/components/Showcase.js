@@ -226,6 +226,7 @@ class Showcase extends Component {
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 47.67 47.67"
+                            id="zoomIcon"
                           >
                             <g transform="translate(-340.037 -491.037)">
                               <circle
@@ -277,6 +278,7 @@ class Showcase extends Component {
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 25.926 25.926"
+                                  id="addToListCheck"
                                 >
                                   <g
                                     id="check"
@@ -326,6 +328,8 @@ class Showcase extends Component {
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 25.926 25.926"
+                                  id="addToListIcon1"
+
                                 >
                                   <g transform="translate(0.792 0.792)">
                                     <line
@@ -362,6 +366,7 @@ class Showcase extends Component {
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 25.926 25.926"
+                                  id="addToListIcon2"
                                 >
                                   <g transform="translate(-0.281 -0.281)">
                                     <circle
