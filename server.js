@@ -46,6 +46,7 @@ app.get("/api/:campaign", async (req, res, next) => {
   //   SECRETS
   const KEY = process.env.CMS_API_KEY;
   const URL = process.env.CMS_URL_DEV;
+  console.log("THIS IS DIR", path.join(__dirname, "/client/build/"));
 
   //   ==============================================================================
   // FIRST API CALL
@@ -236,6 +237,8 @@ app.post("/api/sendemail", (req, res) => {
 });
 
 app.get("*", (req, res) => {
+  console.log("THIS IS PARAMS")
   console.log(req.params);
+  console.log("========================")
   res.sendFile("index.html", { root: path.join(__dirname, "/client/build") });
 });
