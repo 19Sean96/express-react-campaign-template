@@ -37,6 +37,8 @@
 
     @media screen and (max-width: 1500px) {
       font-size: 1.6rem;
+
+
     }
 
     @media screen and (max-width: 560px) {
@@ -120,18 +122,18 @@
       color: #fff;
       list-style: none;
       cursor: pointer;
-      padding: 1.35vmax 1.3rem 1vmax;
+      padding: 2.2rem 1.3rem 2rem;
       transform: translateY(0);
       transition: 0.1s transform;
-      margin: 0 1vw;
+      margin: 0 1.3vw;
 
       &::before {
         content: "";
         position: absolute;
-        bottom: 0.5vmax;
+        bottom: .7rem;
         left: 0;
         width: 0%;
-        height: 0.15vmax;
+        height: 0.3rem;
         background-color: #ffffff;
         transform: translateY(0rem);
         transition: 0.23s width ease-in, 0.1s transform;
@@ -140,10 +142,10 @@
       &::after {
         content: "";
         position: absolute;
-        bottom: 0.5vmax;
+        bottom: .7rem;
         right: 0;
         width: 0%;
-        height: 0.25vmax;
+        height: 0.3rem;
         transform: translateY(0rem);
         transition: 0.23s width ease-in, 0.1s transform;
       }
