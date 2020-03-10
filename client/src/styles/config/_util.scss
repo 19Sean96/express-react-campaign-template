@@ -180,3 +180,19 @@ body {
 .underline {
   border-bottom: solid 1px #000;
 }
+
+#loadingbar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 50rem;
+  height: auto;
+
+  &-background {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: $color-black;
+  }
+}

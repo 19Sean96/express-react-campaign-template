@@ -17,10 +17,11 @@ const transport = nodemailer.createTransport({
 
 // Serve the static files from the React app
 //app.use(express.static('client/build');
-app.use(
-  "/static",
-  express.static(path.join(__dirname, "/client/build/static"))
-);
+// app.use(
+//   "/static",
+//   express.static(path.join(__dirname, "/client/build/static"))
+// );
+app.use(express.static(path.join(__dirname, "/client/build/")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 console.log("THIS IS DIR", path.join(__dirname, "/client/build/"));
@@ -42,7 +43,6 @@ let CAMPAIGN_DATA = {};
 app.get("/api/:campaign", async (req, res, next) => {
   // GRABS THE CAMPAIGN THE USER NAVIGATSE TO
   const campaignName = req.params.campaign;
-  console.log(campaignName);
   //   SECRETS
   const KEY = process.env.CMS_API_KEY;
   const URL = process.env.CMS_URL_DEV;
@@ -115,111 +115,111 @@ app.post("/api/sendemail", (req, res) => {
 
   const html = `
   <head>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
-  <style>
-  body {
-    background-color: #e1e1e1;
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background-color: #e1e1e1;
 
-  }
+      }
 
-  h1,
-  table {
-    font-family: 'Open Sans',Helvetica, sans-serif;
-  }
+      h1,
+      table {
+        font-family: 'Open Sans',Helvetica, sans-serif;
+      }
 
-  h2 {
-    color: #fffcfb;
-  }
+      h2 {
+        color: #fffcfb;
+      }
 
-  h3 {
-    color: #efefef;
-  }
+      h3 {
+        color: #efefef;
+      }
 
-  .prod-title {
-    background-color: #FF7023;
-  }
+      .prod-title {
+        background-color: #FF7023;
+      }
 
-  .product-row td {
-    height: 30px;    
-    background-color: #FFB488;
-  }
+      .product-row td {
+        height: 30px;    
+        background-color: #FFB488;
+      }
 
-  table {
-    table-layout: fixed;
-    width: 80%;
-    max-width: 600px;
-    margin: 40px auto;
-    background-color: #0C0D0C;
-    height: 50px;
-  }
-  
-  .client-row td {
-    background-color: #35AAD4;
-    height: 30px;
-  }
+      table {
+        table-layout: fixed;
+        width: 80%;
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #0C0D0C;
+        height: 50px;
+      }
+      
+      .client-row td {
+        background-color: #35AAD4;
+        height: 30px;
+      }
 
-  .client-row-message-title td{
-    text-align: center;
-    height: 30px;    
-    background-color: #35AAD4;
-  }
+      .client-row-message-title td{
+        text-align: center;
+        height: 30px;    
+        background-color: #35AAD4;
+      }
 
-  .client-row-message-text td{
-    height: 30px;    
-    background-color: #35AAD4;
-    padding: 20px 30px;
-  }
-  
-  </style>
-  </head>
-  <body>
+      .client-row-message-text td{
+        height: 30px;    
+        background-color: #35AAD4;
+        padding: 20px 30px;
+      }
+      
+      </style>
+    </head>
+    <body>
 
-  <h1>New Campaign Product Request</h1>
-  <table role=”presentation” cellspacing=0 cellpadding=5 border=0>
-    <caption></caption>
-    <tbody>
-    <tr>
-      <th colspan="3">
-        <h2>Client Details</h2>
-      </th>
-    </tr>
+      <h1>New Campaign Product Request</h1>
+      <table role=”presentation” cellspacing=0 cellpadding=5 border=0>
+        <caption></caption>
+        <tbody>
+        <tr>
+          <th colspan="3">
+            <h2>Client Details</h2>
+          </th>
+        </tr>
 
-    <tr class="client-row">
-      <td style="font-weight: bold">Name: </td>
-      <td colspan=2>${req.body.name}</td>
-    </tr>
-    <tr class="client-row">
-      <td style="font-weight: bold">Email: </td>
-      <td colspan=2>${req.body.email}</td>
-    </tr>
-    <tr class="client-row">
-      <td style="font-weight: bold">Phone: </td>
-      <td colspan=2>${req.body.phone}</td>
-    </tr>
-    <tr class="client-row">
-      <td style="font-weight: bold">Company: </td>
-      <td colspan=2>${req.body.company}</td>
-    </tr>
-    <tr class="client-row-message-title">
-      <td colspan=3 style="font-weight: bold">Message</td>
-    </tr>
-    <tr class="client-row-message-text">
-      <td colspan=3>${req.body.comments}</td>
-    </tr>
-  </tbody>
-  </table>
-  <br>
-  <table role=”presentation” cellspacing=0 cellpadding=5 border=0>
-    <tbody>
-      <tr>
-        <th colspan="3">
-          <h2>Product Details</h2>
-        </th>
-      </tr>
-      ${productsHtml}
-    </tbody>
-  </table>
-</body>`;
+        <tr class="client-row">
+          <td style="font-weight: bold">Name: </td>
+          <td colspan=2>${req.body.name}</td>
+        </tr>
+        <tr class="client-row">
+          <td style="font-weight: bold">Email: </td>
+          <td colspan=2>${req.body.email}</td>
+        </tr>
+        <tr class="client-row">
+          <td style="font-weight: bold">Phone: </td>
+          <td colspan=2>${req.body.phone}</td>
+        </tr>
+        <tr class="client-row">
+          <td style="font-weight: bold">Company: </td>
+          <td colspan=2>${req.body.company}</td>
+        </tr>
+        <tr class="client-row-message-title">
+          <td colspan=3 style="font-weight: bold">Message</td>
+        </tr>
+        <tr class="client-row-message-text">
+          <td colspan=3>${req.body.comments}</td>
+        </tr>
+      </tbody>
+      </table>
+      <br>
+      <table role=”presentation” cellspacing=0 cellpadding=5 border=0>
+        <tbody>
+          <tr>
+            <th colspan="3">
+              <h2>Product Details</h2>
+            </th>
+          </tr>
+          ${productsHtml}
+        </tbody>
+      </table>
+    </body>`;
 
   const message = {
     from: process.env.MS_EMAIL,
@@ -231,6 +231,7 @@ app.post("/api/sendemail", (req, res) => {
   transport.sendMail(message, (err, info) => {
     if (err) console.log(err);
     else console.log(info);
+    res.send(info)
   });
 });
 

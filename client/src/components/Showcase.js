@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Scrollbars } from "react-custom-scrollbars";
 import OffClick from "react-offclick";
-import { Transition } from 'react-transition-group';
 
 const StyledBtn1 = styled.button`
   border: 3px solid ${props => props.color};

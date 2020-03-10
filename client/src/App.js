@@ -9,7 +9,7 @@ import WishlistHowTo from "./components/WishlistHowTo";
 import axios from "axios";
 import { Route, useParams } from "react-router-dom";
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   axios.defaults.baseUrl = "http://localhost:5000";
 }
 
@@ -23,7 +23,6 @@ function App() {
   );
 }
 
-
 function Campaign() {
   let { campaign } = useParams();
   const [wishlist, updateWishlist] = useState([]);
@@ -33,7 +32,6 @@ function Campaign() {
   const [data, loadData] = useState(false);
 
   useEffect(() => {
-
     // THIS HANDLES THE "HOW-TO" MODAL WHICH POPULATES ON INITIAL LOAD
     !modalWasClosed
       ? setTimeout(() => {
@@ -43,7 +41,6 @@ function Campaign() {
   }, [modalIsOpen]);
 
   useEffect(() => {
-
     // COMMUNICATES WITH BACKEND TO GET THE URL PARAM PASSED IN BY USER TO BRAB THE CORRECT CAMPAIGN
     axios.get(`/api/${campaign}`).then(res => {
       const campaignData = assembleData(
@@ -71,7 +68,11 @@ function Campaign() {
             color={data.client.color}
             colorLight={data.client.color_light}
           />
-          <Header className="campaign-header" clientInfo={data.client} bg={data.client.background}></Header>
+          <Header
+            className="campaign-header"
+            clientInfo={data.client}
+            bg={data.client.background}
+          ></Header>
           <Nav
             categories={data.categories}
             accentColor={data.client.color}
@@ -88,7 +89,11 @@ function Campaign() {
             }}
             products={data.items}
             activeCategory={activeCategory}
-            colors={[data.client.color, data.client.color_light, data.client.color_dark]}
+            colors={[
+              data.client.color,
+              data.client.color_light,
+              data.client.color_dark
+            ]}
           />
           <Wishlist
             removeItem={item => {
@@ -99,16 +104,50 @@ function Campaign() {
               updateWishlist(newWishlist);
             }}
             wishlist={wishlist}
-            updateValue={(value,index) => {
-              wishlist[index].value = value
+            updateValue={(value, index) => {
+              wishlist[index].value = value;
             }}
-            colors={[data.client.color, data.client.color_light, data.client.color_dark]}
+            colors={[
+              data.client.color,
+              data.client.color_light,
+              data.client.color_dark
+            ]}
           />
-          <Footer 
-            colors={[data.client.color, data.client.color_light, data.client.color_dark]}
+          <Footer
+            colors={[
+              data.client.color,
+              data.client.color_light,
+              data.client.color_dark
+            ]}
           />
         </>
-      ) : <p>loading...</p>}
+      ) : (
+        <div id="loadingbar-background">
+        <svg 
+          version="1.1" 
+          id="loadingbar" 
+          xmlns="http://www.w3.org/2000/svg" 
+          xlink="http://www.w3.org/1999/xlink" 
+          x="0px" 
+          y="0px"
+          viewBox="0 0 100 100" 
+          enable-background="new 0 0 0 0" 
+          space="preserve"
+        >
+            <circle fill="none" stroke="#1f1f1f" stroke-width="4" cx="50" cy="50" r="44" style={{opacity: 0.5}}/>
+            <circle fill="#D9E021" stroke="#D9E021" stroke-width="3" cx="8" cy="54" r="6" >
+              <animateTransform
+                attributeName="transform"
+                dur="2s"
+                type="rotate"
+                from="0 50 48"
+                to="360 50 52"
+                repeatCount="indefinite" 
+              />
+            </circle>
+        </svg>
+        </div>
+      )}
     </>
   );
 }
@@ -130,12 +169,10 @@ function assembleData(details, photos, products, tiles, categories) {
     client: {
       name: `${details.client_name} - ${details.title}`,
       logo:
-        photos[photos.findIndex(img => img.id === details.logo)].data
-          .full_url,
+        photos[photos.findIndex(img => img.id === details.logo)].data.full_url,
       background:
-        photos[
-          photos.findIndex(img => img.id === details.background_image)
-        ].data.full_url,
+        photos[photos.findIndex(img => img.id === details.background_image)]
+          .data.full_url,
       color: details.color,
       color_dark: details.darker_color,
       color_light: details.lighter_color
@@ -153,15 +190,20 @@ function assembleData(details, photos, products, tiles, categories) {
           .full_url,
       alt: prod.product_name,
       select: false,
-      value: ''
+      value: ""
     };
   });
 
   tiles.map(tile => {
     data.categories.push(
-      categories[categories.findIndex(cat => cat.id === tile.category)].category_name
+      categories[categories.findIndex(cat => cat.id === tile.category)]
+        .category_name
     );
-    data.categories.splice(0, data.categories.length, ...(new Set(data.categories)))
+    data.categories.splice(
+      0,
+      data.categories.length,
+      ...new Set(data.categories)
+    );
 
     data.items.push({
       id: tile.id,

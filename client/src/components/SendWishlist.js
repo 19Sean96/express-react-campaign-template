@@ -8,8 +8,11 @@ class SendWishlist extends Component {
     const { name, email, company, phone } = this.props;
     this.handleKeyPress = this.props.handleKeyPress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {};
   }
+  state = {
+    formReady: false,
+    formSubmitted: false
+  };
 
   FormInputs = [
     {
@@ -52,24 +55,53 @@ class SendWishlist extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    axios
-      .post("/api/sendemail", {
-        name: this.props.name.value,
-        email: this.props.email.value,
-        phone: this.props.phone.value,
-        company: this.props.company.value,
-        comments: this.props.comments.value,
-        products: this.props.cartDetails
+    if (this.state.formReady) {
+      this.setState({
+        formSubmitted: false
       })
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
+
+      axios
+        .post("/api/sendemail", {
+          name: this.props.name.value,
+          email: this.props.email.value,
+          phone: this.props.phone.value,
+          company: this.props.company.value,
+          comments: this.props.comments.value,
+          products: this.props.cartDetails
+        })
+        .then(res => {
+          console.log(res.data);
+          console.log("THE FORM HAS BEEN SUBMITTED")
+          this.setState({
+            formSubmitted: true
+          })
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else console.log("THE FORM IS NOT READY")
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { company, email, name, phone } = this.props;
+    const isReady =
+      company.active && email.active && name.active && phone.active;
+    let formReady
+    if (isReady && !this.state.formReady) {
+      formReady = true
+      this.setState({
+        formReady
       });
+    } else if (!isReady && this.state.formReady) {
+      formReady = false
+      this.setState({
+        formReady
+      });
+    }
   }
 
   render() {
+    const { company, email, name, phone } = this.props;
     const [color, colorLight, colorDark] = this.props.colors;
     return (
       <section className="Wishlist_Send" id="ContactForm">
@@ -120,7 +152,16 @@ class SendWishlist extends Component {
         <h3 className="Wishlist_Send_subtitle">
           email us your list to get your items moving!
         </h3>
-        <form className={this.FormClass} onSubmit={this.handleSubmit}>
+        <form
+          className={this.FormClass}
+          onSubmit={e => {
+            if (company.active && email.active && name.active && phone.active) {
+              this.handleSubmit(e);
+            } else {
+              console.log("error! You need to fill out all the info!");
+            }
+          }}
+        >
           {this.FormInputs.map((input, index) => {
             return (
               <SendWishlistInput
@@ -141,7 +182,13 @@ class SendWishlist extends Component {
               />
             );
           })}
-          <button type="submit" className="Wishlist_Send-form_submit">
+          <button
+            type="submit"
+            className={`Wishlist_Send-form_submit ${
+              this.state.formSubmitted && "email-submitted"
+            }`}
+            onClick={console.log("click!")}
+          >
             <p>submit list</p>
             <span
               className="Wishlist_Send-form_submit--icon--container"
@@ -173,6 +220,13 @@ class SendWishlist extends Component {
                 </g>
               </svg>
             </span>
+            {
+              this.state.formSubmitted ? (
+                <aside className="email-confirmation">
+                  Your form has been submitted!
+                </aside>
+              ) : null
+            }
           </button>
         </form>
       </section>
