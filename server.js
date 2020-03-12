@@ -8,6 +8,7 @@ require("dotenv").config();
 
 const transport = nodemailer.createTransport({
   host: "smtp-mail.outlook.com",
+  service: "Hotmail",
   port: 25,
   auth: {
     user: process.env.MS_EMAIL,
@@ -87,7 +88,7 @@ app.get("/api/:campaign", async (req, res, next) => {
 });
 
 app.post("/api/sendemail", (req, res) => {
-
+  console.log(req)
 
   const productsHtml = req.body.products.map((product,index) => {
 
