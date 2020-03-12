@@ -334,30 +334,6 @@
   }
 }
 
-  .email-confirmation {
-    font-size: 1.5rem;
-    position: absolute;
-    bottom: -67.5%;
-    width: 90%;
-    left: 50%;
-    background-color: rgba(75, 181, 67, 0.705);
-    padding: 1rem;
-    animation: showConfirm 1.5s ease-out 1 forwards;
-    transform: translate(-50%, 0);
-    color: $color-black
-  }
-
-  @keyframes showConfirm {
-    0% {
-      opacity: 0;
-      transform: translate(-50%, 300%);
-    }
-    20% {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
-  }
-
   .email-submitted {
     color: #000;
     transition: 0.125s box-shadow ease-in, 0.04s color 0.04s ease-in-out;

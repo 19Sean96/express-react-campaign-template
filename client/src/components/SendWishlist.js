@@ -186,7 +186,7 @@ class SendWishlist extends Component {
                 </h1>
                 <h3 className="Wishlist_Send_subtitle">
                   email us your list to get your items moving!
-        </h3>
+                </h3>
                 <form
                   className={this.FormClass}
                   onSubmit={e => {
@@ -255,13 +255,6 @@ class SendWishlist extends Component {
                         </g>
                       </svg>
                     </span>
-                    {
-                      this.state.formSubmitted ? (
-                        <aside className="email-confirmation">
-                          Your form has been submitted!
-                        </aside>
-                      ) : null
-                    }
                   </button>
                 </form>
               </section>
