@@ -171,33 +171,11 @@
       }
 
       &_submit {
-        font-size: 2.7rem;
-        position: relative;
-        font-family: "UniversCondensed";
-        font-weight: 800;
-        text-transform: uppercase;
-        color: #fefefe;
-        border: solid #000 0.4rem;
+        @include submit();
         width: 90%;
-        height: 7.2rem;
         max-width: 40rem;
         margin: 4rem 0 11rem;
-        cursor: pointer;
-        position: relative;
-        transition: 0.15s box-shadow ease-out, 0.05s color 0.05s ease-in-out;
-        z-index: 20;
 
-        &::before {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          width: 100%;
-          left: 0;
-          height: 100%;
-          z-index: -1;
-          background-color: #000;
-          transition: 0.1s all ease-in-out;
-        }
         &--icon {
           height: 100%;
           width: auto;

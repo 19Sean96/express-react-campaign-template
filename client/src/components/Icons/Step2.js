@@ -67,7 +67,7 @@ export default (props) => {
             </g>
           </svg>
         </div>
-        <p className="WishlistHowTo_guide--step_text">add items to your list</p>
+        <p className="WishlistHowTo_guide--step_text">add items<br />to your list</p>
       </div>
     );
   }

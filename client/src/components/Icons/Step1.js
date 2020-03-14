@@ -48,7 +48,7 @@ export default (props) => {
             </g>
           </svg>
         </div>
-        <p className="WishlistHowTo_guide--step_text">browse the item catalog</p>
+        <p className="WishlistHowTo_guide--step_text">browse the<br />item catalog</p>
       </div>
     );
   }

@@ -18,6 +18,16 @@ input::-ms-clear {
   display: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
 .App {
   background-color: #e4e4e4;
 }
@@ -186,17 +196,64 @@ input::-ms-clear {
 }
 
 #loadingbar {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  position: relative;
+  transform-origin: center center;
+
   width: 50rem;
   height: auto;
+  animation: rotate 2s linear infinite;
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  circle {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s ease-in-out infinite, color 1s ease-in-out infinite;
+    stroke-linecap: round;
+
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+      }
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+    
+    @keyframes color {
+      100%,
+      0% {
+        stroke: #D7DE3B;
+      }
+      // 40% {
+      //   stroke: $blue;
+      // }
+      // 66% {
+      //   stroke: $green;
+      // }
+      80%,
+      90% {
+        stroke: #e9e9e9;
+      }
+    }
+  }
 
   &-background {
     width: 100vw;
     height: 100vh;
     position: relative;
     background-color: $color-black;
+    display: flex;
+    justify-content: center; align-items: center;
   }
 }

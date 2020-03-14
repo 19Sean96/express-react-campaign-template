@@ -174,11 +174,21 @@ class Showcase extends Component {
         overflow-y: hidden;
       }
     `;
+    const noClick = `
+      #Showcase:not(.zoomModal) {
+        pointer-events: none;
+      }
+    `
     const [color, colorLight, colorDark] = this.props.colors;
     return (
       <main id="Showcase" className="showcase_grid" ref={this.myRef}>
         {this.state.itemType === "multi" && this.state.open && (
           <style>{noScroll}</style>
+        )}
+        {this.state.open && (
+          <style>
+            {noClick}
+          </style>
         )}
         {this.props.products.map((product, index) => {
           return (

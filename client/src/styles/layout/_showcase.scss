@@ -8,6 +8,8 @@
   gap: 0.25rem;
   background-color: #e4e4e4;
 
+
+
   @media screen and (max-width: 770px) {
     grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr);
   }
@@ -246,7 +248,11 @@
       height: calc(100vh);
       padding: 0;
       width: 1400px;
-      @media screen and (max-width: 1800px) {
+
+      .zoomModal_name {
+        padding-left: 10rem;
+      }
+      @media screen and (max-width: 1475px) {
         width: 900px;
         .zoomModal-multi-grid {
           grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr);
@@ -322,7 +328,6 @@
       font-weight: 700;
       font-size: 3.6rem;
       padding-bottom: 1rem;
-
       @media screen and (max-width: 750px) {
         background-color: #fafafa;
         position: fixed;
@@ -389,7 +394,7 @@
       grid-auto-flow: dense;
       grid-template-columns: minmax(0%, 1fr) minmax(0%, 1fr) minmax(0%, 1fr);
       align-items: stretch;
-      padding: 0 10rem 0 1.5rem;
+      padding: 0 10rem 0 10rem;
 
       &-item {
         position: relative;
@@ -461,6 +466,11 @@
   overflow-y: scroll;
   max-height: 87.5rem;
 
+  @media screen and (min-width: 1800px) {
+    overflow-y: hidden;
+  } 
+
+
   @media screen and (max-width: 1650px) {
     width: 85%;
     max-height: 100vh;
@@ -513,6 +523,7 @@
   @media screen and (max-height: 950px) {
     transform: translate(-50%, 0);
     top: 0;
+    overflow-y: scroll;
     height: 100%;
     .zoomModal_img--container {
       position: relative;
