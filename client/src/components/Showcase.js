@@ -39,7 +39,7 @@ const StyledBtn1 = styled.button`
     border-width: 2px;
   }
 `;
-
+ 
 const StyledBtn2 = styled.button`
   background-color: ${props => (props.isModalBtn ? "#000" : props.color)};
   transition: 0.15s all ease-in;
@@ -51,7 +51,14 @@ const StyledBtn2 = styled.button`
   span {
     display: block;
     transform: translateX(1.25rem);
-    color: ${props => (props.isModalBtn ? "#fff" : "#000")};
+    color: ${props => {
+      if (props.isModalBtn) {
+        if (props.clicked) {
+          return "#000"
+        } else return "#fff"
+      }
+      else if (!props.isModalBtn) return "#000"
+    }};
     transition: 0.2s all ease;
   }
 
@@ -69,7 +76,7 @@ const StyledBtn2 = styled.button`
     left: 0;
     bottom: 0;
     z-index: -1;
-    height: 0%;
+    height: ${props => (props.clicked ? "100%" : "0%")};
     width: 100%;
     background-color: ${props => (props.isModalBtn ? props.color : "#fff")};
     transition: 0.2s all ease;
@@ -274,6 +281,9 @@ class Showcase extends Component {
                         type="button"
                         color={color}
                         isModalBtn={false}
+                        clicked={this.props.wishlist.some(
+                          wishlistProd => wishlistProd.tile_parent === product.id
+                        )}
                       >
                         <span>
                           {this.props.wishlist.some(
@@ -712,6 +722,9 @@ function ShowcaseModal(props) {
                 type="button"
                 color={props.colors[0]}
                 isModalBtn={true}
+                clicked={props.wishlist.some(
+                  wishlistProd => wishlistProd.tile_parent === productInfo.id
+                )}
               >
                 <span>
                   {props.wishlist.some(

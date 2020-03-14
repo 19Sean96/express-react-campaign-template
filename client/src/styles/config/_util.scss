@@ -74,13 +74,13 @@ select:-webkit-autofill:focus {
       }
 
       &-2 {
-        transform: translate(0%, 200%);
+        opacity: 0;
       }
     }
     &:hover {
+      // &-2
       div {
         opacity: 1;
-        transform: translate(0%, -45%);
       }
     }
   }
@@ -109,12 +109,6 @@ select:-webkit-autofill:focus {
       &-2 {
         position: absolute;
         z-index: 100;
-
-        svg {
-          g > * {
-            stroke: orange;
-          }
-        }
       }
     }
 
@@ -143,17 +137,17 @@ select:-webkit-autofill:focus {
   
   svg {
     position: absolute;
-    transition: 0.13s transform ease-out;
+    transition: 0.05s opacity ease-out;
     z-index: 500;
     right: 1.5rem;
   }
 
   &__1 {
-    transform: translate(0, 0);
+    opacity: 1;
    }
 
   &__2 {
-    transform: translate(0, 200%);
+    opacity: 0;
   }
 
   // &-check {
@@ -162,11 +156,11 @@ select:-webkit-autofill:focus {
 
   &:hover {
     .multi--addItem__1 {
-      transform: translate(0, -200%);
+      opacity: 0;
     }
 
     .multi--addItem__2 {
-      transform: translate(0, 0);
+      opacity: 1;
     }
   }
 }

@@ -84,7 +84,7 @@ function Campaign() {
             wishlist={wishlist}
             addItem={(item, index) => {
               return wishlist.includes(item)
-                ? ""
+                ? updateWishlist(wishlist => wishlist.filter(wishlistItem => wishlistItem !== item))
                 : updateWishlist(wishlist => [...wishlist, item]);
             }}
             products={data.items}
