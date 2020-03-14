@@ -11,8 +11,8 @@ const transport = nodemailer.createTransport({
   service: "Hotmail",
   port: 25,
   auth: {
-    user: process.env.MS_EMAIL,
-    pass: process.env.MS_PW
+    user: process.env.SENDING_EMAIL,
+    pass: process.env.SENDING_EMAIL_PW
   }
 });
 
@@ -45,8 +45,8 @@ app.get("/api/:campaign", async (req, res, next) => {
   // GRABS THE CAMPAIGN THE USER NAVIGATSE TO
   const campaignName = req.params.campaign;
   //   SECRETS
-  const KEY = process.env.CMS_API_KEY;
-  const URL = process.env.CMS_URL_DEV;
+  const KEY = process.env.CMS_KEY;
+  const URL = process.env.CMS_URL;
   console.log("THIS IS DIR", path.join(__dirname, "/client/build/"));
 
   //   ==============================================================================
@@ -224,8 +224,8 @@ app.post("/api/sendemail", (req, res) => {
     </body>`;
 
   const message = {
-    from: process.env.MS_EMAIL,
-    to: "seanalexander@sportexsafety.com",
+    from: process.env.SENDING_EMAIL,
+    to: process.env.RECEIVING_EMAIL,
     subject: `(TESTING - Sean) Campaign Product Request - ${req.body.name}`,
     html: html
   };
