@@ -2,6 +2,8 @@
 
 A React/Express SPA used for quickly generating single page marketing campaigns utilizing [Directus Headless CMS/API](https://github.com/directus/directus) for handling/creating new campaigns.
 
+View Demo [Here](https://campaign.sportexsafety.com/lsa).
+
 ## How It Works
 
  1. Create a database to be reference as an API (I recommend Directus for it's flexibility & it's open source nature. Show them some love [here](https://github.com/directus/directus).  *NOTE: I will be posting a getting started guide soon. Feel free to contact me in the meantime if you'd like to know how I set up the schema.* 
