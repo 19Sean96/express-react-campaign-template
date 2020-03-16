@@ -128,7 +128,8 @@ class Wishlist extends Component {
         : e.keyCode === 8
           ? this.setState({
             name: {
-              valid: false
+              valid: false,
+              value: e.target.value
             }
           })
           : this.setState({
@@ -155,7 +156,8 @@ class Wishlist extends Component {
         : e.keyCode === 8
           ? this.setState({
             email: {
-              valid: false
+              valid: false,
+              value: e.target.value
             }
           })
           : this.setState({
@@ -181,7 +183,8 @@ class Wishlist extends Component {
         : e.keyCode === 8
           ? this.setState({
             company: {
-              valid: false
+              valid: false,
+              value: e.target.value
             }
           })
           : this.setState({
@@ -215,7 +218,8 @@ class Wishlist extends Component {
         : e.keyCode === 8
           ? this.setState({
             phone: {
-              valid: false
+              valid: false,
+              value: e.target.value
             }
           })
           : this.setState({
