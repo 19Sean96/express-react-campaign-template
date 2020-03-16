@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import OffClick from "react-offclick";
 import SendWishlist from "./SendWishlist";
+import FileIcon from "./Icons/File"
+import TrashcanIcon from "./Icons/Trashcan"
 import styled from "styled-components";
 
 const StyledNoteIcon = styled.div`
@@ -26,28 +28,23 @@ class Wishlist extends Component {
       notePositionActive: [],
       noteInputHasValue: [],
       name: {
-        active: false,
         value: "",
         valid: null
       },
       email: {
-        active: false,
         value: "",
         valid: null
       },
       company: {
-        active: false,
         value: "",
         valid: null
       },
       phone: {
-        active: false,
         value: "",
         valid: null
       },
       comments: {
         value: "",
-        valid: null
       },
       cartDetails: [],
       beingRemoved: {
@@ -104,99 +101,47 @@ class Wishlist extends Component {
   FormClass = "Wishlist_Send-form";
   inputClass = `${this.FormClass}_input`;
 
-  handleKeyPress(e, product = "form input") {
+  handleKeyPress(e, product = "form input", index = null) {
     console.log(product);
     let target = e.target;
     let id = parseInt(e.target.id);
     let hasValue = target.value.length > 0 ? true : false;
-    // const isValid = e.target.validity.valid;
     console.log(e.keyCode)
     if (target.name === "name") {
-      const { valid } = this.state.name;
       const regexName = /([ \u00c0-\u01ffa-zA-Z'\- ]{1,30})\w+/g
 
-      console.log(target.value)
       const isValid = (regexName.test(target.value))
       hasValue
-        ? this.setState({
+        && this.setState({
           name: {
-            active: true,
             value: e.target.value,
             valid: isValid
           }
         })
-        : e.keyCode === 8
-          ? this.setState({
-            name: {
-              valid: false,
-              value: e.target.value
-            }
-          })
-          : this.setState({
-            name: {
-              active: false,
-              value: e.target.value,
-              valid
-            }
-          });
     } else if (target.name === "email") {
-      let { valid } = this.state.email;
       const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-      console.log(target.value, regexEmail.test(target.value))
       const isValid = regexEmail.test(target.value)
 
       hasValue
-        ? this.setState({
+        && this.setState({
           email: {
-            active: true,
             value: e.target.value,
             valid: isValid
           }
         })
-        : e.keyCode === 8
-          ? this.setState({
-            email: {
-              valid: false,
-              value: e.target.value
-            }
-          })
-          : this.setState({
-            email: {
-              active: false,
-              value: e.target.value,
-              valid
-            }
-          });
     } else if (target.name === "company") {
-      const { valid } = this.state.company;
       const regexCompany = /[a-zA-Z<>:,.!@& ]{2,}/
       const isValid = regexCompany.test(target.value)
 
       hasValue
-        ? this.setState({
+        && this.setState({
           company: {
-            active: true,
             value: e.target.value,
             valid: isValid
           }
         })
-        : e.keyCode === 8
-          ? this.setState({
-            company: {
-              valid: false,
-              value: e.target.value
-            }
-          })
-          : this.setState({
-            company: {
-              active: false,
-              value: e.target.value,
-              valid
-            }
-          });
     } else if (target.name === "phone") {
 
-      const { valid } = this.state.phone;
       const regexPhone = /(?:\d{1}\s)?\(?(\d{3})\)?-?\s?(\d{3})-?\s?(\d{4})/;
 
       if (!target.value.match(/^[- +()]*[0-9][-+()0-9]*$/)) {
@@ -208,37 +153,26 @@ class Wishlist extends Component {
         target.value = `${target.value})`;
       }
       hasValue
-        ? this.setState({
+        && this.setState({
           phone: {
             active: true,
             value: e.target.value,
             valid: regexPhone.test(target.value)
           }
         })
-        : e.keyCode === 8
-          ? this.setState({
-            phone: {
-              valid: false,
-              value: e.target.value
-            }
-          })
-          : this.setState({
-            phone: {
-              active: false,
-              value: e.target.value,
-              valid
-            }
-          });
     } else if (target.name === "comments") {
-      const { valid } = this.state.comments;
       this.setState({
         comments: {
-          value: e.target.value,
-          valid
+          value: e.target.value
         }
       });
     } else if (target.name === "wishListNote") {
-      let { noteInputHasValue } = this.state;
+      let { noteInputHasValue, notePositionActive } = this.state;
+
+      if (e.which === 13) {
+        console.log("the note is closing...")
+        notePositionActive[index] = false
+      }
 
       this.state.cartDetails[
         this.state.cartDetails.findIndex(item => item.productKey == product)
@@ -248,7 +182,8 @@ class Wishlist extends Component {
         : (noteInputHasValue[target.id] = false);
 
       this.setState({
-        noteInputHasValue
+        noteInputHasValue,
+        notePositionActive
       });
     }
   }
@@ -267,6 +202,7 @@ class Wishlist extends Component {
   }
 
   closeNote = i => e => {
+    console.log("closing...")
     const { notePositionActive } = this.state;
     notePositionActive[i] = false;
 
@@ -292,49 +228,7 @@ class Wishlist extends Component {
           <h1 className="Wishlist_title">
             quote list
             <span className="Wishlist_title--icon--container">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 46.534 61.545"
-              >
-                <g id="File" transform="translate(-465 -4258)">
-                  <path
-                    d="M494.522,4317.545H467V4260h42.534v42.534A15.013,15.013,0,0,1,494.522,4317.545Z"
-                    transform="translate(0)"
-                    fill="none"
-                    stroke={color}
-                    strokeMiterlimit="10"
-                    strokeWidth="4"
-                  />
-                  <g transform="translate(478.259 4277.514)">
-                    <line
-                      x2="20"
-                      transform="translate(-0.259 0.486)"
-                      fill="none"
-                      stroke={color}
-                      strokeMiterlimit="10"
-                      strokeWidth="4"
-                    />
-                    <line
-                      x2="20"
-                      transform="translate(-0.259 10.486)"
-                      fill="none"
-                      stroke={color}
-                      strokeMiterlimit="10"
-                      strokeWidth="4"
-                    />
-                    <line
-                      id="Line_270"
-                      data-name="Line 270"
-                      x2="15"
-                      transform="translate(-0.259 20.486)"
-                      fill="none"
-                      stroke={color}
-                      strokeMiterlimit="10"
-                      strokeWidth="4"
-                    />
-                  </g>
-                </g>
-              </svg>
+                <FileIcon color={color} />
             </span>
           </h1>
           <h3 className="Wishlist_subtitle">
@@ -357,55 +251,7 @@ class Wishlist extends Component {
                         this.state.beingRemoved.index === index ? (
                           <div className="item_remove-warning">
                             <div id="trashSVG">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 26"
-                              >
-                                <g id="Trash" transform="translate(0.037 1)">
-                                  <path
-                                    d="M603.2,738l-.77,16.9a3.978,3.978,0,0,1-3.8,3.965h-6.071a3.978,3.978,0,0,1-3.8-3.965L588,738"
-                                    transform="translate(-585.663 -734.87)"
-                                    fill="none"
-                                    stroke={color}
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
-                                  />
-                                  <line
-                                    x2="20"
-                                    transform="translate(-0.037 3)"
-                                    fill="none"
-                                    stroke={color}
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
-                                  />
-                                  <line
-                                    x2="0.475"
-                                    y2="11.478"
-                                    transform="translate(7.325 7.304)"
-                                    fill="none"
-                                    stroke={color}
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
-                                  />
-                                  <line
-                                    x1="0.475"
-                                    y2="11.478"
-                                    transform="translate(12.076 7.304)"
-                                    fill="none"
-                                    stroke={color}
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
-                                  />
-                                  <path
-                                    d="M596,735.13l.517-1.7a1.925,1.925,0,0,1,1.8-1.427h2.962a1.925,1.925,0,0,1,1.8,1.427l.517,1.7"
-                                    transform="translate(-589.863 -732)"
-                                    fill="none"
-                                    stroke={color}
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
-                                  />
-                                </g>
-                              </svg>
+                              <TrashcanIcon color={color} />
                             </div>
                             <p className="item_remove-text">delete this item?</p>
                             <div className="item_remove-btn--container">
@@ -519,9 +365,10 @@ class Wishlist extends Component {
                                     id={item.tile_parent}
                                     onKeyUp={e => {
                                       const { value } = e.target;
-                                      console.log(value, index);
+                                      console.log(e.which === 13);
+
                                       this.props.updateValue(value, index);
-                                      this.handleKeyPress(e, item.key);
+                                      this.handleKeyPress(e, item.key, index);
                                     }}
                                   />
                                   <label
@@ -545,13 +392,13 @@ class Wishlist extends Component {
                                       style={
                                         (
                                           this.state.notePositionActive[index] &&
-                                          item.value.length > 0 ? {
-                                            transform: "translateY(0)",
-                                            opacity: 1
-                                          } : {
-                                            transform: "translateY(-500%)",
-                                            opacity: 0
-                                          }
+                                            item.value.length > 0 ? {
+                                              transform: "translateY(0)",
+                                              opacity: 1
+                                            } : {
+                                              transform: "translateY(-500%)",
+                                              opacity: 0
+                                            }
                                         )
                                       }
                                       onClick={this.closeNote(index)}
