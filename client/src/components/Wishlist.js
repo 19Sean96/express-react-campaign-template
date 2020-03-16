@@ -450,7 +450,7 @@ class Wishlist extends Component {
                               <StyledNoteIcon
                                 color={
                                   item.value.length > 0
-                                    ? "#1dad13"
+                                    ? "#14DB60"
                                     : this.state.notePositionActive[index]
                                       ? color
                                       : "rgba(#fff, 0.4)"
