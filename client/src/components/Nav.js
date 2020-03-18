@@ -35,6 +35,7 @@ function Nav(props) {
             <line x2="10" fill="none" stroke="#fff" strokeWidth="2" />
           </g>
         </svg>
+        <p>filters</p>
       </div>
       <StyledCloseBtn
         accentColor={props.accentColor}
