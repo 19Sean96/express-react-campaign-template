@@ -259,10 +259,10 @@
 
           &-item {
             &:nth-child(even) {
-              border-width: 1px 1px 0 0;
+              border-width: 2px 2px 0 0;
             }
             &:nth-child(odd) {
-              border-width: 1px 1px 0 1px;
+              border-width: 2px 2px 0 2px;
             }
           }
         }
@@ -293,10 +293,10 @@
 
           &-item {
             &:nth-child(even) {
-              border-width: 1px 1px 0 1px;
+              border-width: 2px 2px 0 2px;
             }
             &:nth-child(odd) {
-              border-width: 1px 1px 0 1px;
+              border-width: 2px 2px 0 2px;
             }
 
             &_title {
@@ -403,22 +403,22 @@
         font-family: "UniversCondensed", sans-serif;
         font-size: 1.8rem;
         text-transform: uppercase;
-        border: 1px solid #e3e3e3;
+        border: 2px solid #e3e3e3;
         align-self: stretch;
 
         &:nth-child(3n + 1) {
-          border-right-width: 1px;
-          border-bottom-width: 1px;
+          border-right-width: 2px;
+          border-bottom-width: 2px;
         }
 
         &:nth-child(3n + 2) {
-          border-right-width: 1px;
+          border-right-width: 2px;
           border-left-width: 0;
-          border-bottom-width: 1px;
+          border-bottom-width: 2px;
         }
 
         &:nth-child(3n + 0) {
-          border-right-width: 1px;
+          border-right-width: 2px;
           border-left-width: 0;
         }
 
