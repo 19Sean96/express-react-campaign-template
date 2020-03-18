@@ -17,14 +17,14 @@ function Footer(props) {
                 <path
                   d="M964,3754h0a13,13,0,0,1-13-13v-17.286a24.608,24.608,0,0,1,26,0V3741A13,13,0,0,1,964,3754Z"
                   fill="none"
-                  stroke={props.colors[0]}
+                  stroke={props.color}
                   strokeMiterlimit="10"
                   strokeWidth="3"
                 />
                 <path
                   d="M964,3733v-15.989a4.055,4.055,0,0,1,4.062-4.011h4.872a4.01,4.01,0,0,0,4.066-4v-2"
                   fill="none"
-                  stroke={props.colors[0]}
+                  stroke={props.color}
                   strokeMiterlimit="10"
                   strokeWidth="3"
                 />
@@ -41,7 +41,7 @@ function Footer(props) {
                   d="M379,1636H349a8,8,0,0,1-8-8v-26h46v26A8,8,0,0,1,379,1636Z"
                   transform="translate(-341 -1602)"
                   fill="none"
-                  stroke={props.colors[0]}
+                  stroke={props.color}
                   strokeMiterlimit="10"
                   strokeWidth="3"
                 />
@@ -49,7 +49,7 @@ function Footer(props) {
                   d="M346.293,1607.952,364,1624l17.807-16.073"
                   transform="translate(-341 -1602)"
                   fill="none"
-                  stroke={props.colors[0]}
+                  stroke={props.color}
                   strokeMiterlimit="10"
                   strokeWidth="3"
                 />
@@ -64,7 +64,7 @@ function Footer(props) {
         <h4 className="footer_cta_subtitle">
           call us at{" "}
           <a
-            style={{ color: props.colors[0] }}
+            style={{ color: props.color }}
             href="tel:+1800-486-8677"
             className="footer_cta_link"
           >

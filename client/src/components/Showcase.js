@@ -186,7 +186,7 @@ class Showcase extends Component {
         pointer-events: none;
       }
     `
-    const [color, colorLight, colorDark] = this.props.colors;
+    const {color} = this.props;
     return (
       <main id="Showcase" className="showcase_grid" ref={this.myRef}>
         {this.state.itemType === "multi" && this.state.open && (
@@ -229,8 +229,6 @@ class Showcase extends Component {
                         name="zoom-btn"
                         className="cta-zoomIn showcase_grid_item-cta_btn"
                         color={color}
-                        colorLight={colorLight}
-                        colorDark={colorDark}
                         type="button"
                         onClick={e =>
                           this.expandSingleItem(
@@ -430,8 +428,6 @@ class Showcase extends Component {
                       <StyledBtn1
                         className="cta-viewAll showcase_grid_item-cta_btn"
                         color={color}
-                        colorLight={colorLight}
-                        colorDark={colorDark}
                         onClick={e =>
                           this.expandMultiItem(
                             product.name,
@@ -619,7 +615,7 @@ class Showcase extends Component {
         {this.state.open && (
           <ShowcaseModal
             wishlist={this.props.wishlist}
-            colors={this.props.colors}
+            color={this.props.color}
             itemType={this.state.itemType}
             open={this.state.open}
             productInfo={
@@ -720,7 +716,7 @@ function ShowcaseModal(props) {
                 }
                 className="zoomModal-addToList cta-addToList showcase_grid_item-cta_btn"
                 type="button"
-                color={props.colors[0]}
+                color={props.color}
                 isModalBtn={true}
                 clicked={props.wishlist.some(
                   wishlistProd => wishlistProd.tile_parent === productInfo.id
@@ -835,7 +831,7 @@ function ShowcaseModal(props) {
                             x2="13"
                             transform="translate(6.744 13.244)"
                             fill="none"
-                            stroke={props.colors[0]}
+                            stroke={props.color}
                             strokeMiterlimit="10"
                             strokeWidth="2"
                           />
@@ -843,7 +839,7 @@ function ShowcaseModal(props) {
                             y1="13"
                             transform="translate(13.244 6.744)"
                             fill="none"
-                            stroke={props.colors[0]}
+                            stroke={props.color}
                             strokeMiterlimit="10"
                             strokeWidth="2"
                           />
@@ -898,7 +894,7 @@ function ShowcaseModal(props) {
                         <StyledMultiBtn
                           onClick={() => props.addItem(prod, productInfo.index)}
                           className="multi--addItem"
-                          color={props.colors[0]}
+                          color={props.color}
                           isClicked={props.wishlist.some(
                             wishlistProd => wishlistProd.key === prod.key
                           )}
@@ -988,7 +984,7 @@ function ShowcaseModal(props) {
                                     x2="13"
                                     transform="translate(6.744 13.244)"
                                     fill="none"
-                                    stroke={props.colors[0]}
+                                    stroke={props.color}
                                     strokeMiterlimit="10"
                                     strokeWidth="2"
                                   />
@@ -996,7 +992,7 @@ function ShowcaseModal(props) {
                                     y1="13"
                                     transform="translate(13.244 6.744)"
                                     fill="none"
-                                    stroke={props.colors[0]}
+                                    stroke={props.color}
                                     strokeMiterlimit="10"
                                     strokeWidth="2"
                                   />
@@ -1035,7 +1031,7 @@ function ShowcaseModal(props) {
                         <StyledMultiBtn
                           onClick={() => props.addItem(prod, productInfo.index)}
                           className="multi--addItem"
-                          color={props.colors[0]}
+                          color={props.color}
                           isClicked={props.wishlist.some(
                             wishlistProd => wishlistProd.key === prod.key
                           )}
@@ -1125,7 +1121,7 @@ function ShowcaseModal(props) {
                                     x2="13"
                                     transform="translate(6.744 13.244)"
                                     fill="none"
-                                    stroke={props.colors[0]}
+                                    stroke={props.color}
                                     strokeMiterlimit="10"
                                     strokeWidth="2"
                                   />
@@ -1133,7 +1129,7 @@ function ShowcaseModal(props) {
                                     y1="13"
                                     transform="translate(13.244 6.744)"
                                     fill="none"
-                                    stroke={props.colors[0]}
+                                    stroke={props.color}
                                     strokeMiterlimit="10"
                                     strokeWidth="2"
                                   />

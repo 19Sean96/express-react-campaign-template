@@ -66,7 +66,6 @@ function Campaign() {
             }}
             isOpen={modalIsOpen}
             color={data.client.color}
-            colorLight={data.client.color_light}
           />
           <Header
             className="campaign-header"
@@ -75,25 +74,21 @@ function Campaign() {
           ></Header>
           <Nav
             categories={data.categories}
-            accentColor={data.client.color}
+            color={data.client.color}
             updateActiveCategory={updateActiveCategory}
             wishlistCount={wishlist.length}
             activeCategory={activeCategory}
           />
           <Showcase
             wishlist={wishlist}
-            addItem={(item, index) => {
+            addItem={item => {
               return wishlist.includes(item)
                 ? updateWishlist(wishlist => wishlist.filter(wishlistItem => wishlistItem !== item))
                 : updateWishlist(wishlist => [...wishlist, item]);
             }}
             products={data.items}
             activeCategory={activeCategory}
-            colors={[
-              data.client.color,
-              data.client.color_light,
-              data.client.color_dark
-            ]}
+            color={data.client.color}
           />
           <Wishlist
             removeItem={item => {
@@ -107,19 +102,9 @@ function Campaign() {
             updateValue={(value, index) => {
               wishlist[index].value = value;
             }}
-            colors={[
-              data.client.color,
-              data.client.color_light,
-              data.client.color_dark
-            ]}
+            color={data.client.color}
           />
-          <Footer
-            colors={[
-              data.client.color,
-              data.client.color_light,
-              data.client.color_dark
-            ]}
-          />
+          <Footer color={data.client.color} />
         </>
       ) : (
         <div id="loadingbar-background">
@@ -160,9 +145,7 @@ function assembleData(details, photos, products, tiles, categories) {
       background:
         photos[photos.findIndex(img => img.id === details.background_image)]
           .data.full_url,
-      color: details.color,
-      color_dark: details.darker_color,
-      color_light: details.lighter_color
+      color: details.color
     },
 
     items: []

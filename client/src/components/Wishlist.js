@@ -102,15 +102,15 @@ class Wishlist extends Component {
   inputClass = `${this.FormClass}_input`;
 
   handleKeyPress(e, product = "form input", index = null) {
-    console.log(product);
-    let target = e.target;
-    let id = parseInt(e.target.id);
-    let hasValue = target.value.length > 0 ? true : false;
-    console.log(e.keyCode)
-    if (target.name === "name") {
-      const regexName = /([ \u00c0-\u01ffa-zA-Z'\- ]{1,30})\w+/g
 
+    let target = e.target;
+    let hasValue = target.value.length > 0 ? true : false;
+
+    if (target.name === "name") {
+
+      const regexName = /([ \u00c0-\u01ffa-zA-Z'\- ]{1,30})\w+/g
       const isValid = (regexName.test(target.value))
+
       hasValue
         && this.setState({
           name: {
@@ -118,7 +118,9 @@ class Wishlist extends Component {
             valid: isValid
           }
         })
+
     } else if (target.name === "email") {
+
       const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
       const isValid = regexEmail.test(target.value)
 
@@ -129,7 +131,9 @@ class Wishlist extends Component {
             valid: isValid
           }
         })
+
     } else if (target.name === "company") {
+
       const regexCompany = /[a-zA-Z<>:,.!@& ]{2,}/
       const isValid = regexCompany.test(target.value)
 
@@ -140,6 +144,7 @@ class Wishlist extends Component {
             valid: isValid
           }
         })
+
     } else if (target.name === "phone") {
 
       const regexPhone = /(?:\d{1}\s)?\(?(\d{3})\)?-?\s?(\d{3})-?\s?(\d{4})/;
@@ -147,11 +152,15 @@ class Wishlist extends Component {
       if (!target.value.match(/^[- +()]*[0-9][-+()0-9]*$/)) {
         target.value = target.value.substring(0, target.value.length - 1);
       }
+
       if (target.value.length === 1 && target.value !== "(") {
         target.value = `(${target.value}`;
-      } else if (target.value.length === 4 && target.value !== ")") {
+      } 
+      
+      else if (target.value.length === 4 && target.value !== ")") {
         target.value = `${target.value})`;
       }
+
       hasValue
         && this.setState({
           phone: {
@@ -160,17 +169,20 @@ class Wishlist extends Component {
             valid: regexPhone.test(target.value)
           }
         })
+
     } else if (target.name === "comments") {
+
       this.setState({
         comments: {
           value: e.target.value
         }
       });
+
     } else if (target.name === "wishListNote") {
+
       let { noteInputHasValue, notePositionActive } = this.state;
 
       if (e.which === 13) {
-        console.log("the note is closing...")
         notePositionActive[index] = false
       }
 
@@ -189,39 +201,42 @@ class Wishlist extends Component {
   }
 
   reduceCart(removedItem) {
-    console.log(removedItem);
-    const removedItemKey = removedItem.key;
 
+    const removedItemKey = removedItem.key;
     const newCart = this.state.cartDetails.filter(
       cartItem => cartItem.productKey !== removedItemKey
     );
 
     this.setState({
       cartDetails: newCart
-    });
+    })
   }
 
   closeNote = i => e => {
-    console.log("closing...")
+
     const { notePositionActive } = this.state;
     notePositionActive[i] = false;
 
     this.setState({
       notePositionActive
     });
+
   };
 
   openNote = i => e => {
+
     const { notePositionActive } = this.state;
     notePositionActive[i] = true;
 
     this.setState({
       notePositionActive
     });
+
   };
 
   render() {
-    const [color, colorLight, colorDark] = this.props.colors;
+    const { color } = this.props;
+
     return (
       <>
         <section className="Wishlist" id="Wishlist">
@@ -547,7 +562,7 @@ class Wishlist extends Component {
           </article>
         </section>
         <SendWishlist
-          colors={this.props.colors}
+          colors={this.props.color}
           name={this.state.name}
           email={this.state.email}
           phone={this.state.phone}

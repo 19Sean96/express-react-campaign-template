@@ -3,14 +3,14 @@ import styled from "styled-components";
 
 const StyledUnderline = styled.div`
   &::after {
-    background-color: ${props => props.accentColor};
+    background-color: ${props => props.color};
   }
 `;
 
 const StyledCloseBtn = styled.div`
 
     svg g line { 
-      stroke: ${props => props.accentColor}
+      stroke: ${props => props.color}
     }
 `;
 
@@ -38,7 +38,7 @@ function Nav(props) {
         <p>filters</p>
       </div>
       <StyledCloseBtn
-        accentColor={props.accentColor}
+        color={props.color}
         id="closeIcon"
         className={`Nav_list-close Nav_list-close--${!navIsOpen && "hidden"}`}
         onClick={e => {
@@ -69,7 +69,7 @@ function Nav(props) {
       <ul className={`Nav_list ${!navIsOpen && "Nav_list--hidden"}`}>
         {navItems.map((item, index) => (
           <StyledUnderline
-            accentColor={props.accentColor}
+            color={props.color}
             onClick={() => {
               props.updateActiveCategory(item);
               updateNav(false)
@@ -90,7 +90,7 @@ function Nav(props) {
               d="M494.522,4317.545H467V4260h42.534v42.534A15.013,15.013,0,0,1,494.522,4317.545Z"
               transform="translate(0)"
               fill="none"
-              stroke={props.accentColor}
+              stroke={props.color}
               strokeMiterlimit="10"
               strokeWidth="4"
             />
@@ -99,7 +99,7 @@ function Nav(props) {
                 x2="20"
                 transform="translate(-0.259 0.486)"
                 fill="none"
-                stroke={props.accentColor}
+                stroke={props.color}
                 strokeMiterlimit="10"
                 strokeWidth="4"
               />
@@ -107,7 +107,7 @@ function Nav(props) {
                 x2="20"
                 transform="translate(-0.259 10.486)"
                 fill="none"
-                stroke={props.accentColor}
+                stroke={props.color}
                 strokeMiterlimit="10"
                 strokeWidth="4"
               />
@@ -115,7 +115,7 @@ function Nav(props) {
                 x2="15"
                 transform="translate(-0.259 20.486)"
                 fill="none"
-                stroke={props.accentColor}
+                stroke={props.color}
                 strokeMiterlimit="10"
                 strokeWidth="4"
               />
