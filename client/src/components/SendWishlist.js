@@ -55,7 +55,7 @@ class SendWishlist extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // if (this.state.formReady) {
+    if (this.state.formReady) {
     this.setState({
       formSubmitted: false
     });
@@ -78,13 +78,13 @@ class SendWishlist extends Component {
       .catch(err => {
         console.log(err);
       });
-    // } else console.log("THE FORM IS NOT READY")
+    } else console.log("THE FORM IS NOT READY")
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { company, email, name, phone } = this.props;
     const isReady =
-      company.active && email.active && name.active && phone.active;
+      company.valid && email.valid && name.valid && phone.valid;
     let formReady;
     if (isReady && !this.state.formReady) {
       formReady = true;
@@ -100,7 +100,6 @@ class SendWishlist extends Component {
   }
 
   render() {
-    const { company, email, name, phone } = this.props;
     const { color } = this.props;
     return (
       <>
