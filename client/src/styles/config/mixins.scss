@@ -1,86 +1,135 @@
 @mixin heading($font-size, $font-color, $heading-type) {
-    font-family: "UniversCondensed";
-    position: relative;
-    display: inline-block;
-    color: $font-color;
-    text-transform: uppercase;
-    font-size: $font-size;
-    text-align: center;
+  font-family: "UniversCondensed";
+  position: relative;
+  display: inline-block;
+  color: $font-color;
+  text-transform: uppercase;
+  font-size: $font-size;
+  text-align: center;
 
-    @if ($heading-type == "title") {
-        &--icon {
-            width: 100%;
-            height: auto;
-        }
-
-        &--icon--container {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 10%;
-        }
-
-        @media screen and (max-width: 1080px) {
-            margin-top: 5rem;
-        }
-
-        @media screen and (max-width: 650px) {
-            font-size: 4.2rem;
-            margin-bottom: 1rem;
-        }
-
-        @media screen and (max-width: 500px) {
-            margin-top: 5rem; margin-bottom: .5rem;
-            font-size: 3.2rem;
-        }
-
-        @media screen and (max-width: 400px) {
-            margin-top: 4rem; margin-bottom: .25rem;
-            font-size: 2.95rem;
-        }
+  @if ($heading-type == "title") {
+    &--icon {
+      width: 100%;
+      height: auto;
     }
 
-    @if ($heading-type == "subtitle") {
-        @media screen and (max-width: 1080px) {
-            margin-top: -.8rem;
-        }
-        @media screen and (max-width: 650px) {
-            font-size: 1.8rem;
-        }
-
-        @media screen and (max-width: 500px) {
-            margin-left: auto; margin-right: auto;
-            text-align: center;
-            margin-top: 0;
-            font-size: 1.4rem;
-            width: 75%;
-        }
+    &--icon--container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10%;
     }
+
+    @media screen and (max-width: 1080px) {
+      margin-top: 5rem;
+    }
+
+    @media screen and (max-width: 650px) {
+      font-size: 4.2rem;
+      margin-bottom: 1rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      margin-top: 5rem;
+      margin-bottom: 0.5rem;
+      font-size: 3.2rem;
+    }
+
+    @media screen and (max-width: 400px) {
+      margin-top: 4rem;
+      margin-bottom: 0.25rem;
+      font-size: 2.95rem;
+    }
+  }
+
+  @if ($heading-type == "subtitle") {
+    @media screen and (max-width: 1080px) {
+      margin-top: -0.8rem;
+    }
+    @media screen and (max-width: 650px) {
+      font-size: 1.8rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      margin-top: 0;
+      font-size: 1.4rem;
+      width: 75%;
+    }
+  }
 }
 
-@mixin submit() {
-    position: relative;
-    font-size: 2.7rem;
-    font-family: "UniversCondensed";
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #fefefe;
-    border: solid #000 0.4rem;
-    height: 7.2rem;
-    cursor: pointer;
+@mixin submit($arrowRightDisplacement) {
+  position: relative;
+  font-size: 2.7rem;
+  font-family: "UniversCondensed";
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fefefe;
+  border: solid #000 0.4rem;
+  height: 7.2rem;
+  cursor: pointer;
+  transition: 0.05s color 0.05s ease-in-out;
+  z-index: 20;
 
-    transition: 0.05s color 0.05s ease-in-out;
-    z-index: 20;
+  .arrow-icon {
+    height: 100%;
+    width: auto;
+
+    &--container {
+      position: absolute;
+      height: 40%;
+      top: 50%;
+      right: $arrowRightDisplacement;
+      transform: translate(0, -50%);
+      transition: 0.2s transform ease-out;
+      min-width: 1rem;
+    }
+  }
+
+  #arrowLine,
+  #arrowPath {
+    transition: 0.1s all ease-in-out;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+    background-color: #000;
+    transition: 0.1s all ease-in-out;
+  }
+
+  &:hover {
+    color: #000;
+    transition: 0.125s box-shadow ease-in, 0.04s color 0.04s ease-in-out;
 
     &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        width: 100%;
-        left: 0;
-        height: 100%;
-        z-index: -1;
-        background-color: #000;
-        transition: 0.1s all ease-in-out;
+      height: 0%;
     }
+    .arrow-icon--container {
+      transform: translate(1.5rem, -50%);
+    }
+
+    #arrowLine,
+    #arrowPath {
+      stroke: #000 !important;
+    }
+  }
+
+  &:active {
+    .arrow-icon--container {
+      transform: translate(-0.25rem, -50%);
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
 }

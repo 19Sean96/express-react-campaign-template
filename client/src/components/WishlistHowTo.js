@@ -3,6 +3,7 @@ import Step1 from "./Icons/Step1"
 import Step2 from "./Icons/Step2"
 import Step3 from "./Icons/Step3"
 import Step4 from "./Icons/Step4"
+import ArrowRight from "./Icons/ArrowRight"
 function WishlistHowTo(props) {
   const noScroll = `
   *:not(.Nav_Wishlist-check):not(.WishlistHowTo_guide):not(.WishlistHowTo_guide--step) {
@@ -29,32 +30,8 @@ function WishlistHowTo(props) {
         </div>
         <button className="WishlistHowTo_button" onClick={props.closeModal}>
           <span>let's go</span>
-          <span className="arrow-icon--container">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="arrow-icon"
-              viewBox="0 0 40.414 40.414"
-            >
-              <g transform="translate(-344 -8150.793)">
-                <line
-                  id="arrowLine"
-                  x2="39"
-                  transform="translate(344 8171)"
-                  fill="none"
-                  stroke={props.colorLight}
-                  strokeMiterlimit="10"
-                  strokeWidth="3"
-                />
-                <path
-                  id="arrowPath"
-                  d="M363.5,8190.5,383,8171l-19.5-19.5"
-                  fill="none"
-                  strokeMiterlimit="10"
-                  strokeWidth="3"
-                  stroke={props.colorLight}
-                />
-              </g>
-            </svg>
+          <span className="arrow-icon--container" type="arrow">
+            <ArrowRight color={props.color} />
           </span>
         </button>
       </section>

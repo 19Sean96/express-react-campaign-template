@@ -171,58 +171,11 @@
       }
 
       &_submit {
-        @include submit();
+
+        @include submit(6rem);
         width: 90%;
         max-width: 40rem;
         margin: 4rem 0 11rem;
-
-        &--icon {
-          height: 100%;
-          width: auto;
-          &--container {
-            position: absolute;
-            height: 40%;
-            top: 50%;
-            right: 6rem;
-            transform: translate(0, -50%);
-            transition: 0.2s transform ease-out;
-            width: 1rem;
-
-            #arrowLine,
-            #arrowPath {
-              transition: 0.1s all ease-in-out;
-            }
-          }
-        }
-
-        &:hover {
-          color: #000;
-          transition: 0.125s box-shadow ease-in, 0.04s color 0.04s ease-in-out;
-          &::before {
-            height: 0%;
-          }
-
-          span[data-type="arrow"] {
-            transform: translate(1.5rem, -50%);
-          }
-
-          #arrowLine,
-          #arrowPath {
-            stroke: #000 !important;
-          }
-        }
-
-        &:active {
-
-          span[data-type="arrow"] {
-            transform: translate(-.25rem, -50%);
-          }
-        }
-
-        &:active,
-        &:focus {
-          outline: none;
-        }
 
         @media screen and (max-width: 775px) {
           width: 70%;

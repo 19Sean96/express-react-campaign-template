@@ -229,12 +229,7 @@ select:-webkit-autofill:focus {
       0% {
         stroke: #D7DE3B;
       }
-      // 40% {
-      //   stroke: $blue;
-      // }
-      // 66% {
-      //   stroke: $green;
-      // }
+
       80%,
       90% {
         stroke: #e9e9e9;
@@ -252,6 +247,7 @@ select:-webkit-autofill:focus {
   }
 }
 
-#zoomIcon {
+#zoomIcon,
+#cartCount {
   overflow: visible;
 }

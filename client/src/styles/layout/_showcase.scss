@@ -584,7 +584,7 @@
     width: 2.85rem;
     height: auto;
     position: absolute;
-    transition: 0.13s transform ease-out;
+    transition: 0.13s opacity ease-out;
     z-index: 500;
     right: 1.5rem;
   }
@@ -595,20 +595,20 @@
   }
 
   &__1 {
-    transform: translate(0, 0);
-   }
+    opacity: 1;
+  }
 
   &__2 {
-    transform: translate(0, 200%);
+    opacity: 0;
   }
 
   &:hover {
     .mobileAddItem__1 {
-      transform: translate(0, -200%);
+      opacity: 0;
     }
 
     .mobileAddItem__2 {
-      transform: translate(0, 0);
+      opacity: 1;
     }
   }
 
