@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SendWishlistInput from "./SendWishlistInput";
 import axios from "axios";
 import ArrowRight from "./Icons/ArrowRight";
-
+import Check from "./Icons/Check"
 class SendWishlist extends Component {
   constructor(props) {
     super(props);
@@ -106,37 +106,18 @@ class SendWishlist extends Component {
         {this.state.formSubmitted ? (
           <section className="Wishlist_Sent">
             <div className="Wishlist_Sent-check">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 25.926 25.926"
-              >
-                <g id="check" transform="translate(-0.281 -0.281)">
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="12"
-                    transform="translate(1.244 1.244)"
-                    stroke="#000"
-                    fill="#000"
-                    strokeMiterlimit="10"
-                    strokeWidth="1.926"
-                  />
-                  <path
-                    d="M3015.288,2664.107l4.435,4.435,10.522-10.522"
-                    transform="translate(-3009.52 -2650.321)"
-                    fill="none"
-                    stroke={color}
-                    strokeWidth="3"
-                  />
-                </g>
-              </svg>
+              <Check 
+                circleFill="#000"
+                circleStroke="#000"
+                pathStroke={color}
+              />
             </div>
             <h1 className="Wishlist_Sent-thanks">
               thank you
               <br />
               for your email!
             </h1>
-            <p>someone will reach out to you</p>
+            <p>someone will reach out to you shortly.</p>
           </section>
         ) : (
           <section className="Wishlist_Send" id="ContactForm">

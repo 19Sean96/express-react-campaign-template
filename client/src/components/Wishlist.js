@@ -281,7 +281,7 @@ class Wishlist extends Component {
                                 });
                               }}
                             >
-                              <span class="underline">yes</span> delete
+                              <span class="underline">yes</span> delete this
                             </button>
                           </div>
                         </div>

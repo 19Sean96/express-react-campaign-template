@@ -189,7 +189,7 @@
             }
 
             svg {
-              transition: .14s all ease-out;
+              transition: 0.14s all ease-out;
               position: absolute;
               right: 0;
             }
@@ -329,7 +329,7 @@
     width: 100%;
 
     #trashSVG {
-      width: 2.8rem;
+      width: 2rem;
       margin-left: 2.5rem;
       svg {
         left: 0;
@@ -350,7 +350,7 @@
   &-btn {
     background-color: transparent;
     height: 100%;
-    padding: 0rem 3.25rem;
+    padding: 0rem 4.75rem;
     text-transform: uppercase;
     margin-right: 1.5rem;
     border: none;
@@ -375,7 +375,7 @@
       height: 100%;
       display: flex;
       align-items: center;
-      padding: 1.5rem 0 1.5rem 0;
+      padding: 2rem 0 2rem 0;
       margin-left: auto;
 
       #cancelRemove {
@@ -419,7 +419,7 @@
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1040px) {
   .Wishlist_cart {
     padding-bottom: 15rem;
     &_item {
@@ -469,7 +469,6 @@
       }
 
       .item_remove {
-
         &-text {
           font-size: 1.7rem;
           margin-left: 1.75rem;
@@ -491,7 +490,13 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 800px) {
+  .Wishlist_cart {
+    &_item {
+      width: 80vw;
+    }
+  }
+
   .item_remove {
     &-text {
       display: none;
@@ -500,7 +505,6 @@
       width: 50%;
       &--container {
         width: 80%;
-
       }
     }
   }
@@ -529,10 +533,14 @@
 
   .item_remove {
     &-btn {
-      width: 50%;
       &--container {
         width: calc(100% - 2rem);
-
+        #remove {
+          width: 62.5%;
+        }
+        #cancelRemove {
+          width: 37.5%;
+        }
       }
     }
 
