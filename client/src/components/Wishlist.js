@@ -4,6 +4,7 @@ import SendWishlist from "./SendWishlist";
 import DocumentIcon from "./Icons/Document";
 import TrashcanIcon from "./Icons/Trashcan";
 import Check from "./Icons/Check"
+import Note from "./Icons/Note"
 import styled from "styled-components";
 
 const StyledNoteIcon = styled.div`
@@ -302,48 +303,14 @@ class Wishlist extends Component {
                                 .state.notePositionActive[index] &&
                                 `Wishlist_cart_item--editor-note--active`}`}
                             >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 48 48.414"
-                                dataposition={index}
+                              <Note 
+                                index={index}
                                 onClick={
                                   this.state.notePositionActive[index]
                                     ? this.closeNote(index)
                                     : this.openNote(index)
                                 }
-                              >
-                                <g transform="translate(-1180 -1355)">
-                                  <path
-                                    d="M1219,1394h-7l-8,8-8-8h-7a8,8,0,0,1-8-8v-30h46v30A8,8,0,0,1,1219,1394Z"
-                                    fill="none"
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
-                                  />
-                                  <g data-name="Group 107">
-                                    <line
-                                      x2="26"
-                                      transform="translate(1191 1366)"
-                                      fill="none"
-                                      strokeMiterlimit="10"
-                                      strokeWidth="2"
-                                    />
-                                    <line
-                                      x2="26"
-                                      transform="translate(1191 1374)"
-                                      fill="none"
-                                      strokeMiterlimit="10"
-                                      strokeWidth="2"
-                                    />
-                                    <line
-                                      x2="20"
-                                      transform="translate(1191 1382)"
-                                      fill="none"
-                                      strokeMiterlimit="10"
-                                      strokeWidth="2"
-                                    />
-                                  </g>
-                                </g>
-                              </svg>
+                              />
                               <div
                                 className={`addNote ${
                                   this.state.notePositionActive[index]

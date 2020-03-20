@@ -43,7 +43,16 @@ function SendWishlistInput(props) {
                 maxLength={input.name === "phone" ? 13 : 300}
                 required
               />
-              <label htmlFor={input.name} className={`${FormClass}_input--label`}>
+              <label 
+                htmlFor={input.name} 
+                className={`${FormClass}_input--label`}
+                style={status.value.length > 0 ? {
+                  transform: "translateY(-500%)",
+                  opacity: 0
+                }: {
+
+                }}
+              >
                 {input.label}
               </label>
               <> 

@@ -61,7 +61,7 @@
   }
 }
 
-@mixin submit($arrowRightDisplacement) {
+@mixin submit($arrowRightDisplacement, $isFormButton: false) {
   position: relative;
   font-size: 2.7rem;
   font-family: "UniversCondensed";
@@ -131,5 +131,24 @@
   &:active,
   &:focus {
     outline: none;
+  }
+
+  @if $isFormButton == true {
+    @media screen and (max-width: 460px) {
+      font-size: 2.3rem;
+      .arrow-icon--container {
+        transform: translate(2rem, -50%);
+      }
+      &:hover {
+        .arrow-icon--container {
+          transform: translate(3.5rem,-50%);
+        }
+      }
+      &:active {
+        .arrow-icon--container {
+          transform: translate(1.75rem,-50%);
+        }
+      }
+    }
   }
 }

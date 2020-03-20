@@ -172,14 +172,10 @@
 
       &_submit {
 
-        @include submit(6rem);
+        @include submit(6rem, true);
         width: 90%;
         max-width: 40rem;
         margin: 4rem 0 11rem;
-
-        @media screen and (max-width: 775px) {
-          width: 70%;
-        }
 
         @media screen and (max-width: 650px) {
           width: 85%;
