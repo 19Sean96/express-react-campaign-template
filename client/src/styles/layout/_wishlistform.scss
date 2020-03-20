@@ -122,15 +122,20 @@
           }
           &--halfwidth {
             width: calc(50% - 0.5rem);
-
             label {
               left: 10%;
+            }
+            input {
+              padding-left: 10%;
             }
             @media screen and (max-width: 725px) {
               width: 100%;
 
               label {
                 left: 5%;
+              }
+              input {
+                padding-left: 5%;
               }
             }
           }
