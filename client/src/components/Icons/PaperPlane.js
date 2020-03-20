@@ -15,7 +15,7 @@ export default props => {
           fill="none"
           stroke={props.color}
           strokeMiterlimit="10"
-          strokeWidth="10"
+          strokeWidth="4"
         />
         <path
           id="Path_768"
@@ -25,7 +25,7 @@ export default props => {
           fill="none"
           stroke={props.color}
           strokeMiterlimit="10"
-          strokeWidth="10"
+          strokeWidth="4"
         />
         <line
           id="Line_413"
@@ -36,7 +36,7 @@ export default props => {
           fill="none"
           stroke={props.color}
           strokeMiterlimit="10"
-          strokeWidth="10"
+          strokeWidth="4"
         />
       </g>
     </svg>
