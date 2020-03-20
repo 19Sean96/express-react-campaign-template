@@ -9,7 +9,7 @@ export default props => {
           fill="none"
           stroke={props.color}
           strokeMiterlimit="10"
-          strokeWidth="4"
+          strokeWidth="2"
         />
         <g transform="translate(478.259 4277.514)">
           <line
@@ -18,7 +18,7 @@ export default props => {
             fill="none"
             stroke={props.color}
             strokeMiterlimit="10"
-            strokeWidth="4"
+            strokeWidth="2"
           />
           <line
             x2="20"
@@ -26,7 +26,7 @@ export default props => {
             fill="none"
             stroke={props.color}
             strokeMiterlimit="10"
-            strokeWidth="4"
+            strokeWidth="2"
           />
           <line
             x2="15"
@@ -34,7 +34,7 @@ export default props => {
             fill="none"
             stroke={props.color}
             strokeMiterlimit="10"
-            strokeWidth="4"
+            strokeWidth="2"
           />
         </g>
       </g>

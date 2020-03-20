@@ -15,7 +15,7 @@ export default props => {
           fill="none"
           stroke="#fff"
           strokeMiterlimit="10"
-          strokeWidth="4.5"
+          strokeWidth="2"
         />
         <line
           x2="18.686"
@@ -24,7 +24,7 @@ export default props => {
           fill="none"
           stroke="#fff"
           strokeMiterlimit="10"
-          strokeWidth="4.5"
+          strokeWidth="2"
         />
       </g>
     </svg>

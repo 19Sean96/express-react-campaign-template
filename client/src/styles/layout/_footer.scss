@@ -146,7 +146,7 @@
 
     &_link {
       margin: 0 auto;
-      padding: 3rem;
+      padding: 3rem 3rem 3.5rem;
       width: 100%;
 
       a {
@@ -160,13 +160,13 @@
       &-email {
         &_icon {
           width: 3.2rem;
-          transform: translateY(-.2rem);
+          transform: translateY(.2rem);
         }
       }
       &-site {
         &_icon {
           width: 1.9rem;
-          transform: translateY(-.675rem);
+          transform: translateY(-.2rem);
         }
       }
     }
@@ -177,7 +177,7 @@
 
       &_title {
         font-size: 4.2rem;
-        line-height: .7;
+        line-height: .9;
       }
 
       &_subtitle {
@@ -198,7 +198,7 @@
 
       &_text {
         font-size: 1rem;
-        padding-bottom: 1rem;
+        padding-bottom: 1.5rem;
       }
     }
 
@@ -207,6 +207,7 @@
       transform: translateX(50%);
       width: 100%;
       text-align: center;
+      padding-bottom: .5rem;
     }
   }
 

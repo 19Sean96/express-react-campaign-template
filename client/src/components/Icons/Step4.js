@@ -29,7 +29,7 @@ export default props => {
               r="63.298"
               transform="translate(1085.885 -539)"
               strokeMiterlimit="10"
-              strokeWidth="4"
+              strokeWidth="2"
               fill="none"
             />
             <line

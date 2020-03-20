@@ -15,7 +15,7 @@ export default props => {
             fill={props.circleFill}
             stroke={props.circleStroke}
             strokeMiterlimit="10"
-            strokeWidth="1.926"
+            strokeWidth="2"
           />
         <line
           x2="10"

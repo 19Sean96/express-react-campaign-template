@@ -10,21 +10,21 @@ export default (props) => {
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="3.482"
+                strokeWidth="2"
               />
               <path
                 d="M502.109,456.838v-4.815a9.63,9.63,0,0,1,9.63-9.63h72.226v48.15a9.63,9.63,0,0,1-9.63,9.63H569.52"
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="3.482"
+                strokeWidth="2"
               />
               <path
                 d="M516.554,442.393v-4.815a9.63,9.63,0,0,1,9.63-9.63H598.41V476.1a9.63,9.63,0,0,1-9.63,9.63h-4.815"
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="3.482"
+                strokeWidth="2"
               />
               <circle
                 cx="10.792"
@@ -34,7 +34,7 @@ export default (props) => {
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="3.482"
+                strokeWidth="2"
               />
               <rect
                 width="19.4"
@@ -43,7 +43,7 @@ export default (props) => {
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="3.482"
+                strokeWidth="2"
               />
             </g>
           </svg>

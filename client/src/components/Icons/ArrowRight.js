@@ -14,14 +14,14 @@ export default props => {
           fill="none"
           stroke={props.color}
           strokeMiterlimit="10"
-          strokeWidth="3"
+          strokeWidth="2"
         />
         <path
           id="arrowPath"
           d="M363.5,8190.5,383,8171l-19.5-19.5"
           fill="none"
           strokeMiterlimit="10"
-          strokeWidth="3"
+          strokeWidth="2"
           stroke={props.color}
         />
       </g>

@@ -12,7 +12,7 @@ export default (props) => {
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="4"
+                strokeWidth="2"
               />
               <circle
                 cx="13.05"
@@ -22,7 +22,7 @@ export default (props) => {
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="4"
+                strokeWidth="2"
               />
               <rect
                 width="23.458"
@@ -31,7 +31,7 @@ export default (props) => {
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="4"
+                strokeWidth="2"
               />
               <rect
                 width="54.005"
@@ -44,7 +44,7 @@ export default (props) => {
                 fill="none"
                 stroke={props.color}
                 strokeMiterlimit="10"
-                strokeWidth="1.937"
+                strokeWidth="2"
               />
               <line
                 y1="9.687"
@@ -52,7 +52,7 @@ export default (props) => {
                 fill="none"
                 stroke={props.color}
                 strokeMiterlimit="10"
-                strokeWidth="1.937"
+                strokeWidth="2"
               />
               <circle
                 cx="11.624"
@@ -62,7 +62,7 @@ export default (props) => {
                 fill="none"
                 stroke={props.color}
                 strokeMiterlimit="10"
-                strokeWidth="1.937"
+                strokeWidth="2"
               />
             </g>
           </svg>

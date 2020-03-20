@@ -173,7 +173,7 @@ function assembleData(details, photos, products, tiles, categories) {
       0,
       data.categories.length,
       ...new Set(data.categories)
-    );
+    ); 
 
     data.items.push({
       id: tile.id,

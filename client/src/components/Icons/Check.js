@@ -11,14 +11,14 @@ export default props => {
           fill={props.circleFill}
           stroke={props.circleStroke}
           strokeMiterlimit="10"
-          strokeWidth="1.926"
+          strokeWidth="2"
         />
         <path
           d="M3015.288,2664.107l4.435,4.435,10.522-10.522"
           transform="translate(-5041.764 -2780.565)"
           fill="none"
           stroke={props.pathStroke}
-          strokeWidth="3"
+          strokeWidth="2"
         />
       </g>
     </svg>

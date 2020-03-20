@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import OffClick from "react-offclick";
 import SendWishlist from "./SendWishlist";
-import FileIcon from "./Icons/File";
+import DocumentIcon from "./Icons/Document";
 import TrashcanIcon from "./Icons/Trashcan";
 import Check from "./Icons/Check"
 import styled from "styled-components";
@@ -225,7 +225,7 @@ class Wishlist extends Component {
           <h1 className="Wishlist_title">
             quote list
             <span className="Wishlist_title--icon--container">
-              <FileIcon color={color} />
+              <DocumentIcon color={color} />
             </span>
           </h1>
           <h3 className="Wishlist_subtitle">
