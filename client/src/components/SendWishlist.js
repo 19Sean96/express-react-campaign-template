@@ -142,7 +142,7 @@ class SendWishlist extends Component {
               {this.FormInputs.map((input, index) => {
                 return (
                   <SendWishlistInput
-                    accentColor={color}
+                    color={color}
                     key={index}
                     input={input}
                     FormClass={this.FormClass}

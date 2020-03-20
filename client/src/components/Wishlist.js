@@ -5,8 +5,9 @@ import DocumentIcon from "./Icons/Document";
 import TrashcanIcon from "./Icons/Trashcan";
 import Check from "./Icons/Check"
 import Note from "./Icons/Note"
+import Close from "./Icons/Close"
 import styled from "styled-components";
-
+import ArrowUp from "./Icons/ArrowUp";
 const StyledNoteIcon = styled.div`
   svg {
     g > * {
@@ -382,34 +383,7 @@ class Wishlist extends Component {
                               }}
                               className="Wishlist_cart_item--editor-remove"
                             >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 29.414 29.414"
-                              >
-                                <g
-                                  id="Cross"
-                                  transform="translate(0.397 0.707)"
-                                >
-                                  <line
-                                    x2="28"
-                                    y2="28"
-                                    transform="translate(0.31)"
-                                    fill="none"
-                                    stroke="#000"
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
-                                  />
-                                  <line
-                                    y1="28"
-                                    x2="28"
-                                    transform="translate(0.31)"
-                                    fill="none"
-                                    stroke="#000"
-                                    strokeMiterlimit="10"
-                                    strokeWidth="2"
-                                  />
-                                </g>
-                              </svg>
+                              <Close />
                             </div>
                           </div>
                         </>
@@ -459,30 +433,7 @@ class Wishlist extends Component {
                   >
                     add some items.
                   </StyledWishlistCTA>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40.414"
-                    height="40.414"
-                    viewBox="0 0 40.414 40.414"
-                  >
-                    <g transform="translate(-344 -8150.793)">
-                      <line
-                        x2="39"
-                        transform="translate(344 8171)"
-                        fill="none"
-                        stroke={color}
-                        strokeMiterlimit="10"
-                        strokeWidth="2"
-                      />
-                      <path
-                        d="M363.5,8190.5,383,8171l-19.5-19.5"
-                        fill="none"
-                        stroke={color}
-                        strokeMiterlimit="10"
-                        strokeWidth="2"
-                      />
-                    </g>
-                  </svg>
+                  <ArrowUp color={color} />
                 </div>
               </div>
             )}

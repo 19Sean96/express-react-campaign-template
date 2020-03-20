@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledInput = styled.div`
   &::before {
-    background-color: ${props => props.accentColor};
+    background-color: ${props => props.color};
   }
 `;
 
@@ -11,7 +11,7 @@ function SendWishlistInput(props) {
   const { FormClass, handleKeyPress, input, status } = props;
   return (
     <StyledInput
-      accentColor={props.accentColor}
+      color={props.color}
       key={input.name}
       className={`${FormClass}_input--container ${FormClass}_input--container--${
         input.width
@@ -106,14 +106,14 @@ function SendWishlistInput(props) {
                       stroke="#14DB60"
                       fill="none"
                       strokeMiterlimit="10"
-                      strokeWidth="1.926"
+                      strokeWidth="2"
                     />
                     <path
                       d="M3015.288,2664.107l4.435,4.435,10.522-10.522"
                       transform="translate(-3009.52 -2650.321)"
                       fill="none"
                       stroke="#14DB60"
-                      strokeWidth="3"
+                      strokeWidth="2"
                     />
                   </g>
                 </svg>

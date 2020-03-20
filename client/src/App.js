@@ -10,12 +10,18 @@ import axios from "axios";
 import { Route, useParams } from "react-router-dom";
 
 if (process.env.NODE_ENV === "development") {
+  // proxy
   axios.defaults.baseUrl = "http://localhost:5000";
 }
 
 function App() {
   return (
     <div className="App">
+      {
+        /*
+          THIS WILL ONLY SHOW A CAMPAIGN PAGE (INCLUDING LOADING CIRCLE) ONCE A URL PARAM IS DETECTED
+        */
+      }
       <Route path="/:campaign">
         <Campaign />
       </Route>
@@ -41,7 +47,7 @@ function Campaign() {
   }, [modalIsOpen]);
 
   useEffect(() => {
-    // COMMUNICATES WITH BACKEND TO GET THE URL PARAM PASSED IN BY USER TO BRAB THE CORRECT CAMPAIGN
+    // SENDS REQ TO EXPRESS TO MAKE API CALL TO DIRECTUS TO GRAB CAMPAIGN DATA
     axios.get(`/api/${campaign}`).then(res => {
       const campaignData = assembleData(
         res.data.details,
@@ -107,6 +113,7 @@ function Campaign() {
           <Footer color={data.client.color} />
         </>
       ) : (
+        // IF THE DATA IS STILL BEING PROCESSED, SHOW LOADING SCREEN
         <div id="loadingbar-background">
             <svg id="loadingbar" viewBox="25 25 50 50">
               <circle
@@ -131,11 +138,13 @@ const determineTileType = (products, id) => {
       count++;
     }
   });
-
+  // 'false' = MULTI ITEM TILE ; 'true' = SINGLE ITEM TILE
   if (count > 1) return false;
   else return true;
 };
 function assembleData(details, photos, products, tiles, categories) {
+
+  // 'data' is the template we use to organize and tie the campaign data together
   const data = {
     categories: ["all"],
     client: {
@@ -151,10 +160,12 @@ function assembleData(details, photos, products, tiles, categories) {
     items: []
   };
 
+
   products = products.map(prod => {
     return {
       tile_parent: prod.tile,
       key: prod.design_number,
+      // ASSIGNS IMAGE BASED ON THE IMAGE ID ON THE PRODUCT PAGE
       img:
         photos[photos.findIndex(image => image.id === prod.image)].data
           .full_url,
@@ -165,16 +176,23 @@ function assembleData(details, photos, products, tiles, categories) {
   });
 
   tiles.map(tile => {
+    /*
+      WHEN THE API CALL IS MADE, WE GET BACK THE FULL LIST. 
+      WE ONLY NEED THE RELEVANT CATEGORIES TO FILTER THROUGH THE PRODUCTS.
+    */
     data.categories.push(
+      // PUSH THE CATEGORY ONLY IF A TILE CONTAINS THAT CATEGORY ID
       categories[categories.findIndex(cat => cat.id === tile.category)]
         .category_name
     );
+    // '...new Set()' WILL TRIM ANY DUPLICATE CATEGORIES FROM THE LIST, & RETURN IT BACK TO ITSELF
     data.categories.splice(
       0,
       data.categories.length,
       ...new Set(data.categories)
     ); 
 
+    // PUSHES THE TILE/PRODUCT PAIRS INTO 'data.items'
     data.items.push({
       id: tile.id,
       name: tile.title,
