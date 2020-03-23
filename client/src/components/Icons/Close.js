@@ -8,7 +8,7 @@ export default props => {
           y2="28"
           transform="translate(0.31)"
           fill="none"
-          stroke="#000"
+          stroke={props.color}
           strokeMiterlimit="10"
           strokeWidth="2"
         />
@@ -17,7 +17,7 @@ export default props => {
           x2="28"
           transform="translate(0.31)"
           fill="none"
-          stroke="#000"
+          stroke={props.color}
           strokeMiterlimit="10"
           strokeWidth="2"
         />

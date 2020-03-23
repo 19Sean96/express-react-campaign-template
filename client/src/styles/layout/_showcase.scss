@@ -423,7 +423,7 @@
       right: 3.25rem;
       top: 3.75rem;
       cursor: pointer;
-      z-index: 100;
+      z-index: 7000;
       > svg * {
         stroke-width: 4px;
       }
@@ -507,7 +507,7 @@
 }
 
 #singleModal {
-  overflow-y: scroll;
+  overflow-y: visible;
   max-height: 87.5rem;
 
   @media screen and (min-width: 1800px) {

@@ -458,7 +458,7 @@ function ShowcaseModal(props) {
             <>
               <h2 className="zoomModal_name">{productInfo.name}</h2>
               <div className="zoomModal-close" onClick={props.closeModal}>
-                <Close />
+                <Close color={props.color}/>
               </div>
               <div className="zoomModal_img--container">
                 <img
@@ -526,7 +526,7 @@ function ShowcaseModal(props) {
                 <Scrollbars style={{ width: "100%", height: "100vh" }}>
                   <h2 className="zoomModal_name">{productInfo.name}</h2>
                   <div className="zoomModal-close" onClick={props.closeModal}>
-                    <Close />
+                    <Close color={props.color}/>
                   </div>
                   <div className="zoomModal-multi-grid">
                     {productInfo.products.map(prod => {
