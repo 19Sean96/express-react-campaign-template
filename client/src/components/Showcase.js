@@ -182,8 +182,12 @@ class Showcase extends Component {
 
   render() {
     const noScroll = `
-      *:not(.zoomModal--multi):not(.WishlistHowTo_guide):not(.WishlistHowTo_guide--step)
+      * {
         overflow-y: hidden;
+      }
+
+      svg, g, line, path, .Nav_Wishlist-check {
+        overflow-y: visible;
       }
     `;
     const noClick = `
@@ -458,7 +462,7 @@ function ShowcaseModal(props) {
             <>
               <h2 className="zoomModal_name">{productInfo.name}</h2>
               <div className="zoomModal-close" onClick={props.closeModal}>
-                <Close color={props.color}/>
+                <Close color={props.color} />
               </div>
               <div className="zoomModal_img--container">
                 <img
@@ -524,10 +528,10 @@ function ShowcaseModal(props) {
           ) : (
               <>
                 <Scrollbars style={{ width: "100%", height: "100vh" }}>
-                  <h2 className="zoomModal_name">{productInfo.name}</h2>
-                  <div className="zoomModal-close" onClick={props.closeModal}>
-                    <Close color={props.color}/>
-                  </div>
+                <h2 className="zoomModal_name">{productInfo.name}</h2>
+                <div className="zoomModal-close" onClick={props.closeModal}>
+                  <Close color={props.color} />
+                </div>
                   <div className="zoomModal-multi-grid">
                     {productInfo.products.map(prod => {
                       return (

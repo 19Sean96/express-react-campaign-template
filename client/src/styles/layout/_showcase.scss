@@ -248,9 +248,7 @@
       padding: 0;
       width: 1400px;
 
-      .zoomModal_name {
-        padding-left: 6.5%;
-      }
+
       @media screen and (max-width: 1475px) {
         width: 900px;
 
@@ -269,7 +267,7 @@
             &:nth-child(even) {
               border-width: 2px 2px 0 0;
             }
-            &:nth-child(odd) {
+            &:nth-child(odd) { 
               border-width: 2px 2px 0 2px;
             }
 
@@ -310,13 +308,14 @@
 
         .zoomModal_name {
           margin-top: 0;
-          background-color: transparent;
-          position: absolute;
+          position: fixed;
+          background-color: #fafafa;
+
         }
         .zoomModal-close {
           margin-left: auto;
           top: 2.75rem;
-          position: sticky;
+          position: fixed;
 
           &::before {
             content: '';
@@ -373,6 +372,9 @@
       font-weight: 700;
       font-size: 3.6rem;
       padding-bottom: 1rem;
+      padding-left: 6.5%;
+      z-index: 8000;
+      position: relative;
       @media screen and (max-width: 750px) {
         background-color: #fafafa;
         width: 100%;
@@ -423,7 +425,7 @@
       right: 3.25rem;
       top: 3.75rem;
       cursor: pointer;
-      z-index: 7000;
+      z-index: 9000;
       > svg * {
         stroke-width: 4px;
       }
