@@ -182,7 +182,7 @@ class Showcase extends Component {
 
   render() {
     const noScroll = `
-      *:not(.zoomModal--multi) {
+      *:not(.zoomModal--multi):not(.WishlistHowTo_guide):not(.WishlistHowTo_guide--step)
         overflow-y: hidden;
       }
     `;
@@ -524,11 +524,9 @@ function ShowcaseModal(props) {
           ) : (
               <>
                 <Scrollbars style={{ width: "100%", height: "100vh" }}>
-                  <div id="mobileModalTitleWrapper" className="wrapper">
-                    <h2 className="zoomModal_name">{productInfo.name}</h2>
-                    <div className="zoomModal-close" onClick={props.closeModal}>
-                      <Close />
-                    </div>
+                  <h2 className="zoomModal_name">{productInfo.name}</h2>
+                  <div className="zoomModal-close" onClick={props.closeModal}>
+                    <Close />
                   </div>
                   <div className="zoomModal-multi-grid">
                     {productInfo.products.map(prod => {
