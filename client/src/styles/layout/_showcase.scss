@@ -249,6 +249,8 @@
       padding: 0;
       width: 1400px;
 
+
+
       .zoomModal_name {
         padding-left: 6.5%;
       }
@@ -282,6 +284,8 @@
       }
 
       @media screen and (max-width: 1050px) {
+
+
         width: 700px;
         .zoomModal-close {
           width: 2.25rem; height: 2.25rem;
@@ -307,11 +311,17 @@
         max-width: 100%;
         width: 450px;
 
-        .zoomModal_name {
-          margin-top: 0;
-        }
-        .zoomModal-close {
-          right: 2.5rem; top: 2.75rem;
+        #mobileModalTitleWrapper {
+          background-color: green !important;
+          position: fixed;
+          z-index: 1000;
+
+          .zoomModal_name {
+            margin-top: 0;
+          }
+          .zoomModal-close {
+            right: 2.5rem; top: 2.75rem;
+          }
         }
         .zoomModal-multi-grid {
           width: 100%;
@@ -341,7 +351,6 @@
         }
         .zoomModal-close {
           width: 2.3rem; height: 2.3rem; 
-          top: 3.45rem;
         }
       }
 
