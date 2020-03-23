@@ -314,8 +314,9 @@
           position: absolute;
         }
         .zoomModal-close {
-          right: 3.4rem;
+          margin-left: auto;
           top: 2.75rem;
+          position: sticky;
 
           &::before {
             content: '';
