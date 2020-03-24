@@ -354,10 +354,13 @@
       @media screen and (max-width: 560px) {
         .zoomModal-multi-grid {
           grid-auto-rows: 31rem;
+          overflow-x: hidden;
         }
         .zoomModal-close {
           width: 2.3rem;
           height: 2.3rem;
+          left: 32.5rem;
+
         }
       }
 
