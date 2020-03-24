@@ -57,11 +57,11 @@
         background-color: #111111;
         position: fixed;
         right: 0;
-        top: 0vh;
+        bottom: 0vh;
         transform: translate(0, 0%);
         z-index: 1000;
-        width: 7rem;
-        height: 7rem;
+        width: 8rem;
+        height: 8rem;
         cursor: pointer;
         transition: 0.25s transform 0.15s ease-out;
         svg {
@@ -81,7 +81,7 @@
         position: absolute;
         left: 0;
         top: 50%;
-        transform: translate(32.5%, -50%);
+        transform: translate(27.5%, -50%);
         height: 100%;
         display: flex;
         justify-content: center;

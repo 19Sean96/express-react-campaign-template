@@ -8,14 +8,14 @@ export default props => {
         fill="none"
         stroke={props.color}
         strokeMiterlimit="10"
-        strokeWidth="2"
+        strokeWidth="4"
       />
       <path
         d="M964,3733v-15.989a4.055,4.055,0,0,1,4.062-4.011h4.872a4.01,4.01,0,0,0,4.066-4v-2"
         fill="none"
         stroke={props.color}
         strokeMiterlimit="10"
-        strokeWidth="2"
+        strokeWidth="4"
       />
     </g>
   </svg>

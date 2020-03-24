@@ -9,7 +9,7 @@ export default props => {
           fill="none"
           stroke={props.color}
           strokeMiterlimit="10"
-          strokeWidth="2"
+          strokeWidth="4"
         />
         <path
           d="M346.293,1607.952,364,1624l17.807-16.073"
@@ -17,7 +17,7 @@ export default props => {
           fill="none"
           stroke={props.color}
           strokeMiterlimit="10"
-          strokeWidth="2"
+          strokeWidth="4"
         />
       </g>
     </svg>
