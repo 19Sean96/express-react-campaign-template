@@ -58,12 +58,12 @@ const StyledBtn2 = styled.button`
     display: block;
     transform: translateX(1.25rem);
     color: ${props => {
-    if (props.isModalBtn) {
-      if (props.clicked) {
-        return "#000";
-      } else return "#fff";
-    } else if (!props.isModalBtn) return "#000";
-  }};
+      if (props.isModalBtn) {
+        if (props.clicked) {
+          return "#000";
+        } else return "#fff";
+      } else if (!props.isModalBtn) return "#000";
+    }};
     transition: 0.2s all ease;
   }
 
@@ -208,12 +208,12 @@ class Showcase extends Component {
               key={index}
               className={`showcase_grid_item showcase_grid_item--colspread_${
                 product.columns
-                } ${
+              } ${
                 product.category === this.props.activeCategory ||
-                  this.props.activeCategory === "all"
+                this.props.activeCategory === "all"
                   ? ""
                   : "notActive"
-                }`}
+              }`}
               category={product.category}
             >
               <p className="showcase_grid_item-name">{product.name}</p>
@@ -276,58 +276,58 @@ class Showcase extends Component {
                           wishlistProd =>
                             wishlistProd.tile_parent === product.id
                         ) ? (
-                            <>
-                              <div className="cta-addToList--icon">
-                                <Check
-                                  circleFill={"#000"}
-                                  circleStroke={"#000"}
-                                  pathStroke={"#fff"}
-                                  style={{
-                                    display: "auto"
-                                  }}
-                                />
-                              </div>
-                            </>
-                          ) : (
-                            <>
-                              <div className="cta-addToList--icon">
-                                <Add
-                                  lineStroke="#fff"
-                                  circleFill="none"
-                                  circleStroke="#fff"
-                                  className=""
-                                />
-                              </div>
+                          <>
+                            <div className="cta-addToList--icon">
+                              <Check
+                                circleFill={"#000"}
+                                circleStroke={"#000"}
+                                pathStroke={"#fff"}
+                                style={{
+                                  display: "auto"
+                                }}
+                              />
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="cta-addToList--icon">
+                              <Add
+                                lineStroke="#fff"
+                                circleFill="none"
+                                circleStroke="#fff"
+                                className=""
+                              />
+                            </div>
 
-                              <div className="cta-addToList--icon cta-addToList--icon-2">
-                                <Add
-                                  lineStroke="#fff"
-                                  circleFill={color}
-                                  circleStroke={color}
-                                  className=""
-                                />
-                              </div>
-                            </>
-                          )}
+                            <div className="cta-addToList--icon cta-addToList--icon-2">
+                              <Add
+                                lineStroke="#fff"
+                                circleFill={color}
+                                circleStroke={color}
+                                className=""
+                              />
+                            </div>
+                          </>
+                        )}
                       </StyledBtn2>
                     </>
                   ) : (
-                      <>
-                        <StyledBtn1
-                          className="cta-viewAll showcase_grid_item-cta_btn"
-                          color={color}
-                          onClick={e =>
-                            this.expandMultiItem(
-                              product.name,
-                              index,
-                              product.products
-                            )
-                          }
-                        >
-                          see all
+                    <>
+                      <StyledBtn1
+                        className="cta-viewAll showcase_grid_item-cta_btn"
+                        color={color}
+                        onClick={e =>
+                          this.expandMultiItem(
+                            product.name,
+                            index,
+                            product.products
+                          )
+                        }
+                      >
+                        see all
                       </StyledBtn1>
-                      </>
-                    )}
+                    </>
+                  )}
                 </div>
               </div>
               <span className="mobileAddItem--container">
@@ -346,37 +346,37 @@ class Showcase extends Component {
                     {this.props.wishlist.some(
                       wishlistProd => wishlistProd.tile_parent === product.id
                     ) ? (
-                        <>
-                          <Check
-                            circleFill="#000"
-                            circleStroke="#000"
-                            pathStroke="#fff"
-                            style={{
-                              width: "2.85rem",
-                              height: "auto",
-                              position: "absolute",
-                              transition: "0.13s opacity ease-out",
-                              zIndex: 5000,
-                              right: "1.5rem"
-                            }}
-                          />
-                        </>
-                      ) : (
-                        <>
-                          <Add
-                            circleFill="none"
-                            circleStroke="#000"
-                            lineStroke="#000"
-                            className="mobileAddItem__1"
-                          />
-                          <Add
-                            circleFill="#fff"
-                            circleStroke="#fff"
-                            lineStroke={color}
-                            className="mobileAddItem__2"
-                          />
-                        </>
-                      )}
+                      <>
+                        <Check
+                          circleFill="#000"
+                          circleStroke="#000"
+                          pathStroke="#fff"
+                          style={{
+                            width: "2.85rem",
+                            height: "auto",
+                            position: "absolute",
+                            transition: "0.13s opacity ease-out",
+                            zIndex: 5000,
+                            right: "1.5rem"
+                          }}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <Add
+                          circleFill="none"
+                          circleStroke="#000"
+                          lineStroke="#000"
+                          className="mobileAddItem__1"
+                        />
+                        <Add
+                          circleFill="#fff"
+                          circleStroke="#fff"
+                          lineStroke={color}
+                          className="mobileAddItem__2"
+                        />
+                      </>
+                    )}
                     <span
                       className={
                         this.props.wishlist.some(
@@ -395,8 +395,8 @@ class Showcase extends Component {
                     </span>
                   </StyledMultiBtn>
                 ) : (
-                    <MultiItemIcon />
-                  )}
+                  <MultiItemIcon />
+                )}
               </span>
             </div>
           );
@@ -450,13 +450,13 @@ function ShowcaseModal(props) {
       <div
         className={`${
           props.itemType !== "single" ? "zoomModal--multi__container" : ""
-          }`}
+        }`}
       >
         <article
           id={`${props.itemType}Modal`}
           className={`zoomModal ${props.open && "zoomModal--active"} ${
             props.itemType === "single" ? "" : "zoomModal--multi"
-            }`}
+          }`}
         >
           {props.itemType === "single" ? (
             <>
@@ -494,111 +494,113 @@ function ShowcaseModal(props) {
                 {props.wishlist.some(
                   wishlistProd => wishlistProd.tile_parent === productInfo.id
                 ) ? (
-                    <>
-                      <div className="cta-addToList--icon">
-                        <Check
-                          circleFill="#000"
-                          circleStroke="#000"
-                          pathStroke="#fff"
-                        />
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="cta-addToList--icon cta-addToList--icon-1">
-                        <Add
-                          className=""
-                          circleFill="none"
-                          circleStroke={props.color}
-                          lineStroke={props.color}
-                        />
-                      </div>
-                      <div className="cta-addToList--icon cta-addToList--icon-2">
-                        <Add
-                          className=""
-                          circleFill="#fff"
-                          circleStroke="#fff"
-                          lineStroke={props.color}
-                        />
-                      </div>
-                    </>
-                  )}
+                  <>
+                    <div className="cta-addToList--icon">
+                      <Check
+                        circleFill="#000"
+                        circleStroke="#000"
+                        pathStroke="#fff"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="cta-addToList--icon cta-addToList--icon-1">
+                      <Add
+                        className=""
+                        circleFill="none"
+                        circleStroke={props.color}
+                        lineStroke={props.color}
+                      />
+                    </div>
+                    <div className="cta-addToList--icon cta-addToList--icon-2">
+                      <Add
+                        className=""
+                        circleFill="#fff"
+                        circleStroke="#fff"
+                        lineStroke={props.color}
+                      />
+                    </div>
+                  </>
+                )}
               </StyledBtn2>
             </>
           ) : (
-              <>
-                <Scrollbars style={{ width: "100%", height: "100vh" }}>
-                <h2 className="zoomModal_name">{productInfo.name}</h2>
+            <>
+              <div className="wrapper">
                 <div className="zoomModal-close" onClick={props.closeModal}>
                   <Close color={props.color} />
                 </div>
-                  <div className="zoomModal-multi-grid">
-                    {productInfo.products.map(prod => {
-                      return (
-                        <div className="zoomModal-multi-grid-item">
-                          <h4 className="zoomModal-multi-grid-item_title">
-                            {prod.alt}
-                          </h4>
-                          <div className="img-container">
-                            <img src={prod.img} alt={prod.alt} />
-                          </div>
-                          <StyledMultiBtn
-                            onClick={() => props.addItem(prod, productInfo.index)}
-                            className="multi--addItem"
-                            color={props.color}
-                            isClicked={props.wishlist.some(
-                              wishlistProd => wishlistProd.key === prod.key
-                            )}
+              </div>
+              <Scrollbars style={{ width: "100%", height: "100vh" }}>
+                <h2 className="zoomModal_name">{productInfo.name}</h2>
+                <div className="zoomModal-multi-grid">
+                  {productInfo.products.map(prod => {
+                    return (
+                      <div className="zoomModal-multi-grid-item">
+                        <h4 className="zoomModal-multi-grid-item_title">
+                          {prod.alt}
+                        </h4>
+                        <div className="img-container">
+                          <img src={prod.img} alt={prod.alt} />
+                        </div>
+                        <StyledMultiBtn
+                          onClick={() => props.addItem(prod, productInfo.index)}
+                          className="multi--addItem"
+                          color={props.color}
+                          isClicked={props.wishlist.some(
+                            wishlistProd => wishlistProd.key === prod.key
+                          )}
+                        >
+                          {props.wishlist.some(
+                            wishlistProd => wishlistProd.key === prod.key
+                          ) ? (
+                            <>
+                              <Check
+                                circleFill="#000"
+                                circleStroke="#000"
+                                pathStroke="#fff"
+                              />
+                            </>
+                          ) : (
+                            <>
+                              <Add
+                                className="multi--addItem__1"
+                                circleFill="none"
+                                circleStroke={props.color}
+                                lineStroke={props.color}
+                              />
+                              <Add
+                                className="multi--addItem__2"
+                                circleFill="#fff"
+                                circleStroke="#fff"
+                                lineStroke={props.color}
+                              />
+                            </>
+                          )}
+                          <span
+                            className={
+                              props.wishlist.some(
+                                wishlistProd => wishlistProd.key === prod.key
+                              )
+                                ? "added-btn"
+                                : ""
+                            }
                           >
                             {props.wishlist.some(
                               wishlistProd => wishlistProd.key === prod.key
-                            ) ? (
-                                <>
-                                  <Check
-                                    circleFill="#000"
-                                    circleStroke="#000"
-                                    pathStroke="#fff"
-                                  />
-                                </>
-                              ) : (
-                                <>
-                                  <Add
-                                    className="multi--addItem__1"
-                                    circleFill="none"
-                                    circleStroke={props.color}
-                                    lineStroke={props.color}
-                                  />
-                                  <Add
-                                    className="multi--addItem__2"
-                                    circleFill="#fff"
-                                    circleStroke="#fff"
-                                    lineStroke={props.color}
-                                  />
-                                </>
-                              )}
-                            <span
-                              className={
-                                props.wishlist.some(
-                                  wishlistProd => wishlistProd.key === prod.key
-                                )
-                                  ? "added-btn"
-                                  : ""
-                              }
-                            >
-                              {props.wishlist.some(
-                                wishlistProd => wishlistProd.key === prod.key
-                              )
-                                ? "added!"
-                                : ""}
-                            </span>
-                          </StyledMultiBtn>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </Scrollbars>
-              </>
-            )}
+                            )
+                              ? "added!"
+                              : ""}
+                          </span>
+                        </StyledMultiBtn>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Scrollbars>
+            </>
+          )}
         </article>
       </div>
     </OffClick>

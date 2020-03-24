@@ -310,18 +310,27 @@
           position: fixed;
           background-color: #fdfdfd;
         }
+
+        .wrapper {
+          position: absolute;
+          bottom: 1rem;
+          width: 100%;
+          z-index: 8500;
+          height:7.5rem;
+          display: flex;
+        }
         .zoomModal-close {
-          top: 2.75rem;
           left: 38.125rem;
-          margin-right: 5rem;
+          margin-right: 3rem;
           position: sticky;
           overflow: visible;
+          transform: translateY(-50%);
           &::before {
             content: "";
             position: absolute;
             width: 5rem;
             height: 5rem;
-            box-shadow: 0 .125rem 1.25rem rgba(black, 0.22);
+            box-shadow: 0 .125rem 1.75rem rgba(black, 0.22);
             background-color: #fff;
             z-index: -1;
             top: 50%;
@@ -360,7 +369,7 @@
         .zoomModal-close {
           width: 2.3rem;
           height: 2.3rem;
-          left: 32.5rem;
+          // left: 32.5rem;
 
         }
       }
