@@ -321,10 +321,10 @@
         }
         .zoomModal-close {
           left: 45rem;
-          margin-right: 3rem;
+          margin-right: 1.75rem;
           position: sticky;
           overflow: visible;
-          transform: translateY(-50%);
+          transform: translate(-50%,-50%);
           &::before {
             content: "";
             position: absolute;
@@ -336,7 +336,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            border-radius: 50%;
+            border-radius: 0;
           }
         }
         .zoomModal-multi-grid {
