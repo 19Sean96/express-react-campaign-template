@@ -68,10 +68,12 @@
     font-size: 4.2rem;
     font-family: "UniversCondensed";
     text-align: center;
+    overflow-y: visible !important;
 
     @media screen and (max-width: 1870px) {
       font-size: 3.2rem;
     }
+
   }
 
   &_guide {

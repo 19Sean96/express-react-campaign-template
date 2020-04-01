@@ -112,7 +112,6 @@ class Wishlist extends Component {
       const regexName = /([ \u00c0-\u01ffa-zA-Z'\- ]{1,30})\w+/g;
       const isValid = regexName.test(target.value);
 
-      hasValue &&
         this.setState({
           name: {
             value: e.target.value,
