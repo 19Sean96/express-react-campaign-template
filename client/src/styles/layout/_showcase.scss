@@ -597,6 +597,10 @@
 // @media screen and (max-width: 1650px) {
 // }
 
+.added-btn {
+  font-weight: 800;
+}
+
 .mobileAddItem {
   position: absolute;
   right: 0;
@@ -620,6 +624,7 @@
   .added-btn {
     font-family: "UniversCondensed";
     text-transform: uppercase;
+    font-weight: 800;
   }
 
   &__1 {

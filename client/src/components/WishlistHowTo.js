@@ -16,9 +16,9 @@ function WishlistHowTo(props) {
     >
       {props.isOpen && <style>{noScroll}</style>}
       <section className="WishlistHowTo_popup">
-        <h1 className="WishlistHowTo_title"><span style={{
+        <h1 className="WishlistHowTo_title"><span id="howToTitle" style={{
           borderBottom: `4px solid ${props.color}`
-        }}>How to</span> make your wishlist:</h1>
+        }}>How to</span> make your quote list:</h1>
         <div className="WishlistHowTo_guide">
           <Step1 color={props.color} />
           <StepArrow color={props.color} />

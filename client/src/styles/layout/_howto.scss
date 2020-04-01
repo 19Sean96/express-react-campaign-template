@@ -48,6 +48,12 @@
       padding: 3rem 1rem 5rem;
       width: 70vw;
       height: 90vh;
+
+      #howToTitle {
+        display: block;
+        width: 10rem;
+        margin: 0 auto;
+      }
     }
 
     @media screen and (max-width: 550px) {
@@ -86,6 +92,8 @@
     @media screen and (max-width: 820px) {
       flex-direction: column;
       max-height: none;
+
+
     }
 
     &--step {
@@ -116,7 +124,7 @@
             max-height: 100%;
             max-width: none;
             width: 7rem;
-            margin: 0;
+            margin: 0 0 0 auto
           }
         }
         svg {
