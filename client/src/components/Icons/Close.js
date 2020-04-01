@@ -10,7 +10,7 @@ export default props => {
           fill="none"
           stroke={props.color}
           strokeMiterlimit="10"
-          strokeWidth="2"
+          strokeWidth="3"
         />
         <line
           y1="28"
@@ -19,7 +19,7 @@ export default props => {
           fill="none"
           stroke={props.color}
           strokeMiterlimit="10"
-          strokeWidth="2"
+          strokeWidth="3"
         />
       </g>
     </svg>

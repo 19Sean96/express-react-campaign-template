@@ -382,7 +382,7 @@ class Wishlist extends Component {
                               }}
                               className="Wishlist_cart_item--editor-remove"
                             >
-                              <Close />
+                              <Close color={"#5D5D5D"}/>
                             </div>
                           </div>
                         </>
@@ -416,7 +416,7 @@ class Wishlist extends Component {
                         fill="none"
                         stroke={color}
                         strokeMiterlimit="10"
-                        strokeWidth="2"
+                        strokeWidth="4"
                       />
                     </g>
                   </svg>
