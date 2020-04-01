@@ -51,7 +51,7 @@ function StepArrow(props) {
           fill="none"
           stroke={props.color}
           strokeMiterlimit="10"
-          strokeWidth="2"
+          strokeWidth="4"
         />
       </svg>
     </div>

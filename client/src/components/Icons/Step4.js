@@ -29,7 +29,7 @@ export default props => {
               r="63.298"
               transform="translate(1085.885 -539)"
               strokeMiterlimit="10"
-              strokeWidth="2"
+              strokeWidth="4"
               fill="none"
             />
             <line
@@ -37,7 +37,7 @@ export default props => {
               transform="translate(1136 -481)"
               stroke={props.color}
               strokeMiterlimit="10"
-              strokeWidth="2"
+              strokeWidth="3"
             />
             <line
               id="Line_2"
@@ -47,7 +47,7 @@ export default props => {
               fill="none"
               stroke={props.color}
               strokeMiterlimit="10"
-              strokeWidth="2"
+              strokeWidth="3"
             />
             <line
               id="Line_3"
@@ -57,7 +57,7 @@ export default props => {
               fill="none"
               stroke={props.color}
               strokeMiterlimit="10"
-              strokeWidth="2"
+              strokeWidth="3"
             />
             <path
               id="Path_4"
@@ -67,7 +67,7 @@ export default props => {
               fill="none"
               stroke={props.color}
               strokeMiterlimit="10"
-              strokeWidth="2"
+              strokeWidth="3"
             />
           </g>
         </svg>

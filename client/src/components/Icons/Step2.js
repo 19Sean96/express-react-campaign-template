@@ -12,7 +12,7 @@ export default (props) => {
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="2"
+                strokeWidth="4"
               />
               <circle
                 cx="13.05"
@@ -22,7 +22,7 @@ export default (props) => {
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="2"
+                strokeWidth="4"
               />
               <rect
                 width="23.458"
@@ -31,7 +31,7 @@ export default (props) => {
                 fill="none"
                 stroke="#000"
                 strokeMiterlimit="10"
-                strokeWidth="2"
+                strokeWidth="4"
               />
               <rect
                 width="54.005"
