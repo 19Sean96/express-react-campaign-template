@@ -51,9 +51,6 @@
 
       &-name {
         color: rgba(#fff, 0.5);
-        text-transform: uppercase;
-        font-family: "UniversCondensed";
-        font-weight: 800;
         font-size: 2rem;
         margin-left: 2.5rem;
       }
@@ -174,7 +171,6 @@
               font-weight: 800;
               font-size: 2.1rem;
               color: #fff;
-
               &:focus,
               &:active {
                 outline: none;
@@ -211,10 +207,7 @@
       flex-direction: column;
       align-items: center;
       margin-top: 3.2rem;
-      font-family: "UniversCondensed";
-      font-weight: 800;
       color: #fff;
-      text-transform: uppercase;
 
       &_icon {
         width: 3vmax;
@@ -343,9 +336,6 @@
 
   &-text {
     color: rgba(#fff, 0.95);
-    text-transform: uppercase;
-    font-family: "UniversCondensed";
-    font-weight: 800;
     font-size: 2.3rem;
     margin-left: 2.5rem;
     margin-right: 1.25rem;
@@ -355,11 +345,8 @@
     background-color: transparent;
     height: 100%;
     padding: 0rem 4.75rem;
-    text-transform: uppercase;
     margin-right: 1.5rem;
     border: none;
-    font-family: "UniversCondensed";
-    font-weight: 800;
     font-size: 1.5rem;
     position: relative;
     overflow: hidden;

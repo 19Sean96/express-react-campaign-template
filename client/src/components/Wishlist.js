@@ -334,6 +334,11 @@ class Wishlist extends Component {
                                     this.props.updateValue(value, index);
                                     this.handleKeyPress(e, item.key, index);
                                   }}
+                                  style={this.state.notePositionActive[index] ? {
+                                    paddingLeft: 1.2 + "rem"
+                                  } : {
+                                    paddingLeft: 0
+                                  }}
                                 />
                                 <label
                                   htmlFor="note"

@@ -33,7 +33,6 @@
     top: 3rem; left: 3rem;
     p {
       color: #fff;
-      text-transform: uppercase;
       font-size: 1.4rem;
       font-family: "UniversNormal";
       font-weight: 400;
@@ -41,10 +40,7 @@
 
     &_name {
       color: #fff;
-      text-transform: uppercase;
       font-size: 3rem;
-      font-family: "UniversCondensed";
-      font-weight: 800;
       margin-top: 1vmin;
     }
 
@@ -103,10 +99,6 @@
 
     &_text {
       position: relative;
-      font-family: "UniversCondensed";
-      font-weight: 700;
-      text-transform: uppercase;
-
       padding-bottom: 0.5rem;
       margin-top: -1.78rem;
       font-size: 1rem;

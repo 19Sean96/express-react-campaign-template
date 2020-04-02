@@ -1,5 +1,4 @@
 @mixin heading($font-size, $font-color, $heading-type) {
-  font-family: "UniversCondensed";
   position: relative;
   display: inline-block;
   color: $font-color;
@@ -64,9 +63,6 @@
 @mixin submit($arrowRightDisplacement, $isFormButton: false) {
   position: relative;
   font-size: 2.7rem;
-  font-family: "UniversCondensed";
-  font-weight: 800;
-  text-transform: uppercase;
   color: #fefefe;
   border: solid #000 0.4rem;
   height: 7.2rem;
