@@ -237,7 +237,13 @@ class Wishlist extends Component {
               this.props.wishlist.map((item, index) => {
                 return (
                   <OffClick key={index} handler={this.closeNote(index)}>
-                    <div className={`Wishlist_cart_item`}>
+                    <div className={`Wishlist_cart_item`} style={this.state.notePositionActive[index] ? {
+                      marginBottom: 10 + "rem",
+                      transition: ".2s all"
+                    } : {
+                      marginBottom: 0 + "rem",
+                      transition: ".2s all"
+                    }}>
                       <div className="Wishlist_cart_item-image--container">
                         <img
                           src={item.img}

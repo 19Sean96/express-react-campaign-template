@@ -354,6 +354,9 @@
             &:nth-child(odd) {
               border-width: 2px 2px 0 2px;
             }
+            &:last-child {
+              border-bottom-width: 2px;
+            }
 
             &_title {
               font-size: 1.6rem;
