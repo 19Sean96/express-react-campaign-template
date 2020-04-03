@@ -42,7 +42,7 @@
       position: absolute;
       right: 2rem;
       bottom: 2rem;
-      width: 2.7rem;
+      height: 2.525rem;
     }
 
     // MOBILE TILE ITEM HEIGHT
@@ -57,11 +57,25 @@
           opacity: 1;
         }
       }
+      #multiIcon g path{
+        fill: #030504 !important;
+      }
     }
     @media screen and (max-width: 560px) {
       height: 37.5rem;
       max-width: 100%;
       padding: 4rem 5rem;
+
+      .icon-wrapper {
+        position: absolute;
+        bottom: 0; right: .1rem;
+        background-color: $color-black;
+        width: 6rem; height: 6rem;
+        #multiIcon {
+          top: 50%; left: 50%;
+          transform: translate(-50%,-50%);
+        }
+      }
 
       > div:not(.showcase_grid_item-cta-multi) {
         display: none;
@@ -321,18 +335,22 @@
           display: flex;
         }
         .zoomModal-close {
-          left: 45rem;
+          left: 5rem;
           margin-right: 1.75rem;
           position: sticky;
           overflow: visible;
           transform: translate(-50%,-50%);
+
+          svg g line {
+            stroke: #fff !important;
+          }
           &::before {
             content: "";
             position: absolute;
             width: 6rem;
             height: 6rem;
             box-shadow: 0 .125rem 1.75rem rgba(black, 0.22);
-            background-color: #fff;
+            background-color: #CD2730;
             z-index: -1;
             top: 50%;
             left: 50%;

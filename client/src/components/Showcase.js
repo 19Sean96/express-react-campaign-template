@@ -214,6 +214,18 @@ class Showcase extends Component {
                   ? ""
                   : "notActive"
               }`}
+              onClick={
+                window.innerWidth > 560
+                  ? null
+                  : product.singleItem
+                  ? e => this.props.addItem(product.products[0], index)
+                  : e =>
+                      this.expandMultiItem(
+                        product.name,
+                        index,
+                        product.products
+                      )
+              }
               category={product.category}
             >
               <p className="showcase_grid_item-name">{product.name}</p>
@@ -395,7 +407,13 @@ class Showcase extends Component {
                     </span>
                   </StyledMultiBtn>
                 ) : (
-                  <MultiItemIcon />
+                  <div className="icon-wrapper">
+                    <MultiItemIcon
+                      color={
+                        window.innerWidth <= 560 ? this.props.color : "#030504"
+                      }
+                    />
+                  </div>
                 )}
               </span>
             </div>
@@ -537,7 +555,10 @@ function ShowcaseModal(props) {
                 <div className="zoomModal-multi-grid">
                   {productInfo.products.map(prod => {
                     return (
-                      <div className="zoomModal-multi-grid-item">
+                      <div
+                        className="zoomModal-multi-grid-item"
+                        onClick={() => props.addItem(prod, productInfo.index)}
+                      >
                         <h4 className="zoomModal-multi-grid-item_title">
                           {prod.alt}
                         </h4>
