@@ -409,9 +409,7 @@ class Showcase extends Component {
                 ) : (
                   <div className="icon-wrapper">
                     <MultiItemIcon
-                      color={
-                        window.innerWidth <= 560 ? this.props.color : "#030504"
-                      }
+                      color={this.props.color}
                     />
                   </div>
                 )}
