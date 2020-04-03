@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Close from "./Icons/Close"
 import Document from "./Icons/Document"
 import BurgerMenu from "./Icons/BurgerMenu"
-const StyledUnderline = styled.div`
+const StyledUnderline = styled.li`
   &::after {
     background-color: ${props => props.color};
   }

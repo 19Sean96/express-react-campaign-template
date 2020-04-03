@@ -219,7 +219,7 @@ class Wishlist extends Component {
 
   render() {
     const { color } = this.props;
-
+    console.log(window.innerWidth)
     return (
       <>
         <section className="Wishlist" id="Wishlist">
@@ -237,7 +237,8 @@ class Wishlist extends Component {
               this.props.wishlist.map((item, index) => {
                 return (
                   <OffClick key={index} handler={this.closeNote(index)}>
-                    <div className={`Wishlist_cart_item`} style={this.state.notePositionActive[index] ? {
+                    <div className={`Wishlist_cart_item`} style={
+                      this.state.notePositionActive[index] && window.innerWidth <= 1040 ? {
                       marginBottom: 10 + "rem",
                       transition: ".2s all"
                     } : {
