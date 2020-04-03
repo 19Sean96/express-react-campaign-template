@@ -624,6 +624,11 @@
   align-items: center;
   cursor: pointer;
   overflow: hidden;
+
+  &--container {
+    z-index: 800;
+  }
+
   svg {
     width: 2.85rem;
     height: auto;
