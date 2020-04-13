@@ -1,7 +1,7 @@
 .header {
   position: relative;
   width: 100%;
-  height: 52.5vh;
+  height: 57.5vh;
   max-height: 70rem;
   min-height: 20vmax;
   background-size: cover;
@@ -19,8 +19,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     height: auto;
-    min-width: 175px;
-    width: 13vw;
+    min-width: 250px;
+    width: 17.5vw;
     max-width: 300px;
 
     @media only screen and (max-width: 650px) {
