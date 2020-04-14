@@ -406,7 +406,7 @@ class Wishlist extends Component {
                                   ${
                                     this.state.notePositionActive[index]
                                       ? "invisible"
-                                      : "active"
+                                      : "visible"
                                   }`}
                             >
                               <Close color={"#5D5D5D"} />
