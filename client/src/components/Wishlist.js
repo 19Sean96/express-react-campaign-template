@@ -3,22 +3,22 @@ import OffClick from "react-offclick";
 import SendWishlist from "./SendWishlist";
 import DocumentIcon from "./Icons/Document";
 import TrashcanIcon from "./Icons/Trashcan";
-import Check from "./Icons/Check"
-import Note from "./Icons/Note"
-import Close from "./Icons/Close"
+import Check from "./Icons/Check";
+import Note from "./Icons/Note";
+import Close from "./Icons/Close";
 import styled from "styled-components";
 import ArrowUp from "./Icons/ArrowUp";
 const StyledNoteIcon = styled.div`
   svg {
     g > * {
-      stroke: ${props => props.color};
+      stroke: ${(props) => props.color};
     }
   }
 `;
 
 const StyledWishlistCTA = styled.a`
   &::before {
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.color};
   }
 `;
 
@@ -32,28 +32,28 @@ class Wishlist extends Component {
       noteInputHasValue: [],
       name: {
         value: "",
-        valid: null
+        valid: null,
       },
       email: {
         value: "",
-        valid: null
+        valid: null,
       },
       company: {
         value: "",
-        valid: null
+        valid: null,
       },
       phone: {
         value: "",
-        valid: null
+        valid: null,
       },
       comments: {
-        value: ""
+        value: "",
       },
       cartDetails: [],
       beingRemoved: {
         giveWarning: false,
-        index: null
-      }
+        index: null,
+      },
     };
   }
 
@@ -65,15 +65,15 @@ class Wishlist extends Component {
       this.state.cartDetails.push({
         note: {
           value: "",
-          active: false
+          active: false,
         },
         tile: {
           photo: newItem.img,
           designParent: newItem.key,
           id: newItem.tile_parent,
-          name: newItem.alt
+          name: newItem.alt,
         },
-        productKey: newItem.key
+        productKey: newItem.key,
       });
     } else if (
       prevProps.wishlist.length > this.props.wishlist.length &&
@@ -81,17 +81,17 @@ class Wishlist extends Component {
     ) {
       if (this.props.wishlist.length <= 0) {
         this.setState({
-          cartDetails: []
+          cartDetails: [],
         });
       } else {
         const itemRemoved = prevProps.wishlist.filter(
-          e => !this.props.wishlist.includes(e)
+          (e) => !this.props.wishlist.includes(e)
         );
         console.log(itemRemoved);
         const itemRemovedID = itemRemoved[0].tile_parent;
         this.state.cartDetails.splice(
           this.state.cartDetails.findIndex(
-            cartItem => cartItem.tile.id == itemRemovedID
+            (cartItem) => cartItem.tile.id == itemRemovedID
           ),
           1
         );
@@ -115,8 +115,8 @@ class Wishlist extends Component {
       this.setState({
         name: {
           value: e.target.value,
-          valid: isValid
-        }
+          valid: isValid,
+        },
       });
     } else if (target.name === "email") {
       const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -125,8 +125,8 @@ class Wishlist extends Component {
       this.setState({
         email: {
           value: e.target.value,
-          valid: isValid
-        }
+          valid: isValid,
+        },
       });
     } else if (target.name === "company") {
       const regexCompany = /[a-zA-Z<>:,.!@& ]{2,}/;
@@ -135,8 +135,8 @@ class Wishlist extends Component {
       this.setState({
         company: {
           value: e.target.value,
-          valid: isValid
-        }
+          valid: isValid,
+        },
       });
     } else if (target.name === "phone") {
       const regexPhone = /(?:\d{1}\s)?\(?(\d{3})\)?-?\s?(\d{3})-?\s?(\d{4})/;
@@ -155,14 +155,14 @@ class Wishlist extends Component {
         phone: {
           active: true,
           value: e.target.value,
-          valid: regexPhone.test(target.value)
-        }
+          valid: regexPhone.test(target.value),
+        },
       });
     } else if (target.name === "comments") {
       this.setState({
         comments: {
-          value: e.target.value
-        }
+          value: e.target.value,
+        },
       });
     } else if (target.name === "wishListNote") {
       let { noteInputHasValue, notePositionActive } = this.state;
@@ -172,7 +172,7 @@ class Wishlist extends Component {
       }
 
       this.state.cartDetails[
-        this.state.cartDetails.findIndex(item => item.productKey == product)
+        this.state.cartDetails.findIndex((item) => item.productKey == product)
       ].note.value = target.value;
       hasValue
         ? (noteInputHasValue[target.id] = true)
@@ -180,7 +180,7 @@ class Wishlist extends Component {
 
       this.setState({
         noteInputHasValue,
-        notePositionActive
+        notePositionActive,
       });
     }
   }
@@ -188,35 +188,35 @@ class Wishlist extends Component {
   reduceCart(removedItem) {
     const removedItemKey = removedItem.key;
     const newCart = this.state.cartDetails.filter(
-      cartItem => cartItem.productKey !== removedItemKey
+      (cartItem) => cartItem.productKey !== removedItemKey
     );
 
     this.setState({
-      cartDetails: newCart
+      cartDetails: newCart,
     });
   }
 
-  closeNote = i => e => {
+  closeNote = (i) => (e) => {
     const { notePositionActive } = this.state;
     notePositionActive[i] = false;
 
     this.setState({
-      notePositionActive
+      notePositionActive,
     });
   };
 
-  openNote = i => e => {
+  openNote = (i) => (e) => {
     const { notePositionActive } = this.state;
     notePositionActive[i] = true;
 
     this.setState({
-      notePositionActive
+      notePositionActive,
     });
   };
 
   render() {
     const { color } = this.props;
-    console.log(window.innerWidth)
+    console.log(window.innerWidth);
     return (
       <>
         <section className="Wishlist" id="Wishlist">
@@ -234,14 +234,21 @@ class Wishlist extends Component {
               this.props.wishlist.map((item, index) => {
                 return (
                   <OffClick key={index} handler={this.closeNote(index)}>
-                    <div className={`Wishlist_cart_item`} style={
-                      this.state.notePositionActive[index] && window.innerWidth <= 1040 ? {
-                        marginBottom: 10 + "rem",
-                        transition: ".2s all"
-                      } : {
-                          marginBottom: 0 + "rem",
-                          transition: ".2s all"
-                        }}>
+                    <div
+                      className={`Wishlist_cart_item`}
+                      style={
+                        this.state.notePositionActive[index] &&
+                        window.innerWidth <= 1040
+                          ? {
+                              marginBottom: 10 + "rem",
+                              transition: ".2s all",
+                            }
+                          : {
+                              marginBottom: 0 + "rem",
+                              transition: ".2s all",
+                            }
+                      }
+                    >
                       <div className="Wishlist_cart_item-image--container">
                         <img
                           src={item.img}
@@ -250,201 +257,212 @@ class Wishlist extends Component {
                         />
                       </div>
                       {this.state.beingRemoved.giveWarning &&
-                        this.state.beingRemoved.index === index ? (
-                          <div className="item_remove-warning">
-                            <div id="trashSVG">
-                              <TrashcanIcon color={color} />
-                            </div>
-                            <p className="item_remove-text">delete this item?</p>
-                            <div className="item_remove-btn--container">
-                              <button
-                                className="item_remove-btn"
-                                id="cancelRemove"
-                                onClick={() => {
-                                  this.setState({
-                                    beingRemoved: {
-                                      giveWarning: false,
-                                      index: null
-                                    }
-                                  });
-                                }}
-                              >
-                                cancel
-                            </button>
-                              <button
-                                className="item_remove-btn"
-                                id="remove"
-                                onClick={() => {
-                                  this.props.removeItem(item);
-                                  this.reduceCart(item);
-                                  this.setState({
-                                    beingRemoved: {
-                                      giveWarning: false,
-                                      index: null
-                                    }
-                                  });
-                                }}
-                              >
-                                <span class="underline">yes</span> delete this
-                            </button>
-                            </div>
+                      this.state.beingRemoved.index === index ? (
+                        <div className="item_remove-warning">
+                          <div id="trashSVG">
+                            <TrashcanIcon color={color} />
                           </div>
-                        ) : (
-                          <>
-                            <h3 className="Wishlist_cart_item-name">
-                              {item.alt}
-                            </h3>
-                            <div className="Wishlist_cart_item--editor">
-                              <StyledNoteIcon
-                                color={
-                                  item.value.length > 0
-                                    ? "#14DB60"
-                                    : this.state.notePositionActive[index]
-                                      ? color
-                                      : "rgba(#fff, 0.4)"
+                          <p className="item_remove-text">delete this item?</p>
+                          <div className="item_remove-btn--container">
+                            <button
+                              className="item_remove-btn"
+                              id="cancelRemove"
+                              onClick={() => {
+                                this.setState({
+                                  beingRemoved: {
+                                    giveWarning: false,
+                                    index: null,
+                                  },
+                                });
+                              }}
+                            >
+                              cancel
+                            </button>
+                            <button
+                              className="item_remove-btn"
+                              id="remove"
+                              onClick={() => {
+                                this.props.removeItem(item);
+                                this.reduceCart(item);
+                                this.setState({
+                                  beingRemoved: {
+                                    giveWarning: false,
+                                    index: null,
+                                  },
+                                });
+                              }}
+                            >
+                              <span class="underline">yes</span> delete this
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          <h3 className="Wishlist_cart_item-name">
+                            {item.alt}
+                          </h3>
+                          <div className="Wishlist_cart_item--editor">
+                            <StyledNoteIcon
+                              color={
+                                item.value.length > 0
+                                  ? "#14DB60"
+                                  : this.state.notePositionActive[index]
+                                  ? color
+                                  : "rgba(#fff, 0.4)"
+                              }
+                              className={`Wishlist_cart_item--editor-note ${
+                                this.state.notePositionActive[index] &&
+                                `Wishlist_cart_item--editor-note--active`
+                              }`}
+                            >
+                              <Note
+                                index={index}
+                                onClick={
+                                  this.state.notePositionActive[index]
+                                    ? this.closeNote(index)
+                                    : this.openNote(index)
                                 }
-                                className={`Wishlist_cart_item--editor-note ${this
-                                  .state.notePositionActive[index] &&
-                                  `Wishlist_cart_item--editor-note--active`}`}
+                              />
+                              <div
+                                className={`addNote ${
+                                  this.state.notePositionActive[index]
+                                    ? "addNote--active"
+                                    : "addNote--inactive"
+                                } ${
+                                  this.state.noteInputHasValue[item.id]
+                                    ? "activeInput"
+                                    : ""
+                                }`}
                               >
-                                <Note
-                                  index={index}
-                                  onClick={
+                                <input
+                                  type="text"
+                                  name="wishListNote"
+                                  product={item.key}
+                                  id={item.tile_parent}
+                                  onKeyUp={(e) => {
+                                    const { value } = e.target;
+                                    console.log(e.which === 13);
+
+                                    this.props.updateValue(value, index);
+                                    this.handleKeyPress(e, item.key, index);
+                                  }}
+                                  style={
                                     this.state.notePositionActive[index]
-                                      ? this.closeNote(index)
-                                      : this.openNote(index)
+                                      ? {
+                                          paddingLeft: 1.2 + "rem",
+                                        }
+                                      : {
+                                          paddingLeft: 0,
+                                        }
                                   }
                                 />
-                                <div
-                                  className={`addNote ${
-                                    this.state.notePositionActive[index]
-                                      ? "addNote--active"
-                                      : "addNote--inactive"
-                                    } ${
-                                    this.state.noteInputHasValue[item.id]
-                                      ? "activeInput"
-                                      : ""
-                                    }`}
+                                <label
+                                  htmlFor="note"
+                                  className={`addNote_label`}
+                                  style={
+                                    item.value.length > 0
+                                      ? {
+                                          transform: "translateY(-500%)",
+                                          opacity: 0,
+                                        }
+                                      : {}
+                                  }
                                 >
-                                  <input
-                                    type="text"
-                                    name="wishListNote"
-                                    product={item.key}
-                                    id={item.tile_parent}
-                                    onKeyUp={e => {
-                                      const { value } = e.target;
-                                      console.log(e.which === 13);
-
-                                      this.props.updateValue(value, index);
-                                      this.handleKeyPress(e, item.key, index);
-                                    }}
-                                    style={this.state.notePositionActive[index] ? {
-                                      paddingLeft: 1.2 + "rem"
-                                    } : {
-                                        paddingLeft: 0
-                                      }}
-                                  />
-                                  <label
-                                    htmlFor="note"
-                                    className={`addNote_label`}
+                                  add a note
+                                </label>
+                                <>
+                                  <Check
+                                    circleFill={"none"}
+                                    circleStroke={"#14DB60"}
+                                    pathStroke={"#14DB60"}
                                     style={
+                                      this.state.notePositionActive[index] &&
                                       item.value.length > 0
                                         ? {
-                                          transform: "translateY(-500%)",
-                                          opacity: 0
-                                        }
-                                        : {}
-                                    }
-                                  >
-                                    add a note
-                                </label>
-                                  <>
-                                    <Check
-                                      circleFill={"none"}
-                                      circleStroke={"#14DB60"}
-                                      pathStroke={"#14DB60"}
-                                      style={
-                                        this.state.notePositionActive[index] &&
-                                          item.value.length > 0
-                                          ? {
                                             transform: "translateY(0)",
-                                            opacity: 1
+                                            opacity: 1,
                                           }
-                                          : {
+                                        : {
                                             transform: "translateY(-500%)",
-                                            opacity: 0
+                                            opacity: 0,
                                           }
-                                      }
-                                    />
-                                  </>
-                                </div>
-                              </StyledNoteIcon>
-                              <div
-                                onClick={() => {
-                                  console.log(index + "is being clicked");
-                                  this.setState({
-                                    beingRemoved: {
-                                      giveWarning: true,
-                                      index: index
                                     }
-                                  });
-                                }}
-                                className="Wishlist_cart_item--editor-remove"
-                              >
-                                <Close color={"#5D5D5D"} />
+                                  />
+                                </>
                               </div>
+                            </StyledNoteIcon>
+                            <div
+                              onClick={() => {
+                                console.log(index + "is being clicked");
+                                this.setState({
+                                  beingRemoved: {
+                                    giveWarning: true,
+                                    index: index,
+                                  },
+                                });
+                              }}
+                              className="Wishlist_cart_item--editor-remove"
+                              className={`Wishlist_cart_item--editor-remove
+                                  ${
+                                    this.state.notePositionActive[index]
+                                      ? "invisible"
+                                      : "active"
+                                  }`}
+                            >
+                              <Close color={"#5D5D5D"} />
                             </div>
-                          </>
-                        )}
+                          </div>
+                        </>
+                      )}
                     </div>
                   </OffClick>
                 );
               })
             ) : (
-                <div className="Wishlist_cart--empty">
-                  <div className="Wishlist_cart--empty_icon">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 47.775 63.931"
-                    >
-                      <g transform="translate(1000.093 -2611.782)">
-                        <text
-                          transform="translate(-976 2656)"
-                          fill={color}
-                          fontSize="35"
-                          fontFamily="UniversLTStd-BoldCn, Univers LT Std"
-                          fontWeight="700"
-                        >
-                          <tspan x="-5.827" y="0">
-                            !
+              <div className="Wishlist_cart--empty">
+                <div className="Wishlist_cart--empty_icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 47.775 63.931"
+                  >
+                    <g transform="translate(1000.093 -2611.782)">
+                      <text
+                        transform="translate(-976 2656)"
+                        fill={color}
+                        fontSize="35"
+                        fontFamily="UniversLTStd-BoldCn, Univers LT Std"
+                        fontWeight="700"
+                      >
+                        <tspan x="-5.827" y="0">
+                          !
                         </tspan>
-                        </text>
-                        <path
-                          d="M30.619,62.931H1V1H46.775V46.775A16.152,16.152,0,0,1,30.619,62.931Z"
-                          transform="translate(-1000.093 2611.782)"
-                          fill="none"
-                          stroke={color}
-                          strokeMiterlimit="10"
-                          strokeWidth="4"
-                        />
-                      </g>
-                    </svg>
-                  </div>
-                  <h2 className="Wishlist_cart--empty_message">
-                    your list is empty
-                </h2>
-                  <div color={color} className="Wishlist_cart--empty_cta">
-                    <StyledWishlistCTA
-                      href="#Showcase"
-                      className="Wishlist_cart--empty_cta-link"
-                      color={color}
-                    >
-                      add some items.
-                  </StyledWishlistCTA>
-                    <ArrowUp color={color} />
-                  </div>
+                      </text>
+                      <path
+                        d="M30.619,62.931H1V1H46.775V46.775A16.152,16.152,0,0,1,30.619,62.931Z"
+                        transform="translate(-1000.093 2611.782)"
+                        fill="none"
+                        stroke={color}
+                        strokeMiterlimit="10"
+                        strokeWidth="4"
+                      />
+                    </g>
+                  </svg>
                 </div>
-              )}
+                <h2 className="Wishlist_cart--empty_message">
+                  your list is empty
+                </h2>
+                <div color={color} className="Wishlist_cart--empty_cta">
+                  <StyledWishlistCTA
+                    href="#Showcase"
+                    className="Wishlist_cart--empty_cta-link"
+                    color={color}
+                  >
+                    add some items.
+                  </StyledWishlistCTA>
+                  <ArrowUp color={color} />
+                </div>
+              </div>
+            )}
           </article>
         </section>
         <SendWishlist

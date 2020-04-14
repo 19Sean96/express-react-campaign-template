@@ -257,3 +257,8 @@ select:-webkit-autofill:focus {
 #cartCount {
   overflow: visible;
 }
+
+.invisible {
+  opacity: 0;
+  pointer-events: none;
+}
