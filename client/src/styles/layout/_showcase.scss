@@ -32,7 +32,7 @@
     background-color: #fff;
     height: 30vmax;
     max-height: 475px;
-    padding: 3rem 4rem;
+    padding: 5.5rem 4rem 3rem;
     position: relative;
     display: flex;
     justify-content: center;
@@ -200,7 +200,7 @@
     }
 
     &_image {
-      max-width: 100%;
+      max-width: 100%; max-height: 100%;
       position: relative;
       @media screen and (max-width: 560px) {
         max-width: 100%;
@@ -211,7 +211,7 @@
     &-name {
       position: absolute;
       z-index: 100;
-      top: 4rem;
+      top: 3rem;
       left: 4rem;
       font-size: 1.8rem;
       color: #aaaaaa;
