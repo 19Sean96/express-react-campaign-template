@@ -51,7 +51,7 @@ app.get("/api/:campaign", async (req, res, next) => {
 
   //   ==============================================================================
   // FIRST API CALL
-  const URL_1 = `${URL}items/campaigns?filter[title][eq]=${campaignName}&access_token=${KEY}`;
+  const URL_1 = `${URL}items/campaigns?filter[tag][eq]=${campaignName}&access_token=${KEY}`;
   const campaign = await axios.get(URL_1);
   CAMPAIGN_DATA.details = campaign.data.data[0];
   console.log(CAMPAIGN_DATA.details);
