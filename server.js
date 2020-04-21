@@ -25,7 +25,6 @@ const transport = nodemailer.createTransport({
 app.use(express.static(path.join(__dirname, "/client/build/")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-console.log("THIS IS DIR", path.join(__dirname, "/client/build/"));
 
 if (process.env.NODE_ENV === "development") {
   const cors = require("cors");
@@ -47,7 +46,6 @@ app.get("/api/:campaign", async (req, res, next) => {
   //   SECRETS
   const KEY = process.env.CMS_KEY;
   const URL = process.env.CMS_URL;
-  console.log("THIS IS DIR", path.join(__dirname, "/client/build/"));
 
   //   ==============================================================================
   // FIRST API CALL
