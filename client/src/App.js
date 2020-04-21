@@ -30,11 +30,24 @@ function App() {
 }
 
 function Campaign() {
+
+  // takes campaign name from URL
   let { campaign } = useParams();
+
+  //  tracks state of wishlist cart and all details within (custom notes, design numbers, image URL, etc.)
   const [wishlist, updateWishlist] = useState([]);
+
+  // tracks the currently active category for items in the 'Showcase'. Affects what items are shown
   const [activeCategory, updateActiveCategory] = useState("all");
+
+  // tracks whether or not a modal (single item modal, multi item modal, & WishlistHowTo component) is visible
   const [modalIsOpen, triggerModal] = useState(false);
+
+  // tracks the "close modal" event
   const [modalWasClosed, modalClose] = useState(false);
+
+  // FALSE when no data has been loaded from the API.
+  // TRUTHY when data IS loaded from the API and assembled
   const [data, loadData] = useState(false);
 
   useEffect(() => {
@@ -62,7 +75,7 @@ function Campaign() {
 
   return (
     <>
-      {/* IF THE DATA HAS BEEN LOADED */}
+      {/* IF THE DATA HAS BEEN LOADED - SHOW CAMPAIGN PAGE. OTHERWISE, SHOW LOADING ICON */}
       {data ? (
         <>
           <WishlistHowTo
