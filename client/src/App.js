@@ -76,7 +76,6 @@ function Campaign() {
           <Header
             className="campaign-header"
             clientInfo={data.client}
-            bg={data.client.background}
           ></Header>
           <Nav
             categories={data.categories}
@@ -143,7 +142,6 @@ const determineTileType = (products, id) => {
   else return true;
 };
 function assembleData(details, photos, products, tiles, categories) {
-
   // 'data' is the template we use to organize and tie the campaign data together
   const data = {
     categories: ["all"],
@@ -151,6 +149,7 @@ function assembleData(details, photos, products, tiles, categories) {
       name: `${details.client_name} - ${details.title}`,
       logo:
         photos[photos.findIndex(img => img.id === details.logo)].data.full_url,
+      logoWidth: details.logo_width,
       background:
         photos[photos.findIndex(img => img.id === details.background_image)]
           .data.full_url,

@@ -1,10 +1,17 @@
 import React from "react";
 import SportexLogo from "../Icons/SportexLogo";
+import styled from "styled-components";
+
+const StyledLogo = styled.img`
+  min-width: ${props => props.logoWidth * .8}px;
+  width: ${props => (props.logoWidth * 1.16) / 20}vw;
+  max-width: ${props => props.logoWidth}px;
+`;
 
 function Header(props) {
   return (
     <header className="header" style={{
-      backgroundImage: `url("${props.bg}")`
+      backgroundImage: `url("${props.clientInfo.background}")`
       }}>
       <div className="brand-indicator">
         <p>campaign items for order</p>
@@ -16,10 +23,11 @@ function Header(props) {
         <SportexLogo
           prefix=""> </SportexLogo>
       </div>
-      <img
+      <StyledLogo
         src={props.clientInfo.logo}
         alt="Brand Logo"
         className="brand-logo"
+        logoWidth={props.clientInfo.logoWidth}
       />
     </header>
   );
