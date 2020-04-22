@@ -7,6 +7,7 @@ import Wishlist from "./components/Wishlist";
 import Footer from "./components/Footer";
 import WishlistHowTo from "./components/WishlistHowTo";
 import axios from "axios";
+import { InView } from "react-intersection-observer";
 import { Route, useParams } from "react-router-dom";
 
 if (process.env.NODE_ENV === "development") {
@@ -47,6 +48,8 @@ function Campaign() {
   // TRUTHY when data IS loaded from the API and assembled
   const [data, loadData] = useState(false);
 
+  const [headerVisible, updateVisibility] = useState(true);
+
   useEffect(() => {
     // THIS HANDLES THE "HOW-TO" MODAL WHICH POPULATES ON INITIAL LOAD
     !modalWasClosed
@@ -83,13 +86,22 @@ function Campaign() {
             isOpen={modalIsOpen}
             color={data.client.color}
           />
-          <Header className="campaign-header" clientInfo={data.client}></Header>
+          <InView
+            as="div"
+            onChange={(inView, entry) => inView ? updateVisibility(true) : updateVisibility(false)}
+          >
+            <Header
+              className="campaign-header"
+              clientInfo={data.client}
+            ></Header>
+          </InView>
           <Nav
             categories={data.categories}
             color={data.client.color}
             updateActiveCategory={updateActiveCategory}
             wishlistCount={wishlist.length}
             activeCategory={activeCategory}
+            headerVisible={headerVisible}
           />
           <Showcase
             wishlist={wishlist}

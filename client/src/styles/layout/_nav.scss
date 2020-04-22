@@ -4,10 +4,13 @@
   display: flex;
   justify-content: center;
   height: 11rem;
+  width: 100%;
+  z-index: 300;
+  transition: height .13s ease-in;
 
-  @media screen and (max-width: 1500px) {
-    height: 8rem;
-  }
+  // @media screen and (max-width: 1500px) {
+  //   height: 8rem;
+  // }
 
   @media screen and (max-width: 750px) {
     min-height: 50px;
@@ -17,7 +20,7 @@
     min-height: 75px;
   }
 
-  @media screen and (min-width: 560px) {
+  @media screen and (min-width: 1025px) {
     #menuIcon,
     #closeIcon {
       display: none;
@@ -36,7 +39,7 @@
       font-size: 1.6rem;
     }
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: 1025px) {
       max-width: 100%;
       position: fixed;
       z-index: 870;
@@ -170,7 +173,6 @@
     position: absolute;
     top: 50%;
     right: 5vmax;
-    transform: translateY(-50%);
     width: 3.5rem;
     cursor: pointer;
     &_count {

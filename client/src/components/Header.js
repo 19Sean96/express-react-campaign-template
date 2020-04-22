@@ -9,6 +9,7 @@ const StyledLogo = styled.img`
 `;
 
 function Header(props) {
+  console.log(props.ref)
   return (
     <header className="header" style={{
       backgroundImage: `url("${props.clientInfo.background}")`
