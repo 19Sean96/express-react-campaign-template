@@ -52,6 +52,7 @@ app.get("/api/:campaign", async (req, res, next) => {
   const URL_1 = `${URL}items/campaigns?filter[tag][eq]=${campaignName}&access_token=${KEY}`;
   const campaign = await axios.get(URL_1);
   CAMPAIGN_DATA.details = campaign.data.data[0];
+  CAMPAIGN_DATA.details.tag = campaignName;
   console.log(CAMPAIGN_DATA.details);
   /* example return: 
     "details": {

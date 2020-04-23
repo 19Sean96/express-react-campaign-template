@@ -104,6 +104,7 @@ function Campaign() {
             wishlistCount={wishlist.length}
             activeCategory={activeCategory}
             headerVisible={headerVisible}
+            campaignTag={data.client.tag}
           />
           <Showcase
             wishlist={wishlist}
@@ -178,6 +179,7 @@ function assembleData(details, photos, products, tiles, categories) {
         photos[photos.findIndex((img) => img.id === details.background_image)]
           .data.full_url,
       color: details.color,
+      tag: details.tag
     },
 
     items: [],
