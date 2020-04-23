@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.scss";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
@@ -14,6 +14,8 @@ if (process.env.NODE_ENV === "development") {
   // proxy
   axios.defaults.baseUrl = "http://localhost:5000";
 }
+
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 function App() {
   return (
@@ -31,7 +33,6 @@ function App() {
 function Campaign() {
   // takes campaign name from URL
   let { campaign } = useParams();
-
   //  tracks state of wishlist cart and all details within (custom notes, design numbers, image URL, etc.)
   const [wishlist, updateWishlist] = useState([]);
 
@@ -72,7 +73,6 @@ function Campaign() {
       loadData(campaignData);
     });
   }, []);
-
   return (
     <>
       {/* IF THE DATA HAS BEEN LOADED - SHOW CAMPAIGN PAGE. OTHERWISE, SHOW LOADING ICON */}
@@ -88,7 +88,9 @@ function Campaign() {
           />
           <InView
             as="div"
-            onChange={(inView, entry) => inView ? updateVisibility(true) : updateVisibility(false)}
+            onChange={(inView, entry) =>
+              inView ? updateVisibility(true) : updateVisibility(false)
+            }
           >
             <Header
               className="campaign-header"

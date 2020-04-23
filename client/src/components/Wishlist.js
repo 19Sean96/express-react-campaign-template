@@ -216,7 +216,6 @@ class Wishlist extends Component {
 
   render() {
     const { color } = this.props;
-    console.log(window.innerWidth);
     return (
       <>
         <section className="Wishlist" id="Wishlist">
@@ -393,7 +392,6 @@ class Wishlist extends Component {
                             </StyledNoteIcon>
                             <div
                               onClick={() => {
-                                console.log(index + "is being clicked");
                                 this.setState({
                                   beingRemoved: {
                                     giveWarning: true,

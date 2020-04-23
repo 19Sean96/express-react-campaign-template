@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Close from "./Icons/Close";
 import Document from "./Icons/Document";
 import BurgerMenu from "./Icons/BurgerMenu";
+import { HashLink as Link } from "react-router-hash-link";
 const StyledUnderline = styled.li`
   &::after {
     background-color: ${(props) => props.color};
@@ -15,30 +16,32 @@ const StyledCloseBtn = styled.div`
   }
 `;
 
+// position: ${(props) => (props.headerVisible ? "relative" : "fixed")};
+// top: ${(props) => (props.headerVisible ? "initial" : 0)};
+// height: ${(props) => (props.headerVisible ? "11rem" : "8rem")};
 const StyledNav = styled.div`
   .Nav {
-    position: ${(props) => (props.headerVisible ? "relative" : "fixed")};
-    top: ${(props) => (props.headerVisible ? "initial" : 0)};
-    height: ${(props) => (props.headerVisible ? "11rem" : "8rem")};
+    position: ${(props) => props.position};
+    top: ${(props) => props.top};
+    height: ${(props) => props.height};
 
     &_list {
-      transform: scale(${props => props.headerVisible ? 1 : .8})
+      transform: ${(props) => props.transform};
     }
 
     &_Wishlist {
-
       &-check {
-        transform: translateY(-50%) ${props => props.headerVisible ? "scale(1)" : "scale(.8)"}
+        transform: translateY(-50%) ${(props) => props.transform};
       }
     }
 
     #menuIcon {
-      transform: translateY(50%,-50%) scale(${props => props.headerVisible ? 1 : .8})
+      transform: translateY(50%, -50%) ${(props) => props.transform};
     }
   }
   @media screen and (max-width: 1500px) {
     .Nav {
-      height: ${(props) => (props.headerVisible ? "10rem" : "7.1rem")};
+      height: ${(props) => props.height};
     }
   }
   @media screen and (max-width: 1025px) {
@@ -51,9 +54,23 @@ const StyledNav = styled.div`
 function Nav(props) {
   let navItems = props.categories;
   const [navIsOpen, updateNav] = useState(false);
-
+  console.log(window.innerWidth);
   return (
-    <StyledNav headerVisible={props.headerVisible}>
+    <StyledNav
+      headerVisible={props.headerVisible}
+      position={props.headerVisible ? "relative" : "fixed"}
+      top={props.headerVisible ? "initial" : 0}
+      height={
+        props.headerVisible
+          ? window.innerWidth >= 1500
+            ? "11rem"
+            : "10rem"
+          : window.innerWidth >= 1500
+          ? "8rem"
+          : "7.1rem"
+      }
+      transform={props.headerVisible ? "scale(1)" : "scale(.8)"}
+    >
       <nav className="Nav" headerVisible={props.headerVisible}>
         <div
           id="menuIcon"
@@ -77,21 +94,22 @@ function Nav(props) {
         </StyledCloseBtn>
         <ul className={`Nav_list ${!navIsOpen && "Nav_list--hidden"}`}>
           {navItems.map((item, index) => (
-            <StyledUnderline
-              color={props.color}
-              onClick={() => {
-                props.updateActiveCategory(item);
-                updateNav(false);
-              }}
-              className={`Nav_list_item ${props.activeCategory === item &&
-                "Nav_list_item--active"}`}
-              key={index}
-              data-filter={item}
-            >
-              {item}
-            </StyledUnderline>
+            <Link key={index} smooth to="/sw20/#Showcase">
+              <StyledUnderline
+                color={props.color}
+                onClick={() => {
+                  props.updateActiveCategory(item);
+                  updateNav(false);
+                }}
+                className={`Nav_list_item ${props.activeCategory === item &&
+                  "Nav_list_item--active"}`}
+                data-filter={item}
+              >
+                {item}
+              </StyledUnderline>
+            </Link>
           ))}
-        </ul>
+        </ul>{" "}
         <a href="#Wishlist" className="Nav_Wishlist-check">
           <Document color={props.color} />
           <span id="cartCount" className="Nav_Wishlist-check_count">
