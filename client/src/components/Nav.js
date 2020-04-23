@@ -94,7 +94,7 @@ function Nav(props) {
         </StyledCloseBtn>
         <ul className={`Nav_list ${!navIsOpen && "Nav_list--hidden"}`}>
           {navItems.map((item, index) => (
-            <Link key={index} smooth to={`/${props.campaignTag}/#Showcase`}>
+            <Link key={index} smooth to={`/${props.campaignTag}/#Showcase`} className="nav-link">
               <StyledUnderline
                 color={props.color}
                 onClick={() => {
