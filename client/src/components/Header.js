@@ -28,6 +28,7 @@ function Header(props) {
         alt="Brand Logo"
         className="brand-logo"
         logoWidth={props.clientInfo.logoWidth}
+        onContextMenu={(e)=> e.preventDefault()}
       />
     </header>
   );

@@ -10,7 +10,7 @@ import Close from "./Icons/Close";
 import MultiItemIcon from "./Icons/MultiItemIcon";
 
 const StyledBtn1 = styled.button`
-  border: 3px solid ${props => props.color};
+  border: 3px solid ${(props) => props.color};
   color: #cbcaca;
   background-color: transparent;
   transition: 0.25s all ease-in;
@@ -30,7 +30,7 @@ const StyledBtn1 = styled.button`
     left: 0;
     width: 100%;
     height: 0px;
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.color};
     transition: 0.2s all ease-in-out;
   }
 
@@ -47,7 +47,7 @@ const StyledBtn1 = styled.button`
 `;
 
 const StyledBtn2 = styled.button`
-  background-color: ${props => (props.isModalBtn ? "#000" : props.color)};
+  background-color: ${(props) => (props.isModalBtn ? "#000" : props.color)};
   transition: 0.15s all ease-in;
   position: relative;
   z-index: 20;
@@ -57,7 +57,7 @@ const StyledBtn2 = styled.button`
   span {
     display: block;
     transform: translateX(1.25rem);
-    color: ${props => {
+    color: ${(props) => {
       if (props.isModalBtn) {
         if (props.clicked) {
           return "#000";
@@ -71,7 +71,7 @@ const StyledBtn2 = styled.button`
     opacity: 1;
     transition: 0.2s opacity ease-out;
     svg g > * {
-      stroke: ${props => (props.isModalBtn ? props.color : "#fff")};
+      stroke: ${(props) => (props.isModalBtn ? props.color : "#fff")};
     }
   }
 
@@ -81,9 +81,9 @@ const StyledBtn2 = styled.button`
     left: 0;
     bottom: 0;
     z-index: -1;
-    height: ${props => (props.clicked ? "100%" : "0%")};
+    height: ${(props) => (props.clicked ? "100%" : "0%")};
     width: 100%;
-    background-color: ${props => (props.isModalBtn ? props.color : "#fff")};
+    background-color: ${(props) => (props.isModalBtn ? props.color : "#fff")};
     transition: 0.2s all ease;
   }
 
@@ -102,12 +102,12 @@ const StyledBtn2 = styled.button`
 
 const StyledMultiBtn = styled.div`
   transition: 0.13s background-color ease-out;
-  background-color: ${props => (props.isClicked ? props.color : "#0e0d0d")};
-  width: ${props => (props.isClicked ? "12.5rem" : "6rem")};
+  background-color: ${(props) => (props.isClicked ? props.color : "#0e0d0d")};
+  width: ${(props) => (props.isClicked ? "12.5rem" : "6rem")};
   height: 2.8vmax;
   min-height: 6rem;
   svg:first-child g > * {
-    stroke: ${props => props.color};
+    stroke: ${(props) => props.color};
   }
 
   #check path {
@@ -115,7 +115,7 @@ const StyledMultiBtn = styled.div`
   }
 
   &:hover {
-    background-color: ${props => props.color} !important;
+    background-color: ${(props) => props.color} !important;
   }
 `;
 
@@ -130,14 +130,14 @@ class Showcase extends Component {
         singleItem: {
           img: "",
           name: "",
-          index: null
+          index: null,
         },
         multiItem: {
           name: "",
           products: [],
-          index: null
-        }
-      }
+          index: null,
+        },
+      },
     };
   }
 
@@ -151,13 +151,13 @@ class Showcase extends Component {
           name,
           index,
           product,
-          id
+          id,
         },
         multiItem: {
           name: "",
-          products: []
-        }
-      }
+          products: [],
+        },
+      },
     });
   }
 
@@ -169,14 +169,14 @@ class Showcase extends Component {
         singleItem: {
           img: "",
           name: "",
-          index: null
+          index: null,
         },
         multiItem: {
           name,
           products,
-          index
-        }
-      }
+          index,
+        },
+      },
     });
   }
 
@@ -218,8 +218,8 @@ class Showcase extends Component {
                 window.innerWidth > 560
                   ? null
                   : product.singleItem
-                  ? e => this.props.addItem(product.products[0], index)
-                  : e =>
+                  ? (e) => this.props.addItem(product.products[0], index)
+                  : (e) =>
                       this.expandMultiItem(
                         product.name,
                         index,
@@ -233,6 +233,7 @@ class Showcase extends Component {
                 src={product.background}
                 alt={product.name}
                 className="showcase_grid_item_image"
+                onContextMenu={(e) => e.preventDefault()}
               />
               <div
                 className={`showcase_grid_item-cta showcase_grid_item-cta-${product
@@ -247,7 +248,7 @@ class Showcase extends Component {
                         className="cta-zoomIn showcase_grid_item-cta_btn"
                         color={color}
                         type="button"
-                        onClick={e =>
+                        onClick={(e) =>
                           this.expandSingleItem(
                             product.background,
                             product.name,
@@ -272,20 +273,20 @@ class Showcase extends Component {
                         color={color}
                         isModalBtn={false}
                         clicked={this.props.wishlist.some(
-                          wishlistProd =>
+                          (wishlistProd) =>
                             wishlistProd.tile_parent === product.id
                         )}
                       >
                         <span>
                           {this.props.wishlist.some(
-                            wishlistProd =>
+                            (wishlistProd) =>
                               wishlistProd.tile_parent === product.id
                           )
                             ? "added!"
                             : "add to list"}
                         </span>
                         {this.props.wishlist.some(
-                          wishlistProd =>
+                          (wishlistProd) =>
                             wishlistProd.tile_parent === product.id
                         ) ? (
                           <>
@@ -295,7 +296,7 @@ class Showcase extends Component {
                                 circleStroke={"#000"}
                                 pathStroke={"#fff"}
                                 style={{
-                                  display: "auto"
+                                  display: "auto",
                                 }}
                               />
                             </div>
@@ -328,7 +329,7 @@ class Showcase extends Component {
                       <StyledBtn1
                         className="cta-viewAll showcase_grid_item-cta_btn"
                         color={color}
-                        onClick={e =>
+                        onClick={(e) =>
                           this.expandMultiItem(
                             product.name,
                             index,
@@ -352,11 +353,11 @@ class Showcase extends Component {
                     className="mobileAddItem"
                     color={color}
                     isClicked={this.props.wishlist.some(
-                      wishlistProd => wishlistProd.tile_parent === product.id
+                      (wishlistProd) => wishlistProd.tile_parent === product.id
                     )}
                   >
                     {this.props.wishlist.some(
-                      wishlistProd => wishlistProd.tile_parent === product.id
+                      (wishlistProd) => wishlistProd.tile_parent === product.id
                     ) ? (
                       <>
                         <Check
@@ -369,7 +370,7 @@ class Showcase extends Component {
                             position: "absolute",
                             transition: "0.13s opacity ease-out",
                             zIndex: 5000,
-                            right: "1.5rem"
+                            right: "1.5rem",
                           }}
                         />
                       </>
@@ -392,7 +393,7 @@ class Showcase extends Component {
                     <span
                       className={
                         this.props.wishlist.some(
-                          wishlistProd =>
+                          (wishlistProd) =>
                             wishlistProd.tile_parent === product.id
                         )
                           ? "added-btn"
@@ -400,7 +401,8 @@ class Showcase extends Component {
                       }
                     >
                       {this.props.wishlist.some(
-                        wishlistProd => wishlistProd.tile_parent === product.id
+                        (wishlistProd) =>
+                          wishlistProd.tile_parent === product.id
                       )
                         ? "added!"
                         : ""}
@@ -408,9 +410,7 @@ class Showcase extends Component {
                   </StyledMultiBtn>
                 ) : (
                   <div className="icon-wrapper">
-                    <MultiItemIcon
-                      color={this.props.color}
-                    />
+                    <MultiItemIcon color={this.props.color} />
                   </div>
                 )}
               </span>
@@ -429,7 +429,7 @@ class Showcase extends Component {
                 : this.state.modal.multiItem
             }
             addItem={this.props.addItem}
-            closeModal={e => {
+            closeModal={(e) => {
               this.setState({
                 itemType: null,
                 open: false,
@@ -437,14 +437,14 @@ class Showcase extends Component {
                   singleItem: {
                     img: "",
                     name: "",
-                    index: null
+                    index: null,
                   },
                   multiItem: {
                     name: "",
                     products: [],
-                    index: null
-                  }
-                }
+                    index: null,
+                  },
+                },
               });
             }}
           />
@@ -459,7 +459,7 @@ function ShowcaseModal(props) {
   const duration = 225;
   const Style = {
     transition: `opacity ${duration}ms ease-in-out`,
-    opacity: `${props.open ? 1 : 0}`
+    opacity: `${props.open ? 1 : 0}`,
   };
   return (
     <OffClick handler={() => props.open && props.closeModal()}>
@@ -482,10 +482,11 @@ function ShowcaseModal(props) {
               </div>
               <div className="zoomModal_img--container">
                 <img
+                  onContextMenu={(e) => e.preventDefault()}
                   src={productInfo.img}
                   alt={productInfo.name}
                   className="zoomModal_img"
-                  onClick={e => console.log("you clicked the image")}
+                  onClick={(e) => console.log("you clicked the image")}
                 />
               </div>
               <StyledBtn2
@@ -497,18 +498,19 @@ function ShowcaseModal(props) {
                 color={props.color}
                 isModalBtn={true}
                 clicked={props.wishlist.some(
-                  wishlistProd => wishlistProd.tile_parent === productInfo.id
+                  (wishlistProd) => wishlistProd.tile_parent === productInfo.id
                 )}
               >
                 <span>
                   {props.wishlist.some(
-                    wishlistProd => wishlistProd.tile_parent === productInfo.id
+                    (wishlistProd) =>
+                      wishlistProd.tile_parent === productInfo.id
                   )
                     ? "added!"
                     : "add to list"}
                 </span>
                 {props.wishlist.some(
-                  wishlistProd => wishlistProd.tile_parent === productInfo.id
+                  (wishlistProd) => wishlistProd.tile_parent === productInfo.id
                 ) ? (
                   <>
                     <div className="cta-addToList--icon">
@@ -551,7 +553,7 @@ function ShowcaseModal(props) {
               <Scrollbars style={{ width: "100%", height: "100vh" }}>
                 <h2 className="zoomModal_name">{productInfo.name}</h2>
                 <div className="zoomModal-multi-grid">
-                  {productInfo.products.map(prod => {
+                  {productInfo.products.map((prod) => {
                     return (
                       <div
                         className="zoomModal-multi-grid-item"
@@ -561,18 +563,22 @@ function ShowcaseModal(props) {
                           {prod.alt}
                         </h4>
                         <div className="img-container">
-                          <img src={prod.img} alt={prod.alt} />
+                          <img
+                            onContextMenu={(e) => e.preventDefault()}
+                            src={prod.img}
+                            alt={prod.alt}
+                          />
                         </div>
                         <StyledMultiBtn
                           onClick={() => props.addItem(prod, productInfo.index)}
                           className="multi--addItem"
                           color={props.color}
                           isClicked={props.wishlist.some(
-                            wishlistProd => wishlistProd.key === prod.key
+                            (wishlistProd) => wishlistProd.key === prod.key
                           )}
                         >
                           {props.wishlist.some(
-                            wishlistProd => wishlistProd.key === prod.key
+                            (wishlistProd) => wishlistProd.key === prod.key
                           ) ? (
                             <>
                               <Check
@@ -600,14 +606,14 @@ function ShowcaseModal(props) {
                           <span
                             className={
                               props.wishlist.some(
-                                wishlistProd => wishlistProd.key === prod.key
+                                (wishlistProd) => wishlistProd.key === prod.key
                               )
                                 ? "added-btn"
                                 : ""
                             }
                           >
                             {props.wishlist.some(
-                              wishlistProd => wishlistProd.key === prod.key
+                              (wishlistProd) => wishlistProd.key === prod.key
                             )
                               ? "added!"
                               : ""}

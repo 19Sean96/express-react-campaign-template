@@ -275,3 +275,11 @@ select:-webkit-autofill:focus {
   pointer-events: painted;
   transition: opacity .2s ease-out;
 }
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}

@@ -253,6 +253,7 @@ class Wishlist extends Component {
                           src={item.img}
                           alt={item.alt}
                           className="Wishlist_cart_item-image"
+                          onContextMenu={(e)=> e.preventDefault()}
                         />
                       </div>
                       {this.state.beingRemoved.giveWarning &&
