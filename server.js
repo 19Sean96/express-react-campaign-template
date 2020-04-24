@@ -137,12 +137,12 @@ app.post("/api/sendemail", (req, res) => {
       }
 
       .prod-title {
-        background-color: #FF7023;
+        background-color: #404040;
       }
 
       .product-row td {
         height: 30px;    
-        background-color: #FFB488;
+        background-color: #505050;
       }
 
       table {
@@ -155,19 +155,23 @@ app.post("/api/sendemail", (req, res) => {
       }
       
       .client-row td {
-        background-color: #35AAD4;
+        background-color: #ededed;
+        color: #121212;
         height: 30px;
       }
 
       .client-row-message-title td{
         text-align: center;
         height: 30px;    
-        background-color: #35AAD4;
+        color: #121212;
+        background-color: #ededed;
+
       }
 
       .client-row-message-text td{
         height: 30px;    
-        background-color: #35AAD4;
+        color: #121212;
+        background-color: #ededed;        
         padding: 20px 30px;
       }
       
