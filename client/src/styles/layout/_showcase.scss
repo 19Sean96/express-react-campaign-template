@@ -61,7 +61,7 @@
     @media screen and (max-width: 560px) {
       height: 37.5rem;
       max-width: 100%;
-      padding: 4rem 5rem;
+      padding: 4.75rem 5rem 1.25rem;
 
       .icon-wrapper {
         position: absolute;
@@ -233,7 +233,7 @@
     transform: translate(-50%, 50%);
     width: 1580px;
     height: 90%;
-    background-color: #fafafa;
+    background-color: #ffffff;
     padding: 3.25rem 3.75rem;
     display: flex;
     flex-direction: column;
@@ -471,7 +471,7 @@
 
       &-item {
         position: relative;
-        background-color: #fafafa;
+        background-color: #ffffff;
         padding: 2.25rem;
         font-size: 1.8rem;
         border: 2px solid #e3e3e3;
@@ -627,7 +627,7 @@
   overflow: hidden;
 
   &--container {
-    z-index: 800;
+    z-index: 299;
   }
 
   svg {
