@@ -9,28 +9,56 @@ import WishlistHowTo from "./components/WishlistHowTo";
 import axios from "axios";
 import { InView } from "react-intersection-observer";
 import { Route, useParams } from "react-router-dom";
+import BrowserAltImg from "./images/browseralt.jpg"
+import styled from "styled-components";
 
 if (process.env.NODE_ENV === "development") {
   // proxy
   axios.defaults.baseUrl = "http://localhost:5000";
 }
-
+const isIE = /*@cc_on!@*/ false || !!document.documentMode;
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
+const StyledImgContainer = styled.div`
+  background-color: #000;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 500px;
+    height: auto;
+  }
+`
 
 function App() {
   return (
     <div className="App">
+      {isIE ? (
+        <StyledImgContainer>
+          <a href="https://browsehappy.com/">
+            <img src={BrowserAltImg} alt="Download the alternative browwser to use this site!"/>
+          </a>
+        </StyledImgContainer>
+      ) : (
+        <Route path="/:campaign">
+          <Campaign />
+        </Route>
+      )}
       {/*
           THIS WILL ONLY SHOW A CAMPAIGN PAGE (INCLUDING LOADING CIRCLE) ONCE A URL PARAM IS DETECTED
         */}
-      <Route path="/:campaign">
-        <Campaign />
-      </Route>
     </div>
   );
 }
 
 function Campaign() {
+  console.log(
+    "Is the browser IE?",
+    /*@cc_on!@*/ false || !!document.documentMode
+  );
   // takes campaign name from URL
   let { campaign } = useParams();
   //  tracks state of wishlist cart and all details within (custom notes, design numbers, image URL, etc.)
@@ -92,10 +120,7 @@ function Campaign() {
               inView ? updateVisibility(true) : updateVisibility(false)
             }
           >
-            <Header
-              className="campaign-header"
-              clientInfo={data.client}
-            ></Header>
+          <Header className="campaign-header" clientInfo={data.client}></Header>
           </InView>
           <Nav
             categories={data.categories}
@@ -179,7 +204,7 @@ function assembleData(details, photos, products, tiles, categories) {
         photos[photos.findIndex((img) => img.id === details.background_image)]
           .data.full_url,
       color: details.color,
-      tag: details.tag
+      tag: details.tag,
     },
 
     items: [],
