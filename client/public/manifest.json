@@ -3,7 +3,7 @@
   "name": "Sportex Safety Campaign System For Promoting & Encouraging Safety Related Products & Services",
   "icons": [
     {
-      "src": "sportex.ico",
+      "src": "campaign_icon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
