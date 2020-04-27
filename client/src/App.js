@@ -157,6 +157,7 @@ function Campaign() {
               wishlist[index].value = value;
             }}
             color={data.client.color}
+            campaignName={data.client.name}
           />
           <Footer color={data.client.color} />
         </>

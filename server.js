@@ -92,9 +92,9 @@ app.post("/api/sendemail", (req, res) => {
   const productsHtml = req.body.products.map((product,index) => {
 
     return `
-      <div>
+      <div class="product">
         <tr>
-          <th colspan=3 class="prod-title">
+          <th colspan=3 class="subtitle">
             <h3>Product ${index}:</h3>
           </th>
         </tr>
@@ -110,6 +110,9 @@ app.post("/api/sendemail", (req, res) => {
           <td>Comment: </td>
           <td colspan=2>${product.note.value}</td>
         </tr>
+        <tr class="empty-row">
+
+        </tr>
       </div>
     `
   }).join('');
@@ -118,62 +121,66 @@ app.post("/api/sendemail", (req, res) => {
   <head>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
     <style>
-      body {
-        background-color: #e1e1e1;
+    body {
+      background-color: #fff;
+    }
 
-      }
+    * {
+      font-family: 'Open Sans',Helvetica, sans-serif;
+      color: #000;
+    }
 
-      h1,
-      table {
-        font-family: 'Open Sans',Helvetica, sans-serif;
-      }
+    .title {
+      background-color: #e5e5e5;
+    }
+    
+    .subtitle {
+      background-color: #f4f4f4;
+      color: #000;
+    }
 
-      h2 {
-        color: #fffcfb;
-      }
+    .product-row td {
+      height: 30px;    
+      background-color: #fff;
+    }
 
-      h3 {
-        color: #efefef;
-      }
+    .empty-row {
+      height: 50px;
+    }
 
-      .prod-title {
-        background-color: #404040;
-      }
+    table {
+      table-layout: fixed;
+      width: 80%;
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #fff;
+      height: 50px;
+    }
 
-      .product-row td {
-        height: 30px;    
-        background-color: #505050;
-      }
+    .client-row {
+      background-color: #fff;
+      color: #000;
+    }
+    
+    .client-row td {
+      height: 30px;
+    }
 
-      table {
-        table-layout: fixed;
-        width: 80%;
-        max-width: 600px;
-        margin: 40px auto;
-        background-color: #0C0D0C;
-        height: 50px;
-      }
-      
-      .client-row td {
-        background-color: #ededed;
-        color: #121212;
-        height: 30px;
-      }
+    .message-title td{
+      text-align: center;
+      height: 30px;    
+      color: #000;
+      background-color: #fff;
+      font-weight: bolder;
+      padding-top: 25px;
+    }
 
-      .client-row-message-title td{
-        text-align: center;
-        height: 30px;    
-        color: #121212;
-        background-color: #ededed;
-
-      }
-
-      .client-row-message-text td{
-        height: 30px;    
-        color: #121212;
-        background-color: #ededed;        
-        padding: 20px 30px;
-      }
+    .message-text td{
+      height: 30px;    
+      color: #000;
+      background-color: #fff;        
+      padding: 0px 30px 20px;
+    }
       
       </style>
     </head>
@@ -184,11 +191,14 @@ app.post("/api/sendemail", (req, res) => {
         <caption></caption>
         <tbody>
         <tr>
-          <th colspan="3">
+          <th colspan="3" class="title">
             <h2>Client Details</h2>
           </th>
         </tr>
-
+        <tr class="client-row">
+          <td style="font-weight: bold">Campaign: </td>
+          <td colspan=2>${req.body.campaign}</td>
+        </tr>
         <tr class="client-row">
           <td style="font-weight: bold">Name: </td>
           <td colspan=2>${req.body.name}</td>
@@ -205,10 +215,10 @@ app.post("/api/sendemail", (req, res) => {
           <td style="font-weight: bold">Company: </td>
           <td colspan=2>${req.body.company}</td>
         </tr>
-        <tr class="client-row-message-title">
+        <tr class="message-title">
           <td colspan=3 style="font-weight: bold">Message</td>
         </tr>
-        <tr class="client-row-message-text">
+        <tr class="message-text">
           <td colspan=3>${req.body.comments}</td>
         </tr>
       </tbody>
@@ -217,7 +227,7 @@ app.post("/api/sendemail", (req, res) => {
       <table role=”presentation” cellspacing=0 cellpadding=5 border=0>
         <tbody>
           <tr>
-            <th colspan="3">
+            <th colspan="3" class="title">
               <h2>Product Details</h2>
             </th>
           </tr>

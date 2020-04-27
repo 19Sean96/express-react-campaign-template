@@ -68,7 +68,8 @@ class SendWishlist extends Component {
         phone: this.props.phone.value,
         company: this.props.company.value,
         comments: this.props.comments.value,
-        products: this.props.cartDetails
+        products: this.props.cartDetails,
+        campaign: this.props.campaignName
       })
       .then(res => {
         console.log(res.data);

@@ -473,6 +473,7 @@ class Wishlist extends Component {
           comments={this.state.comments}
           cartDetails={this.state.cartDetails}
           handleKeyPress={this.handleKeyPress}
+          campaignName={this.props.campaignName}
         />
       </>
     );
