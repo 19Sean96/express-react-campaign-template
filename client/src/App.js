@@ -191,19 +191,27 @@ const determineTileType = (products, id) => {
   if (count > 1) return false;
   else return true;
 };
+
 function assembleData(details, photos, products, tiles, categories) {
   // 'data' is the template we use to organize and tie the campaign data together
+
+
+  const bgIndex = photos.findIndex(img => img.id === details.background_image);
+  const logoIndex = photos.findIndex((img) => img.id === details.logo);
+  photos.push({
+    data: {
+      full_url: ""
+    }
+  })
   const data = {
     categories: ["all"],
     client: {
       name: `${details.client_name} - ${details.title}`,
       logo:
-        photos[photos.findIndex((img) => img.id === details.logo)].data
-          .full_url,
+        photos[logoIndex === -1 ? photos.length - 1 : logoIndex].data.full_url,
       logoWidth: details.logo_width,
       background:
-        photos[photos.findIndex((img) => img.id === details.background_image)]
-          .data.full_url,
+        photos[bgIndex === -1 ? photos.length - 1 : bgIndex].data.full_url,
       color: details.color,
       tag: details.tag,
     },
@@ -212,22 +220,24 @@ function assembleData(details, photos, products, tiles, categories) {
   };
 
   products = products.map((prod) => {
+    const imgIndex = photos.findIndex((image) => image.id === prod.image)
     return {
       tile_parent: prod.tile,
       key: prod.design_number,
       // ASSIGNS IMAGE BASED ON THE IMAGE ID ON THE PRODUCT PAGE
       img:
-        photos[photos.findIndex((image) => image.id === prod.image)].data
+        photos[imgIndex === -1 ? photos.length -1 : imgIndex].data
           .full_url,
       alt: prod.product_name,
       select: false,
       value: "",
     };
   });
-  console.log(tiles);
   tiles
     .sort((current, next) => current.category - next.category)
     .map((tile) => {
+
+      const tileIndex = photos.findIndex((img) => img.id === tile.display_image)
       /*
       WHEN THE API CALL IS MADE, WE GET BACK THE FULL LIST. 
       WE ONLY NEED THE RELEVANT CATEGORIES TO FILTER THROUGH THE PRODUCTS.
@@ -250,7 +260,7 @@ function assembleData(details, photos, products, tiles, categories) {
         name: tile.title,
         singleItem: determineTileType(products, tile.id),
         background:
-          photos[photos.findIndex((img) => img.id === tile.display_image)].data
+          photos[tileIndex === -1 ? photos.length -1 : tileIndex].data
             .full_url,
         category:
           categories[
