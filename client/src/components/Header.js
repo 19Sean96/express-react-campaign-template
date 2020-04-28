@@ -2,10 +2,14 @@ import React from "react";
 import SportexLogo from "../Icons/SportexLogo";
 import styled from "styled-components";
 
+// min-width: ${props => props.logoWidth * .8}px;
+// width: ${props => (props.logoWidth * 1.16) / 20}vw;
 const StyledLogo = styled.img`
-  min-width: ${props => props.logoWidth * .8}px;
-  width: ${props => (props.logoWidth * 1.16) / 20}vw;
   max-width: ${props => props.logoWidth}px;
+
+  @media screen and (max-width: 1300px) {
+    max-width: ${props => props.logoWidth * .8}px;
+  }
 `;
 
 function Header(props) {
