@@ -14,7 +14,7 @@
   }
 
   @media screen and (max-width: 560px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0%, 1fr);
     padding-bottom: 5rem;
 
     &::after {
@@ -59,8 +59,8 @@
       }
     }
     @media screen and (max-width: 560px) {
-      height: 37.5rem;
-      max-width: 100%;
+      height: 66vw;
+      width: 100vw;
       padding: 4.75rem 5rem 1.25rem;
 
       .icon-wrapper {
@@ -347,7 +347,7 @@
             width: 6rem;
             height: 6rem;
             box-shadow: 0 .125rem 1.75rem rgba(black, 0.22);
-            background-color: #CD2730;
+            // background-color: #CD2730;
             z-index: -1;
             top: 50%;
             left: 50%;
