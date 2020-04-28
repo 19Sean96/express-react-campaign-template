@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef  } from "react";
 import OffClick from "react-offclick";
 import SendWishlist from "./SendWishlist";
 import DocumentIcon from "./Icons/Document";
@@ -25,8 +25,8 @@ const StyledWishlistCTA = styled.a`
 class Wishlist extends Component {
   constructor(props) {
     super(props);
-
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.wishlistRef=createRef()
     this.state = {
       notePositionActive: [],
       noteInputHasValue: [],
@@ -218,7 +218,11 @@ class Wishlist extends Component {
     const { color } = this.props;
     return (
       <>
-        <section className="Wishlist" id="Wishlist">
+        <section
+          className="Wishlist"
+          id="Wishlist"
+          ref={this.wishlistRef}
+        >
           <h1 className="Wishlist_title">
             quote list
             <span className="Wishlist_title--icon--container">
@@ -253,7 +257,7 @@ class Wishlist extends Component {
                           src={item.img}
                           alt={item.alt}
                           className="Wishlist_cart_item-image"
-                          onContextMenu={(e)=> e.preventDefault()}
+                          onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
                       {this.state.beingRemoved.giveWarning &&
@@ -310,10 +314,9 @@ class Wishlist extends Component {
                                   ? color
                                   : "rgba(#fff, 0.4)"
                               }
-                              className={`Wishlist_cart_item--editor-note ${
-                                this.state.notePositionActive[index] &&
-                                `Wishlist_cart_item--editor-note--active`
-                              }`}
+                              className={`Wishlist_cart_item--editor-note ${this
+                                .state.notePositionActive[index] &&
+                                `Wishlist_cart_item--editor-note--active`}`}
                             >
                               <Note
                                 index={index}

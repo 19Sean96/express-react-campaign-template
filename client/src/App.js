@@ -9,7 +9,7 @@ import WishlistHowTo from "./components/WishlistHowTo";
 import axios from "axios";
 import { InView } from "react-intersection-observer";
 import { Route, useParams } from "react-router-dom";
-import BrowserAltImg from "./images/browseralt.jpg"
+import BrowserAltImg from "./images/browseralt.jpg";
 import styled from "styled-components";
 
 if (process.env.NODE_ENV === "development") {
@@ -31,7 +31,7 @@ const StyledImgContainer = styled.div`
     width: 500px;
     height: auto;
   }
-`
+`;
 
 function App() {
   return (
@@ -39,7 +39,10 @@ function App() {
       {isIE ? (
         <StyledImgContainer>
           <a href="https://browsehappy.com/">
-            <img src={BrowserAltImg} alt="Download the alternative browwser to use this site!"/>
+            <img
+              src={BrowserAltImg}
+              alt="Download the alternative browwser to use this site!"
+            />
           </a>
         </StyledImgContainer>
       ) : (
@@ -55,10 +58,6 @@ function App() {
 }
 
 function Campaign() {
-  console.log(
-    "Is the browser IE?",
-    /*@cc_on!@*/ false || !!document.documentMode
-  );
   // takes campaign name from URL
   let { campaign } = useParams();
   //  tracks state of wishlist cart and all details within (custom notes, design numbers, image URL, etc.)
@@ -78,6 +77,9 @@ function Campaign() {
   const [data, loadData] = useState(false);
 
   const [headerVisible, updateVisibility] = useState(true);
+
+
+
 
   useEffect(() => {
     // THIS HANDLES THE "HOW-TO" MODAL WHICH POPULATES ON INITIAL LOAD
@@ -120,7 +122,10 @@ function Campaign() {
               inView ? updateVisibility(true) : updateVisibility(false)
             }
           >
-          <Header className="campaign-header" clientInfo={data.client}></Header>
+            <Header
+              className="campaign-header"
+              clientInfo={data.client}
+            ></Header>
           </InView>
           <Nav
             categories={data.categories}
@@ -180,6 +185,8 @@ function Campaign() {
   );
 }
 
+
+
 const determineTileType = (products, id) => {
   let count = 0;
   products.map((prod) => {
@@ -195,14 +202,15 @@ const determineTileType = (products, id) => {
 function assembleData(details, photos, products, tiles, categories) {
   // 'data' is the template we use to organize and tie the campaign data together
 
-
-  const bgIndex = photos.findIndex(img => img.id === details.background_image);
+  const bgIndex = photos.findIndex(
+    (img) => img.id === details.background_image
+  );
   const logoIndex = photos.findIndex((img) => img.id === details.logo);
   photos.push({
     data: {
-      full_url: ""
-    }
-  })
+      full_url: "",
+    },
+  });
   const data = {
     categories: ["all"],
     client: {
@@ -220,14 +228,12 @@ function assembleData(details, photos, products, tiles, categories) {
   };
 
   products = products.map((prod) => {
-    const imgIndex = photos.findIndex((image) => image.id === prod.image)
+    const imgIndex = photos.findIndex((image) => image.id === prod.image);
     return {
       tile_parent: prod.tile,
       key: prod.design_number,
       // ASSIGNS IMAGE BASED ON THE IMAGE ID ON THE PRODUCT PAGE
-      img:
-        photos[imgIndex === -1 ? photos.length -1 : imgIndex].data
-          .full_url,
+      img: photos[imgIndex === -1 ? photos.length - 1 : imgIndex].data.full_url,
       alt: prod.product_name,
       select: false,
       value: "",
@@ -236,8 +242,9 @@ function assembleData(details, photos, products, tiles, categories) {
   tiles
     .sort((current, next) => current.category - next.category)
     .map((tile) => {
-
-      const tileIndex = photos.findIndex((img) => img.id === tile.display_image)
+      const tileIndex = photos.findIndex(
+        (img) => img.id === tile.display_image
+      );
       /*
       WHEN THE API CALL IS MADE, WE GET BACK THE FULL LIST. 
       WE ONLY NEED THE RELEVANT CATEGORIES TO FILTER THROUGH THE PRODUCTS.
@@ -260,7 +267,7 @@ function assembleData(details, photos, products, tiles, categories) {
         name: tile.title,
         singleItem: determineTileType(products, tile.id),
         background:
-          photos[tileIndex === -1 ? photos.length -1 : tileIndex].data
+          photos[tileIndex === -1 ? photos.length - 1 : tileIndex].data
             .full_url,
         category:
           categories[

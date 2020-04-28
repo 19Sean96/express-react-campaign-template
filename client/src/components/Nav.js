@@ -51,6 +51,12 @@ const StyledNav = styled.div`
   }
 `;
 
+const scrollWidthOffset = (el, headerVisible) => {
+  const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+  const yOffset = headerVisible ? -150 : -40; 
+  window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+}
+
 function Nav(props) {
   let navItems = props.categories;
   const [navIsOpen, updateNav] = useState(false);
@@ -94,12 +100,13 @@ function Nav(props) {
         </StyledCloseBtn>
         <ul className={`Nav_list ${!navIsOpen && "Nav_list--hidden"}`}>
           {navItems.map((item, index) => (
-            <Link key={index} smooth to={!props.headerVisible ? `/${props.campaignTag}/#Showcase` : `/${props.campaignTag}`} className="nav-link">
+            <Link key={index} smooth to={!props.headerVisible ? `/${props.campaignTag}/#Showcase` : `/${props.campaignTag}`} className="nav-link" >
               <StyledUnderline
                 color={props.color}
                 onClick={() => {
                   props.updateActiveCategory(item);
                   updateNav(false);
+
                 }}
                 className={`Nav_list_item ${props.activeCategory === item &&
                   "Nav_list_item--active"}`}
@@ -110,12 +117,12 @@ function Nav(props) {
             </Link>
           ))}
         </ul>{" "}
-        <a href="#Wishlist" className="Nav_Wishlist-check">
+        <Link smooth to={`/${props.campaignTag}/#Wishlist`} className="Nav_Wishlist-check" scroll={el => scrollWidthOffset(el, props.headerVisible)}>
           <Document color={props.color} />
           <span id="cartCount" className="Nav_Wishlist-check_count">
             {props.wishlistCount}
           </span>
-        </a>
+        </Link>
       </nav>
     </StyledNav>
   );
