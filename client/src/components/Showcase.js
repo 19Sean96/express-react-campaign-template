@@ -581,7 +581,7 @@ function ShowcaseModal(props) {
                           />
                         </div>
                         <StyledMultiBtn
-                          onClick={() => props.addItem(prod, productInfo.index)}
+                          // onClick={() => props.addItem(prod, productInfo.index)}
                           className="multi--addItem"
                           color={props.color}
                           isClicked={props.wishlist.some(
