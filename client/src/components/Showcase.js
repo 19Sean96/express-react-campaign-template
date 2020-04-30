@@ -250,7 +250,7 @@ class Showcase extends Component {
                         type="button"
                         onClick={(e) =>
                           this.expandSingleItem(
-                            product.background,
+                            product.products[0].img,
                             product.name,
                             index,
                             product.products[0],

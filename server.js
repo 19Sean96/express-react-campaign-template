@@ -67,7 +67,7 @@ app.get("/api/:campaign", async (req, res, next) => {
     */
   //   ==============================================================================
 
-  const URL_2 = `${URL}files?filter[tags][eq]=${CAMPAIGN_DATA.details.tag}&fields=data,id&access_token=${KEY}`;
+  const URL_2 = `${URL}files?filter[tags][contains]=${CAMPAIGN_DATA.details.tag}&fields=data,id&access_token=${KEY}`;
   const URL_3 = `${URL}items/products?filter[campaign][eq]=${CAMPAIGN_DATA.details.id}&access_token=${KEY}`;
   const URL_4 = `${URL}items/tiles?filter[campaign][eq]=${CAMPAIGN_DATA.details.id}&access_token=${KEY}`;
   const URL_5 = `${URL}items/categories?fields=id,category_name&access_token=${KEY}`;
