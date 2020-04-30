@@ -9,6 +9,17 @@ import Add from "./Icons/Add";
 import Close from "./Icons/Close";
 import MultiItemIcon from "./Icons/MultiItemIcon";
 
+const StyledMultiModal = styled.div`
+  @media screen and (max-width: 750px) {
+    .zoomModal-close {
+
+      &::before {
+        background-color: ${props => props.color}
+      }
+    }
+  }
+`;
+
 const StyledBtn1 = styled.button`
   border: 3px solid ${(props) => props.color};
   color: #cbcaca;
@@ -477,7 +488,7 @@ function ShowcaseModal(props) {
           {props.itemType === "single" ? (
             <>
               <h2 className="zoomModal_name">{productInfo.name}</h2>
-              <div className="zoomModal-close" onClick={props.closeModal}>
+              <div color={props.color} className="zoomModal-close" onClick={props.closeModal}>
                 <Close color={props.color} />
               </div>
               <div className="zoomModal_img--container">
@@ -544,7 +555,7 @@ function ShowcaseModal(props) {
               </StyledBtn2>
             </>
           ) : (
-            <>
+            <StyledMultiModal color={props.color}>
               <div className="wrapper">
                 <div className="zoomModal-close" onClick={props.closeModal}>
                   <Close color={props.color} />
@@ -624,7 +635,7 @@ function ShowcaseModal(props) {
                   })}
                 </div>
               </Scrollbars>
-            </>
+            </StyledMultiModal>
           )}
         </article>
       </div>
