@@ -239,7 +239,7 @@ app.post("/api/sendemail", (req, res) => {
   const message = {
     from: process.env.SENDING_EMAIL,
     to: process.env.RECEIVING_EMAIL,
-    subject: `Campaign (${req.body.campaign}) - ${req.body.name}`,
+    subject: `Campaign - ${req.body.campaign} - ${req.body.name}`,
     html: html
   };
 
