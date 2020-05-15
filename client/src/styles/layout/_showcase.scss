@@ -193,6 +193,8 @@
       }
       @media screen and (max-width: 560px) {
         grid-column-end: 1;
+
+        img { width: 105%; max-width: 125%;}
       }
     }
 
